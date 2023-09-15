@@ -1,0 +1,22 @@
+.phone .feature-image,
+.email .feature-image {
+    height: 45px;
+    width: 45px;
+}
+
+.email .content-wrapper .richtext p {
+    margin-bottom: 0;
+}
+
+.our-story .richtext {
+    margin-bottom: 30px;
+}
+
+.feature-tiem {
+    align-items: center;
+}
+
+.content-wrapper .richtext.phone p,
+.content-wrapper .richtext.email p {
+    margin-bottom: 0;
+}

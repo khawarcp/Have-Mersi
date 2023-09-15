@@ -1,0 +1,111 @@
+{% comment %}
+	GEMPAGE BUILDER (https://apps.shopify.com/gempage)
+
+	You SHOULD NOT modify source code in this page because
+	It is automatically generated from GEMPAGE BUILDER
+	Try to edit page with the live editor.
+{% endcomment %}
+<!--GEM_HEADER-->
+
+
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" class="gf-style">
+<link data-instant-track rel="stylesheet" type="text/css" href="https://d1um8515vdn9kb.cloudfront.net/files/vendor.css?refresh=1" class="gf-style" />
+<link data-instant-track rel="stylesheet" type="text/css" href="{{ 'gem-article-394392633501.css' | asset_url }}" class="gf_page_style">
+<!--GEM_HEADER_END-->
+{%- assign number_of_comments = article.comments_count -%}{% if comment and comment.created_at %}
+  {%- assign number_of_comments = article.comments_count | plus: 1 -%}
+{% endif %}<div class="page-width page-content">  <div class="grid">
+    <article class="grid__item widescreen--six-tenths widescreen--push-two-tenths medium-up--two-thirds medium-up--push-one-sixth article" itemscope itemtype="http://schema.org/Article">      {% include 'breadcrumbs' %}      <header class="section-header">
+        {% if section.settings.blog_show_date or article.tags.size > 0 or articles.comments_count > 0 %}
+          <div class="article__date">
+            {% if section.settings.blog_show_tags and article.tags.size > 0 %}
+              {% for tag in article.tags %}
+                {% include 'filter-out-custom-tags' %}
+                <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a> &middot;
+              {% endfor %}
+            {% endif %}
+            {% if section.settings.blog_show_comments and article.comments_count > 0 %}
+              <a href="#comments">{{ article.comments_count }} {{ article.comments_count | pluralize: 'comment', 'comments' }}</a> &middot;
+            {% endif %}
+            {% if section.settings.blog_show_date %}
+              {{ article.published_at | time_tag: format: 'month_day_year' }}
+            {% endif %}
+          </div>
+        {% endif %}
+        <h1 class="section-header__title" itemprop="headline">{{ article.title }}</h1>
+        {% if article.metafields.articledata.author != blank%}
+          <div class="article__author">written by <span itemprop="author"><span itemprop="author">{{ article.metafields.articledata.author }}</span></span></div>
+        {% else %}
+          {% if section.settings.blog_show_author %}
+            <div class="article__author">by <span itemprop="author"><span itemprop="author">{{ article.author }}</span></span></div>
+          {% endif %} 
+      {% endif %}
+      </header>      <div class="article__body rte" itemprop="articleBody">
+        <!--Gem_Page_Main_Editor--><div class="clearfix"></div><div class="gryffeditor">
+<div data-label="Heading" id="e-1580154936283" class="element-wrap" data-icon="gpicon-heading" data-ver="1" data-id="1580154936283"><div class="elm text-edit gf-elm-center gf-elm-center-md gf-elm-center-sm gf-elm-center-xs gf-elm-center-lg" data-gemlang="en" data-exc=""><h2><i>written by Mia Montalvo</i></h2></div></div><!--gfsplit--><div data-label="Row" id="r-1569330697238" class="gf_row" data-icon="gpicon-row" data-id="1569330697238" data-extraclass=""><div class="gf_column gf_col-lg-12 gf_col-md-12 gf_col-sm-12 gf_col-xs-12" id="c-1543568570869" data-id="1543568570869" style="min-height: auto;"><div data-label="Text Block" id="e-1569330697217" class="element-wrap" data-icon="gpicon-textblock" data-ver="1" data-id="1569330697217"><div class="elm text-edit gf-elm-left gf-elm-left-lg gf-elm-left-md gf-elm-left-sm gf-elm-left-xs" data-gemlang="en" data-exc=""><p><br></p><p>For many of us, being vegan is something to celebrate each day, yet there is no doubt that with the lifestyle<strong> there are some challenges.</strong> As we approach the holiday season, and we begin to make small, appropriate Thanksgiving plans —<i> don’t feel that you need to fret.</i></p><p><br></p><p>Coming to the function as a new vegan can feel intimidating, however, we’ve prepared our most essential advice so your Thanksgiving will go smoothly, and that way you can truly remember to share gratitude with the people in your life on this holiday.</p><p><br></p></div></div><div data-label="Image" id="e-1597429737714" class="element-wrap" data-icon="gpicon-image" data-ver="1.0" data-id="1597429737714" data-resolution="3000x3000"><div class="elm gf-elm-center gf_elm-left-xs gf-elm-center-md gf-elm-center-sm gf-elm-center-xs gf-elm-center-lg" data-exc=""><img src="https://ucarecdn.com/5b23326c-5e50-4dbb-99a8-9b768a294fc3/-/format/auto/-/preview/3000x3000/-/quality/lighter/" alt="" class="gf_image" data-gemlang="en" title="" data-width="90%" data-height="auto" natural-width="512" natural-height="397"></div></div><div data-label="Heading" id="e-1603732269603" class="element-wrap" data-icon="gpicon-heading" data-ver="1" data-id="1603732269603"><div class="elm text-edit gf-elm-center gf-elm-left-md gf-elm-left-sm gf-elm-left-xs gf-elm-left-lg" data-gemlang="en" data-exc=""><h2>1. Expect Questions, Prepare Answers.</h2></div></div><div data-label="Text Block" id="e-1569330697333" class="element-wrap" data-icon="gpicon-textblock" data-ver="1" data-id="1569330697333"><div class="elm text-edit gf-elm-left gf-elm-left-lg gf-elm-left-md gf-elm-left-sm gf-elm-left-xs" data-gemlang="en" data-exc=""></div></div><div data-label="Text Block" id="e-1569330697294" class="element-wrap" data-icon="gpicon-textblock" data-ver="1" data-id="1569330697294"><div class="elm text-edit gf-elm-left gf-elm-left-md gf-elm-left-sm gf-elm-left-xs gf-elm-left-lg" data-gemlang="en" data-exc=""><p>While veganism has been on the rise for the last few years, it is still extremely common for misinformation and stigma to be in the air. So don’t be too surprised when a family member asks <i>“...but where do you get your protein from?”</i> or <i>“but do you really think that one person can make that much of a difference?”</i></p><p><i></i></p><p>Instead, come prepared. Know the information you want to share to educate and inform them about this important lifestyle change! Knowing how to position each of these questions in a way that does not come off as defensive, nor with a “know it all” attitude is essential. There will be plenty of other opportunities to debate at the dinner table ;)</p><p></p><p>Keep an open mind and be ready to receive different reactions to this considerable lifestyle change. Remind your family and friends that this is a personal choice, and choose to educate rather than argue. Veganism is all about teaching others to be more compassionate, afterall!</p><p><br></p></div></div><div data-label="Text Block" id="e-1569330697334" class="element-wrap" data-icon="gpicon-textblock" data-ver="1" data-id="1569330697334"><div class="elm text-edit gf-elm-left gf-elm-left-lg gf-elm-left-md gf-elm-left-sm gf-elm-left-xs" data-gemlang="en" data-exc=""></div></div><div data-label="Heading" id="e-1603732224012" class="element-wrap" data-icon="gpicon-heading" data-ver="1" data-id="1603732224012" style="display: block;"><div class="elm text-edit gf-elm-center gf-elm-left-md gf-elm-left-sm gf-elm-left-xs gf-elm-left-lg" data-gemlang="en" data-exc=""><h2>2. Try Not To Take Responses Personally</h2></div></div><div data-label="Text Block" id="e-1578321958063" class="element-wrap" data-icon="gpicon-textblock" data-ver="1" data-id="1578321958063"><div class="elm text-edit gf-elm-left gf-elm-left-lg gf-elm-left-md gf-elm-left-sm gf-elm-left-xs" data-gemlang="en" data-exc=""><p><br></p><p>Food is a large part of culture, and depending on your family dynamic and background responses may vary. <strong>Try your best not to take negative responses to heart.</strong></p><p></p><p>We have been conditioned for ages that eating animals is normal, so this can definitely feel like a culture shock for your family members if you suddenly one day drop these ideals. But remember, you are the pilot of your own life and how you react to others will fuel the energy in how you feel about yourself and your choices. Be clear about your restrictions and choices from the start so there is no disappointment or surprise on the other end.<strong> The communication process is key.</strong></p><p><br></p><p><br></p></div></div><div data-label="Heading" id="e-1603732316078" class="element-wrap" data-icon="gpicon-heading" data-ver="1" data-id="1603732316078"><div class="elm text-edit gf-elm-center gf-elm-left-md gf-elm-left-sm gf-elm-left-xs gf-elm-left-lg" data-gemlang="en" data-exc=""><h2>3.Research! Research! Research!</h2></div></div></div></div><!--gfsplit--><div data-label="Text Block" id="e-1603732327560" class="element-wrap" data-icon="gpicon-textblock" data-ver="1" data-id="1603732327560"><div class="elm text-edit gf-elm-left gf-elm-left-lg gf-elm-left-md gf-elm-left-sm gf-elm-left-xs" data-gemlang="en" data-exc=""><p><span style="color: inherit; font-family: inherit; font-size: inherit; letter-spacing: 0.43px; text-align: inherit;">Prior to having your gathering, know ahead of time which foods you can have, and choose not to eat. While turkey and ham may be obvious, there are some less obvious sides and foods with ingredients that are not so vegan-friendly. <strong>Specifically, look out for and check if a dish contains butter, egg, bone broth, or cheese. </strong>These four ingredients are staple underlying ingredients in many Thanksgiving foods.&nbsp;</span><br></p><p><span style="color: inherit; font-family: inherit; font-size: inherit; letter-spacing: 0.43px; text-align: inherit;"><br></span></p><p></p><p>Knowing which foods are and aren’t suitable will make it much easier to dress your plate on Thanksgiving, and will also help you plan which substitutes you can bring.</p><p><br></p></div></div><!--gfsplit--><div data-label="Image" id="e-1603732367602" class="element-wrap" data-icon="gpicon-image" data-ver="1.0" data-id="1603732367602" data-resolution="3000x3000"><div class="elm gf-elm-center gf_elm-left-xs gf-elm-center-md gf-elm-center-sm gf-elm-center-xs gf-elm-center-lg" data-exc=""><img src="https://ucarecdn.com/b4c6a74f-ea3b-48e4-956a-9892ca83398a/-/format/auto/-/preview/3000x3000/-/quality/lighter/" alt="" class="gf_image" data-gemlang="en" title="" data-width="90%" data-height="auto" natural-width="1582" natural-height="1002"></div></div><!--gfsplit--><div data-label="Heading" id="e-1603732409980" class="element-wrap" data-icon="gpicon-heading" data-ver="1" data-id="1603732409980"><div class="elm text-edit gf-elm-center gf-elm-left-md gf-elm-left-sm gf-elm-left-xs gf-elm-left-lg" data-gemlang="en" data-exc=""><h2>4. Involve Your Family Members!</h2></div></div><!--gfsplit--><div data-label="Text Block" id="e-1603732339731" class="element-wrap" data-icon="gpicon-textblock" data-ver="1" data-id="1603732339731"><div class="elm text-edit gf-elm-left gf-elm-left-lg gf-elm-left-md gf-elm-left-sm gf-elm-left-xs" data-gemlang="en" data-exc=""><p><strong></strong></p><p><strong><br></strong></p><p><strong>Your first vegan Thanksgiving should be exciting! </strong>Play around with fun vegan recipes, and even invite your family members to cook with you and try your dishes! Creating this activity can break some of the tension as well as the stigma that says “vegan food is gross,” or “just not the same.”</p><p><br></p><p></p><p>Some traditional and non-traditional vegan Thanksgiving recipes we drool over every year:</p><p></p><p><a href="https://minimalistbaker.com/vegan-green-bean-casserole/" class="">Vegan Green Bean Casserole from Minimalist Baker</a></p><p><a href="https://flexitariannutrition.com/maple-glazed-heirloom-carrots-with-lemon-cashew-cream-carottes-glacees-a-lerable-et-creme-citron-cajou/" class="">Maple Glazed Heirloom Carrots from Flexitarian Nutrition</a></p><p><a href="https://www.theedgyveg.com/2018/11/07/butternut-squash-macaroni-and-cheese-vegan-nut-free-soy-free/" class="">Butternut Squash Mac and Cheese from The Edgy Veg</a></p><p><a href="https://minimalistbaker.com/white-bean-kale-salad-with-tahini-dressing/" class="">White Bean Kale Salad w/ Tahini Dressing from Minimalist Baker</a></p><p></p><p><br></p><p>&amp; Best Vegan Turkey Substitutes:</p><p><a href="https://tofurky.com/what-we-make/roasts/feast/" class="">Plant Based Tofurky Roast w/ Wild Rice Stuffing</a></p><p><a href="https://www.instacart.com/products/56126-gardein-holiday-roast-with-cranberry-and-wild-rice-stuffing-1-13-kg" class="">Gardein Holiday Roast w/ Cranberry Stuffing</a></p><p><a href="http://fieldroast.com/product/hazelnut-cranberry-roast-en-croute/" class="">Field Roast Harvest Celebration Roast</a></p><p><br></p></div></div><!--gfsplit--><div data-label="Heading" id="e-1603732409313" class="element-wrap" data-icon="gpicon-heading" data-ver="1" data-id="1603732409313"><div class="elm text-edit gf-elm-center gf-elm-left-md gf-elm-left-sm gf-elm-left-xs gf-elm-left-lg" data-gemlang="en" data-exc=""><h2>5. Be kind to yourself.</h2></div></div><!--gfsplit--><div data-label="Text Block" id="e-1603732336963" class="element-wrap" data-icon="gpicon-textblock" data-ver="1" data-id="1603732336963"><div class="elm text-edit gf-elm-left gf-elm-left-lg gf-elm-left-md gf-elm-left-sm gf-elm-left-xs" data-gemlang="en" data-exc=""><p><br></p><p>The holidays can already be a more difficult time for some, so try to treat yourself with the same kindness you would to other beings. If you find out later that you accidentally ate something with butter or egg in it, or perhaps were tempted to take a small slice of non-vegan cheesecake, try your best to not be upset with yourself.</p><p></p><p>No one is perfect, and the first vegan Thanksgiving will always be a tempting time and one to learn from. If you feel that you’d prefer to be a little less strict on this holiday, that is okay. Whichever way makes you feel the best, follow that, and remember to be grateful nonetheless!</p><p><br></p><p>Don't forget to check out our upcoming Black Friday deals and shop our <a href="https://www.theveganwarehouse.com/collections/best-sellers" class="">best-selling vegan products</a>!</p><p><br></p></div></div><!--gfsplit--><div data-label="Text Block" id="e-1569330697193" class="element-wrap" data-icon="gpicon-textblock" data-ver="1" data-id="1569330697193"><div class="elm text-edit gf-elm-left gf-elm-left-lg gf-elm-left-md gf-elm-left-sm gf-elm-left-xs" data-gemlang="en" data-exc=""></div></div><!--gfsplit--><div data-label="Separator" id="e-1569330697232" class="element-wrap" data-icon="gpicon-separator" data-ver="1" data-id="1569330697232"><div class="elm gf-elm-center" data-align="left"><hr class="gf_separator"></div></div><!--gfsplit--><script>window.__gemStoreData = {};window.__gemStoreData.gemKeyValid = {};window.__gemStoreData.gemKeyValid.bestWayAddToCart = 1;window.__gemStoreData.gemKeyValid.clickAddToCart = 1;</script>
+</div><div id="divContentBk"></div><!--End_Gem_Page_Main_Editor-->      </div>      {% if section.settings.social_sharing_blog %}
+        {% include 'social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image %}
+      {% endif %}      {% if blog.comments_enabled? %}        {% if number_of_comments > 0 %}
+          <hr class="hr--large">
+          <h3>{{ 'blogs.comments.with_count' | t: count: number_of_comments }}</h3>
+          <hr class="hr--small hr--clear">
+        {% endif %}        {% paginate article.comments by 5 %}
+          
+          <div id="comments">            {% if comment and comment.created_at %}
+              <p class="note note--success">
+                {% if blog.moderated? %}
+                  {{ 'blogs.comments.success_moderated' | t }}
+                {% else %}
+                  {{ 'blogs.comments.success' | t }}
+                {% endif %}
+              </p>
+            {% endif %}            {% if number_of_comments > 0 %}
+              <ul class="no-bullets">
+                
+                {% if comment and comment.created_at %}
+                  <li id="{{ comment.id }}" class="comment first{% if article.comments_count == 0 %} last{% endif %}">
+                    {% include 'comment' %}
+                  </li>
+                {% endif %}                {% for comment in article.comments %}
+                  <li id="{{ comment.id }}" class="comment{% unless number_of_comments > article.comments_count %}{% if forloop.first %} first{% endif %}{% endunless %}{% if forloop.last %} last {% endif %}">
+                    {% include 'comment' %}
+                  </li>                  {% unless forloop.last %}
+                    <li><hr class="hr--clear"></li>
+                  {% endunless %}
+                {% endfor %}
+              </ul>              {% if paginate.pages > 1 %}
+                {% include 'pagination' %}
+              {% endif %}            {% endif %}            <hr class="hr--large">            <header class="section-header{% unless settings.type_headers_align_text %} section-header--with-link{% endunless %}">
+              <h3 class="section-header__title">{{ 'blogs.comments.title' | t }}</h3>
+            </header>            <div class="form-vertical">
+              {% form 'new_comment', article %}                {{ form.errors | default_errors }}                <div class="grid grid--small">
+                  <div class="grid__item medium-up--one-half">
+                    <label for="CommentAuthor">{{ 'blogs.comments.name' | t }}</label>
+                    <input class="input-full{% if form.errors contains 'author' %} error{% endif %}" type="text" name="comment[author]" id="CommentAuthor" value="{{ form.author }}" autocapitalize="words">
+                  </div>
+                  <div class="grid__item medium-up--one-half">
+                    <label for="CommentEmail">{{ 'blogs.comments.email' | t }}</label>
+                    <input class="input-full{% if form.errors contains 'email' %} error{% endif %}" type="email" name="comment[email]" id="CommentEmail" value="{{ form.email }}" autocorrect="off" autocapitalize="off">
+                  </div>
+                </div>                <label for="CommentBody">{{ 'blogs.comments.message' | t }}</label>
+                <textarea class="input-full{% if form.errors contains 'body' %} error{% endif %}" name="comment[body]" id="CommentBody">{{ form.body }}</textarea>                {% if blog.moderated? %}
+                  <p><small>{{ 'blogs.comments.moderated' | t }}</small></p>
+                {% endif %}                <button type="submit" class="btn btn--secondary">
+                  {{ 'blogs.comments.post' | t }}
+                </button>              {% endform %}
+            </div>          </div>
+        {% endpaginate %}
+      {% endif %}      <hr class="hr--large">    </article>  </div>  <div class="text-center">
+    <a href="{{ blog.url }}" class="btn btn--small return-link">{% include 'icon-arrow-left' %} {{ 'blogs.article.back_to_blog' | t: title: blog.title }}</a>
+  </div>
+</div>
+<!--GEM_FOOTER-->
+{% capture GEM_FOOTER_SCRIPT %}
+<script data-instant-track type="text/javascript">
+	var pageLibs = [		'{{ 'gem-article-394392633501.js' | asset_url }}',	];
+</script>
+<script data-instant-track type="text/javascript">
+	var GEMVENDOR = GEMVENDOR || (function(){		var _js = {};		return {			init: function(Args) {				_js = Args;			},			getLibs: function() {				return _js;			}		};	}());	GEMVENDOR.init(pageLibs);</script>
+<script data-instant-track type="text/javascript" src="https://d1um8515vdn9kb.cloudfront.net/files/gempagev2.js?v=1.0" class="gf-script" defer></script>
+{% endcapture %}
+<!--GEM_FOOTER_END-->

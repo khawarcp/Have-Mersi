@@ -1,0 +1,465 @@
+{% if settings.countdown_enable %}
+{%- style -%}
+*, ::before, ::after {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+}
+
+::-webkit-backdrop {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+}
+
+::backdrop {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.flex {
+  display: flex;
+}
+
+.w-\[70px\] {
+  width: 70px;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+@media (min-width: 1024px) {
+  .md\:mt-0 {
+    margin-top: 0px;
+  }
+
+  .md\:flex {
+    display: flex;
+  }
+
+  .md\:h-16 {
+    height: 4rem;
+  }
+
+  .md\:w-16 {
+    width: 4rem;
+  }
+
+  .md\:w-20 {
+    width: 5rem;
+  }
+
+  .md\:flex-row {
+    flex-direction: row;
+  }
+
+  .md\:items-center {
+    align-items: center;
+  }
+
+  .md\:justify-between {
+    justify-content: space-between;
+  }
+
+  .md\:py-8 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .md\:px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .md\:pr-8 {
+    padding-right: 2rem;
+  }
+
+  .md\:py-4 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .md\:text-left {
+    text-align: left;
+  }
+
+  .md\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .md\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+}
+
+.cdbanner-container,
+.cdbanner-container:hover{
+    text-decoration: none;
+    color:white;
+}
+
+.cdbanner-container{
+    padding-top:15px!important;
+    padding-bottom:15px!important;
+}
+
+@media screen and (max-width:650px){
+
+    .cd-banner__image-container{
+        padding-right:12px;
+    }
+
+    .cdbanner-container{
+        line-height:initial;
+    }
+}
+
+.cdbanner__main-title-container{
+    padding-right:0;
+}
+
+@media screen and (max-width:1352px){
+    .cdbanner-rc-text{
+        font-size:15px;
+        line-height:16px;
+    }
+}
+
+@media screen and (max-width:1205px){
+    .cdbanner-right-column{
+        max-width:290px;
+    }
+}
+
+@media screen and (max-width:1127px){
+    .cdbanner-right-column{
+        max-width:205px;
+    }
+
+    .cd-banner__product-image{
+        max-width:66px;
+    }
+}
+
+@media screen and (max-width:650px){
+  .cdbanner-right-column{
+    max-width:none;
+  }
+
+  .cdbanner-right-column{
+    padding-top:20px;
+  }
+}
+
+.cdbanner-container,
+.cdbanner-outer-v2{
+    background-color:{{settings.countdown_bg_color}}
+}
+
+.cdbanner-container{
+  max-width:1450px;
+  margin:auto;
+}
+
+.cd-banner__main-title-v2{
+    background-color:{{settings.countdown_main_bg_color}};
+    color:{{settings.countdown_main_title_color}};
+}
+.cd-banner__second-title-v2{
+    color:{{settings.countdown_second_title_color}};
+}
+.cd-banner__third-title{
+    color:{{settings.countdown_third_title_color}};
+}
+.cdbanner-rc-text{
+    color:{{settings.countdown_rc_text_color}};
+    text-align:center;
+}
+
+  @media screen and (min-width:1024px){
+    .cdbanner--side-column{
+      width:30%;
+    }
+  }
+
+  /* COUNTDOWN V2 */
+  .left-text-container {
+
+  }
+
+  .cd-content {
+    background-color: #33A612;
+    border-radius: 7px;
+    padding: 0 10px;
+  }
+
+  .separator {
+    padding: 0 20px;
+  }
+  
+  @media screen and (min-width:769px){
+    .hide-desktop {
+      display:none;
+    }
+
+    .cd-banner__second-title-v2 {
+      padding-left: 10px;
+    }
+  }
+
+  @media screen and (max-width:1100px){
+    .cdbanner-container {
+      font-size: 13px;
+    }
+  }
+
+  @media screen and (max-width:768px){
+    .hide-mobile {
+      display:none;
+    }
+    .separator {
+      padding: 0px 7px;
+    }
+    .cdbanner-container{
+      flex-wrap:wrap;
+    }
+    .cd-container{
+      width:80%;
+      position:relative;
+    }
+    .cd-container:before{
+      content: '';
+      height: 1px;
+      background: #33A612;
+      position: absolute;
+      top: 8px;
+      width: 100%;
+      z-index: 1;
+  }
+    .cd-content{
+      max-width: 145px;
+      margin: 0 auto;
+      color: #33A612;
+      background-color:{{settings.countdown_bg_color}};
+      position: relative;
+      z-index: 2;
+    }
+  }
+
+  @media screen and (max-width:500px){
+    .separator {
+      padding: 0px 5px;
+    }
+    .cd-content{
+      max-width: 135px;
+      margin: 0 auto;
+    }
+    .cdbanner-container {
+      font-size: 11px;
+    }
+  }
+  /* COUNTDOWN V2 */
+
+{%- endstyle -%}
+<div class="cdbanner-outer-v2">
+<a href="{{ settings.countdown_product_url }}" id="cd-banner" class="cdbanner-container justify-center flex">
+    <div class="left-text-container flex font-bold">
+        <div class="cd-banner__main-title-v2">{{ settings.countdown_main_title }}</div>
+        <div class="separator hide-desktop">|</div>
+        <div class="cd-banner__second-title-v2 uppercase">{{ settings.countdown_second_title }} {{ settings.countdown_third_title }}</div>
+    </div>
+
+    <div class="separator">|</div>
+  
+    <div class="right-text-container">
+      <div class="right-text-content">{{ settings.countdown_rc_text }} <span class="font-bold">{{ settings.countdown_rc_text2 }}</span></div>
+    </div>
+
+    <div class="separator hide-mobile">|</div>
+
+    <div class="cd-container">
+      <div class="cd-content flex">
+        <div class="cd-container-days">
+          <span id="cdcontainer__days" class="font-bold"></span>d : </div>
+        <div class="cd-container-hours">
+          <span id="cdcontainer__hours" class="font-bold"></span>h : </div>
+        <div class="cd-container-minutes">
+          <span id="cdcontainer__minutes" class="font-bold"></span>m : </div>
+        <div class="cd-container-seconds">
+          <span id="cdcontainer__seconds" class="font-bold"></span>s</div>
+      </div>
+    </div>
+  </a>
+</div>
+
+<script type="text/javascript">
+    var countDownDate = new Date("{{settings.countdown_date}} 23:59:59").getTime();
+
+    var x = setInterval(function() {
+
+    // Get today's date and time
+    var now = new Date().getTime();
+
+    // Find the distance between now and the count down date
+    var distance = countDownDate - now;
+
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Display the result in the element with id="demo"
+    document.getElementById("cdcontainer__days").innerHTML = days;
+    document.getElementById("cdcontainer__hours").innerHTML = hours;
+    document.getElementById("cdcontainer__minutes").innerHTML = minutes;
+    document.getElementById("cdcontainer__seconds").innerHTML = seconds;
+
+    // If the count down is finished, write some text
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("cd-banner").style.display = 'none';
+    }
+    }, 1000);
+</script>
+{% endif %}

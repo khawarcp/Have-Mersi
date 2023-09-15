@@ -1,0 +1,7 @@
+<script> 
+  window.revyBundleThemeSettings = { 
+  	cart: {{ cart | json }},
+    locale: '{{ request.locale.iso_code }}'
+  }; 
+</script>
+<script async data-src="https://api.revy.io/bundle.js?shop=the-vegan-warehouse.myshopify.com" type="text/javascript"></script>

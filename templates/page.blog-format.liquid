@@ -1,0 +1,560 @@
+{%- style -%}
+#table-of-content{
+  background: #EBEEEA;
+  padding:20px;
+  margin-top:20px;
+}
+.table-of-content__list{
+  list-style:none;
+  margin-left:0;
+}
+.table-of-content__link{
+  color: rgba(50, 136, 181, 0.9) !important;
+  font-family: 'Helvetica';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 18px;
+  border-bottom:1px solid rgba(50, 136, 181, 0.9) !important;
+}
+
+.table-of-content__title{
+  font-family: 'Helvetica';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 30px;
+  color: #221F20;
+  margin-bottom:10px !important;
+}
+
+#table-of-content_page h2{
+  font-family: 'Chivo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 38px;
+  color: #221F20;
+  margin-top: 25px;
+}
+.section-header__title{
+  font-family: 'Chivo';
+  font-style: italic;
+  font-weight: 400;
+  font-size: 38px;
+  line-height: 45px;
+  color: #2A2E2D;
+  text-align:left;
+  margin-bottom:15px;
+}
+
+#table-of-content_page h3{
+  margin-top: 25px;
+}
+
+.product-grid{
+  display:flex;
+  justify-content:space-between;
+  margin-top:42px;
+  margin-bottom:42px;
+}
+
+.product-grid > div{
+  width:28%;
+  justify-content: space-between;
+  text-align:center;
+}
+
+.btn-primary{
+  width:100%;
+  display:block;
+}
+
+.author-box{
+  display:flex;
+  margin-top:65px;
+}
+
+.author-box_picture{
+  max-width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-right:25px;
+}
+.author-bio,
+.author-position{
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 25px;
+  color: #787878;
+}
+
+.author-box__link{
+  font-family: 'Chivo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: #787878;
+  text-transform: capitalize;
+  display:block;
+}
+
+.author-position{
+  font-style:italic;
+}
+
+.article-metas{
+  display:flex;
+  color: rgba(42, 46, 45, 0.57);
+  font-family: 'Chivo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  margin-bottom:25px;
+}
+
+.article-metas > span:first-child{
+  margin-right:20px;
+}
+.page-article__container{
+  display:flex;
+}
+.page-article__container-main-content{
+  width:770px;
+}
+.page-article__sidebar{
+  padding-right:53px;
+  width:330px;
+}
+
+.page-article__sidebar-list{
+  list-style:none;
+}
+
+.page-article__sidebar-list li{
+  border-bottom: 1px solid #E5E5E5;
+  padding-top:15px;
+  padding-bottom:15px;
+  line-height: 30px;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.page-article__sidebar-list li a:hover{
+  text-decoration:underline;
+}
+
+.breadcrumb-list{
+  display:flex;
+  list-style:none;
+}
+.breadcrumb-list li{
+  padding-right:10px;
+  color: #787878;
+    font-weight: 400;
+  font-size: 16px;
+}
+
+.author-bio-mobile,
+.table-of-content--mobile,
+.page-article__sidebar-list--mobile,
+.page-article__sidebar-title{
+  display:none;
+}
+
+.twitter-share-li{
+  position:relative;
+  padding-left:20px;
+}
+
+.twitter-share-li svg{
+  position:absolute;
+  left: -8px;
+  top: 7px;
+}
+
+.share-article-list{
+  margin-top:50px;
+}
+
+.page-article__sidebar-list .active-link{
+    font-weight:700;
+  }
+
+.main-content__container a{
+	color:rgba(50, 136, 181, 0.9) !important;
+	text-decoration:underline;
+}
+
+.main-content__container a:hover{
+	text-decoration:none;
+}
+
+@media screen and (max-width:768px){
+  .page-article__sidebar{
+    padding:0;
+    width:100%;
+  }
+  .page-article__container{
+    flex-direction: column-reverse;
+  }
+
+  .page-article__sidebar-list{
+    margin:0;
+  }
+
+  .page-article__sidebar-list li{
+    padding:15px;
+  }
+
+  .page-article__container > div{
+    max-width:100%;
+  }
+
+  .product-grid{
+    flex-wrap: wrap;
+  }
+
+  .product-grid > div{
+    width:45%;
+    margin-bottom:35px;
+  }
+
+  .section-header__title{
+    font-size:32px;
+    font-weight:400;
+    line-height:38px;
+  }
+
+  .author-bio-destop,
+  .table-of-content--desktop{
+    display:none;
+  }
+
+  .author-bio-mobile{
+    display:block;
+    padding:10px 0;
+  }
+
+  .breadcrumb-list {
+    margin:0;
+    margin-bottom:10px;
+  }
+  .breadcrumb-list li{
+    font-size:14px;
+    line-height:20px;
+    padding-right:5px;
+  }
+
+  .breadcrumb-list li:last-child{
+    padding-right:0;
+  }
+
+  .table-of-content--mobile{
+    display:block;
+  }
+
+  .table-of-content-dropdown{
+    position:relative;
+    width:198px;
+    margin:auto;
+  }
+
+  .table-of-content-dropdown button{
+    background: #EBEEEA;
+    border: 1px solid #787878;
+    width:198px;
+    margin:auto;
+    display:block;
+    font-weight: 400;
+    font-size: 14px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color: #545454;
+  }
+
+  .table-of-content__list--mobile{
+    background: white;
+    position: absolute;
+    padding: 14px;
+    border: 1px solid #787878;
+    background: #EBEEEA;
+    width:198px;
+    height:185px;
+    overflow-y:auto;
+    display:none;
+  }
+
+  .table-of-content--mobile h3{
+    text-align:center;
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  #table-of-content_page{
+    font-weight: 400;
+    font-size: 16px;
+  }
+
+  #table-of-content_page h2{
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .page-article__sidebar-list--mobile{
+    display:block;
+    font-family: 'Chivo';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+  }
+
+  .page-article__sidebar-title{
+    display:block;
+    background: #F9F9F9;
+    font-family: Futura,sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    padding: 15px;
+    border-bottom: 1px solid #E5E5E5;
+    color: #000;
+    margin-top:20px;
+  }
+}
+{%- endstyle -%}
+
+<div class="page-width page-content">
+  
+  <ul class="breadcrumb-list">
+    <li><a href="/collections/bags ">Vegan Handbags</a></li>
+    <li>
+      <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 9L5 5L1 1" stroke="#787878" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </li>
+    <li>{{ page.title }}</li>
+  </ul>
+    
+  {%- assign pageParts = page.content | split: '<h2>' %}
+
+	<div class="page-article__container">
+    <div class="page-article__sidebar">
+      <h2 class="page-article__sidebar-title">
+        <span>Vegan Handbag Guides</span>
+        <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 11.25L10 7.5L6 3.75" stroke="#2A2E2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          
+      </h2>
+      <ul class="page-article__sidebar-list">
+        {% for link in linklists.vegan-handbags-pages.links  %}
+          <li><a class="{% if link.active%}active-link{% endif %}" href="{{ link.url }}">{{ link.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="page-article__container-main-content">
+    
+        <h1 class="section-header__title">{{ page.title }}</h1>
+
+      <div class="rte--nomargin">
+        {%- if page.metafields.pagedata.author_name != blank -%}
+        <div class="article-metas">
+          <span>Written by <strong>{{page.metafields.pagedata.author_name}}</strong></span>
+          <span>{{ page.published_at | date: "%b %d, %Y"  }}</span>
+      </div>
+        {% endif %}
+
+        <div id="table-of-content" class="table-of-content--desktop">
+          <h3 class="table-of-content__title">Table of Contents</h3>
+          <ul class="table-of-content__list table-of-content__list--desktop">
+          {% for parts in pageParts  %}
+            {% assign heading = parts | split: '</h2>' | compact%}
+            {% unless heading.first == blank %}
+              <li><a class="table-of-content__link" href="#topic-{{ forloop.index | minus: 1}}">{{ heading.first }}</a></li>
+            {% endunless %}
+          {% endfor %}
+          </ul>
+        </div>
+
+        <div id="table-of-content" class="table-of-content--mobile">
+          <h3 class="table-of-content__title">Table of Contents</h3>
+          <div class="table-of-content-dropdown">
+            <button class="table-of-content-dropdown--action"><span>Jump to Section</span>
+              <svg width="16" height="13" viewBox="0 0 16 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4.12067 4.875L7.91524 8.125L11.7098 4.875" stroke="#2A2E2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <ul class="table-of-content__list table-of-content__list--mobile">
+              {% for parts in pageParts  %}
+                {% assign heading = parts | split: '</h2>' | compact%}
+                {% unless heading.first == blank %}
+                  <li><a class="table-of-content__link" href="#topic-{{ forloop.index | minus: 1}}">{{ heading.first }}</a></li>
+                {% endunless %}
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+
+        {% capture suggestedProducts %}
+          <div class="product-grid">
+            {% for product in page.metafields.pagedata.suggested_products.value %}
+              <div>
+                {%- assign img_url = product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                <img class="grid-product__image lazyload"
+                    data-src="{{ img_url }}"
+                    data-widths="[180, 360, 540, 720, 900, 1080]"
+                    data-aspectratio="{{ product.featured_image.aspect_ratio }}"
+                    data-sizes="auto"
+                    alt="{{ product.featured_image.alt | escape }}">
+
+                <a class="product-grid__title" href="{{ product.url }}">{{ product.title }}</a>
+                
+                <div class="grid-product__price">
+                  {% if on_sale %}
+                    <span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
+                    <span class="grid-product__price--original">{{ product.compare_at_price | money }}</span>
+                    <span class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
+                  {% endif %}
+                  {% if product.price_varies %}
+                    {%- assign price = product.price_min | money -%}
+                    {{ 'products.general.from_text_html' | t: price: price }}
+                  {% else %}
+                    {{ product.price  | money }}
+                    {% if on_sale %}
+                      {% if settings.product_save_amount %}
+                        {% capture saved_amount %}{{ product.compare_at_price | minus: product.price | money }}{% endcapture %}
+                        <span class="grid-product__price--savings">{{ 'products.general.save_html' | t: saved_amount: saved_amount }}</span>
+                      {% endif %}
+                    {% endif %}
+                  {% endif %}
+                </div>
+
+                {%- assign sold_out = true -%}
+                {% if product.available %}
+                  {%- assign sold_out = false -%}
+                {% endif %}
+                
+                {%- if sold_out -%}
+                  <a href="javascript:void;" class="btn btn-primary" data-variant_id="{{ product.selected_or_first_available_variant.id }}" disabled="disabled">SOLD OUT</a>
+                {%- else -%}
+                  <a href="#" class="btn btn-primary atc--action" data-variant_id="{{ product.selected_or_first_available_variant.id }}">ADD TO CART</a>
+                {%- endif -%}
+              </div>
+            {% endfor %}
+          </div>
+        {% endcapture %}
+
+        <div id="table-of-content_page">
+          <div class="main-content__container">
+          {{ page.content | replace: '[suggested-products]', suggestedProducts}}
+          </div>
+
+          <ul class="no-bullets footer__social share-article-list">
+            <li>
+              <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.theveganwarehouse.com{{page.url}}" title="Share on Facebook">
+                <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-facebook" viewBox="0 0 32 32"><path fill="#444" d="M18.56 31.36V17.28h4.48l.64-5.12h-5.12v-3.2c0-1.28.64-2.56 2.56-2.56h2.56V1.28H19.2c-3.84 0-7.04 2.56-7.04 7.04v3.84H7.68v5.12h4.48v14.08h6.4z"></path></svg>
+                <span>Share</span>
+              </a>
+            </li>
+            <li class="twitter-share-li">
+              <a target="_blank" href="https://twitter.com/intent/tweet?text=https%3A//www.theveganwarehouse.com{{page.url}}" title="Share on twitter">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                <span>Tweet it</span>
+              </a>
+            </li>
+            <li>
+              <a target="_blank" href="https://pinterest.com/pin/create/button/?url=https%3A//www.theveganwarehouse.com{{page.url}}&media=&description=" title="Pin on Pinterest">
+                <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-pinterest" viewBox="0 0 32 32"><path fill="#444" d="M27.52 9.6c-.64-5.76-6.4-8.32-12.8-7.68-4.48.64-9.6 4.48-9.6 10.24 0 3.2.64 5.76 3.84 6.4 1.28-2.56-.64-3.2-.64-4.48-1.28-7.04 8.32-12.16 13.44-7.04 3.2 3.84 1.28 14.08-4.48 13.44-5.12-1.28 2.56-9.6-1.92-11.52-3.2-1.28-5.12 4.48-3.84 7.04-1.28 4.48-3.2 8.96-1.92 15.36 2.56-1.92 3.84-5.76 4.48-9.6 1.28.64 1.92 1.92 3.84 1.92 6.4-.64 10.24-7.68 9.6-14.08z"></path></svg>
+                <span>Pin It</span>
+              </a>
+            </li>
+            
+        </ul>
+
+          {%- if page.metafields.pagedata.author_name != blank -%}
+              <div class="author-box">
+                {%- if page.metafields.pagedata.author_picture != blank -%}
+                    <img class="author-box_picture" src="{{ page.metafields.pagedata.author_picture }}" alt="{{page.metafields.pagedata.author_name}}">
+                {%- endif -%}
+                <div>
+                  <div><a class="author-box__link" href="{{ page.metafields.pagedata.author_link }}">{{ page.metafields.pagedata.author_name }}
+                  <img src="{{ 'linkedin-icon.png' | asset_url }}" alt="Linked In">
+                  </a></div>
+
+                  {%- if page.metafields.pagedata.author_position != blank -%}
+                    <span  class="author-position">{{ page.metafields.pagedata.author_position }}</span>
+                  {%- endif -%}
+
+                  <div class="author-bio author-bio-destop">{{ page.metafields.pagedata.author_bio }}</div>
+                </div>
+              </div>
+
+              <div class="author-bio author-bio-mobile">{{ page.metafields.pagedata.author_bio }}</div>
+          {%- endif -%}
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script type="text/javascript">
+(function($){
+  $(document).ready(function(){
+    $('#table-of-content_page').find('h2').each(function(index, item){
+      anchorName = 'topic-' + (index + 1);
+      $(item).before('<a name="'+anchorName+'"></a>')
+    });
+
+    $('.table-of-content__list--desktop').each(function(index, item){
+      anchorName = '#topic-' + (index + 1);
+      $(item).attr('href', anchorName).addClass('link_loaded');
+    });
+
+    $('.table-of-content__list--mobile').each(function(index, item){
+      anchorName = '#topic-' + (index + 1);
+      $(item).attr('href', anchorName).addClass('link_loaded');
+    });
+
+    $('.table-of-content__list--mobile a').on('click', function(){
+      $('.table-of-content__list--mobile').slideToggle();
+    });
+
+    $('.table-of-content-dropdown--action').on('click', function(){
+      $('.table-of-content__list--mobile').slideToggle();
+    });
+
+    $('.atc--action').on('click', function(e){
+      e.preventDefault();
+      var variantId = $(this).data('variant_id');
+
+      var data = {
+        items: [
+          {
+            quantity: 1,
+            id: variantId
+          }
+        ]
+      };
+
+      $.post(window.Shopify.routes.root + 'cart/add.js', data, function(response){
+        $('body').trigger('added.ajaxProduct');
+        theme.cart.getCart().then(function(cart) {
+          console.log('Cart', cart);
+          new theme.CartDrawer().buildCart(cart, true);
+        }.bind(this));
+        
+      }, 'json');
+
+    });
+  });
+})(jQuery);
+</script>

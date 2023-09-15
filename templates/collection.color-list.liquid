@@ -1,0 +1,30 @@
+{%- assign schema_page_description = page_description | default: shop.description | default: shop.name -%}
+
+{%- if collection.handle != 'mersi' -%}
+	{% section 'collection-header-color' %}
+{%- endif -%}
+{% section 'plp-scroller' %}
+<div id="CollectionAjaxResult" class="collection-content">
+  <div id="CollectionAjaxContent">
+    <div class="page-width">
+      <div class="grid">
+        <div>
+          {% section 'collection-promotions' %}
+          <div class="collection-grid__wrapper">
+          {% section 'collection-template-colors' %}
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div>
+</div>
+
+<script type="text/javascript">
+  (function($){
+    $(document).ready(function(){
+    	$('html, body').animate({
+          scrollTop: $(".collection-filter").offset().top+40
+        }, 200);
+    });
+  })(jQuery);
+</script>

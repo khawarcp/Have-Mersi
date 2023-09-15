@@ -1,0 +1,12 @@
+{% if settings.display_donation_message %}
+{% assign donationImage = "" %} 
+
+<div id="donation-message">
+    {% if settings.donation_image %}
+        {% assign donationImage = settings.donation_image | img_url: '300x' %}
+        <img src="{{ settings.donation_image | img_url: '100x100' }}" alt="">
+    {% endif %}
+
+    <div class="the-message">{{ settings.donation_message }}</div>
+</div>
+{% endif %}

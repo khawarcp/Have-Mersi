@@ -1,0 +1,89 @@
+
+{% assign product_in_upsell = undefined %}
+{% assign discount_product = all_products[settings.discounted_product] %}
+{% if cart != empty %}
+  {% assign exist_in_cart = false %}
+  {% for item1 in cart.items %}
+    {% if item1.product.id == discount_product.id %}
+      {% assign exist_in_cart = true %}
+    {% endif %}
+  {% endfor %}
+  {% if exist_in_cart == false %}
+    {% assign product_in_upsell = discount_product %}
+      <div class="bag-special upsell_product_container appear-animation appear-delay-{{lastAnimationRow}}">
+      {% comment %}
+      <h2 class="upsell__title">
+      <span class="inner-title" style="color:#000">Special offer for only:
+      </span>
+      <span>
+      {{ discount_product.selected_or_first_available_variant.price | money }}</span>
+      {% if discount_product.selected_or_first_available_variant.compare_at_price %}
+      <span class="upsell__original_price">
+      <s>{{ discount_product.selected_or_first_available_variant.compare_at_price | money }}</s>
+      </span>
+      {% endif %}
+      </h2>
+      {% endcomment %}
+      <div class="cart__row ">
+        <div class=" grid--full cart__row--table-large  ">
+          <div class="grid-product-upsell">
+            <h3>
+              Cart Special
+            </h3>
+            <div class="grid_product">
+              <div class="grid__item one-third product_image  item_container ">
+                <a href="{{ discount_product.url }}"class="ajaxcart__product-image upsell_image ajax-product-link-{{name}}">
+                  <img src="{{ discount_product.selected_or_first_available_variant.featured_image | img_url }}"alt="{{ discount_product.title | escape }}">
+                </a>
+              </div>
+              <div class="ajaxcart__product-name--wrapper two-third grid__item item_container   ">
+                <div class="title-div">
+                  <a href="{{ discount_product.url }}"class="ajaxcart__product-name ajaxcart__product__upsell-name ajax-product-link-{{name}}">{{ discount_product.title }}</a>                                
+                  <span class="ajaxcart__product-meta upsel_product_meta">{{ discount_product.options_with_values[0].selected_value }}</span>
+                </div>
+                <div class=" grid_CTA  ">
+                  <div class="upsell-price-div">                    
+                    {% if discount_product.selected_or_first_available_variant.compare_at_price %}                      
+                      <span class="upsell__original_price">
+                        <s>
+                          {{ discount_product.selected_or_first_available_variant.compare_at_price | money }}</s>
+                          <span>{{ discount_product.selected_or_first_available_variant.price | money }}</span>
+                      {% else %}
+                        <span>{{ discount_product.selected_or_first_available_variant.price | money }}</span>
+                      {% endif %}
+                    </div>
+                <div class=" text-right bag-special__product-atc-container">
+                  <a
+                    class="btn btn-discount-product-atc btn-add-upsell-to-cart  "
+                    onclick="getProductToCart(this)"
+                    id="{{ discount_product.selected_or_first_available_variant.id }}"
+                    data-id="{{ discount_product.selected_or_first_available_variant.id }}">ADD
+                  </a>
+                </div>
+
+              </div> 
+              </div>
+            </div>
+            <div class="grid__item three-quarters"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+{% endif %}
+
+
+
+{% schema %}
+  {
+    "name": "cart-upsell",
+    "settings": [
+      {
+        "type": "text",
+        "id": "cart-upsell",
+        "label": "cart-upsell"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,13 @@
+.hour-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.hours-list {
+    max-width: 550px;
+}
+
+.business-hours .image-wrapper {
+    padding: 0 30px;
+}

@@ -1,0 +1,30 @@
+{% comment %}
+Snippet for Rivo Custom Action "Sign up for our emails":
+https://the-vegan-warehouse.myshopify.com/admin/apps/rivo-loyalty/loy/earning_rules/95736/edit
+{% endcomment %}
+
+<script type="text/javascript">
+  if (window.location.href.includes('contact')) {
+    window.addEventListener('load', function() {
+      // Add your event listener and custom action here
+      const customActionName = "Sign up for our emails";
+      const proxyUrl = `${window.Rivo.global_config.proxy_paths.loy}/loy/contacts/${window.Rivo.common.customer.id}/record_custom_action`;
+      const data = { custom_action_name: customActionName };
+
+      fetch(proxyUrl, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then(function (res) {
+          success(res);
+        })
+        .catch(function (res) {
+          // Handle error if needed
+        });
+    });
+  }
+</script>

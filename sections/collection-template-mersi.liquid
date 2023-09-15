@@ -1,0 +1,357 @@
+{%- assign per_row = section.settings.per_row -%}
+{%- assign paginate_by = per_row | times: section.settings.rows_per_page -%}
+
+{% paginate collection.products by paginate_by %}
+
+<style type="text/css">.boost-pfs-filter-bottom-pagination.pagination{display:none !important;}</style>
+
+<div
+  id="CollectionSection"
+  data-section-id="{{ section.id }}"
+  data-section-type="collection-template">
+
+  {%- if section.settings.description_position == 'top' -%}
+    {% if collection.description != blank %}
+      <div class="rte">
+        {{ collection.description }}
+      </div>
+      <hr class="hr--clear hr--small">
+    {% endif %}
+  {%- endif -%}
+
+  {% if section.settings.subcollection_style == 'above' %}
+    {% include 'subcollections', per_row: section.settings.subcollections_per_row %}
+  {% endif %}
+  
+  <div>
+    {%- if section.settings.header_logo != blank -%}
+    	<img class="mersi-header-logo" src="{{section.settings.header_logo | image_url: width: 240}}">
+    {%- endif -%}
+    
+    {%- if section.settings.video_embed_code != blank -%}
+    <div class="mersi-video-outer-container">
+      <div class="mersi-video-container">
+        <video muted playsinline autoplay loop preload="auto" id="mesi_video" style="width:100%;" poster="{{'mersi-video-poster.png' | asset_img_url : '600x'}}">
+            <source src="https://cdn.shopify.com/s/files/1/2434/0721/files/MERSI-video.mp4?v=1643232586"
+                    type="video/mp4">
+
+            Sorry, your browser doesn't support embedded videos.
+        </video>
+      </div>
+      
+     <button class="video-close-button" id="close_button">
+       	X
+      </button>
+      
+	 <div class="button-container">
+      <button type="button" id="play_button">
+        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-play" viewBox="18.24 17.35 24.52 28.3"><path fill="#323232" d="M22.1 19.151v25.5l20.4-13.489-20.4-12.011z"></path></svg>
+        WATCH</button>
+      </div>
+      </div>
+    {%- endif -%}
+    
+    
+    
+    <div class="mersi-buttons">
+    {% for block in section.blocks %}
+      <div class="button-container"><a class="btn" {%if block.settings.newwindow %}target="_blank"{%endif%} href="{{ block.settings.button_link }}">{{ block.settings.button_label }}</a></div>
+    {% endfor %}
+    </div>
+  </div>
+
+  <div class="collection-filter">
+
+    <div class="collection-filter__item collection-filter__item--drawer">
+      <button
+        type="button"
+        class="js-drawer-open-collection-filters btn btn--tertiary"
+        aria-controls="FilterDrawer">
+        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-filter" viewBox="0 0 64 64"><path d="M48 42h10M48 42a5 5 0 1 1-5-5 5 5 0 0 1 5 5zM7 42h31M16 22H6M16 22a5 5 0 1 1 5 5 5 5 0 0 1-5-5zM57 22H26"/></svg>
+        <span>{{ 'collections.filters.title_tags' | t }}</span>
+      </button>
+    </div>
+
+    <div class="collection-filter__item collection-filter__item--count small--hide boost-pfs-filter-total-product">
+      {{ 'collections.general.items_with_count' | t: count: collection.products_count }}
+    </div>
+
+    <div class="collection-filter__item collection-filter__item--sort">
+    {% comment %}
+      <div class="collection-filter__sort-container boost-pfs-filter-top-sorting">
+        {% include 'boost-pfs-filter-skeleton', width: 3 %}
+      </div>
+  {% endcomment %}
+    </div>
+  </div>
+  <p class="medium-up--hide text-center boost-pfs-filter-total-product"></p>
+  {% if collection.handle == '2-for-99' %}
+  <div class="promo-banner aos-init aos-animate">
+    <img src="https://cdn.shopify.com/s/files/1/2434/0721/files/2_for_99_collection.gif" alt="" style="display: block; width: 100%; margin-bottom: 22px;">
+  </div>
+  {% endif %}
+  <div class="grid grid--uniform grid--collection boost-pfs-filter-products" data-boost-sort="{{ collection.default_sort_by }}" data-scroll-to>
+    {%- assign grid_item_width = 'small--one-half medium-up--one-third' -%}
+
+    {% case per_row %}
+    {% when 2 %}
+      {%- assign grid_item_width = 'medium-up--one-half' -%}
+    {% when 3 %}
+      {%- assign grid_item_width = 'small--one-half medium-up--one-third' -%}
+    {% when 4 %}
+      {%- assign grid_item_width = 'small--one-half medium-up--one-quarter' -%}
+    {% when 5 %}
+      {%- assign grid_item_width = 'small--one-half medium-up--one-fifth' -%}
+    {% endcase %}
+
+    {% for product in collection.products %}
+      {% include 'product-grid-item' %}
+    {% else %}
+      <div class="grid__item">
+        <p>{{ 'collections.general.no_matches' | t }}</p>
+      </div>
+    {% endfor %}
+
+  </div>
+
+  {% if section.settings.subcollection_style == 'below' %}
+    {% include 'subcollections', per_row: section.settings.subcollections_per_row %}
+  {% endif %}
+
+  <div class="boost-pfs-filter-bottom-pagination pagination">
+    {% if paginate.pages > 1 %}
+      {% include 'pagination' %}
+    {% endif %}
+  </div>
+  <div class="boost-pfs-filter-load-more"></div>
+
+  <div class="boost-pfs-quick-shop-modal-container">
+    {%- if settings.quick_shop_enable -%}
+      {%- for product in collection.products -%}
+        {%- if product.available -%}
+          {%- include 'quick-shop-modal' -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
+  </div>
+
+  {%- if section.settings.description_position == 'bottom' -%}
+    {% if collection.description != blank %}
+      <hr class="hr--clear hr--small">
+      <div class="rte">
+        {{ collection.description }}
+      </div>
+      <hr class="hr--clear hr--small">
+    {% endif %}
+  {%- endif -%}
+
+</div>
+
+{% endpaginate %}
+
+{%- assign grid_item_width = 'small--one-half medium-up--one-third' -%}
+
+{% case per_row %}
+{% when 2 %}
+{%- assign grid_item_width = 'medium-up--one-half' -%}
+{% when 3 %}
+{%- assign grid_item_width = 'small--one-half medium-up--one-third' -%}
+{% when 4 %}
+{%- assign grid_item_width = 'small--one-half medium-up--one-quarter' -%}
+{% when 5 %}
+{%- assign grid_item_width = 'small--one-half medium-up--one-fifth' -%}
+{% endcase %}
+
+<script>
+  // Declare boostPFSThemeConfig variable
+  var boostPFSThemeConfig = {
+    label: {
+      sorting: {% assign temp = 'collections.sorting.title' | t %} {% unless temp contains 'translation missing' %} {{ temp | json }} {% else %} "Sorting" {% endunless %},
+      sorting_best_selling: {% assign temp = 'collections.sorting.best_selling' | t %} {% unless temp contains 'translation missing' %} {{ temp | json }} {% else %} "Best Selling" {% endunless %},
+      sorting_featured: {% assign temp = 'collections.sorting.featured' | t %} {% unless temp contains 'translation missing' %} {{ temp | json }} {% else %} "Featured" {% endunless %},
+      sorting_title_ascending: {% assign temp = 'collections.sorting.az' | t %} {% unless temp contains 'translation missing' %} {{ temp | json }} {% else %} "Alphabetically, A-Z" {% endunless %},
+      sorting_title_descending: {% assign temp = 'collections.sorting.za' | t %} {% unless temp contains 'translation missing' %} {{ temp | json }} {% else %} "Alphabetically, Z-A" {% endunless %},
+      sorting_price_ascending: {% assign temp = 'collections.sorting.price_ascending' | t %} {% unless temp contains 'translation missing' %} {{ temp | json }} {% else %} "Lowest Price" {% endunless %},
+      sorting_price_descending: {% assign temp = 'collections.sorting.price_descending' | t %} {% unless temp contains 'translation missing' %} {{ temp | json }} {% else %} "Highest Price" {% endunless %},
+      sorting_date_ascending: {% assign temp = 'collections.sorting.date_ascending' | t %} {% unless temp contains 'translation missing' %} {{ temp | json }} {% else %} "Date, Old to New" {% endunless %},
+      sorting_date_descending: {% assign temp = 'collections.sorting.date_descending' | t %} {% unless temp contains 'translation missing' %} {{ temp | json }} {% else %} "Date, New to Old" {% endunless %},
+      sorting_sale_descending: {% assign temp = 'collections.sorting.sale_descending' | t %} {% unless temp contains 'translation missing' %} {{ temp | json }} {% else %} "% Off" {% endunless %},
+      sorting_relevance: {% assign temp = 'collections.sorting.relevance' | t %} {% unless temp contains 'translation missing' %} {{ temp | json }} {% else %} "Relevance" {% endunless %},
+
+      sold_out: {{ 'products.product.sold_out' | t | json }},
+      sale: {{ 'products.general.sale' | t | json }},
+      save_html: {{ 'products.general.save_html' | t | json }},
+      regular_price: {{ 'products.general.regular_price' | t | json }},
+      sale_price: {{ 'products.general.sale_price' | t | json }},
+      from_text_html: {{ 'products.general.from_text_html' | t | json }},
+      quick_shop: {{ settings.quick_shop_text | json }},
+      filter: {{ 'collections.filters.title_tags' | t | json}},
+      items_with_count_one: {{ 'collections.general.items_with_count.one' | t | json}},
+      items_with_count_other: {{ 'collections.general.items_with_count.other' | t | json }},
+    },
+    custom: {
+      products_per_page: {% if paginate_by %} {{ paginate_by | json }} {% else %} 24 {% endif %},
+      products_per_row: {% if per_row %} {{ per_row }} {% else %} 4 {% endif %},
+      grid_item_width: {% if grid_item_width != blank %} {{ grid_item_width | json }} {% else %} 'small--one-half medium-up--one-third' {% endif %},
+      vendor_enable: {% if settings.vendor_enable %} {{ settings.vendor_enable | json }} {% else %} false {% endif %},
+      quick_shop_enable: {% if settings.quick_shop_enable %} {{ settings.quick_shop_enable | json }} {% else %} false {% endif %},
+      product_hover_image: {% if settings.product_hover_image %} {{ settings.product_hover_image | json }} {% else %} false {% endif %},
+      product_grid_image_size: {% if settings.product_grid_image_size %} {{ settings.product_grid_image_size | json }} {% else %} 'natural' {% endif %},     
+      enable_product_reviews:  {% if settings.enable_product_reviews %} {{ settings.enable_product_reviews | json }} {% else %} false {% endif %},
+      collection_color_swatches: {% if settings.collection_color_swatches %} {{ settings.collection_color_swatches | json }} {% else %} false {% endif %},
+      product_save_amount: {% if settings.product_save_amount %} {{ settings.product_save_amount | json }} {% else %} true {% endif %},
+      product_save_type: {% if settings.product_save_type %} {{ settings.product_save_type | json }} {% else %} 'dollar' {% endif %},
+    }
+  };
+
+  var $playButton = $("#play_button");
+  var $closeButton = $("#close_button");
+  var video = document.getElementById("mesi_video");
+    video.pause();
+video.play();
+  
+  $playButton.on('click', handleVideo);
+  $closeButton.on('click', handleVideo);
+  
+
+  function handleVideo(){
+  	if ($('#mesi_video').prop('muted')) {
+      $playButton.hide();
+      $closeButton.show();
+      $('#mesi_video').prop('muted', false);
+	  $('#mesi_video').prop('controls', true);
+
+    } else {
+      $playButton.show();
+      $closeButton.hide();
+
+      $('#mesi_video').prop('muted', true);
+      $('#mesi_video').prop('controls', false);
+    }
+  }
+
+</script>
+{% schema %}
+  {
+    "name": "Collection pages - Mersi",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Subcollections"
+      },
+      {
+        "type": "paragraph",
+        "content": "Links to collections from your menu will appear here. [Learn more](https://archetypethemes.co/blogs/impulse/how-do-i-create-subcollections)"
+      },
+	  {
+        "type": "html",
+        "id" : "video_embed_code",
+		"label": "Video Embed Code"
+	  },
+      {
+        "type": "select",
+        "id": "subcollection_style",
+        "label": "Subcollection style",
+        "default": "above",
+        "options": [
+          {
+            "value": "above",
+            "label": "Above products"
+          },
+          {
+            "value": "below",
+            "label": "Below products"
+          },
+          {
+            "value": "none",
+            "label": "None"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "subcollections_per_row",
+        "label": "Subcollections per row",
+        "default": 5,
+        "min": 2,
+        "max": 5,
+        "step": 1
+      },
+      {
+        "type": "header",
+        "content": "Collection Description"
+      },
+      {
+        "type": "select",
+        "id": "description_position",
+        "label": "Collection Description Position",
+        "default": "",
+        "options": [
+          {
+            "value": "",
+            "label": "Don't display collection description"
+          },
+          {
+            "value": "top",
+            "label": "Display on top of the collection page"
+          },
+          {
+            "value": "bottom",
+            "label": "Display on bottom of the collection page"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Products"
+      },
+      {
+        "type": "range",
+        "id": "per_row",
+        "label": "Products per row",
+        "default": 4,
+        "min": 2,
+        "max": 5,
+        "step": 1
+      },
+      {
+        "type": "range",
+        "id": "rows_per_page",
+        "label": "Rows per page",
+        "default": 7,
+        "min": 3,
+        "max": 20,
+        "step": 1
+      },
+	  
+	{
+        "type": "image_picker",
+        "id": "header_logo",
+        "label": "Header Logo"
+      }
+    ],
+
+	"blocks": [{
+      "type": "buttons",
+      "name": "Buttons",
+      "settings" : [
+          {
+			"id": "button_label",
+            "label": "Button Label",
+            "type" : "text"
+		  },
+		  {
+			"id": "button_link",
+            "label": "Button Link",
+            "type" : "url"
+		  },
+		  {
+			"id": "newwindow",
+            "label": "Open in new window",
+            "type" : "checkbox",
+ 			"default": false
+		  }
+      ]
+	}]
+  }
+{% endschema %}

@@ -1,0 +1,55 @@
+<link rel="stylesheet" href="{{ 'policy-content.css' | asset_url }}">
+
+<style>
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times : 0.75 | round }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times : 0.75 | round }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+</style>
+
+<section class="section-{{ section.id }}-padding">    
+    <div class="page-width">
+      <div class="page-content-inner">
+        {{ page.content }}
+      </div>
+    </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Page Content",
+    "settings": [
+        {
+      "type" : "header",
+            "content" : "Section Padding"
+            },
+            {
+            "type" : "range",
+            "id" : "padding_top",
+            "label" : "Padding Top",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 50,
+            "unit": "px"
+            },
+            {
+            "type" : "range",
+            "id" : "padding_bottom",
+            "label" : "Padding Bottom",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "default": 50,
+            "unit": "px"
+            }
+    ]
+  }
+{% endschema %}

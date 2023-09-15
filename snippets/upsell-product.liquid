@@ -1,0 +1,270 @@
+<!--     Custom changes (Dmitry) -->
+
+{% unless grid_item_width %}
+  {%- assign grid_item_width = 'medium-up--one-quarter small--one-half' -%}
+{% endunless %}
+
+{%- assign on_sale = false -%}
+{% if product.compare_at_price > product.price %}
+  {%- assign on_sale = true -%}
+{% endif %}
+
+{%- assign sold_out = true -%}
+{% if product.available %}
+  {%- assign sold_out = false -%}
+{% endif %}
+
+{%- assign product_tags = product.tags | join: ',' -%}
+{%- assign has_custom_label = false -%}
+{% if product_tags contains '_label_' %}
+  {% for tag in product.tags %}
+    {% if tag contains '_label_' %}
+      {%- assign tag_starts_with = tag | slice: 0 -%}
+      {% if tag_starts_with == '_' %}
+        {%- assign has_custom_label = true -%}
+        {%- assign custom_label = tag | replace: '_label_', '' -%}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+<div class="grid__item grid-product {{ grid_item_width }}{% if settings.quick_shop_enable and sold_out == false %} grid-product__has-quick-shop{% endif %}" data-aos="row-of-{{ per_row }}">
+  <div class="grid-product__content">
+    {% if has_custom_label %}
+      <div class="grid-product__tag grid-product__tag--custom">
+        {{ custom_label }}
+      </div>
+    {% else %}
+      {% if sold_out %}
+        <div class="grid-product__tag">
+          {{ 'products.product.sold_out' | t }}
+        </div>
+      {% endif %}
+      {% if on_sale and sold_out == false %}
+        <div class="grid-product__tag grid-product__tag--sale">
+          {{ 'products.general.sale' | t }}
+        </div>
+      {% endif %}
+    {% endif %}
+
+    {%- assign fixed_aspect_ratio = false -%}
+    {% unless settings.product_grid_image_size == 'natural' %}
+      {%- assign fixed_aspect_ratio = true -%}
+    {% endunless %}
+
+    <a href="{{ product.url | within: collection }}" class="grid-product__link {% if sold_out %} grid-product__link--disabled{% endif %}">
+      <div class="grid-product__image-mask">
+        {% if settings.quick_shop_enable and sold_out == false %}
+          <div class="quick-product__btn js-modal-open-quick-modal-{{ product.id }} small--hide" data-product-id="{{ product.id }}">
+            <span class="quick-product__label">{{ settings.quick_shop_text }}</span>
+          </div>
+        {% endif %}
+        {% if fixed_aspect_ratio %}
+          <div
+            class="grid__image-ratio grid__image-ratio--{{ settings.product_grid_image_size }} lazyload"
+            data-bgset="{% include 'bgset', image: product.featured_image %}"
+            data-sizes="auto">
+          </div>
+        {% else %}
+          <div class="image-wrap"
+            style="height: 0; padding-bottom: {{ 100 | divided_by: product.featured_image.aspect_ratio }}%;"
+            >
+            {%- assign img_url = product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+            <img class="grid-product__image lazyload"
+                data-src="{{ img_url }}"
+                data-widths="[180, 360, 540, 720, 900, 1080]"
+                data-aspectratio="{{ product.featured_image.aspect_ratio }}"
+                data-sizes="auto"
+                alt="{{ product.featured_image.alt | escape }}">
+            <noscript>
+              <img class="grid-product__image lazyloaded"
+                src="{{ product.featured_image | img_url: '400x' }}"
+                alt="{{ product.featured_image.alt | escape }}">
+            </noscript>
+          </div>
+        {% endif %}
+
+        {% unless sold_out %}
+          {% if settings.product_hover_image and product.images.size > 1 %}
+            {% for image in product.images offset: 1 limit: 1 %}
+              {%- assign second_image = image -%}
+            {% endfor %}
+            <div
+              class="grid-product__secondary-image small--hide lazyload"
+              data-bgset="{% include 'bgset', image: second_image %}"
+              data-sizes="auto">
+            </div>
+          {% endif %}
+        {% endunless %}
+
+        {% if settings.collection_color_swatches %}
+          {% for option in product.options_with_values %}
+            {%- assign option_name = option.name | downcase -%}
+            {% if option_name contains 'color' or option_name contains 'colour' %}
+              {%- assign option_index = forloop.index0 -%}
+              {%- assign values = '' -%}
+              {% for variant in product.variants %}
+                {%- assign value = variant.options[option_index] %}
+                {% unless values contains value %}
+                  {%- assign values = values | join: ',' %}
+                  {%- assign values = values | append: ',' | append: value %}
+                  {%- assign values = values | split: ',' %}
+
+                  {% if variant.image %}
+                    <div
+                      class="grid-product__color-image grid-product__color-image--{{ variant.id }} small--hide">
+                    </div>
+                  {% endif %}
+                {% endunless %}
+              {% endfor %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      </div>
+
+      <div class="grid-product__meta">
+  		<h2 class="pair_with">Pair it with</h2>
+        <div class="grid-product__title grid-product__title--{{ settings.type_product_style }}">{{ product.title }}
+          {% if pair_variant %}
+            - {{pair_variant.title}}
+          {% endif %}
+        </div>
+        {% if settings.vendor_enable %}
+          <div class="grid-product__vendor">{{ product.vendor }}</div>
+        {% endif %}
+        <div class="grid-product__price">
+          {% if on_sale %}
+            <span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
+            <span class="grid-product__price--original">{{ product.compare_at_price | money }}</span>
+            <span class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
+          {% endif %}
+          {% if product.price_varies %}
+            {%- assign price = product.price_min | money -%}
+            {{ 'products.general.from_text_html' | t: price: price }}
+          {% else %}
+            {{ product.price  | money }}
+            {% if on_sale %}
+              {% if settings.product_save_amount %}
+                {% capture saved_amount %}{{ product.compare_at_price | minus: product.price | money }}{% endcapture %}
+                <span class="grid-product__price--savings">{{ 'products.general.save_html' | t: saved_amount: saved_amount }}</span>
+              {% endif %}
+            {% endif %}
+          {% endif %}
+        </div>
+            <span class="stamped-product-reviews-badge" data-id="{{ product.id }}" style="display: inline-block;"></span> 
+  
+        
+        
+        
+        
+  		{% form 'product', product, id: form_id, class: 'product-single__form product_form-upsell' %}
+          
+
+          <select name="id" style="display: none;">
+            {% for variant in product.variants %}
+              {% if variant.available %}
+                <option {% if variant == product.selected_or_first_available_variant %}
+                  selected="selected" {% endif %}
+                  value="{{ variant.id }}">
+                  {{ variant.title }} - {{ variant.price | money_with_currency }}
+                </option>
+              {% else %}
+                <option disabled="disabled">
+                  {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                </option>
+              {% endif %}
+            {% endfor %}
+          </select>
+
+          <div
+            id="ProductInventory-{{ section_id }}"
+            class="product__inventory {% unless inventory_visible %}hide{% endunless %}"
+            >
+            {% if current_variant.available %}
+              {{ 'products.product.stock_label' | t: count: current_variant.inventory_quantity }}
+            {% endif %}
+          </div>
+
+          {%- assign enable_dynamic_buttons = false -%}
+          {% if settings.enable_payment_button and template != 'product.preorder' %}
+            {%- assign enable_dynamic_buttons = true -%}
+          {% endif %}
+
+          {% if enable_dynamic_buttons %}
+            <div class="payment-buttons">
+          {% endif %}
+
+        {{ bold_ro_widget }}
+
+          <div class="product__add-to-cart">
+            {% if settings.quantity_enable %}
+              <div class="product__quantity product__quantity--{{ settings.variant_type }} js-qty">
+                <label for="Quantity-{{ section_id }}">{{ 'products.product.quantity' | t }}</label>
+                <input type="number" hidden="hidden" id="Quantity-{{ section_id }}" name="quantity" value="1" min="1" class="js-qty__fallback">
+              </div>
+            {% endif %}
+            <div class="product__btn">
+              <button
+                {% if product.empty? %}type="button"{% else %}type="submit"{% endif %}
+                name="add"
+                id="AddToCart-{{ section_id }}"
+                class="btn btn--full add-to-cart{% if enable_dynamic_buttons %} btn--secondary{% endif %}"
+                {% unless current_variant.available %} disabled="disabled"{% endunless %}>
+
+
+                <script data-app="esc-out-of-stock" type="text/json">[{% for variant in product.variants %}{"id":{{ variant.id }},"title":"{{ variant.title }}","option1":{% if variant.option1 %}"{{ variant.option1 }}"{% else %}null{% endif %},"option2":{% if variant.option2 %}"{{ variant.option2 }}"{% else %}null{% endif %},"option3":{% if variant.option3 %}"{{ variant.option3 }}"{% else %}null{% endif %},"sku":{% if variant.sku %}"{{ variant.sku }}"{% else %}null{% endif %},"requires_shipping":{{ variant.requires_shipping }},"taxable":{{ variant.taxable }},"featured_image":{% if variant.featured_image %}"{{ variant.featured_image }}"{% else %}null{% endif %},"available":{{ variant.available }},"name":"{{ variant.name }}","public_title":"{{ variant.public_title }}","options":{{ variant.options | json }},"price":{{ variant.price }},"weight":{% if variant.weight %}{{ variant.weight }}{% else %}0{% endif %},"compare_at_price":{% if variant.compare_at_price %}{{ variant.compare_at_price }}{% else %}null{% endif %},"inventory_quantity":{{ variant.inventory_quantity }},"inventory_management":{% if variant.inventory_management %}"{{ variant.inventory_management }}"{% else %}null{% endif %},"inventory_policy":{% if variant.inventory_policy %}"{{ variant.inventory_policy }}"{% else %}null{% endif %},"barcode":{% if variant.barcode %}"{{ variant.barcode }}"{% else %}null{% endif %}}{% unless forloop.last %},{% endunless %}{% endfor %}]</script>
+
+                <span id="AddToCartText-{{ section_id }}">
+                  {% if current_variant.available %}
+                    {% if template == 'product.preorder' %}
+                      {{ 'products.product.preorder' | t }}
+                    {% else %}
+                      {{ 'products.product.add_to_cart' | t }}
+                    {% endif %}
+                  {% else %}
+                    {{ 'products.product.sold_out' | t }}
+                  {% endif %}
+                </span>
+
+              </button>
+            </div>
+          </div>
+              <style> .button {background-color: #60925b;
+                line-height: 1.42;
+                text-decoration: none;
+                text-align: center;
+                white-space: normal;
+                font-size: 13px;
+                font-weight: bold;
+                text-transform: uppercase;
+                letter-spacing: 0.2em;
+                display: inline-block;
+                color: #fff;}
+              </style>
+        <!-- bold-ro-liquid --><div class="bold_add_to_orders" style="display: inline-block;"></div><!-- bold-ro-liquid -->
+
+              <div id="esc-oos-form"></div>
+
+            {% if enable_dynamic_buttons %}
+              {{ form | payment_button }}
+            {% endif %}
+
+          {% if enable_dynamic_buttons %}
+            </div>
+          {% endif %}
+
+          <div id="VariantsJson-{{ section_id }}" class="hide" aria-hidden="true">
+            {{ product.variants | json }}
+          </div>
+        {% endform %}
+        
+        
+        
+        
+        
+      </div>
+    </a>
+  </div>
+</div>
+
+<!--     Custom changes (Dmitry) -->

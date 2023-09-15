@@ -1,0 +1,500 @@
+{% unless thumbnail_position %}
+  {%- assign thumbnail_position = 'beside' -%}
+{% endunless %}
+
+{%- assign product_img_structure = product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+<div id="ProductSection-{{ section_id }}"
+  class="product-section"
+  data-section-id="{{ section_id }}"
+  data-section-type="product-template"
+  data-product-handle="{{ product.handle }}"
+  data-product-url="{{ product.url | within: collection }}"
+  data-aspect-ratio="{{ 100 | divided_by: product.featured_image.aspect_ratio }}"
+  data-img-url="{{ product_img_structure }}"
+  {% if settings.product_zoom_enable %}
+    data-image-zoom="true"
+  {% endif %}
+  {% if settings.inventory_enable %}
+    data-inventory="true"
+  {% endif %}
+  {% unless isModal %}
+    data-enable-history-state="true"
+  {% endunless %}
+  {% if isModal %}
+    data-lazyload-content="true"
+  {% endif %}>{% render 'preorder-now-collection-item', product: product %}
+
+  {% include 'product-template-variables' %}
+  <div class="page-content page-content--product product-landing-page-template">
+    <div class="layout-background top-product-section" style="background-color:{{ product.metafields.info.primary_background_color }}">
+      <div class="page-width">
+          <div class="grid{% unless image_position == 'left' %} grid--product-images-right{% endunless %} {% if product.tags contains 'Handbags' %}hand_bags{% endif %}">
+            {% if image_position == 'left' %}
+              <div class="grid__item {{ product_image_width }}">
+                {% include 'product-images', section_id: section_id, isModal: isModal, thumbnail_position: thumbnail_position %}
+              </div>
+            {% endif %}
+
+            <div class="grid__item {{ product_description_width }}">
+
+              <div class="product-single__meta">
+                <div class="item-box" style="border:4px solid {{ product.metafields.info.product_section_border_color }}">
+                  {% if settings.show_breadcrumbs and isModal != true %}
+                    {% include 'breadcrumbs' %}
+                  {% endif %}
+
+                  {% if settings.vendor_enable %}
+                  {% assign vendorname = product.vendor %}
+                  {% for collection in collections %}
+                    {% if collection.title == vendorname %}
+                      <div class="product-single__vendor" itemprop="brand"><a href="{{ collection.url }}">{{ product.vendor }}</a></div>
+                      {% endif %}
+                    {% endfor %}
+                  {% endif %}
+
+                  {% if isModal %}
+                    <p class="h2 product-single__title" itemprop="name">{{ product.title }}</p>
+                  {% else %}
+                    <h1 class="h2 product-single__title" itemprop="name">{{ product.title }}</h1>
+                  {% endif %}
+
+                  <div>
+                  {% assign reviewProductId = product.id %}
+                  {% assign reviewProduct = product %}
+                  {% if product.metafields.product.pull_reviews_from %}
+                  	{% assign reviewProductId = product.metafields.product.pull_reviews_from %}
+                    {% assign products_obj = collections.all.products | where: 'id', reviewProductId %}
+                      {% assign reviewProduct = products_obj[0] %}
+                  {% endif %}
+                              
+                    <span class="stamped-product-reviews-badge stamped-main-badge" data-id="{{ reviewProductId  }}" style="display: inline-block;"></span>
+                  </div>
+              <style>
+                .stamped-main-badge[data-type="qna"]:empty:before {
+                  font-family: 'stamped-font';
+                  content:'\f0e6 ';
+                }
+                .stamped-main-badge[data-type="qna"]:empty:after {
+                  content:' Ask a question';
+                }
+              </style>
+
+                  {% comment %}
+                  {% if settings.enable_product_reviews and settings.reviews_layout == 'full' %}
+                    {% if isModal %}
+                      {%- assign review_link = product.url | within: collection | append: '#Reviews-' | append: product.id -%}
+                    {% else %}
+                      {%- assign review_link = '#Reviews-' | append: product.id -%}
+                    {% endif %}
+                    <a href="{{ review_link }}" class="product-single__review-link">
+                      <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+                    </a>
+                  {% endif %}
+                  {% endcomment %}
+
+                  {% if settings.sku_enable %}
+                    <p id="Sku-{{ section_id }}" class="product-single__sku">
+                      {% if current_variant.sku %}
+                        {{ current_variant.sku }}
+                      {% endif %}
+                    </p>
+                  {% endif %}
+
+                <div>
+                  {%- assign hide_sale_price = true -%}
+                  {% if product.compare_at_price_max > product.price %}
+                    {% if current_variant.compare_at_price > current_variant.price %}
+                      {%- assign hide_sale_price = false -%}
+                    {% endif %}
+                    <span
+                      id="PriceA11y-{{ section_id }}"
+                      class="visually-hidden"
+                      aria-hidden="{{ hide_sale_price }}">
+                        {{ 'products.general.regular_price' | t }}
+                    </span>
+                    <span class="product__price-wrap-{{ section_id }}{% if hide_sale_price %} hide{% endif %}">
+                      <span id="ComparePrice-{{ section_id }}" class="product__price product__price--compare">
+                        {% if current_variant.compare_at_price > current_variant.price %}
+                          {{ current_variant.compare_at_price | money }}
+                        {% endif %}
+                      </span>
+                    </span>
+                    <span id="ComparePriceA11y-{{ section_id }}" class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
+                  {% else %}
+                    <span id="PriceA11y-{{ section_id }}" class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
+                  {% endif %}
+
+                  <span id="ProductPrice-{{ section_id }}"
+                    class="product__price{% if current_variant.compare_at_price > current_variant.price %} on-sale{% endif %}"
+                    content="{{ current_variant.price | divided_by: 100.00 }}">
+                    {{ current_variant.price | money }}
+                  </span>
+
+                  {% capture saved_amount %}{{ current_variant.compare_at_price | minus: current_variant.price | money }}{% endcapture %}
+                  <span id="SavePrice-{{ section_id }}" class="product__price-savings{% if hide_sale_price %} hide{% endif %}">
+                    {{ 'products.general.save_html' | t: saved_amount: saved_amount }}
+                  </span>
+
+                  {% if settings.inventory_enable %}
+                    <script>
+                      // Store inventory quantities in JS because they're no longer
+                      // available directly in JS when a variant changes.
+                      // Have an object that holds all potential products so it works
+                      // with quick view or with multiple featured products.
+                      window.inventories = window.inventories || {};
+                      window.inventories['{{section_id}}'] = {};
+                      var inv_qty = {};
+                       {% for variant in product.variants %}
+                        window.inventories['{{section_id}}'][{{variant.id}}] = {{ variant.inventory_quantity | default: 0 }};
+                       {% endfor %}
+                    </script>
+
+                    {%- assign inventory_visible = false -%}
+                    {% if current_variant.inventory_management == 'shopify' %}
+                      {% if current_variant.inventory_quantity < 10 %}
+                        {%- assign inventory_visible = true -%}
+                      {% endif %}
+                    {% endif %}
+                    {% if current_variant.inventory_quantity == 0 %}
+                      {%- assign inventory_visible = false -%}
+                    {% endif %}
+                  {% endif %}
+
+                  <meta content="{{ shop.currency }}">
+                  <link href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
+
+                  {% unless isModal %}
+                    {% comment %}
+                      Shopify's product form attaches a number of tracking
+                      scripts that cause slower load times and false statistics.
+                      Quick view modals request these on-demand.
+                    {% endcomment %}
+                    {% include 'product-form', section_id: section_id %}
+                  {% else %}
+                    <div id="ProductFormHolder-{{ section_id }}" class="product-form-holder" data-url="{{ product.url }}"></div>
+                  {% endunless %}
+                  
+                  {% include 'upsell-pair-product-v2' %}
+
+
+                  <div class="c-accordion">
+                    <div class="c-accordion-item">
+                      <h4 class="c-accordion-title">Product Description <span class="c-slide-toggle"></span></h4>
+                      <div class="c-accordion-content">
+                        {% unless section.settings.description_style == 'full' %}
+                            <div class="product-single__description {% for tag in product.tags %}{% if tag contains 'Handbags' %}handbag{% endif %}{% endfor %} rte">
+                            {% include 'product-description-slider' %}
+                            </div>
+
+                          {% include 'product-additional-content', section_id: section_id %}
+                        {% endunless %}
+                      </div>
+                    </div>
+
+                    {% if product.metafields.info.what_it_fits_section != blank %}
+                    <div class="c-accordion-item">
+                      <h4 class="c-accordion-title">What it Fits <span class="c-slide-toggle"></span></h4>
+                      <div class="c-accordion-content">
+                        {{ product.metafields.info.what_it_fits_section | newline_to_br }}
+                      </div>
+                    </div>
+                    {% endif %}
+
+                    {% if product.metafields.info.dimensions != blank %}
+                    <div class="c-accordion-item">
+                      <h4 class="c-accordion-title">Dimensions <span class="c-slide-toggle"></span></h4>
+                      <div class="c-accordion-content">
+                        {{ product.metafields.info.dimensions | newline_to_br}}
+                      </div>
+                    </div>
+                    {% endif %}
+
+                    {% if product.metafields.info.shipping_and_lifetime_warranty != blank %}
+                    <div class="c-accordion-item">
+                      <h4 class="c-accordion-title">Shipping and Lifetime Warranty <span class="c-slide-toggle"></span></h4>
+                      <div class="c-accordion-content">
+                        {{ product.metafields.info.shipping_and_lifetime_warranty | newline_to_br }}
+                      </div>
+                    </div>
+                    {% endif %}
+
+                  </div>
+
+                  {% include 'donation-message' %}
+
+                </div>
+
+
+                <img class="shipping-banner" src="{{ 'shipping-banner.png' | asset_url}}">
+
+                {% if social %}
+                  {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}
+                {% endif %}
+                </div>
+              </div>
+            </div>
+
+            {% unless image_position == 'left' %}
+              <div class="grid__item {{ product_image_width }}">
+                {% include 'product-images', section_id: section_id, isModal: isModal, thumbnail_position: thumbnail_position %}
+              </div>
+            {% endunless %}
+          </div>
+
+          <div class="d-flex full-package-container">
+            <div class="flex-basis-50 text-right"><h2 class="the-full-package-title">THE FULL<br /> PACKAGE</div>
+            <div class="flex-basis-40 full-package-content">
+                 <div class="d-flex">
+                   <div class="flex-basis-50 text-black">{{ product.title }}</div>
+                   <div class="flex-basis-50 text-right text-black">{{ product.price | money}}</div>
+                 </div>
+              	{% for info in product.metafields.info.full_package_section.value  %}
+                 <div class="d-flex">
+                   <div class="flex-basis-50 text-black">{{ info.legend }}</div>
+                   <div class="flex-basis-50 text-right text-black">{{ info.value }}</div>
+                 </div>
+              	{% endfor %}
+  
+                <div class="d-flex totals font-strong">
+                   <div class="flex-basis-50 flex-basis-50">Total</div>
+                   <div class="flex-basis-50 text-right">{{ product.price | money}}</div>
+                 </div>
+            </div>
+         </div>
+       </div>
+   </div>
+      
+   <div style="background-color:{{ product.metafields.info.secondary_background_color }}">
+   <div class="page-width">
+     <div class="order-steps-container">
+      <h2 class="section-title text-center">{{ product.metafields.info.steps_section_title }}</h2>
+       
+       <div class="d-flex order-steps">
+         {% for step in product.metafields.info.steps.value  %}
+         	<div class="flex-basis-25">
+              <img class="step-icon" src="{{ step.image }}">
+              <h4 class="title text-black"><strong>	{{ forloop.index }}.</strong> {{ step.title }}</h4>
+              <p class="text-gray">{{ step.description }}</p>
+           </div>
+         {% endfor %}
+       </div>
+    </div>
+     </div>
+   </div>
+      
+    <div class="gray-background" style="background-color:#F7F4F8">
+      <div class="page-width page-width-video-container">
+       
+        {% if product.metafields.info.video_code != blank %}
+        <div class="layout-youtube-video-container text-center">
+
+<!--           <iframe style="margin:auto;" width="600" height="355" src="https://www.youtube-nocookie.com/embed/{{product.metafields.info.video_code}}" title="YouTube video player" 
+                  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+          
+          <div style="position:relative">
+            <video playsinline loop style="margin:auto" width="600" height="355" id="featured-video" poster="https://cdn.shopify.com/s/files/1/2434/0721/files/video-poster.png?v=1648081709">
+              <source src="{{product.metafields.info.video_code}}" type="video/mp4">
+            Your browser does not support the video tag.
+            </video>
+            <button class="featured-video-play-button">
+            <span class="featured-video-play-icon">
+              <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-play" viewBox="0 0 32 32"><style>.st0{fill:#444}</style><path class="st0" d="M9.3 6.2l17.1 9.7-17.1 9.7"></path></svg>
+            </span>
+              <span class="featured-video-pause-button" style="display:none">
+                <svg height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><path d="M224,435.8V76.1c0-6.7-5.4-12.1-12.2-12.1h-71.6c-6.8,0-12.2,5.4-12.2,12.1v359.7c0,6.7,5.4,12.2,12.2,12.2h71.6   C218.6,448,224,442.6,224,435.8z"/><path d="M371.8,64h-71.6c-6.7,0-12.2,5.4-12.2,12.1v359.7c0,6.7,5.4,12.2,12.2,12.2h71.6c6.7,0,12.2-5.4,12.2-12.2V76.1   C384,69.4,378.6,64,371.8,64z"/></g></svg>
+
+              </span>
+          </button>
+          </div>
+
+          
+          <div class="video-banner">
+            <h3>{{product.metafields.info.video_callout_title}}</h3>
+            <h4>{{product.metafields.info.video_callout_subtitle}}</h4>
+          </div>
+        </div>
+        {% endif %}
+        
+        
+         <h2 class="section-title text-center mt-60">Features</h2>
+         <div class="c-feature-list">
+          {% for feature in product.metafields.info.product_features.value  %}
+              
+           <div class="p-15">
+             <div class="article__grid-image">
+               <div class="image-wrap">
+                 <div class="grid__image-ratio grid__image-ratio--cover grid__image-ratio--square lazyloaded" style="background-image: url({{ feature.image }});">
+
+                   <noscript>
+                     <img class="lazyloaded" src="//cdn.shopify.com/s/files/1/2434/0721/articles/pexels-photo-7319328_400x.jpg?v=1637172031" alt="{{ feature.title }}">
+                   </noscript>
+                 </div>
+               </div>
+
+             </div>
+             <div>
+               <div class="feature-title">{{ feature.title}}</div>
+               <div class="feature-description text-16">{{ feature.description}}</div>
+             </div>
+           </div>
+          {% endfor %}
+         </div>
+      </div>
+      </div>
+      
+        <div class="testimonial-container" style="background-color:{{ product.metafields.info.secondary_background_color }}">
+        	<div class="page-width testimonial-container-page-width">
+            <h2 class="section-title text-center">Testimonials</h2>
+
+            <div class="testimonial-slider">
+              {% for testimonial in product.metafields.info.product_testimonials.value  %}
+              <div class="testimonial-item">
+                <div class="testimonial-item-bg">
+                  <div class="d-flex">
+                      <div class="flex-basis-70 line-height-26">
+                        <strong class="d-block testimonial-title">{{ testimonial.title }}</strong>
+                       <span class="d-block verified-purcharser">Verified Buyer</span>
+                        <span class="d-block product-title">{{ testimonial.product }}</span>
+                        <img src="{{'rating-stars.png' | asset_url}}" />
+                      </div>
+                     <div class="flex-basis-30 testimonial-image-container">
+                       <img src="{{ testimonial.image }}" style="max-width:100%">
+                    </div>
+                  </div>
+
+                  <div class="testimonial-content">
+                      {{ testimonial.description }}
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      
+      
+      </div>
+        
+      {% if section.settings.description_style == 'full' %}
+        <div class="product-single__description-full rte">
+          {% include 'product-description-slider' %}
+        </div>
+
+        {% include 'product-additional-content', section_id: section_id %}
+      {% endif %}
+
+    
+    
+    <div class="index-section index-section--small product-reviews product-reviews--full">
+      <div class="page-width">
+        <h3 class="text-center">Customer Reviews</h3>
+
+  <!--Start Stamped.io Auto Installation-->
+      <div id="stamped-main-widget" class="stamped-main-widget" 
+          data-widget-style="standard" 
+          data-product-id="{{reviewProductId}}" 
+        data-name="{{ product.title | escape }}" 
+        data-url="{{ shop.url }}{{ product.url }}" d
+        ata-image-url="{{ product.featured_image | product_img_url: "large" |replace: '?', '%3F' | replace: '&','%26'}}" 
+        data-description="{{ product.description | escape }}" data-product-sku="{{reviewProduct.handle}}"></div><!--End Stamped.io Auto Installation-->    </div>
+    </div>
+    <div class="vendor-brand-section-prod">
+      {% assign vendorname = product.vendor %}
+                {% for collection in collections %}
+                  {% if collection.title == vendorname %}
+                    {% if collection.image %}
+        <div class="vendor-image-left-prod">
+        <img src="{{ collection | img_url: 'large' }}" alt="{{ collection.image.alt }}" />
+        </div>
+          {% endif %}
+        <div class="vendor-title-desc-right-prod">
+          <div class="vendor-title-prod">About The Brand</div>
+         {% if collection.description != blank %}
+        <div class="rte-prod">
+          {{ collection.description }}
+        </div>
+          <span><a href="{{ collection.url }}">Shop All {{ collection.title }}</a></span>
+        </div>
+
+      {% endif %}
+      {% endif %}
+      {% endfor %}
+
+    </div>
+    <!--     Custom changes (Dmitry) -->
+    
+  </div>
+  
+</div>
+
+<script>
+  (function($){
+    $(document).ready(function(){
+      $('.c-accordion-title').on('click', function(){
+      	$(this).parent().find('.c-accordion-content').slideToggle();
+        $(this).parent().toggleClass('active');
+      });
+      
+      $('.testimonial-slider').slick({
+        infinite: false,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        dots: true,
+        arrows:true,
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              infinite: false,
+              dots: true,
+              arrows:false,
+               centerMode: true,
+  				centerPadding: '60px',
+         	}
+          }
+        ]
+      
+      });
+      
+      $('.c-feature-list').slick({
+        infinite: false,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        dots: true,
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              infinite: false,
+              dots: true,
+              arrows:false,
+              centerMode: true,
+  				centerPadding: '60px',
+         	}
+          }
+        ]
+      
+      });
+            
+    });
+    
+    var ctrlVideo = document.getElementById("featured-video"); 
+    $('.featured-video-play-button').click(function(){
+      if (!$('button').hasClass("active")){
+            ctrlVideo.play();
+      } else {
+          ctrlVideo.pause();
+      }
+      
+      
+      
+      $('button').toggleClass("active");
+    });
+    
+  })(jQuery);
+  
+</script>

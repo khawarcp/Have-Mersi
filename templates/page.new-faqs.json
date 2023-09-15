@@ -1,0 +1,170 @@
+{
+  "sections": {
+    "page-banner": {
+      "type": "page-banner",
+      "settings": {
+        "show_custom_title": true,
+        "title": "{{ page.metafields.custom.page_title.value }}",
+        "image": "shopify:\/\/shop_images\/Mobile_page_Image.png",
+        "background_image": "shopify:\/\/shop_images\/page-banner-backround.png"
+      }
+    },
+    "faq-content": {
+      "type": "faq-content",
+      "blocks": {
+        "d2fe57c7-01f0-4419-a236-61f0bd480ef8": {
+          "type": "general",
+          "settings": {
+            "quiz": "What's your online return policy?",
+            "answer": "<p>If you are unhappy with your purchase, you can return the unopened item within 30 days of placing your order. Simply ship it back to us and we will process your refund. To initiate a return, please email us at <strong>help@havemersi.com<\/strong>.<\/p>"
+          }
+        },
+        "cb833b4b-f88f-44aa-a88b-81e74924ca52": {
+          "type": "general",
+          "settings": {
+            "quiz": "Do you charge for returns?",
+            "answer": "<p>There is a $7.99 shipping charge for generating a return label. This charge will be subtracted from your total refund once your return is received, you do not need to make any additional payments.<\/p>"
+          }
+        },
+        "b1c9d7b5-2918-4c89-a864-a4c3f0f45a51": {
+          "type": "general",
+          "settings": {
+            "quiz": "Can I get my shipping cost refunded?",
+            "answer": "<p>Unfortunately, we are unable to refund shipping costs.<\/p>"
+          }
+        },
+        "41cb9a14-3275-4978-8ad6-0e5e932c581f": {
+          "type": "general",
+          "settings": {
+            "quiz": "When can I expect my refund?",
+            "answer": "<p>When returning an item back to our warehouse, please allow up to 15 days for our warehouse to receive and process your refund. You will receive an email notification letting you know your refund has been processed.<\/p>"
+          }
+        },
+        "e600122e-10b6-4913-9df3-3a8c652e966b": {
+          "type": "general",
+          "settings": {
+            "quiz": "I am not satisfied with\/never received my free sample or free gift, can I return\/replace\/exchange it?",
+            "answer": "<p>We know everyone loves free gifts and we love gifting them. Because they're free, gifts and samples are only available in very limited numbers and may not be available at the time of your order. They are not eligible for return, replacement, exchange, or store credit.<\/p>"
+          }
+        },
+        "21036281-d8bd-4b00-845e-0ba8c723f6f4": {
+          "type": "general",
+          "settings": {
+            "quiz": "Why should I create a profile on MERSI?",
+            "answer": "<p>Before placing an order, you can choose to create a user profile, or check out as a guest. The benefit of creating a profile is that your personal details are already stored so that you don't have to enter them again when placing a new order. On your profile, you can get a full overview of your pending orders, order history, shipping and payment details.<\/p>"
+          }
+        },
+        "258fde5b-0354-4560-88bc-46439b3a98cf": {
+          "type": "general",
+          "settings": {
+            "quiz": "Where is your warehouse located?",
+            "answer": "<p>Our warehouse is located in New Jersey. We do not offer local pick up.<\/p>"
+          }
+        },
+        "c603888d-b550-4530-92d3-61b7b996722b": {
+          "type": "general",
+          "settings": {
+            "quiz": "Are the products you carry vegan? Are the products you carry cruelty free?",
+            "answer": "<p>Yes! All the products we carry are both vegan and cruelty free.<\/p>"
+          }
+        },
+        "ca1f2c0a-31a5-4df0-b4b8-3d55d35cb31c": {
+          "type": "general",
+          "settings": {
+            "quiz": "Do you offer your products on wholesale?",
+            "answer": "<p>Yes! Please visit our <a href=\"https:\/\/mersiwholesale.com\/\">wholesale website<\/a> or email us at <strong>help@havemersi.com<\/strong> to learn more about our wholesale program.<\/p>"
+          }
+        },
+        "4a35720b-370d-4398-ad6e-7fdcda903dc0": {
+          "type": "order",
+          "settings": {
+            "quiz": "What payment methods do you offer? Which credit cards are accepted?",
+            "answer": "<p>We currently accept credit cards, PayPal, AmazonPay, Sezzle, ShopPay and Afterpay.<\/p><p>The following credit cards are accepted: Visa, MasterCard, Discover and American Express.<\/p>"
+          }
+        },
+        "d1d1e5f5-d7e0-4133-b55d-753bab207e1b": {
+          "type": "order",
+          "settings": {
+            "quiz": "Can I enter multiple discount codes?",
+            "answer": "<p>Unfortunately, our system only allows one discount per order, as stated in our terms and conditions. If you have another discount code that you would like to use, please feel free to use it towards a future purchase.<\/p>"
+          }
+        },
+        "58f1fe9d-67f8-4080-879b-60df49f4ddf6": {
+          "type": "order",
+          "settings": {
+            "quiz": "Do you offer discounts or other promotions?",
+            "answer": "<p>We may offer discounts and other promotions from time to time, so be sure to sign up for emails to receive notifications! Our promotions are limited time only and cannot be applied to past orders.<\/p>"
+          }
+        },
+        "0968590a-b10c-496e-8db0-046c42a41a17": {
+          "type": "order",
+          "settings": {
+            "quiz": "What if I was sent the wrong item, something is missing from my order or an item arrived broken or damaged?",
+            "answer": "<p>Please contact help@havemersi.com with your order number and our customer service team will remedy this for you.<\/p>"
+          }
+        },
+        "3ba2c0d5-a513-442c-8391-98d1e06e5535": {
+          "type": "order",
+          "settings": {
+            "quiz": "Do you offer gift cards?",
+            "answer": "<p>We have e-gift cards which are only valid for online purchases. When you purchase an e-gift card, it will be sent to your email. You can simply forward the email to your recipient or print out the card.<\/p>"
+          }
+        },
+        "dce515ad-b70d-4b6f-8534-d51c9c82f1da": {
+          "type": "shipping",
+          "settings": {
+            "quiz": "I provided a wrong address, how do I change it?",
+            "answer": "<p>If you would like to have your package shipped to an address different than indicated, please email us at help@havemersi.com to alert us. If the package has not been shipped yet, we will re-route it to the new address.<\/p><p>We are not responsible for lost or missing packages due to incorrect address input.<\/p>"
+          }
+        },
+        "1219f340-02c6-4b18-b688-75029e5d5694": {
+          "type": "shipping",
+          "settings": {
+            "quiz": "When will my order ship?",
+            "answer": "<p>All in-stock orders will be processed within 2 business days of placement.<\/p><p>Preorder items will ship according to the displayed date on the product's page.<\/p>"
+          }
+        },
+        "ebc29e26-8521-4d71-844a-40535b3d3068": {
+          "type": "shipping",
+          "settings": {
+            "quiz": "How much does shipping cost?",
+            "answer": "<p>All domestic orders over $100.00 after discounts have been applied, ship for free. Orders under $100.00 will incur a $9.95 shipping charge.<\/p>"
+          }
+        },
+        "c3c9a4fd-cf74-41d5-ab0e-fbe6a269d4fe": {
+          "type": "shipping",
+          "settings": {
+            "quiz": "Where do you ship? Do you ship internationally?",
+            "answer": "<p>We ship within the United States including Hawaii and Alaska, as well as Canada.<br\/><br\/>All Canadian orders over $150.00 after discounts have been applied, ship for free. Orders under $100.00 will incur a $14.99 shipping charge.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "d2fe57c7-01f0-4419-a236-61f0bd480ef8",
+        "cb833b4b-f88f-44aa-a88b-81e74924ca52",
+        "b1c9d7b5-2918-4c89-a864-a4c3f0f45a51",
+        "41cb9a14-3275-4978-8ad6-0e5e932c581f",
+        "e600122e-10b6-4913-9df3-3a8c652e966b",
+        "21036281-d8bd-4b00-845e-0ba8c723f6f4",
+        "258fde5b-0354-4560-88bc-46439b3a98cf",
+        "c603888d-b550-4530-92d3-61b7b996722b",
+        "ca1f2c0a-31a5-4df0-b4b8-3d55d35cb31c",
+        "4a35720b-370d-4398-ad6e-7fdcda903dc0",
+        "d1d1e5f5-d7e0-4133-b55d-753bab207e1b",
+        "58f1fe9d-67f8-4080-879b-60df49f4ddf6",
+        "0968590a-b10c-496e-8db0-046c42a41a17",
+        "3ba2c0d5-a513-442c-8391-98d1e06e5535",
+        "dce515ad-b70d-4b6f-8534-d51c9c82f1da",
+        "1219f340-02c6-4b18-b688-75029e5d5694",
+        "ebc29e26-8521-4d71-844a-40535b3d3068",
+        "c3c9a4fd-cf74-41d5-ab0e-fbe6a269d4fe"
+      ],
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "page-banner",
+    "faq-content"
+  ]
+}

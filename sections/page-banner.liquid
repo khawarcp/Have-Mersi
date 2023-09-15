@@ -1,0 +1,80 @@
+<link rel="stylesheet" href="{{ 'page-banner.css' | asset_url }}">
+
+<div class="desktop-display">
+    <section class="page-banner" style="background-image:url('{{ section.settings.background_image | image_url }}')">
+    <div class="page-width">
+      <div class="page-banner-wrapper">
+        <div class="page-banner-heading">
+          {% if section.settings.show_custom_title %}
+            <h1>{{ section.settings.title }}</h1>
+          {% else %}
+            {% if request.page_type == 'page' %}
+              <h1>{{ page.title }}</h1>
+            {% elsif request.page_type == 'collection' %}
+              <h1>
+                {{ collection.title }}
+              </h1>
+            {% endif %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="mobile-display">
+  {% if section.settings.image != blank %}
+<section class="page-banner" style="background-image:url('{{ section.settings.image | image_url }}')">
+    {% else %}
+<section class="page-banner" style="background-image:url('{{ section.settings.background_image | image_url }}')">
+    {% endif %}
+    
+    <div class="page-width">
+      <div class="page-banner-wrapper">
+        <div class="page-banner-heading">
+          {% if section.settings.show_custom_title %}
+            <h1>{{ section.settings.title }}</h1>
+          {% else %}
+            {% if request.page_type == 'page' %}
+              <h1>{{ page.title }}</h1>
+            {% elsif request.page_type == 'collection' %}
+              <h1>
+                {{ collection.title }}
+              </h1>
+            {% endif %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+  {
+    "name": "Page Banner",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_custom_title",
+        "label": "Show Custom Title",
+        "default": false
+      }, {
+        "type": "text",
+        "id": "title",
+        "label": "Custom Title"
+      }, {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Mobile Image"
+      }, {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "Desktop Image"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Page Banner"
+      }
+    ]
+  }
+{% endschema %}

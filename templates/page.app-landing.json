@@ -1,0 +1,53 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
+    },
+    "16519384873028a0b7": {
+      "type": "app-landing",
+      "blocks": {
+        "1969ad54-1c1b-4cb3-a38c-5d726d24b509": {
+          "type": "content",
+          "settings": {
+            "title": "In-App Exclusive Discounts",
+            "content": "Shop deals & discounts available only on The Vegan Warehouse app!"
+          }
+        },
+        "3b1b734e-4c2f-4041-b496-d882d1764c16": {
+          "type": "content",
+          "settings": {
+            "title": "Access to New Arrivals",
+            "content": "Unlock early access to shop our latest products before they go live on our website."
+          }
+        },
+        "a61d3fd5-9568-4dc9-8563-0265a6c0fbe9": {
+          "type": "content",
+          "settings": {
+            "title": "Interactive Live Shows",
+            "content": "Discover live shopping with The Vegan Warehouse team to see the products come to life."
+          }
+        }
+      },
+      "block_order": [
+        "1969ad54-1c1b-4cb3-a38c-5d726d24b509",
+        "3b1b734e-4c2f-4041-b496-d882d1764c16",
+        "a61d3fd5-9568-4dc9-8563-0265a6c0fbe9"
+      ],
+      "settings": {
+        "page_title": "Download our free app today!",
+        "main_image": "shopify:\/\/shop_images\/app-preview-3.png",
+        "apple_icon": "shopify:\/\/shop_images\/apple-download-button.png",
+        "apple_url": "https:\/\/apps.apple.com\/app\/apple-store\/id1619849988",
+        "android_icon": "shopify:\/\/shop_images\/android-download-button.png",
+        "android_url": "https:\/\/play.google.com\/store\/apps\/details?id=com.CStheveganwarehouse.android",
+        "promotial_text": "DOWNLOAD FOR FREE TO GET EARLY ACCESS"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "16519384873028a0b7"
+  ]
+}

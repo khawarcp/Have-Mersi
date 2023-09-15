@@ -1,0 +1,78 @@
+{% include 'product-content.zipifypages', contentprt: 'header' %}
+{% comment %}
+GEMPAGE BUILDER (https://apps.shopify.com/gempage)
+
+You SHOULD NOT modify source code in this page because
+It is automatically generated from GEMPAGE BUILDER
+Try to edit page with the live editor.
+{% endcomment %}<!--GEM_HEADER--> <link
+  data-instant-track
+  rel="stylesheet"
+  type="text/css"
+  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"
+  class="gf-style" /> <link
+  data-instant-track
+  rel="stylesheet"
+  type="text/css"
+  href="https://d1um8515vdn9kb.cloudfront.net/files/vendor.css?refresh=1"
+  class="gf-style" />
+<link data-instant-track
+  rel="stylesheet"
+  type="text/css"
+  href="{{ 'gem-page-product-1527694108.css' | asset_url }}"
+  class="gf_page_style">
+<!--GEM_HEADER_END-->
+{%- include 'bold-ro' -%}
+{% section 'product-template' %}<script>
+  // Override default values of shop.strings for each template.
+// Alternate product templates can change values of
+// add to cart button, sold out, and unavailable states here.
+  theme.productStrings = {
+    addToCart: {{ 'products.product.add_to_cart' | t | json }},
+    soldOut: {{ 'products.product.sold_out' | t | json }},
+    unavailable: {{ 'products.product.unavailable' | t | json }}
+  };
+</script>
+<script text="text/javascript">
+  var _learnq = _learnq || [];  
+  var item = {
+      Name: {{ product.title | json }},
+  ProductID: {{ product.id | json }},
+  Categories: {{ product.collections | map: 'title' | json }},
+  ImageURL: "https:{{ product.featured_image.src | img_url: 'grande' }}",
+  URL: "{{ shop.secure_url }}{{ product.url }}",
+  Brand: {{ product.vendor | json }},
+  Price: {{ product.price | money | json }},
+  CompareAtPrice: {{ product.compare_at_price_max | money | json }}
+  };  
+  _learnq.push(['track', 'Viewed Product', item]);
+    _learnq.push(['trackViewedItem', {
+      Title: item.Name,
+      ItemId: item.ProductID,
+      Categories: item.Categories,
+      ImageUrl: item.ImageURL,
+      Url: item.URL,
+      Metadata: {
+        Brand: item.Brand,
+        Price: item.Price,
+        CompareAtPrice: item.CompareAtPrice
+      }
+    }]);</script>
+{% include 'buddha-crosssell' %}
+<!--GEM_FOOTER-->
+{% capture GEM_FOOTER_SCRIPT %}
+  <script data-instant-track type="text/javascript">
+    if(typeof pageLibs === 'undefined' || pageLibs === null){	var pageLibs = [		'{{ 'gem-page-product-1527694108.js' | asset_url }}',	];
+    }
+  </script>
+  <script data-instant-track type="text/javascript">
+    var GEMVENDOR = GEMVENDOR || (function(){		var _js = {};		return {			init: function(Args) {				_js = Args;			},			getLibs: function() {				return _js;			}		};	}());	GEMVENDOR.init(pageLibs);</script>
+  <script
+    data-instant-track
+    type="text/javascript"
+    src="https://d1um8515vdn9kb.cloudfront.net/files/gempagev1.js?v=1.0"
+    class="gf-script"
+    defer></script>
+{% endcapture %}
+<!--GEM_FOOTER_END-->
+{% include 'product-content.zipifypages', contentprt: 'footer' %}

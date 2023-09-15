@@ -1,0 +1,15 @@
+<div class="grid__item grid-product small--one-half medium-up--one-third bundle-banner" style="background-image:url('{{ section.settings.background_image | image_url }}')">
+  <div class="bundle-banner-inner">
+    <p>
+      {{ section.settings.subheading }}
+    </p>
+    <h2>
+      {{ section.settings.heading }}
+    </h2>
+    {% if section.settings.button_text != blank %}
+      <a href="{{ section.settings.button_link | default: '#' }}" class="btn">
+        {{ section.settings.button_text }}
+      </a>
+    {% endif %}
+  </div>
+</div>

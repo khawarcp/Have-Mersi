@@ -1,0 +1,35 @@
+ <!--     Custom changes (Dmitry) -->
+<div class="upsell_product">
+  {% assign upsell_tag = '' %}
+  {% assign productTags = product.tags | join: ', ' %}
+  {% if productTags contains 'upsell:' %}
+  {% for tag in product.tags %}
+  {% if tag contains 'upsell:' %}
+  {% assign tag_name = tag | split: ':' %}
+  {% assign upsell_tag = 'upsell:' | append: tag_name[1] %}
+  {% break %}
+  {% endif %}
+  {% endfor %}
+  
+  {% assign reviewProductId = product.id %}
+  {% if product.metafields.product.pull_reviews_from %}
+  	{% assign reviewProductId = product.metafields.product.pull_reviews_from %}
+  {% endif %}
+
+  {% paginate collections.all.products by 200 %}
+  {% for product_upsell in collections.all.products %}
+  	{% assign productTags = product_upsell.tags | join: ', ' %}
+  	{% if productTags contains upsell_tag %}
+      {% if reviewProductId != product_upsell.id and product.id != product_upsell.id %}
+          {% assign product1 = product %}
+          {% assign product = product_upsell %}
+          {% include 'upsell-product' %}
+          {% assign product = product1 %}
+  		  
+      {% endif %}
+  	{% endif %}
+  {% endfor %}
+  {% endpaginate %}
+  {% endif %}
+</div>
+<!--     Custom changes (Dmitry) -->

@@ -1,0 +1,142 @@
+<link rel="stylesheet" href="{{ 'product-hero-image.css' | asset_url }}">
+<style>
+  .section-{{ section.id }}-padding{
+    padding-top: {{ section.settings.padding_top | times : 0.75 | round }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times : 0.75 | round }}px;
+  }
+
+  @media screen and (min-width: 750px){
+    .section-{{ section.id }}-padding{
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+</style>
+{% if product.metafields.custom.product_features_image_one != blank and product.metafields.custom.product_features_image_two != blank %}
+<section class="section-{{ section.id }}-padding product-hero-wra">
+  <div class="product-hero-image">
+    <div class="page-width">
+      <div class="hero-banner-wrapper">
+        {% if section.settings.image_1 != blank %}
+          <div class="left-col-hero">
+            <div class="image-wrap-left">
+              <img
+                src="{{ product.metafields.custom.product_features_image_one | image_url }}"
+                alt="{{ section.settings.image_1.alt }}"
+                class="lazyload">
+            </div>
+            <div class="text-wrap-left left-text-1">
+              <p class="left-text-col">
+                {% comment %}
+                {{ section.settings.left_text_1 }}
+                {% endcomment %}
+                {{ product.metafields.custom.product_features_text_one }}
+              </p>
+            </div>
+            <div class="text-wrap-left left-text-2">
+              <p class="left-text-col">
+                {% comment %}
+                {{ section.settings.left_text_2 }}
+                {% endcomment %}
+                {{ product.metafields.custom.product_features_text_two }}
+              </p>
+            </div>
+          </div>
+        {% endif %}
+        {% if section.settings.image_2 != blank %}
+          <div class="right-col-hero">
+            <div class="image-wrap-right">
+              <img
+                src="{{ product.metafields.custom.product_features_image_two | image_url }}"
+                alt="{{ section.settings.image_2.alt }}"
+                class="lazyload">
+            </div>
+            <div class="text-wrap-right right-text-1">
+              <p class="right-text-col ">
+                  {% comment %}
+                  {{ section.settings.right_text_1 }}
+                  {% endcomment %}
+                  {{ product.metafields.custom.product_features_text_three }}
+              </p>
+            </div>
+            <div class="text-wrap-right right-text-2">
+              <p class="right-text-col">
+                  {% comment %}
+                  {{ section.settings.right_text_2 }}
+                  {% endcomment %}
+                  {{ product.metafields.custom.product_features_text_four }}
+              </p>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+{% schema %}
+  {
+    "name": "Product Hero Banner",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Left Column"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_1",
+        "label": "Left Image"
+      },
+      {
+        "type": "text",
+        "id": "left_text_1",
+        "label": "Text 1",
+        "default": "Main compartments fits the essentials."
+      },
+      {
+        "type": "text",
+        "id": "left_text_2",
+        "label": "Text 2",
+        "default": "Adjustable, detachable shoulder strap."
+      }, {
+        "type": "header",
+        "content": "Right Column"
+      }, {
+        "type": "image_picker",
+        "id": "image_2",
+        "label": "Left Image"
+      }, {
+        "type": "text",
+        "id": "right_text_1",
+        "label": "Text 1",
+        "default": "Smooth Lock keeps  your item safe"
+      }, {
+        "type": "text",
+        "id": "right_text_2",
+        "label": "Text 2",
+        "default": "Smooth Lock keeps your item safe"
+      }, {
+        "type": "header",
+        "content": "Section Padding"
+      }, {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Padding Top",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "default": 50,
+        "unit": "px"
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Padding Bottom",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "default": 50,
+        "unit": "px"
+      }
+    ]
+  }
+{% endschema %}

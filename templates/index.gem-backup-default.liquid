@@ -1,0 +1,30 @@
+{% comment %}
+  Your home page is build up of sections, the code for each living in
+  the sections/ director.
+{% endcomment %}
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "The Vegan Warehouse",
+    "url": "https://www.theveganwarehouse.com/",
+    "logo": "https://cdn.shopify.com/s/files/1/2434/0721/files/VW_Logo_LightGreen_2x_2551343e-42d8-4750-80c6-2e9c834bbaab_400x.png?v=1549914766",
+    "sameAs": [
+      "https://www.facebook.com/TheVeganWarehouse/",
+      "https://instagram.com/theveganwarehouse",
+      "https://www.pinterest.com/theveganwarehouse/?eq=the%20vegan%20warehouse&etslf=3986"
+    ]
+  }
+  </script>
+  
+{{ content_for_index }}
+
+<script>
+  var productList = []; 
+  {% for product in collections.frontpage.products %}
+    productList.push({{ product.id }}); 
+  {% endfor %}
+  window.uetq = window.uetq || [];
+  window.uetq.push('event', '', {'ecomm_prodid': productList, 'ecomm_pagetype': 'home'});   
+</script>

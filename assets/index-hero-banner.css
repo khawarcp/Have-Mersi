@@ -1,0 +1,253 @@
+.hero-banner {
+    background: center no-repeat;
+    background-size: cover;
+    height: calc(100vh - 50px);
+    position: relative;
+  }
+.banner-person-desktop {
+    position: absolute;
+    right: 200px;
+    bottom: 0;
+    /* max-height: 550px; */
+}
+
+.banner-person-desktop img {
+    object-fit: contain;
+    height: 500px;
+    width: 100%;
+}
+  .banner-content {
+    align-self: center;
+    max-width: 550px;
+  }
+
+  .hero-banner .page-width {
+    height: 100%;
+}
+
+
+  .banner-content h1 {
+    margin-bottom: 20px;
+    line-height: 84.82px;
+  }
+
+  .banner-content p {
+    margin-bottom: 30px;
+    line-height: 29.98px;
+  }
+
+  .main-position {
+    position: relative;
+  }
+
+  .image-position {
+    position: absolute;
+    content: '';
+    right: -20px;
+    top: 10px;
+  }
+
+  .page-width-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+  .scroll-down {
+    border: 2px dashed #301210;
+    height: 140px;
+    width: 140px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    opacity: .2;
+    margin-top: -70px;
+    border-bottom: 0;
+  }
+
+  .scroll-down-link {
+    font-size: 13px;
+    color: #301210;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 20px;
+    letter-spacing: 4px;
+  }
+  .banner-image-wrapper {
+    object-fit: contain;
+    object-position: right;
+  }
+  .banner-content {
+    position: relative;
+    margin: 0 0 0 70px;
+  }
+
+  .banner-content::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    left: 50px;
+    background-image: url('https://cdn.shopify.com/s/files/1/0804/7368/6324/files/banner-top-star.svg?v=1690881866');
+    z-index: 2;
+    height: 20px;
+    width: 20px;
+  }
+  .banner-content::after {
+    content: '';
+    position: absolute;
+    bottom: -110px;
+    right: 100px;
+    height: 30px;
+    width: 30px;
+    background-image: url('https://cdn.shopify.com/s/files/1/0804/7368/6324/files/banner-bottom-star.svg?v=1690881866');
+    z-index: 2;
+  }
+
+/* New Css */
+
+@media only screen and (min-width: 1551px) {
+    .hero-banner {
+      height: calc(75vh - 50px);
+    }
+}
+
+@media only screen and (max-width: 992px) {
+  .banner-content h1 {
+      max-width: 450px;
+  }
+}
+@media only screen and (max-width: 767px) {
+.banner-content {
+    align-self: flex-start;
+}
+
+  .banner-content h1 {
+    font-size: 42px;
+    line-height: 49.48px;
+        margin-bottom: 10px;
+}
+
+.banner-content:before {
+    top: 27px;
+    left: 20px;
+}
+
+  .hero-banner {
+    height: calc(110vh - 50px);
+  }
+
+.banner-content {
+    padding-top: 50px;
+}
+
+.banner-content:after {
+    bottom: 40px;
+    right: 0px;
+}
+
+.image-position img {
+    width: 20px;
+    height: 20px;
+}
+
+.image-position {
+    right: -13px;
+    top: 5px;
+}
+
+  .banner-content p {
+    font-size: 14px;
+    margin-bottom: 20px;
+    line-height: 26.24px;
+}
+
+  .scroll-down {
+    height: 114px;
+    width: 114px;
+    margin-top: -50px;
+}
+
+.scroll-down-link {
+    padding: 14px;
+  font-size:9px;
+    padding-bottom: 0;
+}
+
+  .scroll-down-link img {
+    width: 10px;
+    height: 10px;
+}
+
+  .banner-content {
+      padding-top: 42px;
+  }
+  
+  .banner-content h1 {
+      font-size: 30px;
+      max-width: 60%;
+      line-height: 40px;
+  }
+  
+  .banner-content:before {
+      top: 7px;
+  }
+  
+  .hero-banner {
+      height: 58vh;
+      position: relative;
+  }
+  
+  .banner-person {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      height: 300px;
+      width: 250px;
+  }
+  
+  .banner-person img {
+      height: 100%;
+      object-fit: contain;
+      width: 100%;
+  }
+  .banner-content .richtext {
+      max-width: 60%;
+  }
+  
+}
+@media only screen and (max-width: 600px) {
+  .banner-content h1 {
+      max-width: 250px;
+  }
+  .banner-content {
+      margin: 0 0 0 0px;
+  }
+  .banner-content .richtext {
+      max-width: 100%;
+  }
+  .image-position {
+    right: -10px;
+    top: 3px;
+}
+  .image-position img {
+    width: 15px;
+    height: 15px;
+}
+}
+
+@media only screen and (max-width: 350px) {
+  .banner-content h1 {
+      font-size: 24px;
+  }
+  .banner-content h1 {
+      max-width: 200px;
+  }
+}

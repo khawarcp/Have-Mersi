@@ -1,0 +1,44 @@
+function() { // Get local time as ISO string with offset at the end
+var now = new Date();
+var tzo = -now.getTimezoneOffset(); 
+var dif=tzo>=0?'+':'-';
+var pad = function(num) {
+	var norm = Math.abs(Math.floor(num)); 
+	return (norm < 10 ? '0' : '') + norm;
+};
+return now.getFullYear()
+	+'-'+ pad(now.getMonth()+1)
+	+'-'+ pad(now.getDate())
+	+'T'+ pad(now.getHours())
+	+':'+ pad(now.getMinutes())
+	+':'+ pad(now.getSeconds())
+	+'.'+ pad(now.getMilliseconds()) 
+	+ dif + pad(tzo / 60)
+	+ ':' + pad(tzo % 60);
+}                                                  
+function () { // Public Domain/MIT
+var d = new Date().getTime();
+if (typeof performance !== 'undefined' && typeof performance.now ===
+'function'){
+	d += performance.now(); //use high-precision timer if available
+}
+return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, 
+function (c) {
+var r = (d + Math.random() * 16) % 16 | 0;
+d = Math.floor(d / 16);
+return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+});
+}
+function() {
+varclientIdIndex=3;
+returnfunction(model){
+model.set('dimension' + clientIdIndex, model.get('clientId')); 
+};
+}
+function() { 
+varhitTypeIndex=5;
+returnfunction(model){
+model.set('dimension' + hitTypeIndex, model.get('hitType')); 
+};
+}
+                                                

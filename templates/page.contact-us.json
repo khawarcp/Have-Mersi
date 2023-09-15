@@ -1,0 +1,152 @@
+{
+  "sections": {
+    "page-banner": {
+      "type": "page-banner",
+      "settings": {
+        "show_custom_title": true,
+        "title": "{{ page.metafields.custom.page_title.value }}",
+        "image": "shopify:\/\/shop_images\/Mobile_page_Image.png",
+        "background_image": "shopify:\/\/shop_images\/page-banner-backround.png"
+      }
+    },
+    "contact-customer-service": {
+      "type": "contact-customer-service",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/customer_service.jpg",
+        "heading": "Customer Service",
+        "info": "<p>We're here to help! Our customer service team can answer any questions or address any concerns via email. Email us at:<\/p>",
+        "info_2": "<p>We are happy to assist with anything you need! Please provide your name and order number (if applicable), as well as any necessary information in your email and we will do our best to get back to you as soon as possible.<\/p><p>If you prefer to address your concerns via phone call, please leave us a voicemail. Our phone number is:<\/p>",
+        "email": "help@havemersi.com",
+        "phone_number": "(844) - 807 - 8557",
+        "button_text": "",
+        "button_link": "",
+        "padding_top": 50,
+        "padding_bottom": 50
+      }
+    },
+    "3d234024-f226-4106-9d21-e2e641e3f75d": {
+      "type": "contact-business-hours",
+      "blocks": {
+        "43eeb016-3641-4d9e-a2c4-c4b0b449413d": {
+          "type": "business_hours",
+          "settings": {
+            "day": "Monday",
+            "time": "9:00 AM - 5:00 PM EST"
+          }
+        },
+        "0d0e3b83-1882-4668-8363-de7581a42686": {
+          "type": "business_hours",
+          "settings": {
+            "day": "Tuesday",
+            "time": "9:00 AM - 5:00 PM EST"
+          }
+        },
+        "55ebb6fc-3a32-4eea-a2d5-a6c7a9f069c4": {
+          "type": "business_hours",
+          "settings": {
+            "day": "Wednesday",
+            "time": "9:00 AM - 5:00 PM EST"
+          }
+        },
+        "bf41c22b-9344-4733-a43f-543886261ee3": {
+          "type": "business_hours",
+          "settings": {
+            "day": "Thursday",
+            "time": "9:00 AM - 5:00 PM EST"
+          }
+        },
+        "9576589a-a415-431b-9b46-519d4f6872c1": {
+          "type": "business_hours",
+          "settings": {
+            "day": "Friday",
+            "time": "9:00 AM - 5:00 PM EST"
+          }
+        },
+        "d40400ba-8258-4b6f-bc61-3cc3491b0995": {
+          "type": "business_hours",
+          "settings": {
+            "day": "Saturday",
+            "time": "Closed"
+          }
+        },
+        "ac0eb16a-f5f9-461b-8e60-0141cf49f8ce": {
+          "type": "business_hours",
+          "settings": {
+            "day": "Sunday",
+            "time": "Closed"
+          }
+        }
+      },
+      "block_order": [
+        "43eeb016-3641-4d9e-a2c4-c4b0b449413d",
+        "0d0e3b83-1882-4668-8363-de7581a42686",
+        "55ebb6fc-3a32-4eea-a2d5-a6c7a9f069c4",
+        "bf41c22b-9344-4733-a43f-543886261ee3",
+        "9576589a-a415-431b-9b46-519d4f6872c1",
+        "d40400ba-8258-4b6f-bc61-3cc3491b0995",
+        "ac0eb16a-f5f9-461b-8e60-0141cf49f8ce"
+      ],
+      "custom_css": [
+
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/banner_image_7.png",
+        "heading": "Business Hours",
+        "info": "",
+        "button_text": "",
+        "button_link": "",
+        "padding_top": 50,
+        "padding_bottom": 50
+      }
+    },
+    "86018d02-28ab-4cd3-a9e5-3d840cb30013": {
+      "type": "contact-map",
+      "settings": {
+        "info": "<h2>Office<\/h2><p>Our offices and warehouse are both located in New Jersey.<br\/><br\/>4201 Tonnelle Ave<br\/>Suite #213 <br\/>North Bergen, NJ 07047<\/p>",
+        "map": "<iframe src=\"https:\/\/www.google.com\/maps\/embed?pb=!1m17!1m12!1m3!1d3021.0363396799867!2d-74.0357670035724!3d40.78321523325325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e0!3m2!1sen!2s!4v1691476637235!5m2!1sen!2s\" width=\"100%\" height=\"500\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"><\/iframe>",
+        "padding_top": 50,
+        "padding_bottom": 50
+      }
+    },
+    "0970eef3-42f7-4e0e-8b99-4ee1e8dfa6b7": {
+      "type": "contact-press",
+      "blocks": {
+        "0deed68d-916b-46cd-98ac-3daa6b18a5a2": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/press.png",
+            "heading": "Press",
+            "info": "<p>For press inquiries or social media collaborations, please email us at:<\/p>",
+            "email": "press@theveganwarehouse.com"
+          }
+        },
+        "1e9442e6-ae0c-49b8-8b2f-25cd79113f9c": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/careers_image.png",
+            "heading": "Careers",
+            "info": "<p>Interested in joining the MERSI team? Send in your resume to<\/p>",
+            "email": "team@theveganwarehouse.com"
+          }
+        }
+      },
+      "block_order": [
+        "0deed68d-916b-46cd-98ac-3daa6b18a5a2",
+        "1e9442e6-ae0c-49b8-8b2f-25cd79113f9c"
+      ],
+      "settings": {
+        "heading": "",
+        "info": "",
+        "padding_top": 50,
+        "padding_bottom": 50
+      }
+    }
+  },
+  "order": [
+    "page-banner",
+    "contact-customer-service",
+    "3d234024-f226-4106-9d21-e2e641e3f75d",
+    "86018d02-28ab-4cd3-a9e5-3d840cb30013",
+    "0970eef3-42f7-4e0e-8b99-4ee1e8dfa6b7"
+  ]
+}

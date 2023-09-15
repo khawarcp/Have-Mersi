@@ -1,0 +1,37 @@
+<div class="nav-desktop-drawer" style="background-image: url('{{ section.settings.desktop_navigation_bg | image_url }}');">
+  <div class="page-width">
+    <div class="nav-desktop-drawer-wrapper">
+      <div class="navigation-items">
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'navigation_menu' %}
+            {% assign nav_links = linklists[block.settings.nav_menu].links %}
+            {% if nav_links != blank %}
+              <div class="navigation-item menu-nav">
+                <h3>
+                  {{ block.settings.menu_title }}
+                </h3>
+                <ul>
+                  {% for link in nav_links %}
+                    <li>
+                      <a href="{{ link.url }}">
+                        {{ link.title }}
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            {% endif %}
+            {% when 'featured_product' %}
+            {% assign nav_featured_product = all_products[block.settings.product] %}
+            {% if nav_featured_product != blank %}
+              <div class="navigation-item nav-featured-product">
+                {% include 'product-grid-item', product: nav_featured_product %}
+              </div>
+            {% endif %}
+          {% endcase %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>

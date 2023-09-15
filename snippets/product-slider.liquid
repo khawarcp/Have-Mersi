@@ -1,0 +1,23 @@
+<h3 class="product-section-title">{{title | upcase}}</h3>
+
+<div class="splide splide-products" aria-labelledby="carousel-heading">
+  <div class="splide__arrows">
+      <button class="splide__arrow splide__arrow--prev">
+          <span class="splide-arrow-icon">❮</span>  
+      </button>
+      <button class="splide__arrow splide__arrow--next">
+          <span class="splide-arrow-icon">❯</span> 
+      </button>
+  </div>
+
+  <div class="splide__track">
+      <ul class="splide__list">
+        {% for variation in products  %}
+          {%- assign product = variation.product  %}
+          <li class="splide__slide">
+              {% include 'variant-grid-item-color' %}
+          </li>
+        {% endfor %}
+      </ul>
+  </div>
+</div>

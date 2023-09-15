@@ -1,0 +1,111 @@
+<div class="scroller-container">
+  <ul class="scroller">
+    {% for link in linklists[section.settings.menu].links %}
+    <li>
+      <a href="{{ link.url }}" class="Link Link--secondary">
+        {{ link.title | escape }}
+      </a>
+    </li>
+    {%- endfor -%}
+  </ul>
+</div>
+  
+{% schema %}
+{
+  "name": "Plp Scrolling Menu",
+  "class": "plp-scrolling-menu",
+  "settings": [{
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu"
+  }],
+  "presets": [{
+      "name": "Plp Scrolling Menu"
+  }]
+}
+{% endschema %}
+
+{% style %}
+@media screen and (min-width: 769px) {
+    .plp-scrolling-menu {
+        display: none;
+    }
+}
+
+.plp-scrolling-menu {
+    padding: 22px 0;
+    padding-bottom: 0;
+    background: #fff;
+}
+
+.plp-scrolling-menu .scroller-container {
+    display: flex;
+    padding-right: 17px;
+    padding-left: 17px;
+}
+
+.plp-scrolling-menu ul {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 0;
+    display: flex;
+    white-space: nowrap;
+}
+
+.plp-scrolling-menu ul::-webkit-scrollbar {
+    display: none;
+}
+
+.plp-scrolling-menu ul>* {
+    scroll-snap-align: start;
+}
+
+.plp-scrolling-menu ul li {
+    line-height: 1;
+    list-style: none;
+    text-align: left;
+    margin-right: 16px;
+}
+
+.plp-scrolling-menu ul li a {
+    font-family: Chivo,sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 15px;
+    color: #000000;
+    text-decoration: none;
+    display: block;
+}
+
+.plp-scrolling-menu ul li img {
+    margin-bottom: 8px;
+    pointer-events: none;
+    object-fit: cover;
+}
+
+.scroller {
+    margin: auto;
+}
+
+.plp-scrolling-menu ul li:last-child a {
+    color: #FF0000;
+}
+
+{% endstyle %}
+<script>
+    document.addEventListener('load',function(){
+        const mobileBestSellerLink = document.querySelectorAll('.Link--secondary')
+        mobileBestSellerLink.forEach(function(element) {
+            element.addEventListener('click',function(e){
+                ga('send', {
+                    'hitType': 'event', 
+                    'eventCategory': 'Plp Scroller', 
+                    'eventAction': 'click', 
+                    'eventLabel': e.target.innerText
+                 });  
+            })
+        })
+    })
+</script>

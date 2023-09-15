@@ -1,0 +1,21 @@
+{
+  "sections": {
+    "47cb637c-d2fc-4f5a-a2ef-78bcf6eb6972": {
+      "type": "collection-header",
+      "settings": {
+        "enable": true,
+        "collection_image_enable": true,
+        "parallax": false
+      }
+    },
+    "main": {
+      "type": "collection-landing-main",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "47cb637c-d2fc-4f5a-a2ef-78bcf6eb6972",
+    "main"
+  ]
+}

@@ -1,0 +1,23 @@
+{% for block in section.blocks %}
+  {% if block.type == 'promo' %}
+  
+  <div class="announcement-bar" style="background: #EBEEEA;">
+    <div class="page-width">
+      <div id="" class="announcement-slider announcement-slider--compact" data-compact-style="true" data-block-count="2">
+        <div id="AnnouncementSlide-4ba74401-2c08-44f1-9f55-efbb2f6cd763" class="announcement-slider__slide" data-index="0">
+          {% if block.settings.link != blank %}
+          <a class="announcement-link" href="/collections/2-for-99" style="color: #60925b;">
+          {% endif %}
+            {% if block.settings.link_text != blank %}
+            <span class="announcement-link-text">{{ block.settings.link_text }}</span>
+            {% endif %}
+          {% if block.settings.link != blank %}
+          </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% endif %}
+{% endfor %}

@@ -1,0 +1,357 @@
+.upsell_product_container {
+    margin: auto  -30px;
+    padding-bottom: 0px !important;
+}
+
+.upsell_product_container .cart-offer-reminder {
+    padding: 10px;
+    font-size: 13px;
+    line-height: 20px !important;
+    text-align: start !important;
+    padding: 10px 70px;
+    margin-left: 50px;
+    position: relative;
+    background-image: url("https://cdn.shopify.com/s/files/1/2434/0721/files/Group_29.png?v=1680285205");
+    background-repeat: no-repeat;
+    background-position: 25px;   
+}
+
+.upsell_product_container .cart-offer-reminder br {
+    display: none;
+}
+
+#CartContainer .offer-text{
+  width: 100%; 
+}
+#CartContainer .offer-wrapper .page-width {
+    justify-content: flex-start;
+}
+
+.cart_upsell_header {
+    font-weight: 400;
+}
+
+a.ajaxcart__product-image.upsell_image.ajax-product-link- {
+    margin-right: 0px;
+}
+
+.upsell_product_container .ajaxcart__product-name--wrapper {
+    display: flex !important;
+}
+
+.variant__name {
+    font-weight: 400;
+    font-size: 18px
+}
+
+.item_container {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.upsell_product_message {
+    background: #D1E8CD;
+    margin: 0 5px;
+    border-radius: 69px;
+    color: #131315;
+    position: relative;
+}
+
+
+/* .upsell_product_message::after {
+    content: "";
+    position: absolute;
+    background-image: url("https://cdn.shopify.com/s/files/1/2434/0721/files/Vector_34.png?v=1680295426");
+    background-repeat: no-repeat;
+    width: 100px;
+    height: 20px;
+    right: -35px;
+    top: 17px;
+    margin: auto;
+    bottom: 0;
+}
+
+.upsell_product_message::before {
+    content: "";
+    position: absolute;
+    background-image: url("https://cdn.shopify.com/s/files/1/2434/0721/files/Vector_34.png?v=1680295426");
+    background-repeat: no-repeat;
+    width: 100px;
+    height: 20px;
+    left: -42px;
+    top: -11px;
+    margin: auto;
+    bottom: 0;
+    transform: rotate(180deg);
+} */
+
+.grid_product {
+    display: flex;
+
+}
+
+.grid_CTA {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+}
+
+.bag-special__subtitle {
+    font-size: 11px;
+    font-weight: 400;
+    margin: 0px;
+    color: #60925B;
+}
+
+.upsel_product_meta {
+    font-size: 14px;
+    padding: 0!important;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    font-family: 'Cairo', sans-serif;
+}
+
+.btn-add-upsell-to-cart {
+    color: #fff;
+    font-family: Futura, sans-serif;
+    cursor: pointer;
+    min-width: 107px;
+    height: 45px;
+    font-size: 0.7rem;
+    font-weight: 400;
+    margin-top: 0px !important;
+    letter-spacing: 1px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.btn-discount-product-atc {
+    background: black;
+}
+
+.bag-special {
+    background: transparent;
+    font-size: 16px;
+}
+
+.bag-special .grid_product {
+    background: transparent;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid-product-upsell {
+    border: 1px solid #A8AAAC66;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.grid-product-upsell h3 {
+    color: #301210;
+    font-family: 'Miller';
+}
+
+.bag-special .cart__row {
+    margin-bottom: 10px;
+    margin: 0 30px;
+    border-bottom: 0 !important;
+}
+
+.title-div {
+    width: 50%;
+}
+
+.grid_CTA {
+    width: 50%;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+
+.grid_CTA .btn-discount-product-atc {
+    width: 100px;
+    padding: 0;
+    height: 32px;
+    font-size: 10px;
+    line-height: 18.74px;
+}
+
+.upsell-price-div {
+    margin-bottom: 15px;
+}
+
+span.upsell__original_price s {
+    font-size: 20px;
+    color: #A8AAAC;
+    letter-spacing: normal;
+}
+
+span.upsell__original_price span {
+    font-size: 24px;
+    letter-spacing: normal;
+    color: #EB4E24;
+    margin-left: 6px;
+}
+
+@media(max-width: 767px) {
+    .upsell_product_container .cart-offer-reminder {
+        padding: 10px 0 10px 50px;
+        background-position: 10px;
+        margin-left: 0;
+        background-size: 30px;
+        font-size: 12px;
+        line-height: 18px !important;
+    }
+
+    .upsell_product_message::after, .upsell_product_message::before {
+        display: none;
+    }
+
+    .bag-special .cart__row {
+        margin: 0 10px;
+    }
+
+    .bag-special .grid_product {
+        padding: 10px;
+    }
+}
+
+.upsell__title {
+    font-size: 18px;
+    padding-top: 5px;
+    margin-bottom: 0px;
+    text-transform: uppercase;
+    font-size: 1em;
+    color: #60925B;
+    font-family: Futura, sans-serif;
+    text-align: center;
+    letter-spacing: 1.5px;
+    font-weight: 500;
+}
+
+.ajaxcart__product__upsell-name {
+    font-weight: 500;
+    font-size: 16px;
+    color: #301210 !important;
+    font-family: 'Miller', sans-serif;
+}
+
+.bag-special__title .inner-title {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.bag-special .js-qty__wrapper {
+    max-width: 130px;
+    height: 36px;
+}
+
+.bag-special__price-qty {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+}
+
+.bag-special__price-qty .cart__price {
+    margin-right: 10px;
+}
+
+.bag-special .cart__product-meta {
+    padding: 2px 0;
+}
+
+.cart-special-image {
+    max-width: 104px;
+}
+
+.bag-special .js-qty__num {
+    font-size: 16px;
+    padding: 0;
+}
+
+.bag-special__line-break {
+    height: 1px;
+    border-bottom: 1px solid #cfcfcd;
+    margin-bottom: 15px;
+}
+
+@media screen and (max-width:820px) {
+    .grid_CTA {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 12px;
+        flex-wrap: wrap;
+    }
+
+    .ajaxcart__product__upsell-name {
+        font-size: 1em;
+    }
+
+    .upsel_product_meta {
+        font-size: 0.9em;
+        letter-spacing: 4px !important;
+    }
+
+    .btn-add-upsell-to-cart {
+        min-width: 90px;
+        font-size: 0.7em;
+        margin-top: 0px !important;
+        height: fit-content;
+        padding: 0.5em 0px;
+        letter-spacing: 1px;
+        flex-wrap: nowrap;
+    }
+
+    .upsell__title {
+        font-size: 13px;
+    }
+
+    a.ajaxcart__product-image.upsell_image.ajax-product-link- {
+        margin-right: 10px;
+    }
+}
+
+@media screen and (max-width:650px) {
+    .bag-special .js-qty__wrapper {
+        position: initial;
+        max-width: none;
+        width: 153px;
+        display: flex;
+        align-items: center;
+        margin: 0;
+    }
+
+    .js-qty__adjust_2 {
+        position: static;
+    }
+
+    .bag-special__product-atc-container {
+        width: 100%;
+    }
+
+    .sezzle-shopify-info-button {
+        float: none !important;
+    }
+
+    .bag-special__price-qty {
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .btn-discount-product-atc {
+        display: block;
+        margin: auto;
+        margin-top: 25px;
+        width: 100%;
+    }
+
+    .bag-special__title {
+        font-size: 16px;
+    }
+
+    a.h4.cart__product-name {
+        text-decoration: none;
+    }
+}

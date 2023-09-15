@@ -1,0 +1,91 @@
+ <!--     Custom changes (Dmitry) -->
+
+
+{% assign related_product = '' %}
+
+{%if product.metafields.info.related_product_id %}
+	{% assign productMetafields = all_products[product.metafields.info.related_product_id] %}
+	{% assign related_product = productMetafields.id %}
+{%endif%}
+              <div class="upsell_product">
+                {% assign upsell_tag = '' %}
+                {% assign productTags = product.tags | join: ', ' %}
+                {% if productTags contains 'upsell:' %}
+                  {% for tag in product.tags %}
+                    {% if tag contains 'upsell:' %}
+                      {% assign tag_name = tag | split: ':' %}
+                      {% assign upsell_tag = 'upsell:' | append: tag_name[1] %}
+                      {% break %}
+                    {% endif %}
+                  {% endfor %}
+
+                  {% assign product1 = product %}
+                  {% assign foundUpsellByVariant = false %}
+                  {% for productVariant in product.variants %}
+                    {% if productVariant.metafields.custom.pair_with != blank %}
+                    
+                    {%- assign may_display_variant_upsell = "display:none" -%}
+                    {%- if productVariant.id == product1.selected_or_first_available_variant.id  -%}
+                        {%- assign may_display_variant_upsell = "" -%}
+                        {% assign foundUpsellByVariant = true %}
+                    {%- endif -%}
+
+                    <div style="width:100%; {{may_display_variant_upsell}}" class="upsell-for-variants" 
+                      id="upsell-for-variant-{{productVariant.id}}">
+                    {%- assign pair_product = productVariant.metafields.custom.pair_with.value %}
+                      {% paginate collections.all.products by 200 %}
+                        {% for product_upsell in collections.all.products %}
+                          {% if product_upsell.id == pair_product.featured_image.product_id %}
+                            {%- assign product = product_upsell %}
+                            {%- assign pair_variant = pair_product %}
+                          
+                            {% include 'upsell-variant'  %}
+                          {% endif %}
+                        {% endfor %}
+                      {% endpaginate %}
+                    </div>
+                    {% endif %}
+                  {% endfor %}
+                  {% assign product = product1 %}
+                  
+                  <div class="upsell-for-variants default-product-upsell" 
+                    style="width:100%;{% if foundUpsellByVariant %}display:none;{% endif %}">
+                  {%- if product.metafields.data.pair_with -%}
+                    {%- assign pair_product = product.metafields.data.pair_with.value %}
+                    {% assign product1 = product %}
+
+                    {% paginate collections.all.products by 200 %}
+                        {% for product_upsell in collections.all.products %}
+                          {% if product_upsell.id == pair_product.featured_image.product_id %}
+                            {%- assign product = product_upsell %}
+                            {%- assign pair_variant = pair_product %}
+                            {% include 'upsell-variant'  %}
+                          {% endif %}
+                        {% endfor %}
+                    {% endpaginate %}
+
+                    {% assign product = product1 %}
+
+                  {%- else -%}
+                    {% paginate collections.all.products by 200 %}
+                      {% for product_upsell in collections.all.products %}
+                        {% assign productTags = product_upsell.tags | join: ', ' %}
+                        {% if productTags contains upsell_tag %}
+                          {% if product.id != product_upsell.id and related_product != product_upsell.id %}
+                            {% assign product1 = product %}
+                            {% assign product = product_upsell %}
+                            {% include 'upsell-product' %}
+                            {% assign product = product1 %}
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    {% endpaginate %}
+                  {%- endif -%}
+                  </div>
+                {% endif %}
+                
+              </div>
+              <!--     Custom changes (Dmitry) -->
+              
+             
+              

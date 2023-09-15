@@ -1,0 +1,195 @@
+<script id="CartTemplate" type="text/template">
+{% raw %}
+  <form action="/cart" method="post" novalidate class="cart ajaxcart">
+    <div class="drawer__inner drawer__inner--has-fixed-footer">
+      <div class="vwh-ajaxcart__item-list">
+      {{#items}}
+      <div class="ajaxcart__product appear-animation appear-delay-{{animationRow}} ajaxcart-item-p-{{name}}">
+        <div class="ajaxcart__row product_container">
+          <div class="grid ajaxcart__product__grid " >
+            <div class="grid__item one-quarter image-drawer">
+              <a href="{{url}}" class="ajaxcart__product-image ajax-product-link-{{name}}"><img src="{{img}}" alt="{{name}}"></a>
+            </div>
+            <div class="grid__item two-quarter infor-drawer">
+              <div class="ajaxcart__product-name--wrapper">
+                <a href="{{url}}" class="ajaxcart__product-name ajax-product-link-{{name}}">{{{name}}}</a>
+                {{#if variation}}
+                  <span class="ajaxcart__product-meta">{{variation}}</span>
+                {{/if}}
+                {{#if isGift}}
+                {{else}}
+                {{#properties}}
+                  {{#each this}}
+                    {{#if this}}
+                      <span class="ajaxcart__product-meta">{{@key}}: {{this}}</span>
+                    {{/if}}
+                  {{/each}}
+                {{/properties}}
+                {{/if}}
+                {{{ recurring }}}              
+              </div>
+              <div class="grid grid--full display-table">
+                <div class="grid__item display-table-cell one-half">
+                  <div class="ajaxcart__quantity ajaxcart__quantity-p-{{name}} js-qty{{#if isSample}} hide{{/if}}{{#if isGift}} hide{{/if}}">
+                    <label for="updates_{{key}}" class="visually-hidden">{% endraw %}{{ 'products.product.quantity' | t }}{% raw %}</label>
+                    <input type="number" id="updates_{{key}}" name="updates[]" value="{{itemQty}}" min="0" class="js-qty__fallback" data-id="{{key}}">
+                  </div>
+                </div>
+              </div>
+              {{#if discountsApplied}}
+                <div class="grid grid--full display-table">
+                  <div class="grid__item text-right">
+                    {{#each discounts}}
+                    <!--
+                      <small class="ajaxcart__discount">{{this.title}}</small>
+                      -->
+                    {{/each}}
+                  </div>
+                </div>
+              {{/if}}
+            </div>
+            <div class="grid__item one-quarter price-drawer">
+            <div class="price-remove">
+              <div class="grid__item text-right">
+                {{#if discountsApplied}}
+                  <small class="ajaxcart__price--strikethrough" style="color:gray">{{{price}}}</small>
+                  <span class="ajaxcart__price">
+                    {{{discountedPrice}}}
+                  </span>
+                {{else}}
+                  <span class="ajaxcart__price">
+                    {{{price}}}
+                  </span>
+                {{/if}}
+              </div>
+
+              {{#if isGift}}
+              {{else}}
+              <div class="grid__item text-right">
+                <a href="/cart/change?line={{lineItemNumber}}&quantity=0" class="ajaxcart__product-remove" data-item-key="{{key}}">{% endraw %} <img src="https://cdn.shopify.com/s/files/1/0561/4341/3438/files/remove-icon.svg?v=1692880519" alt="remove-icon">{% raw %}</a>
+
+
+              </div>
+              {{/if}}
+            
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{/items}}
+      </div>
+
+
+      <div  class="upsell_product_container upsell_product_message"></div>
+      <div  id="upsell_product_container" ></div>
+      {% endraw %}{% if settings.global_promotion_show %}
+      <div class="cart-global-promotion">{{ settings.global_promotion_text }}</div>
+      {% endif %}{% raw %}
+
+      {% endraw %}{% if settings.cart_notes_enable %}{% raw %}
+        <div class="appear-animation appear-delay-{{lastAnimationRow}}">
+          <label for="CartSpecialInstructions" class="ajaxcart__note">{% endraw %}{{ 'cart.general.note' | t }}{% raw %}</label>
+          <textarea name="note" class="input-full" id="CartSpecialInstructions">{{note}}</textarea>
+        </div>
+      {% endraw %}{% endif %}{% raw %}
+      
+
+    </div>
+    
+
+    <div class="drawer__footer drawer__footer--fixed appear-animation appear-delay-{{lastAnimationRow}}">
+
+          <div class="offer-wrapper">
+        
+        <div class="page-width">
+  <div class="offer-text">
+      {% endraw %} {{ settings.promo_message_before }} {% raw %}
+      <span class="promo_remaining-drawer">
+        2
+      </span>
+      {% endraw %} {{ settings.promo_message_after }} {% raw %}
+    </div>
+        </div>
+        <div class="page-width">
+          <div id="myProgress-drawer">
+            <div id="myBar-drawer"></div>
+          </div>
+          <div class="items-count">
+            <span class="cart-total-quant-drawer">0</span>/<span class="cart-remaing-total">2</span>
+          </div>
+        </div>
+      </div>
+
+  
+
+  
+   
+  
+  
+  
+      <!-- <div class="grid grid--full">
+        <div class="grid__item two-thirds">
+          <p class="ajaxcart__subtotal">{% endraw %}{{ 'cart.general.subtotal' | t }}{% raw %}</p>
+        </div>
+        <div class="grid__item one-third text-right">
+          <p class="ajaxcart__price">{{{totalPrice}}}</p>
+        </div>
+      </div> -->
+      <div>
+      <div class="bag-special__line-break" style="margin-top:30px" ></div>
+      </div>
+      <div class="minicart-price-container">
+       {{#if totalCartDiscount}}
+       <div class="custom-grid custom-grid-cols-2 minicart-subtotal-row">
+        <div class="ajaxcart__subtotal">{% endraw %}{{ 'cart.general.subtotal' | t }}{% raw %}</div>
+        <div class="text-right"><span class="ajaxcart__price">{{{originalTotalPrice}}}</span></div>
+      </div>
+
+      <div class="custom-grid custom-grid-cols-2"><div class="ajaxcart__subtotal discount-cart-label-highlight -discount-label">Your Savings!</div>
+      <div class="text-right"><span class="ajaxcart__price discount-cart-highlight">-{{ totalCartDiscountAmount}}</span></div></div>
+
+      <div class="custom-grid custom-grid-cols-2 the-final-price-row"><div class="ajaxcart__subtotal -discount-label">TOTAL</div>
+      <div class="text-right"><span class="ajaxcart__price the-final-price">{{ itemsSubtotalPrice}}</span></div></div>
+      {{else}}
+
+        <div class="custom-grid custom-grid-cols-2 minicart-subtotal-row">
+        <div class="ajaxcart__subtotal">{% endraw %}{{ 'cart.general.subtotal' | t }}{% raw %}</div>
+        <div class="text-right"><span class="ajaxcart__price">{{{totalPrice}}}</span></div>
+      </div>
+
+      {{/if}}
+    </div>
+    <!-- <div class="discount-additional">Discount Codes & Promotions calculated at checkout</div> -->
+      {{#if totalCartDiscount}}
+        <!--<p class="ajaxcart__savings text-center">{{{totalCartDiscount}}}</p>-->
+      {{/if}}
+      {% endraw %}{% if settings.cart_terms_conditions_enable %}
+        <p class="ajaxcart__note ajaxcart__note--terms">
+          <input type="checkbox" id="CartAgree" />
+          <label for="CartAgree">
+            {% if settings.cart_terms_conditions_link != blank %}
+              {{ 'cart.general.terms_html' | t: url: settings.cart_terms_conditions_link }}
+            {% else %}
+              {{ 'cart.general.terms' | t }}
+            {% endif %}
+          </label>
+        </p>
+      {% endif %}{% raw %}
+      {% endraw %}
+        {% if additional_checkout_buttons and settings.cart_additional_buttons %}
+          <div class="additional_checkout_buttons">{{ content_for_additional_checkout_buttons }}</div>
+        {% endif %}
+      {% raw %}
+      <button type="submit" name="checkout" class="btn-side-checkout btn--full btn cart__checkout{% if settings.cart_terms_conditions_enable %} cart__checkout--page{% endif %}">
+                 CHECKOUT
+                </button>
+   <!-- <div class="discount-additional text-center">Shipping & Taxes are calculated during checkout.</div> -->
+         </div>
+
+  </form>
+{% endraw %}
+</script>
+
+
+

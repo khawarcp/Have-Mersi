@@ -1,0 +1,49 @@
+<link rel="stylesheet" href="{{ 'product-template-new.css' | asset_url }}">
+
+{%- assign product_img_structure = product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+<div
+  id="ProductSection-{{ section_id }}"
+  class="product-section"
+  data-section-id="{{ section_id }}"
+  data-section-type="product-template"
+  data-product-handle="{{ product.handle }}"
+  data-product-url="{{ product.url | within: collection }}"
+  data-aspect-ratio="{{ 100 | divided_by: product.featured_image.aspect_ratio }}"
+  data-img-url="{{ product_img_structure }}"
+  {% if settings.product_zoom_enable %}
+  data-image-zoom="true"
+  {% endif %}
+  {% if settings.inventory_enable %}
+  data-inventory="true"
+  {% endif %}
+  {% unless isModal %}
+  data-enable-history-state="true"
+  {% endunless %}
+  {% if isModal %}
+  data-lazyload-content="true"
+  {% endif %}>
+
+  {% render 'preorder-now-collection-item', product: product %}
+  {% include 'product-template-variables' %}
+
+  <div class="page-content page-content--product">
+    <div class="page-width">
+
+      <div class="grid{% unless image_position == 'left' %} grid--product-images-right{% endunless %} {% if product.tags contains 'Handbags' %}hand_bags{% endif %}">
+        <div class="grid__item {{ product_image_width }}">
+          {% if section.settings.thumbnail_position == 'none' %}
+          {% include 'product-thumbnail-grid', section_id: section_id, isModal: isModal, thumbnail_position: thumbnail_position %}
+          {% else %}
+          {% include 'product-images', section_id: section_id, isModal: isModal, thumbnail_position: thumbnail_position %}
+            {% endif %}
+        </div>
+
+        <div class="grid__item {{ product_description_width }}">
+          {% include 'product-description' %}
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

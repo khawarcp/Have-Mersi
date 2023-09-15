@@ -1,0 +1,321 @@
+.gamification {
+    margin: 20px 0;
+}
+.gamification-header p {
+    text-align: left;
+    font-size: 14px;
+}
+.gamification-header p strong {
+    color: #EB4E24;
+}
+.gamification-progress {
+    width: 100%;
+    height: 8px;
+    background: #F9E8D8;
+    border-radius: 20px;
+    position: relative;
+    margin-top: 40px;
+}
+.gamification-progress ul {
+    margin: 0;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    position: absolute;
+    top: -45px;
+}
+.gamification-progress ul li {
+    list-style: none;
+    z-index: 10;
+    text-align: center;
+    position: relative;
+    width: 108px;
+    height: 108px;
+}
+.gamification-progress ul li img {
+    position: absolute;
+    width: 60px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 10px;
+    margin: auto;
+}
+
+.gamification-progress ul li svg {
+    height: 100%;
+    width: 100%;
+}
+.gamification-progress ul li svg.letter {
+    position: absolute;
+}
+.gamification-progress ul li svg.icon-free-shipping {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 27px;
+}
+
+.gamification-header p {
+    padding-bottom: 15px;
+}
+.gamification-progress ul li small {
+    font-weight: 700;
+    font-size: 14px;
+    position: relative;
+    top: -10px;
+    color: #7a7a7a;
+}
+.gamification-progress ul li:first-child.complete svg.letter path {
+    fill: #301210;
+    stroke: none;
+}
+.gamification-progress ul li.complete svg.svg-complete ellipse.d{
+    fill: #c9cce8;
+}
+
+.gamification-progress ul li small {
+    font-family: 'Cairo';
+    font-weight: 400;
+    margin-top: 10px;
+}
+
+.gamification-progress ul li.complete svg path {
+    stroke: #C9CCE8;
+    fill: #efffe5;
+}
+.gamification-progress ul li.complete small {
+    color: #301210;
+}
+.gamification-progress span {
+    width: 0;
+    height: 8px;
+    background: #C9CCE8;
+    border-radius: 20px;
+    position: absolute;
+    top: 0;
+}
+.btn--quick-atc .quick-atc-text {
+    font-weight: 100;
+    letter-spacing: normal;
+    font-size: 15px;
+    pointer-events: none;
+}
+.btn--quick-atc-disabled:hover {
+    background-color: #f6f6f6 !important;
+}
+.btn--quick-atc-disabled:focus {
+    background-color: #f6f6f6 !important;
+}
+.grid__item .grid-product__content .grid-product__meta .grid-product__vendor {
+    margin-top: 0px !important;
+}
+@media screen and (max-width: 768px) {
+    .grid__item .grid-product__content .grid-product__meta-items-aligned {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        min-height: 175px;
+        justify-content: space-between;
+    }
+
+  .gamification-progress ul li {
+    width: 88px;
+    height: 88px;
+  }
+
+.gamification-progress {
+    margin-top: 35px;
+}
+
+.gamification-progress ul {
+    top: -40px;
+}
+
+  
+}
+.site-header {
+    transition: all ease-in-out 0.25s;
+}
+.site-header.site-header--sticky {
+    transition: all ease-in-out 0.25s;
+}
+.site-header--sticky {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    padding: 0;
+    transform: translate3d(0, -100%, 0);
+    transition: none;
+    z-index: 20;
+}
+.site-header--opening {
+    transform: translateZ(0);
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.collection-filter {
+    background-color: #fff;
+}
+.filters--sticky {
+    max-width: 1460px;
+    margin: 0 auto;
+    padding: 20px 40px 0px 22%;
+    transition: top ease-in-out 0.25s;
+}
+.filters--sticky-mobile {
+    padding: 20px 20px 0px;
+    transition: top ease-in-out 0.25s;
+}
+.sideFilters--sticky {
+    position: fixed;
+    overflow-y: scroll;
+    height: 60vh;
+    width: 18%;
+    transition: top ease-in-out 0.25s;
+}
+@media screen and (min-width: 1200px) {
+    .sideFilters--sticky {
+        width: 14.5%;
+    }
+}
+#shopify-section-footer-promotions,
+#shopify-section-footer {
+    background-color: #fff;
+    z-index: 23;
+    position: relative;
+}
+.site-header {
+    z-index: 21;
+}
+#deliverymessage {
+    background-color: #fff !important;
+    padding: 0px !important;
+    font-size: 14px !important;
+    border: solid 1px #a2a2a6;
+}
+#deliverymessage .header {
+    background-color: #f1f6f0;
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 30px;
+}
+#deliverymessage .header .dispatch_countdown .deliverymessage-countdown::before {
+    content: url("https://cdn.shopify.com/s/files/1/2434/0721/files/deliveryIcon3.png?v=1677256951");
+    position: relative;
+    top: 3px;
+    left: -8px;
+}
+#deliverymessage .content {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    padding: 0 40px;
+}
+#deliverymessage .content .dispatch_date::before {
+    content: url("https://cdn.shopify.com/s/files/1/2434/0721/files/deliveryIcon1.png?v=1677256942");
+    height: 32px;
+}
+#deliverymessage .content .delivery_time span::after {
+    content: url("https://cdn.shopify.com/s/files/1/2434/0721/files/deliveryIcon4.png?v=1677257506");
+}
+#deliverymessage .content .delivery_date::before {
+    content: url("https://cdn.shopify.com/s/files/1/2434/0721/files/deliveryIcon2.png?v=1677256951");
+}
+#deliverymessage .content .dispatch_date,
+#deliverymessage .content .delivery_date {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+#deliverymessage .date-text {
+    font-weight: bold;
+}
+#deliverymessage .date-info {
+    font-size: 12px;
+    color: #a2a2a6;
+}
+#deliverymessage .delivery_time {
+    color: #60925b;
+}
+#deliverymessage .delivery_time span {
+    display: grid;
+    text-align: center;
+    font-size: 13px;
+    padding-top: 15px;
+}
+#deliverymessage .details ul {
+    display: flex;
+    background-color: #f5f5f5;
+    border-radius: 20px;
+    justify-content: center;
+    gap: 20px;
+    width: 90%;
+    margin: 15px auto !important;
+}
+#deliverymessage .details ul li {
+    font-size: 12px !important;
+}
+
+.gamification-div {
+    background-color: #FBFBFB;
+    padding: 20px;
+    width: 93%;
+    margin-left: auto;
+    margin-top: 25px;
+    border-radius: 10px;
+}
+
+.drawer__close-button {
+    right: unset;
+    position: absolute;
+    left: 0px;
+    top: -55px;
+}
+
+.gamification {
+    margin-top: 0;
+    padding-bottom: 50px;
+}
+
+@media screen and (max-width: 768px) {
+    #deliverymessage {
+        font-size: 11px !important;
+    }
+    #deliverymessage .header {
+        padding: 10px 10px !important;
+        align-items: center !important;
+    }
+    #deliverymessage .header .order_now {
+        width: 120px;
+    }
+    #deliverymessage .content {
+        padding: 0px 5px !important;
+    }
+    #deliverymessage .content .date-info {
+        font-size: 11px !important;
+    }
+    #deliverymessage .delivery_time span {
+        font-size: 10px !important;
+    }
+    #deliverymessage .details ul {
+        display: grid !important;
+        background-color: rgba(0, 0, 0, 0) !important;
+        gap: 5px !important;
+        text-align: center;
+    }
+    #deliverymessage .details ul li {
+        background-color: #f5f5f5 !important;
+        border-radius: 20px !important;
+        padding: 5px 30px !important;
+        font-size: 11px !important;
+        width: -moz-fit-content;
+        width: fit-content;
+        margin: auto;
+    }
+    #deliverymessage .details ul li::before {
+        top: 5px !important;
+        left: -5px !important;
+    }
+}

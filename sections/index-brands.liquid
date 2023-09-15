@@ -1,0 +1,73 @@
+<link rel="stylesheet" href="{{ 'index-brands.css' | asset_url }}">
+
+<section class="brands-logos">
+  <div class="page-width-logos">
+    <div class="brands-logos-inner">
+      <div class="brands-header">
+        <h3 class="caramel">{{ section.settings.heading }}</h3>
+      </div>
+      <div class="brands-logos-images">
+        <div class="brands-logos-slider owl-carousel">
+          {% for block in section.blocks %}
+            <div class="slider-item">
+              {% if block.settings.image != blank %}
+                {% if block.settings.brand_link != blank %}
+                  <a href="{{ block.settings.brand_link }}">
+                  {% endif %}
+                  <img
+                    src="{{ block.settings.image | image_url }}"
+                    alt="{{ block.settings.image.alt }}"
+                    loading="lazy"
+                    height=""
+                    width="">
+                  {% if block.settings.brand_link != blank %}
+                  </a>
+                {% endif %}
+              {% else %}
+                {{ 'image' | placeholder_svg_tag }}
+              {% endif %}
+
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+  {
+    "name": "Brand Logos",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "As seen in"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Brand",
+        "type": "brand",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }, {
+            "type": "url",
+            "id": "brand_link",
+            "label": "Link"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Brand Logos"
+      }
+    ]
+  }
+{% endschema %}

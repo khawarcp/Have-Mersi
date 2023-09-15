@@ -1,0 +1,232 @@
+.style-redefine .content-wrapper h2 {
+    font-size: 110px;
+    line-height: 129.58px;
+  position: relative;
+}
+
+
+.style-bg {
+    background-size: cover;
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 50px;
+}
+
+.style-redefine .flex-grid--gutters .flex-grid__item {
+    padding-left: 0;
+}
+
+.style-bg {
+    height: 100%;
+    background: right bottom no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+}
+
+.our-story.style-redefine .content-wrapper {
+    position: relative;
+}
+
+.our-story.style-redefine .content-wrapper::before {
+    content: '';
+    position: absolute;
+    background-image: url(https://cdn.shopify.com/s/files/1/0804/7368/6324/files/style-star.svg?v=1691574639);
+    height: 30px;
+    width: 30px;
+    top: 20px;
+    left: 10px;
+}
+
+.our-story.style-redefine .content-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    right: 40px;
+    background-image: url(https://cdn.shopify.com/s/files/1/0804/7368/6324/files/style_classy.png?v=1691574981);
+    height: 117px;
+    width: 117px;
+    background-size: contain;
+        background-repeat: no-repeat;
+      background-position: center;
+}
+
+/* New Css */
+
+.our-story.style-redefine .content-wrapper {
+    max-width: 600px;
+}
+
+.style-redefine .flex-grid--gutters {
+    margin: 0px;
+    flex-wrap: nowrap;
+}
+
+.style-redefine .flex-grid--gutters .image-wrapper img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+.style-redefine .flex-grid--gutters .flex-grid__item {
+    width: 50%;
+}
+
+.feature-content {
+    width: calc(100% - 80px);
+}
+.flex-grid__item .style-bg {
+    width: 100%;
+}
+
+@media only screen and (min-width: 1551px) {
+  .our-story .content-wrapper {
+      align-self: center;
+      padding: 25px 30px 20px 30px;
+  }
+    
+  .style-redefine .content-wrapper h2 {
+      font-size: 90px;
+      line-height: 89.58px;
+      position: relative;
+  }
+  .feature-content h3 {
+      margin-bottom: 5px;
+  }
+  .feature-content p {
+      margin: 0px 0px 10px;
+  }
+  .style-redefine .image-wrapper {
+      max-height: 600px;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .style-bg {
+      padding: 20px;
+  }
+  
+  .our-story.style-redefine .content-wrapper {
+      padding: 30px 30px;
+  }
+  
+  .our-story.style-redefine .content-wrapper:after {
+      width: 100px;
+      height: 100px;
+  }
+  .style-redefine .content-wrapper h2 {
+      font-size: 90px;
+      line-height: 110px;
+  }
+}
+@media only screen and (max-width: 992px) {
+  .style-redefine .content-wrapper h2 {
+      font-size: 76px;
+      line-height: 90px;
+  }
+}
+@media only screen and (max-width:767px) {
+  .style-redefine .content-wrapper h2 {
+      font-size: 60px;
+      line-height: 70px;
+        margin-top: 35px;
+  }
+  .our-story.style-redefine .content-wrapper:after {
+      width: 75px;
+      height: 75px;
+  }
+  
+  .our-story.style-redefine .content-wrapper {
+      padding: 10px 10px;
+  }
+  .feature-image {
+      width: 55px;
+      height: 55px;
+  }
+  
+  .feature-image img {
+      width: 30px;
+  }
+  
+  .feature-content p {
+      font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .our-story.style-redefine .content-wrapper {
+      max-width: 330px;
+  }
+  
+
+  .feature-content p {
+      margin: 0px;
+  }
+  
+  .style-redefine .flex-grid--gutters {
+      flex-wrap: wrap;
+  }
+  
+  .our-story.style-redefine .content-wrapper:after {
+      right: 0;
+      left: auto;
+  }
+  
+  .style-redefine .content-wrapper h2 {
+      font-size: 48px;
+      line-height: 55px;
+  }
+  
+  .feature-content p:empty {
+      display: none;
+  }
+  
+  .feature-content {
+      height: auto;
+  }
+  .style-redefine .flex-grid__item:nth-child(2) {
+      padding-top: 0px;
+  }
+  .our-story.style-redefine .content-wrapper {
+      padding: 0;
+  }
+  
+  .style-bg {
+      padding: 20px 17px 30px!important;
+  }
+  
+  .style-redefine .content-wrapper h2 {
+      max-width: 80%;
+      line-height: 56px;
+  }
+  
+  .features-list {
+      margin: 20px 0px 0px;
+      gap: 25px;
+      flex-direction: row;
+  }
+  
+  .feature-content p:empty {
+      display: none !important;
+  }
+  
+  .our-story.style-redefine .content-wrapper:before {
+      top: 0;
+      left: 0px;
+  }
+  
+  .feature-content {
+      width: calc(100% - 60px);
+  }
+  
+  .feature-tiem {
+      width: 100%;
+  }
+
+}

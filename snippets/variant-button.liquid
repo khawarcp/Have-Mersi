@@ -1,0 +1,181 @@
+{%- assign swatch_file_extension = 'png' -%}
+{%- assign is_color = false -%}
+{%- assign color_swatch_drop = option_drop -%}
+{%- assign color_option_index = 0 -%}
+{% assign is_seasonal = false %}
+{% assign swatch_size = '50x' %}
+{% assign swatch_id = '-Swatch' %}
+
+{% if template == 'product.landing-page' %}
+	{% assign swatch_size = '100x' %}
+   {% assign swatch_id = '-imageswatch' %}
+{% endif %}
+
+{% for options in product.options_with_values %}
+  {% for value in options.values %}
+    {% assign downcased_value = value | downcase %}
+    {% if downcased_value contains 'seasonal' %}
+      {% assign is_seasonal = true %}
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
+{% if settings.product_color_swatches %}
+  {% for option in product.options_with_values %}
+    {% if option == color_swatch_drop %}
+      {%- assign color_option_index = forloop.index0 -%}
+      {%- assign downcased_option = color_swatch_drop.name | downcase -%}
+      {% if downcased_option contains 'color' or downcased_option contains 'colour' %}
+        {%- assign is_color = true -%}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+<div class="variant-wrapper variant-wrapper--{{ settings.variant_type }} js">
+  <label class="variant__label{% if option.name == 'Default' or option.name == 'Title' %} hidden-label{% endif %}"
+    for="ProductSelect-{{ section_id }}-option-{{ forloop.index0 }}">
+    
+    <span class="color_label">{{ option.name }}</span>
+    {% if is_color %}
+      <span class="variant__label-info">
+        :
+        <span
+          id="VariantColorLabel-{{ section_id }}-{{ forloop.index0 }}"
+          data-option-index="{{ color_option_index }}">
+          {% if is_seasonal %}
+            {{ option.selected_value | remove: '-seasonal' }}
+          {% else %}
+            {{ option.selected_value }}
+          {% endif %}
+        </span>
+      </span>
+    {% endif %}
+  </label>
+  
+  
+  
+  <fieldset class="variant-input-wrap"
+    name="{{ option.name }}"
+    id="ProductSelect-{{ section_id }}-option-{{ forloop.index0 }}">
+    {%- assign option_index = forloop.index -%}
+    {%- assign seasonal_content = '' -%}
+    
+    
+    {% if is_seasonal %}
+      {% if template == 'product.landing-page' %}<div>{% endif %}
+    {% endif %}
+    {% for value in option.values %}
+      {% assign seasonal = false %}
+      {%- assign temp_seasonal_content = '' -%}
+      {% assign downcased_value = value | downcase %}
+      {% if downcased_value contains 'seasonal' %}
+        {% assign seasonal = true %}
+      {% endif %}
+      {%- assign variant_label_state = true -%}
+      {% if product.options.size == 1 %}
+        {% unless product.variants[forloop.index0].available %}
+          {% unless is_color %}
+            {%- assign variant_label_state = false -%}
+          {% endunless %}
+        {% endunless %}
+      {% endif %}
+      {% if seasonal %}
+        {% capture temp_seasonal_content %}
+        <input type="radio"
+          {% if option.selected_value == value %} checked="checked"{% endif %}
+          {% unless variant_label_state %} disabled="disabled"{% endunless %}
+          value="{{ value | escape }}"
+          data-index="option{{ option_index }}"
+          name="{{ option.name }}"
+          class="variant__input-{{ section_id }}{% unless variant_label_state %} disabled{% endunless %}{% if is_color %} variant__input--color-swatch-{{ section_id }}{% endif %} tvw-variant-input"
+          {% if is_color %} data-color-name="{{ value | escape }}"{% endif %}
+          {% if is_color %} data-color-index="{{ color_option_index }}"{% endif %}
+          id="ProductSelect-{{ section_id }}-option-{{ option.name | handleize }}-{{ value | url_encode }}">
+        {% if is_color %}
+          {% if is_seasonal %}
+            {% assign color_value = value | remove: '-seasonal' | append: swatch_id %}
+          {% else %}
+            {% assign color_value = value | append: swatch_id %}
+          {% endif %}
+          
+ 
+          {% for image in product.images %}
+            {% if image.alt contains color_value %}
+              {% assign color_image = image | img_url: swatch_size %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+      
+          {%- assign color_swatch_fallback = value | split: ' ' | last | handle -%}
+
+          <label
+            for="ProductSelect-{{ section_id }}-option-{{ option.name | handleize }}-{{ value | url_encode }}"
+            class="variant__button-label variant__color-swatch color-swatch--{{ value | handle }}{% unless variant_label_state %} disabled{% endunless %}"
+            style="background-image: url({{ color_image }}); background-color: {{ color_swatch_fallback }};"
+          >
+            {{ value | escape }}
+          </label>
+        {% else %}
+          <label
+            for="ProductSelect-{{ section_id }}-option-{{ option.name | handleize }}-{{ value | url_encode }}"
+            class="variant__button-label{% unless variant_label_state %} disabled{% endunless %}">{{ value | escape }}</label>
+        {% endif %}
+        {% endcapture %}
+        {%- assign seasonal_content = seasonal_content | append: temp_seasonal_content -%}
+      {% else %}
+        <input type="radio"
+          {% if option.selected_value == value %} checked="checked"{% endif %}
+          {% unless variant_label_state %} disabled="disabled"{% endunless %}
+          value="{{ value | escape }}"
+          data-index="option{{ option_index }}"
+          name="{{ option.name }}"
+          class="variant__input-{{ section_id }}{% unless variant_label_state %} disabled{% endunless %}{% if is_color %} variant__input--color-swatch-{{ section_id }}{% endif %} tvw-variant-input"
+          {% if is_color %} data-color-name="{{ value | escape }}"{% endif %}
+          {% if is_color %} data-color-index="{{ color_option_index }}"{% endif %}
+          id="ProductSelect-{{ section_id }}-option-{{ option.name | handleize }}-{{ value | url_encode }}">
+        {% if is_color %}
+          {% if is_seasonal %}
+            {% assign color_value = value | remove: '-seasonal' | append: swatch_id %}
+          {% else %}
+            {% assign color_value = value | append: swatch_id %}
+          {% endif %}
+          
+          {% for image in product.images %}
+            {% if image.alt contains color_value %}
+              {% assign color_image = image | img_url: swatch_size %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+      
+          {%- assign color_swatch_fallback = value | split: ' ' | last | handle -%}
+          <label
+            for="ProductSelect-{{ section_id }}-option-{{ option.name | handleize }}-{{ value | url_encode }}"
+            class="variant__button-label variant__color-swatch color-swatch--{{ value | handle }}{% unless variant_label_state %} disabled{% endunless %}"
+            style="background-image: url({{ color_image }}); background-color: {{ color_swatch_fallback }};"
+          >
+            {{ value | escape }}
+          </label>
+        {% else %}
+          <label
+            for="ProductSelect-{{ section_id }}-option-{{ option.name | handleize }}-{{ value | url_encode }}"
+            class="variant__button-label{% unless variant_label_state %} disabled{% endunless %}">{{ value | escape }}</label>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+    {% if is_seasonal %}
+    {% if template == 'product.landing-page' %}
+    	</div>
+    	<div>
+    {% endif %}
+    
+      <div class="swatch-title">
+        <div class="swatch-subcategory-title">Seasonal </div>
+        <span class="swatch-subcategory-subtitle">Limited Quantities</span>
+      </div>
+      {{ seasonal_content }}
+    {% endif %}
+    
+   {% if template == 'product.landing-page' %} </div>{% endif %}
+  </fieldset>
+</div>

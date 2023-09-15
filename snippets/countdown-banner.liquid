@@ -1,0 +1,582 @@
+{% if settings.countdown_enable %}
+{%- style -%}
+*, ::before, ::after {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+}
+
+::-webkit-backdrop {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+}
+
+::backdrop {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
+}
+
+.left-2 {
+  left: 0.5rem;
+}
+
+.top-1 {
+  top: 0.25rem;
+}
+
+.mt-5 {
+  margin-top: 1.25rem;
+}
+
+.block {
+  display: block;
+}
+
+.flex {
+  display: flex;
+}
+
+.hidden {
+  display: none;
+}
+
+.h-12 {
+  height: 3rem;
+}
+
+.w-12 {
+  width: 3rem;
+}
+
+.w-14 {
+  width: 3.5rem;
+}
+
+.w-\[70px\] {
+  width: 70px;
+}
+
+.-rotate-12 {
+  --tw-rotate: -12deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.space-x-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1rem * var(--tw-space-x-reverse));
+  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.rounded-full {
+  border-radius: 9999px;
+}
+
+.rounded-md {
+  border-radius: 0.375rem;
+}
+
+.bg-black {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
+.bg-green-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(34 197 94 / var(--tw-bg-opacity));
+}
+
+.bg-yellow-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(250 204 21 / var(--tw-bg-opacity));
+}
+
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.py-5 {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.pr-4{
+  padding-right: 1rem;
+}
+
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.pl-12 {
+  padding-left: 3rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.leading-3 {
+  line-height: .75rem;
+}
+
+.leading-6 {
+  line-height: 1.5rem;
+}
+
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.text-yellow-400 {
+  --tw-text-opacity: 1;
+  color: rgb(250 204 21 / var(--tw-text-opacity));
+}
+
+.text-black {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+@media (min-width: 1024px) {
+  .md\:mt-0 {
+    margin-top: 0px;
+  }
+
+  .md\:flex {
+    display: flex;
+  }
+
+  .md\:h-16 {
+    height: 4rem;
+  }
+
+  .md\:w-16 {
+    width: 4rem;
+  }
+
+  .md\:w-20 {
+    width: 5rem;
+  }
+
+  .md\:flex-row {
+    flex-direction: row;
+  }
+
+  .md\:items-center {
+    align-items: center;
+  }
+
+  .md\:justify-between {
+    justify-content: space-between;
+  }
+
+  .md\:py-8 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .md\:px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .md\:pr-8 {
+    padding-right: 2rem;
+  }
+
+  .md\:py-4 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .md\:text-left {
+    text-align: left;
+  }
+
+  .md\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .md\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+}
+
+.cdbanner-container,
+.cdbanner-container:hover{
+    text-decoration: none;
+    color:white;
+}
+
+.cdbanner-container{
+    padding-top:15px;
+    padding-bottom:15px;
+}
+
+@media screen and (max-width:650px){
+    .cdbanner-container{
+        padding-top:30px;
+        padding-bottom:30px;
+    }
+
+    .cd-banner__image-container{
+        padding-right:12px;
+    }
+
+    .cdbanner-container{
+        line-height:initial;
+    }
+
+    .cd-banner__main-title{
+        font-size:15px;
+    }
+
+    .cd-banner__second-title{
+        font-size:13px;
+    }
+
+    .cd-banner__third-title{
+        font-size:10px;
+    }
+}
+
+.cdbanner__main-title-container{
+    padding-right:0;
+}
+
+@media screen and (max-width:1352px){
+    .cdbanner-rc-text{
+        font-size:15px;
+        line-height:16px;
+    }
+}
+
+@media screen and (max-width:1205px){
+    .cdbanner-right-column{
+        max-width:290px;
+    }
+}
+
+@media screen and (max-width:1127px){
+    .cdbanner-right-column{
+        max-width:205px;
+    }
+
+    .cd-banner__product-image{
+        max-width:66px;
+    }
+}
+
+@media screen and (max-width:650px){
+  .cdbanner-right-column{
+    max-width:none;
+  }
+
+  .cdbanner-right-column{
+    padding-top:20px;
+  }
+}
+
+.cdbanner-container,
+.cdbanner-outer{
+    background-color:{{settings.countdown_bg_color}}
+}
+
+.cdbanner-container{
+  max-width:1450px;
+  margin:auto;
+}
+
+.cd-banner__main-title{
+    background-color:{{settings.countdown_main_bg_color}};
+    color:{{settings.countdown_main_title_color}};
+}
+.cd-banner__second-title{
+    color:{{settings.countdown_second_title_color}};
+}
+.cd-banner__third-title{
+    color:{{settings.countdown_third_title_color}};
+}
+.cdbanner-rc-text{
+    color:{{settings.countdown_rc_text_color}};
+    text-align:center;
+}
+
+  @media screen and (min-width:1024px){
+    .cdbanner--side-column{
+      width:30%;
+    }
+  }
+{%- endstyle -%}
+<div class="cdbanner-outer">
+<a href="{{ settings.countdown_product_url }}" id="cd-banner" class="cdbanner-container bg-black text-white py-5 flex flex-col justify-center md:flex-row md:justify-between md:py-8">
+    <div class="text-center flex items-center justify-center space-x-4 uppercase font-bold md:text-left cdbanner--side-column">
+      <div class="px-4 md:px-8 cdbanner__main-title-container">
+        <span class="block bg-green-500 px-2 round-md text-xl md:text-2xl cd-banner__main-title">{{ settings.countdown_main_title }}</span>
+        <span class="block text-yellow-400 cd-banner__second-title">{{ settings.countdown_second_title }}</span>
+        <span class="block text-xs cd-banner__third-title">{{ settings.countdown_third_title }}</span>
+      </div>
+      {% if settings.countdown_show_product_image %}
+      <div class="relative pl-12 cd-banner__image-container">
+      {%  if settings.countdown_value_show %}
+        <span class="bg-yellow-400 rounded-full w-12 h-12 text-black flex flex-col justify-center items-center -rotate-12 absolute left-2 top-1 md:w-16 md:h-16">
+          <span class="block leading-3 font-bold text-sm md:text-lg">${{ settings.countdown_value }}</span>
+          <span class="text-xs leading-3">VALUE</span>
+        </span>
+        {% endif %}
+        <img class="w-14 md:w-20 cd-banner__product-image" 
+            src="{{ settings.countdown_product_image | image_url: width:200 }}" />
+      </div>
+      {% endif %}
+    </div>
+  
+    <div class="mt-5 md:mt-0 flex items-center justify-center">
+      <div class="flex justify-center space-x-4 items-center">
+        <div class="bg-white text-black text-center px-2 py-3 w-[70px] rounded-md md:py-4">
+          <span id="cdbanner__days" class="block text-2xl font-bold leading-6"></span> 
+          <span class="text-xs">Days</span>
+        </div>
+        <div class="bg-white text-black text-center px-2 py-3 w-[70px] rounded-md md:py-4">
+          <span id="cdbanner__hours" class="block text-2xl font-bold leading-6"></span> 
+          <span class="text-xs">Hours</span>
+        </div>
+        <div class="bg-white text-black text-center px-2 py-3 w-[70px] rounded-md md:py-4">
+          <span id="cdbanner__minutes" class="block text-2xl font-bold leading-6"></span> 
+          <span class="text-xs">Minutes</span>
+        </div>
+        <div class="bg-white text-black text-center px-2 py-3 w-[70px] rounded-md md:py-4">
+          <span id="cdbanner__seconds" class="block text-2xl font-bold leading-6"></span> 
+          <span class="text-xs">Seconds</span>
+        </div>
+      </div>
+    </div>
+  
+    <div class="md:flex md:items-center pr-4 md:pr-8 cdbanner-right-column cdbanner--side-column">
+      <div class="font-bold text-xl cdbanner-rc-text">{{ settings.countdown_rc_text }}</div>
+    </div>
+</a>
+</div>
+
+<script type="text/javascript">
+    var countDownDate = new Date("{{settings.countdown_date}} 23:59:59").getTime();
+
+    var x = setInterval(function() {
+
+    // Get today's date and time
+    var now = new Date().getTime();
+
+    // Find the distance between now and the count down date
+    var distance = countDownDate - now;
+
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Display the result in the element with id="demo"
+    document.getElementById("cdbanner__days").innerHTML = days;
+    document.getElementById("cdbanner__hours").innerHTML = hours;
+    document.getElementById("cdbanner__minutes").innerHTML = minutes;
+    document.getElementById("cdbanner__seconds").innerHTML = seconds;
+
+    // If the count down is finished, write some text
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("cd-banner").style.display = 'none';
+    }
+    }, 1000);
+</script>
+{% endif %}

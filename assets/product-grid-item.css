@@ -1,0 +1,128 @@
+.best-seller-wrap {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+    width: 80px;
+    height: 80px;
+}
+
+.grid-product__title {
+    font-size: 24px;
+    line-height: 28.27px;
+    color: #B7782C;
+    font-family: Miller,sans-serif;
+    letter-spacing: normal;
+    min-height: 60px;
+    padding: 0 10px;
+}
+
+.grid-product__price {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.grid-product__meta {
+    padding: 20px 0;
+}
+
+.grid-product {
+    background-color: #FBFBFB;
+}
+
+.grid-product__vendor {
+    font-family: 'Cairo', sans-serif;
+    letter-spacing: normal;
+    font-size: 16px;
+}
+
+.grid-product a{
+    cursor: pointer;
+}
+
+.product-atc-collection {
+    padding: 0px 20px 30px;
+}
+.product__btn .btn {
+    margin: 0 auto;
+    width: 100%;
+}
+
+.quick-product__btn{
+    background-color: #eb4e24;
+}
+
+.product__btn .btn {
+    background: transparent !important;
+    font-family: 'Cairo';
+    color: #EB4E24;
+    border: 1px solid #EB4E24;
+}
+
+.product__btn .btn:hover {
+    background: #ed5f39 !important;
+    color: #fff;
+}
+
+.product__btn .btn span {
+    font-family: 'Cairo';
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 29.98px;
+    letter-spacing: 1px;
+}
+
+@media only screen and (max-width: 767px) {
+  .grid-product__price{
+    font-size: 18px!important;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+}
+  @media only screen and (max-width: 600px) {
+  .grid-product__title {
+      font-size: 20px;
+  }
+  .strap__upsell-item {
+      width: 100% !important;
+  }
+  
+  .product-single__meta {
+      padding-left: 0px;
+  }
+  
+  .template-product .product-single__meta .variant-input-wrap input[type='radio']:checked + label.variant__color-swatch {
+      /* margin-right: 0px; */
+  }
+  
+  .product__price {
+      line-height: 30px;
+  }
+  
+  .variant__label[for] {
+      margin-bottom: 0px;
+  }
+  
+  .product__add-to-cart {
+      margin-top: 20px;
+  }
+  
+  .product__btn .btn {
+      color: #fff;
+      background-color: #eb4e24 !important;
+  }
+  
+  .product__btn .btn:hover {
+      background-color: transparent !important;
+      color: #eb4e24 !important;
+  }
+
+  .grid-product__title{
+    min-height: unset;
+  }
+
+  .return-link-wrap{
+    display:none;
+  }
+  
+}

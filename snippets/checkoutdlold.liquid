@@ -1,0 +1,543 @@
+<script type='text/javascript'>
+	(_ckm = window._ckm || []).push(function cfgev() {
+		CKMLib.configureEvents({
+			domain: 'https://vgntrk.reliatrk.com',
+			offer_id: 3,
+			event_id: 1
+		});
+		CKMLib.fireEvent();
+	});
+	if (typeof CKMLib != 'string') {
+		CKMLib = 'loading';
+		var pix = document.createElement('script');
+		pix.type = 'text/javascript';
+		pix.async = true;
+		pix.src = '//cakecdn.com/jssdk/lib.js';
+		var s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(pix, s);
+	}
+</script>
+<script>
+!function(e,s,t,n,o,c,d){e.kds || ((o = e.kds = function () { o.callMethod ? o.callMethod.apply(o, arguments) : o.queue.push(arguments) }).push = o, o.loaded = !0, o.version = "1.0", o.queue = [], (c = s.createElement("script")).async = !0, c.src = "//storage.cloud.kargo.com/kds/kds-events.min.js", (d = s.getElementsByTagName("script")[0]).parentNode.insertBefore(c, d))}(window,document);
+kds("init","e3d8df17")
+kds("track","PageView")
+kds("track", "Purchase", { value: {{ total_price | money_without_currency }}/100, currency: "{{ currency }}", order_number: {{ order_number }}});
+</script>
+
+<script>var head = document.head;var script = document.createElement('script');script.type = 'text/javascript';script.src = "https://180539.tracking.hyros.com/v1/lst/universal-script?ph=8e48593f5855218c28074663f63bce0c7290da96de8425aa1c4056f0ed63b45d&tag=!tracking&origin=SHOPIFY";head.appendChild(script);</script>
+
+<!-- TikTok Pixel Code -->
+  <script>
+  function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+  }
+  function setCookie(name,value,days) {
+      var expires = "";
+      if (days) {
+          var date = new Date();
+          date.setTime(date.getTime() + (days*24*60*60*1000));
+          expires = "; expires=" + date.toUTCString();
+      }
+      document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+  }
+  function getCookie(name) {
+      var nameEQ = name + "=";
+      var ca = document.cookie.split(';');
+      for(var i=0;i < ca.length;i++) {
+          var c = ca[i];
+          while (c.charAt(0)==' ') c = c.substring(1,c.length);
+          if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+      }
+      return null;
+  }
+  !function (w, d, t) {
+    w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=i,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var o=document.createElement("script");o.type="text/javascript",o.async=!0,o.src=i+"?sdkid="+e+"&lib="+t;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};
+ 
+    var pixel_id = '';
+    if(getCookie('tt_id')) {
+      pixel_id = getCookie('tt_id');
+    } else {
+      var urlVars = getUrlVars();
+      var pixel_id = urlVars["tt"];
+      setCookie('tt_id', pixel_id, 7);
+    }
+    ttq.load(pixel_id);
+    ttq.page();
+  }(window, document, 'ttq');
+  </script>
+<!-- End TikTok Pixel Code -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-109031267-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-109031267-1');
+</script>
+        
+{% if first_time_accessed %}
+<!-- Global site tag (gtag.js) - Google Ads: 812862326 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-812862326"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-812862326');
+</script>
+<!-- Event snippet for Sales conversion page -->
+<script>
+  gtag('event', 'conversion', {
+      'send_to': 'AW-812862326/meBuCOrm7ZQBEPaWzYMD',
+      'value': {{ checkout.total_price | money_without_currency }},
+      'currency': 'USD',
+      'transaction_id': '{{ order_number  }}'
+  });
+</script>
+{% endif %}
+
+<!-- Google Code for VW Purchase Conversion Page -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 812862326;
+var google_conversion_label = "WS_hCL7U8X4Q9pbNgwM";
+if ({{ subtotal_price }}) { var google_conversion_value = {{ subtotal_price | money_without_currency }}; }
+var google_conversion_currency = "USD";
+var google_remarketing_only = false;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/812862326/?value=1.00&amp;currency_code=USD&amp;label=WS_hCL7U8X4Q9pbNgwM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+
+<script>
+  (function() {
+    var script = document.createElement("script");
+    script.id = "hiconversion_30";
+    script.async = "async";
+    script.type = "text/javascript";
+    script.src = "//h30-deploy.hiconversion.com/origin/tag/4WG4rory";
+    var nodes = document.getElementsByTagName("script");
+    nodes[0].parentNode.insertBefore(script, nodes[0]);
+
+    var __hic = window.__hic = {};
+    __hic.version = '1.0.0';
+    __hic.data = {};
+    __hic.data.platform = 'shopify';
+    __hic.data.cu = {{ shop.currency | json }};
+    __hic.data.loc = {{ shop.locale | json }};
+    __hic.data.page = {};
+    __hic.data.page.bc = [];
+
+    {%- unless template == 'index' or template == 'cart' or template == 'list-collections' -%}
+      {%- if template contains 'page' -%}
+        __hic.data.page.bc.push({{page.title | json }});
+      {%- elsif template contains 'product' -%}
+        {%- if collection.url -%}
+          __hic.data.page.bc.push({{ collection.title | json }});
+        {%- endif -%}
+        __hic.data.page.bc.push({{ product.title | json }});
+      {%- elsif template contains 'collection' and collection.handle -%}
+        __hic.data.page.bc.push({{ collection.title | json }});
+        {%- if current_tags -%}
+          __hic.data.page.bc.push({{ current_tags | join: " + " | json }});
+        {%- endif -%}
+      {%- elsif template == 'blog' -%}
+        __hic.data.page.bc.push({{ blog.title | json }});
+        {%- if current_tags -%}
+          __hic.data.page.bc.push({{ current_tags | join: " + " | json }});
+        {%- endif -%}
+      {%- elsif template == 'article' -%}
+        __hic.data.page.bc.push({{ blog.title | json }});
+        __hic.data.page.bc.push({{ article.title | json }});
+      {%- elsif page_title -%}
+        __hic.data.page.bc.push({{ page_title | json }});
+      {%- endif -%}
+    {%- endunless -%}
+
+    {%- if cart -%}
+      __hic.data.cart = {
+        tt: {{ cart.total_price | money_without_currency | remove: ','}},
+        qt: {{ cart.item_count}},
+        li: []
+      };
+      {%- for item in cart.items -%}
+        __hic.data.cart.li.push({
+          tt: {{ item.line_price | money_without_currency | remove: ',' }},
+          pr: {{ item.price | money_without_currency | remove: ',' }},
+          qt: {{ item.quantity }},
+          {%- if item.variant.inventory_quantity -%}
+          iq: {{ item.variant.inventory_quantity }},
+          {%- endif -%}
+          ds: {{ item.total_discount | money_without_currency | remove: ',' }},
+          opr: {{ item.original_price | money_without_currency | remove: ',' }},
+          id: {{ item.product_id | json }},
+          url: {{ item.url | json }},
+          img: {{ item| img_url: '240x' | json }},
+          nm: {{ item.product.title | json }},
+          desc: {{ item.product.description | json }},
+          sku: {{ item.sku | json }},
+          cat: []
+        });
+
+        {%- unless item.variant.title contains 'Default' -%}
+          var opts = {};
+          {%- for option in item.product.options -%}
+            opts[{{ option | json}}] = {{ item.variant.options[forloop.index0] | json }};
+
+          {%- endfor -%}
+
+          __hic.data.cart.li[__hic.data.cart.li.length-1].opts = opts;
+        {%- endunless -%}
+
+
+        {%- for category in item.product.collections -%}
+          __hic.data.cart.li[__hic.data.cart.li.length-1].cat.push({{ category.title | json }});
+        {%- endfor -%}
+      {%- endfor -%}
+    {%- endif -%}
+
+    {%- if product -%}
+      __hic.data.product = {
+        id: {{ product.id | json }},
+        nm: {{ product.title | json }},
+        url: {{ product.url | json }},
+        img: {{ product.featured_image | json }},
+        desc: {{ product.description | json }},
+        pr: {{ product.price | money_without_currency | remove: ',' }},
+        cat: []
+      };
+      {%- for category in product.collections -%}
+        __hic.data.product.cat.push({{ category.title | json }});
+      {%- endfor -%}
+    {%- endif -%}
+
+    {%- if customer -%}
+      __hic.data.user = {
+        id: {{ customer.id | json }},
+        tr: {{ customer.orders_count }},
+        email: {{ customer.email | json }},
+        nm: {{ customer.name | json }},
+        ts: {{ customer.total_spent | money_without_currency | remove: ',' }},
+        auth: true
+      };
+    {%- endif -%}
+    {%- if checkout.order_id or checkout.order_number -%}
+
+      __hic.data.tr = {
+        id: {{ checkout.order_id | json }},
+        num: {{ checkout.order_number | json }},
+        st: {{ checkout.subtotal_price | money_without_currency | remove: ',' }},
+        tx: {{ checkout.tax_price | money_without_currency | remove: ',' }},
+        tt: {{ checkout.total_price | money_without_currency | remove: ',' }},
+        ds: {{ checkout.discounts_amount | money_without_currency | remove: ',' }},
+        sh: {{ checkout.shipping_price | money_without_currency | remove: ',' }},
+        shm: {{ checkout.shipping_method.title | json }},
+        li: []
+      };
+
+      __hic.data.tr.gw = {{ checkout.transactions.first.gateway | json }};
+      __hic.data.tr.ct = {{ checkout.transactions.first.payment_details.credit_card_company | json }};
+
+      {%- for item in checkout.line_items -%}
+        __hic.data.tr.li.push({
+          tt: {{ item.line_price | money_without_currency | remove: ',' }},
+          pr: {{ item.price | money_without_currency | remove: ',' }},
+          qt: {{ item.quantity }},
+          {%- if item.variant.inventory_quantity -%}
+          iq: {{ item.variant.inventory_quantity }},
+          {%- endif -%}
+          opr: {{ item.original_price | money_without_currency | remove: ',' }},
+          ds: {{ item.total_discount | money_without_currency | remove: ','}},
+          id: {{ item.product_id | json }},
+          url: {{ item.url | json }},
+          img: {{ item| img_url: '240x' | json }},
+          nm: {{ item.product.title | json }},
+          desc: {{ item.product.description | json }},
+          sku: {{ item.sku | json }},
+          cat: []
+        });
+
+        {%- unless item.variant.title contains 'Default' -%}
+         var opts = {};
+         {%- for option in item.product.options -%}
+           opts[{{ option | json }}] = {{ item.variant.options[forloop.index0] | json }};
+         {%- endfor -%}
+
+          __hic.data.tr.li[__hic.data.tr.li.length-1].opts = opts;
+        {%- endunless -%}
+
+
+        {%- for category in item.product.collections -%}
+          __hic.data.tr.li[__hic.data.tr.li.length-1].cat.push({{ category.title | json }});
+        {%- endfor -%}
+      {%- endfor -%}
+    {%- endif -%}
+  })();
+</script>
+
+<!--
+
+{% if first_time_accessed %}
+<!-- BEGIN Google Customer Reviews -->
+<script src="https://apis.google.com/js/platform.js?onload=renderOptIn" async defer></script>
+
+<script>
+  window.renderOptIn = function() {
+    window.gapi.load('surveyoptin', function() {
+      window.gapi.surveyoptin.render(
+        {
+          // REQUIRED FIELDS
+          "merchant_id": 126898062,
+          "order_id": "{{ order.name }}",
+          "email": "{{ order.email }}",
+          "delivery_country": "{{ shipping_address.country_code }}",
+          "estimated_delivery_date": "{{ order.created_at | date:'%s' | plus :864000 |  date:'%F' }}"
+        });
+    });
+  }
+  window.___gcfg = {
+  lang: '{{ shop_locale.iso_code }}'
+};
+</script>
+<!-- END Google Customer Reviews -->
+{% endif %}
+
+-->
+
+
+<!-- Enhanced Conversions - Global site tag (gtag.js) - GA v1.5 -->
+{% assign fa_send_to = 'AW-812862326/_tZqCKmu9-sBEPaWzYMD' %}
+{% assign fa_include_tax_and_shipping = 'no' %}
+
+
+{% if fa_google_coding %}{% assign fa_google_coding = true %}{%- else -%}{% assign fa_google_coding = false %}{%- endif -%}
+{% if fa_include_tax_and_shipping == 'yes' %}
+{% assign fa_checkout_price = checkout.total_price | divided_by: 100.0   %}
+{%- else -%}
+{% assign fa_checkout_price = checkout.subtotal_price | divided_by: 100.0  %}
+{%- endif -%}
+{% assign fa_google_ids = fa_send_to | split: "/"  %}
+{% if fa_google_coding == false %}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{fa_google_ids[0]}}"></script>
+{%- endif -%}
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '{{fa_google_ids[0]}}', {'allow_enhanced_conversions':true});
+</script>
+{% if first_time_accessed %}
+<script>
+  gtag('event', 'conversion', {
+      'send_to': '{{ fa_send_to }}',
+      'value': {{ fa_checkout_price }},
+      'currency': '{{ currency }}',
+      'transaction_id': '{{ order_number }}'
+  });
+  var enhanced_conversion_data = {
+  "email": "{{ customer.email }}",
+  "phone_number": "{{billing_address.phone}}",
+  "first_name": "{{ billing_address.first_name }}",
+  "last_name": "{{billing_address.last_name}}",
+  "home_address": {
+  "street": "{{billing_address.street}}",
+  "city":"{{billing_address.city}}",
+  "region": "{{billing_address.province}}",
+  "postal_code": "{{billing_address.zip}}",
+  "country": "{{billing_address.country}}"
+  }
+  };
+</script>
+{% endif %}
+<!-- Enhanced Conversions -  Global site tag (gtag.js) - GA v1.5  -->
+
+<script type="text/javascript">
+
+var snips = {
+
+  trackerid: "340",
+
+  snips_type: "sale", // Event or type (e.g. lead, sale, signup)
+
+  snips_id: "{{ order_number }}", // Unique identifier or order number
+
+  snips_items: "{{ cart.item_count }}", // Number of items
+
+  snips_value: "{{ total_price | money_without_currency }},", // Total value
+
+  snips_commission: "30", // Total commission
+
+  snips_source: "SnipsPlatform", // Source or affiliate platform
+
+  snips_site: "www.theveganwarehouse.com", // Site ID, website or domain
+
+  snips_date: (new Date().toISOString()), // Conversion timestamp in ISO 8601 format
+
+  snips_transid: decodeURIComponent((document.cookie.match(/snips_transid_340\=([^;]*)/) || [, ""])[1]),
+
+  r: Math.floor(Math.random()*999999)
+
+};
+
+document.write("<" + "script " + "type='text/javascript' " + "src='//track.sni.ps/track.php?" + (Object.keys(snips).map((key) => {return encodeURIComponent(key)+'='+encodeURIComponent(snips[key]) }).join('&amp;')) + "' async><" + "\/script>");
+
+</script>
+
+<script type="text/javascript">
+var snips_transid = (window.location.search.match(/[\?&]snips_transid\=([^&]*)/) || [, ""])[1];
+if ( snips_transid != "" ) document.cookie = "snips_transid_340="+snips_transid+"; path=/; max-age="+(30*24*60*60);
+</script>
+
+<script>
+   window.uetq = window.uetq || []; 
+   window.uetq.push('event', '', { 'revenue_value': {{ total_price | money_without_currency }}, 'currency': '{{ shop.currency }}' }); 
+</script>
+
+<!-- Enhanced Conversions Texonica - Google Ads: 812862326 -->
+{% assign fa_send_to = 'AW-812862326/pjXMCOGshNYDEPaWzYMD' %}
+{% assign fa_include_tax_and_shipping = 'yes' %}
+
+{% comment %}DO NOT EDIT BELOW{% endcomment %}
+{% if fa_google_coding %}{% assign fa_google_coding = true %}{%- else -%}{% assign fa_google_coding = false %}{%- endif -%}
+{% if fa_include_tax_and_shipping == 'yes' %}
+{% assign fa_checkout_price = checkout.total_price | divided_by: 100.0   %}
+{%- else -%}
+{% assign fa_checkout_price = checkout.subtotal_price | divided_by: 100.0  %}
+{%- endif -%}
+{% assign fa_google_ids = fa_send_to | split: "/"  %}
+{% if fa_google_coding == false %}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{fa_google_ids[0]}}"></script>
+{%- endif -%}
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '{{fa_google_ids[0]}}', {'allow_enhanced_conversions':true});
+
+</script>
+{% if first_time_accessed %}
+<script>
+  gtag('event', 'conversion', {
+      'send_to': '{{ fa_send_to }}',
+      'value': {{ fa_checkout_price }},
+      'currency': '{{ currency }}',
+      'transaction_id': '{{ order_number }}'
+  });
+  var enhanced_conversion_data = {
+  "email": "{{ customer.email }}",
+  "phone_number": "{{billing_address.phone}}",
+  "first_name": "{{ billing_address.first_name }}",
+  "last_name": "{{billing_address.last_name}}",
+  "home_address": {
+  "street": "{{billing_address.street}}",
+  "city":"{{billing_address.city}}",
+  "region": "{{billing_address.province}}",
+  "postal_code": "{{billing_address.zip}}",
+  "country": "{{billing_address.country}}"
+  }
+  };
+</script>
+{% endif %}
+
+<!-- Please add your Google Ads Audience Source Tag ID -->
+{% assign fa_google_ads_audience_tag_id = 812862326 %}
+
+<!-- Please add your alpha2 code, you can find it here: https://help.shopify.com/en/api/custom-storefronts/storefront-api/reference/enum/countrycode -->
+{% assign fa_product_id_alpha2_code = 'US' %}
+
+<!-- set your product id values are default, product_id, parent_id, sku-->
+{% assign fa_product_id = 'default' %}
+
+<!-- CODE SETTINGS END -->
+<!-- CODE SETTINGS END -->
+
+<!-- ==================================== -->
+<!-- DO NOT EDIT ANYTHING BELOW THIS LINE -->
+{% if fa_google_coding %}{% assign fa_google_coding = true %}{%- else -%}{% assign fa_google_coding = false %}{%- endif -%}
+{% if fa_google_coding == false %}
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-{{ fa_google_ads_audience_tag_id }}"></script>
+{%- endif -%}
+{%- if cart.currency.iso_code == 'GBP' or cart.currency.iso_code == 'USD' or cart.currency.iso_code == 'CAD' or cart.currency.iso_code == 'AUD' or cart.currency.iso_code == 'BWP' or cart.currency.iso_code == 'BND' or cart.currency.iso_code == 'DOP' or cart.currency.iso_code == 'GTQ' or cart.currency.iso_code == 'HKD' or cart.currency.iso_code == 'INR' or cart.currency.iso_code == 'ILS' or cart.currency.iso_code == 'YEN' or cart.currency.iso_code == 'KES' or cart.currency.iso_code == 'KOR' or cart.currency.iso_code == 'LBP' or cart.currency.iso_code == 'MYR' or cart.currency.iso_code == 'MXN' or cart.currency.iso_code == 'NPR' or cart.currency.iso_code == 'NZD' or cart.currency.iso_code == 'NIO' or cart.currency.iso_code == 'NGN' or cart.currency.iso_code == 'PKR' or cart.currency.iso_code == 'CNY' or cart.currency.iso_code == 'PHP' or cart.currency.iso_code == 'SGD' or cart.currency.iso_code == 'LKR' or cart.currency.iso_code == 'CHF' or cart.currency.iso_code == 'TWD' or cart.currency.iso_code == 'TSH' or cart.currency.iso_code == 'THB' or cart.currency.iso_code == 'UGX' or cart.currency.iso_code == 'KWD' -%}
+{%- assign fa_product_price = checkout.total_price | money_without_currency | remove:',' -%}
+{%- else -%}
+{%- assign fa_product_price = checkout.total_price | money_without_currency | remove:'.' | replace: ',', '.' -%}
+{%- endif -%}
+{% assign fa_event = 'purchase' %}
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-{{ fa_google_ads_audience_tag_id }}');
+</script>
+<!-- Global site tag (gtag.js) - Ads. -->
+<script>
+  gtag('event', '{{ fa_event }}', {
+    'send_to': 'AW-{{ fa_google_ads_audience_tag_id }}',
+	  'value': {{ fa_product_price }},
+	  'items': [
+	{% for item in checkout.line_items %}
+	{
+		{% if fa_product_id == 'default' %}
+			'id': 'shopify_{{ fa_product_id_alpha2_code }}_{{ item.product_id }}_{{ item.variant_id }}',
+		{% elsif fa_product_id == 'product_id' %}
+			'id': '{{ item.variant_id }}',
+		{% elsif fa_product_id == 'parent_id' %}
+			'id': '{{ item.parent_id }}',
+		{% elsif fa_product_id == 'sku' %}
+			'id': '{{ item.sku }}',
+		{% endif %}
+      'google_business_vertical': 'retail'
+    },
+	{% endfor %}
+	]
+
+  });
+</script>
+
+<script>
+  var ecommerce = {
+      'transaction_id': '{{checkout.order_number  | json}}',
+      'affiliation': {{shop.name | json}},
+      'value': {{checkout.total_price | money_without_currency | replace: ',', '.' | json}},
+      'tax': {{checkout.tax_price | money_without_currency | replace: ',','.' | json}},
+      'shipping': {{checkout.shipping_price | money_without_currency | replace: ',','.' | json}},
+      'subtotal': {{checkout.subtotal_price | money_without_currency| replace: ',','.' | json}},
+      'currency': {{checkout.currency | json}},
+       {% for discount in checkout.discounts %}
+      'coupon': {{discount.code | json}},
+      'discount'  : {{discount.amount | money_without_currency | json}},
+       {% endfor %}
+      'email': {{checkout.email | json}},
+      'items':[{% for line_item in checkout.line_items %}{
+                        'item_id '        : {{line_item.product.id | json}},                  
+                        'item_variant'    : {{line_item.variant.title | json}},             
+                        'item_name '      : {{line_item.product.title | json}},
+                        'price'           : {{line_item.product.price | money_without_currency | replace: ',', '.' | json}},
+                        'item_brand'      : {{line_item.product.vendor | json}},
+                        'item_category'   : {{line_item.product.type | json}},
+                        'item_list_name'  : {{line_item.collection.title | json}},
+                        'quantity'        : {{line_item.quantity | json}},
+                        'discount'		  : {{discount.code | json}}
+                    },{% endfor %}],
+  };
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PKC8DJN');
+      window.dataLayer.push({
+        'pageType': 'purchase',
+        'event': 'purchase',
+        ecommerce
+        });
+</script>

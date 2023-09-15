@@ -1,0 +1,11 @@
+.contact-map .richtext {
+    max-width: 450px;
+    padding: 35px;
+    background-color: #c9cce8;
+    margin-bottom: -180px;
+    position: relative;
+}
+
+.contact-map .richtext h2 {
+    color: #301210;
+}

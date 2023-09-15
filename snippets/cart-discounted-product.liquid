@@ -1,0 +1,350 @@
+{%- style -%}
+.btn-discount-product-atc{
+    background:black;
+}
+.bag-special{
+    background:{{ settings.discount_product_bg_color }};
+    padding: 15px 25px;
+    font-size:16px;
+}
+.bag-special .cart__row {
+    margin-bottom:10px;
+}
+.bag-special__title{
+    font-size: 18px;
+    border-bottom: 2px solid #cfcfcd;
+    padding-top: 11px;
+    padding-bottom: 20px;
+    text-transform:uppercase;
+    font-size: .9em;
+    color: #60925b;
+    letter-spacing: .2em;
+    font-family: Futura,sans-serif;
+}
+
+.bag-special__title .inner-title{
+    font-weight:700;
+}
+
+.bag-special .js-qty__wrapper{
+    max-width:130px;
+    height:36px;
+}
+.js-qty__adjust_2 {
+    cursor: pointer;
+    position: absolute;
+    display: block;
+    top: 0;
+    bottom: 0;
+    border: 0 none;
+    background: none;
+    text-align: center;
+    overflow: hidden;
+    padding: 0 5px;
+    line-height: 1;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transition: all .2s ease-out;
+    z-index: 2;
+    fill: #000;
+    color:black;
+}
+.bag-special__price-qty{
+    display:flex;
+    align-items: start;
+    flex-direction: column;
+}
+
+.bag-special__price-qty .cart__price{
+    margin-right:10px;
+}
+.bag-special .cart__product-meta{
+    padding: 2px 0;
+}
+
+.cart-special-image{
+    max-width:104px;
+}
+
+.bag-special .js-qty__num{
+    font-size:16px;
+    padding:0;
+}
+
+.bag-special__line-break{
+    height:1px;
+    border-bottom:1px solid #cfcfcd;
+    margin-bottom: 15px;
+}
+
+/* bag__special New css */
+
+.bag-special {
+    background-color: transparent;
+    border: 1px solid #A8AAAC66;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.bag-special .cart__row {
+    border: 0px !important;
+    padding-top: 5px;
+    padding-bottom: 0px !important;
+    margin: 0px !important;
+}
+
+.bag-special .cart__row .grid {
+    margin: 0px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.bag-special .cart__row .grid__item {
+    padding-left: 0px;
+}
+
+.bag-special .cart__row .grid__item.one-quarter {
+    width: auto;
+    margin-right: 20px;
+}
+
+.bag-special__line-break {
+    border: 0px !important;
+}
+
+.bag-special__title {
+    padding: 0px;
+    margin: 0px 0 10px;
+    line-height: 20px;
+    border-bottom: 0px;
+    color: #4e5057 !important;
+}
+
+.bag-special__title span {
+    color: #4e5057 !important;
+}
+
+.bag-special .cart__product-name {
+    color: #301210;
+    font-size: 20px;
+    font-family: 'Miller';
+    margin-bottom: 10px;
+}
+
+.bag-special .cart__price .pn-total-line-item {
+    color: #a8aaac !important;
+    position: relative;
+}
+
+.bag-special .cart__price .pn-total-line-item span {
+    color: #ff3232 !important;
+}
+
+.bag-special .cart__row .grid__item button {
+    margin: 0px;
+    background-color: #EB4E24;
+    font-size: 14px;
+    width: auto;
+    height: auto;
+}
+
+  
+
+@media screen and (max-width:820px){
+    .bag-special .js-qty__wrapper{
+        position:static;
+        bottom:0;
+        display:flex;
+        align-items:center;
+        width:160px;
+        max-width:none;
+    }
+
+    .js-qty__adjust_2{
+        position:static;
+    }
+}
+@media screen and (max-width:650px){
+    .bag-special .js-qty__wrapper{
+        position: initial;
+        max-width:none;
+        width:153px;
+        display:flex;
+        align-items:center;
+        margin:0;
+    }
+
+    .js-qty__adjust_2{
+        position:static;
+    }
+
+    .bag-special__product-atc-container{
+        width:100%;
+    }
+
+    .sezzle-shopify-info-button{
+        float:none !important;
+    }
+
+    .bag-special__price-qty{
+        flex-direction:column;
+        align-items: start;
+    }
+
+    .btn-discount-product-atc{
+        display:block;
+        margin:auto;
+        margin-top:25px;
+        width:100%;
+    }
+
+    .bag-special__title{
+        font-size:16px;
+    }
+    .bag-special .cart__row .grid__item.three-quarters {
+        width: 55%;
+        padding-left: 0px;
+    }
+    .bag-special .cart__row .grid__item.one-quarter {
+        width: auto;
+        margin-right: 10px;
+        padding-left: 0px;
+    }
+    .bag-special .cart__price .pn-total-line-item {
+        color: #a8aaac !important;
+        position: relative;
+        font-size: 14px !important;
+    }
+    .bag-special__title {
+        line-height: normal;
+    }
+}
+{%- endstyle -%}
+{% if settings.discounted_product != blank %}
+    {% assign discount_product = all_products[settings.discounted_product ] %}
+    {% assign item_in_cart = false %}
+    {% assign item_in_cart = false %}
+
+    {% for item in cart.items %}
+        {% if item.product.id == discount_product.id %}
+            {% assign item_in_cart = true %}
+        {% endif %}
+    {% endfor %}
+
+    {% if item_in_cart == false and settings.discounted_product_enable and cart.items.size > 0 %}
+    <div class="bag-special__line-break"></div>
+    <div class="bag-special">
+        <h2 class="bag-special__title">
+            <span class="inner-title">CART SPECIAL:</span> 
+                Only <span style="color:#ff3232">{{ discount_product.selected_or_first_available_variant.price | money }}</span> 
+                ({{ discount_product.selected_or_first_available_variant.compare_at_price | money }} value)</h2>
+        <div class="cart__row ">
+        <div class="grid grid--full cart__row--table-large">
+
+        <div class="grid__item medium-up--three-fifths">
+            <div class="grid">
+
+            <div class="grid__item one-quarter">
+                <a href="{{ discount_product.url }}" class="cart__image">
+                    <img class="lazyload cart-special-image"
+                        data-src="{{ discount_product.featured_media | image_url }}"
+                        data-widths="[180, 360, 540]"
+                        data-sizes="auto"
+                        alt="{{ discount_product.title | escape }}">
+                </a>
+            </div>
+
+            <div class="grid__item three-quarters">
+                <a href="{{ discount_product.url }}" class="h4 cart__product-name">
+                    {{ discount_product.title }}
+                </a>
+
+                {% if settings.discount_product_blurb != blank %}
+                    <div class="cart__product-meta">
+                        {{ settings.discount_product_blurb }}
+                    </div>
+                {% endif %} 
+                
+                <div class="bag-special__price-qty">
+                    <span class="cart__price"><div class="pn-total-line-item">
+                        <span style="color:#ff3232">{{ discount_product.selected_or_first_available_variant.price | money }}</span> 
+                            ({{ discount_product.selected_or_first_available_variant.compare_at_price | money }} value)</div>
+                    </span>
+                    <div class="grid__item" style="padding-left:0">
+                        <div class="js-qty__wrapper">
+                            <button type="button" class="js-qty__adjust_2 bag-special--minus" data-qty="0">−</button>
+                                <input type="text" value="1" class="js-qty__num QuantityInput" min="1" aria-label="quantity" name="discounted_product_qty"
+                                    pattern="[0-9]*" 
+                                    data-submit="" autocomplete="off">
+                            <button type="button" class="js-qty__adjust_2 js-qty__adjust--plus bag-special--plus" 
+                                data-qty="1">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="grid__item medium-up--two-fifths">
+            <div class="grid grid--full">
+            <div class="grid__item one-third text-right bag-special__product-atc-container">
+                <button class="btn btn-discount-product-atc" 
+                    data-id="{{ discount_product.selected_or_first_available_variant.id }}">Add to Cart</button>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+    {% endif %}
+
+<script>
+    (function($){
+        $('.bag-special--plus').on('click', function(){
+            var currentQty = parseInt($(this).parent().find('.js-qty__num').val());
+            currentQty += 1;
+            $(this).parent().find('.js-qty__num').val(currentQty)
+        });
+
+        $('.bag-special--minus').on('click', function(){
+            var currentQty = parseInt($(this).parent().find('.js-qty__num').val());
+            if ( currentQty > 1) {
+                currentQty -= 1;
+            }
+
+            $(this).parent().find('.js-qty__num').val(currentQty)
+        });
+
+        $('.btn-discount-product-atc').on('click', function(e){
+            e.preventDefault();
+            var currentQty = parseInt($('.bag-special').find('.js-qty__num').val());
+            var variantId = $(this).data('id');
+            
+            var data = {
+                items: [
+                    {
+                        quantity: currentQty,
+                        id: variantId
+                    }
+                ]
+            };
+
+            $.post(window.Shopify.routes.root + 'cart/add.js', data, function(response){
+                location.reload();
+
+            }, 'json').fail(function(XMLHttpRequest, textStatus, errorThrown){
+                alert('Unexpected error, please try again or contact us.');
+
+                if (XMLHttpRequest.status == 422 ) {
+                    //alert(XMLHttpRequest.responseJSON.description);
+                }
+            });
+        });
+    })(jQuery);
+</script>
+{% endif %}

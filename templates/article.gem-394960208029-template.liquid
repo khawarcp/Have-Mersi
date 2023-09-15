@@ -1,0 +1,111 @@
+{% comment %}
+	GEMPAGE BUILDER (https://apps.shopify.com/gempage)
+
+	You SHOULD NOT modify source code in this page because
+	It is automatically generated from GEMPAGE BUILDER
+	Try to edit page with the live editor.
+{% endcomment %}
+<!--GEM_HEADER-->
+
+
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" class="gf-style">
+<link data-instant-track rel="stylesheet" type="text/css" href="https://d1um8515vdn9kb.cloudfront.net/files/vendor.css?refresh=1" class="gf-style" />
+<link data-instant-track rel="stylesheet" type="text/css" href="{{ 'gem-article-394960208029.css' | asset_url }}" class="gf_page_style">
+<!--GEM_HEADER_END-->
+{%- assign number_of_comments = article.comments_count -%}{% if comment and comment.created_at %}
+  {%- assign number_of_comments = article.comments_count | plus: 1 -%}
+{% endif %}<div class="page-width page-content">  <div class="grid">
+    <article class="grid__item widescreen--six-tenths widescreen--push-two-tenths medium-up--two-thirds medium-up--push-one-sixth article" itemscope itemtype="http://schema.org/Article">      {% include 'breadcrumbs' %}      <header class="section-header">
+        {% if section.settings.blog_show_date or article.tags.size > 0 or articles.comments_count > 0 %}
+          <div class="article__date">
+            {% if section.settings.blog_show_tags and article.tags.size > 0 %}
+              {% for tag in article.tags %}
+                {% include 'filter-out-custom-tags' %}
+                <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a> &middot;
+              {% endfor %}
+            {% endif %}
+            {% if section.settings.blog_show_comments and article.comments_count > 0 %}
+              <a href="#comments">{{ article.comments_count }} {{ article.comments_count | pluralize: 'comment', 'comments' }}</a> &middot;
+            {% endif %}
+            {% if section.settings.blog_show_date %}
+              {{ article.published_at | time_tag: format: 'month_day_year' }}
+            {% endif %}
+          </div>
+        {% endif %}
+        <h1 class="section-header__title" itemprop="headline">{{ article.title }}</h1>
+        {% if article.metafields.articledata.author != blank%}
+          <div class="article__author">written by <span itemprop="author"><span itemprop="author">{{ article.metafields.articledata.author }}</span></span></div>
+        {% else %}
+          {% if section.settings.blog_show_author %}
+            <div class="article__author">by <span itemprop="author"><span itemprop="author">{{ article.author }}</span></span></div>
+          {% endif %} 
+      {% endif %}
+      </header>      <div class="article__body rte" itemprop="articleBody">
+        <!--Gem_Page_Main_Editor--><div class="clearfix"></div><div class="gryffeditor">
+<div data-label="Heading" id="e-1580154936283" class="element-wrap" data-icon="gpicon-heading" data-ver="1" data-id="1580154936283"><div class="elm text-edit gf-elm-center gf-elm-center-md gf-elm-center-sm gf-elm-center-xs gf-elm-center-lg" data-gemlang="en" data-exc=""><h2><i>written by Azul Flores</i></h2></div></div><!--gfsplit--><div data-label="Image" data-key="image" id="e-1612898902203" class="element-wrap" data-icon="gpicon-image" data-ver="1.0" data-id="1612898902203" data-resolution="3000x3000"><div class="elm gf-elm-center gf_elm-left-xs gf-elm-center-lg gf-elm-center-md gf-elm-center-sm gf-elm-center-xs" data-exc=""><img src="https://ucarecdn.com/c16a58a5-5e4c-495d-8bc0-6a55761f6c86/-/format/auto/-/preview/3000x3000/-/quality/lighter/" alt="" class="gf_image" data-gemlang="en" data-width="980px" data-height="auto" title="" natural-width="3000" natural-height="2000"></div></div><!--gfsplit--><div data-label="Row" id="r-1569330697238" class="gf_row" data-icon="gpicon-row" data-id="1569330697238" data-extraclass=""><div class="gf_column gf_col-lg-12 gf_col-md-12 gf_col-sm-12 gf_col-xs-12" id="c-1543568570869" data-id="1543568570869" style="min-height: auto;"><div data-label="Text Block" id="e-1569330697217" class="element-wrap" data-icon="gpicon-textblock" data-ver="1" data-id="1569330697217"><div class="elm text-edit gf-elm-left gf-elm-left-lg gf-elm-left-md gf-elm-left-sm gf-elm-left-xs" data-gemlang="en" data-exc=""><p><span style="color: inherit; font-family: inherit; font-size: inherit; letter-spacing: 0.43px; text-align: inherit;"><br></span></p><p><span style="color: inherit; font-family: inherit; font-size: inherit; letter-spacing: 0.43px; text-align: inherit;">Have you completely lost track of time and just realized that Valentine's Day is right around the corner? Struggling to find the perfect gift for your significant other, friends or family? <strong>Because, same here!</strong> No need to panic, here are some of our favorite vegan gift ideas that will be <strong><i>perfect</i></strong> for that special someone in your life!</span><br></p><p><br></p></div></div><div data-label="Heading" id="e-1578321658508" class="element-wrap" data-icon="gpicon-heading" data-ver="1" data-id="1578321658508"><div class="elm text-edit gf-elm-center gf-elm-left-md gf-elm-left-sm gf-elm-left-xs gf-elm-left-lg" data-gemlang="en" data-exc=""><h2>For the person who loves a night in:</h2></div></div><div data-label="Image" id="e-1569330697288" class="element-wrap" data-icon="gpicon-image" data-ver="1" data-id="1569330697288" data-resolution="3000x3000"><div class="elm gf-elm-center gf_elm-left-xs gf-elm-center-md gf-elm-center-sm gf-elm-center-xs gf-elm-center-lg" data-exc=""><a href="https://www.theveganwarehouse.com/products/oh-glowy-night-skincare-set?_pos=1&amp;_sid=bd48e21e8&amp;_ss=r" target=""><img src="https://ucarecdn.com/2bf0a7c8-4858-45e9-8cb9-b83f49c1ead8/-/format/auto/-/preview/3000x3000/-/quality/lighter/" alt="" class="gf_image" data-gemlang="en" data-width="55%" data-height="auto" title="" natural-width="1080" natural-height="1080"></a></div></div><div data-label="Text Block" id="e-1569330697271" class="element-wrap" data-icon="gpicon-textblock" data-ver="1" data-id="1569330697271"><div class="elm text-edit gf-elm-left gf-elm-left-lg gf-elm-left-md gf-elm-left-sm gf-elm-left-xs" data-gemlang="en" data-exc=""><p><br></p><p>We all know that one person who is constantly busy, working hard and almost never has time for themselves. With every essential item for the perfect skincare routine, the <a href="https://www.theveganwarehouse.com/products/oh-glowy-night-skincare-set?_pos=1&amp;_sid=bd48e21e8&amp;_ss=r" class=""><strong>Oh Glowy Night Skincare Set</strong></a>&nbsp;by Grace &amp; Stella is perfect for that person who deserves more “me time”. This kit includes a full size cleansing balm, hyaluronic acid serum, energizing under eye masks and a rose quartz jade roller!&nbsp;</p><p><br></p><p><br></p></div></div><div data-label="Heading" id="e-1580152772200" class="element-wrap" data-icon="gpicon-heading" data-ver="1" data-id="1580152772200"><div class="elm text-edit gf-elm-center gf-elm-left-md gf-elm-left-sm gf-elm-left-xs gf-elm-left-lg" data-gemlang="en" data-exc=""><h2><br></h2><h2>For the friend who is always channeling their inner self:</h2></div></div><div data-label="Text Block" id="e-1569330697333" class="element-wrap" data-icon="gpicon-textblock" data-ver="1" data-id="1569330697333"><div class="elm text-edit gf-elm-left gf-elm-left-lg gf-elm-left-md gf-elm-left-sm gf-elm-left-xs" data-gemlang="en" data-exc=""></div></div><div data-label="Image" id="e-1580154480045" class="element-wrap" data-icon="gpicon-image" data-ver="1" data-id="1580154480045" data-resolution="3000x3000"><div class="elm gf-elm-center gf_elm-left-xs gf-elm-center-md gf-elm-center-sm gf-elm-center-xs gf-elm-center-lg" data-exc=""><a href="https://www.theveganwarehouse.com/products/good-vibes-essentials?_pos=1&amp;_sid=dc5c05b10&amp;_ss=r" target=""><img src="https://ucarecdn.com/67f157bd-5ef5-4b4e-b0c5-0bd0f280960d/-/format/auto/-/preview/3000x3000/-/quality/lighter/" alt="" class="gf_image" data-gemlang="en" data-width="55%" data-height="auto" title="" natural-width="1080" natural-height="1080"></a></div></div><div data-label="Text Block" id="e-1569330697294" class="element-wrap" data-icon="gpicon-textblock" data-ver="1" data-id="1569330697294"><div class="elm text-edit gf-elm-left gf-elm-left-lg gf-elm-left-md gf-elm-left-sm gf-elm-left-xs" data-gemlang="en" data-exc=""><p><br></p><p>Do you have a friend who always lights up a room with their presence and whose vibe is so great to be around? Perfect to gift to a loved one or to treat yourself, the <a href="https://www.theveganwarehouse.com/products/good-vibes-essentials?_pos=1&amp;_sid=dc5c05b10&amp;_ss=r" class=""><strong>Good Vibes Essential Kit</strong></a> helps create soothing vibes and perfect to recharge with! Find balance with Moon Bath Bath Soak, Anti-Anxiety Essential Oil, Chill Pill Candle, and White Sage Smudge!&nbsp;</p><p><br></p></div></div><div data-label="Heading" id="e-1575480429283" class="element-wrap" data-icon="gpicon-heading" data-ver="1" data-id="1575480429283"><div class="elm text-edit gf-elm-center gf-elm-left-md gf-elm-left-sm gf-elm-left-xs gf-elm-left-lg" data-gemlang="en" data-exc=""><h2></h2><h2>For the makeup guru in your life:</h2></div></div><div data-label="Text Block" id="e-1569330697334" class="element-wrap" data-icon="gpicon-textblock" data-ver="1" data-id="1569330697334"><div class="elm text-edit gf-elm-left gf-elm-left-lg gf-elm-left-md gf-elm-left-sm gf-elm-left-xs" data-gemlang="en" data-exc=""></div></div><div data-label="Image" id="e-1569330697328" class="element-wrap" data-icon="gpicon-image" data-ver="1" data-id="1569330697328" data-resolution="3000x3000"><div class="elm gf-elm-center gf_elm-left-xs gf-elm-center-md gf-elm-center-sm gf-elm-center-xs gf-elm-center-lg" data-exc=""><a href="https://www.theveganwarehouse.com/collections/bundles/products/vegan-makeup-bundle-1" target=""><img src="https://ucarecdn.com/43205592-51f2-424e-8f47-dc5802812ea0/-/format/auto/-/preview/3000x3000/-/quality/lighter/" alt="" class="gf_image" data-gemlang="en" data-width="55%" data-height="auto" title="" natural-width="1080" natural-height="1080"></a></div></div><div data-label="Text Block" id="e-1578321958063" class="element-wrap" data-icon="gpicon-textblock" data-ver="1" data-id="1578321958063"><div class="elm text-edit gf-elm-left gf-elm-left-lg gf-elm-left-md gf-elm-left-sm gf-elm-left-xs" data-gemlang="en" data-exc=""><p>With everyday makeup essentials, cruelty free and vegan beauty products,  the <a href="https://www.theveganwarehouse.com/collections/bundles/products/vegan-makeup-bundle-1" class="" style="font-weight: bold;">Vegan Makeup Bundle</a> is ideal for that special someone who is always getting creative and trying new makeup looks! The About Last Night Eyeshadow palette includes 12 different shades perfect for any and every occasion. With the Curl &amp; Length Mascara, Super Ink Liner, Eye and Lip Makeup Remover, you ensure that makeup guru is set with all the beauty essentials for an everyday look or full on glam!&nbsp;</p><p><br></p><p><br></p></div></div><div data-label="Heading" id="e-1578321657992" class="element-wrap" data-icon="gpicon-heading" data-ver="1" data-id="1578321657992"><div class="elm text-edit gf-elm-center gf-elm-left-md gf-elm-left-sm gf-elm-left-xs gf-elm-left-lg" data-gemlang="en" data-exc=""><h2><br></h2><h2>For the trendsetter:</h2></div></div><div data-label="Image" id="e-1580154618037" class="element-wrap" data-icon="gpicon-image" data-ver="1" data-id="1580154618037" data-resolution="3000x3000"><div class="elm gf-elm-center gf_elm-left-xs gf-elm-center-md gf-elm-center-sm gf-elm-center-xs gf-elm-center-lg" data-exc=""><a href="https://www.theveganwarehouse.com/products/ruby-demi-value-set?_pos=1&amp;_sid=33495a2f6&amp;_ss=r" target=""><img src="https://ucarecdn.com/e9d5db20-e82a-4551-9a14-29c5d5a071ec/-/format/auto/-/preview/3000x3000/-/quality/lighter/" alt="" class="gf_image" data-gemlang="en" data-width="55%" data-height="auto" title="" natural-width="1080" natural-height="1080"></a></div></div><div data-label="Text Block" id="e-1569330697351" class="element-wrap" data-icon="gpicon-textblock" data-ver="1" data-id="1569330697351"><div class="elm text-edit gf-elm-left gf-elm-left-lg gf-elm-left-md gf-elm-left-sm gf-elm-left-xs" data-gemlang="en" data-exc=""><p><span style="color: inherit; font-family: inherit; font-size: inherit; text-align: inherit; letter-spacing: 0.43px;">For the trendsetter of the group, the person who always has the best finds before everyone else, <a href="https://www.theveganwarehouse.com/products/ruby-demi-value-set?_pos=1&amp;_sid=33495a2f6&amp;_ss=r" class=""><strong>The Ruby + Demi Value Set</strong></a>is the way to go! Two <a href="https://www.theveganwarehouse.com/collections/bags" class="">vegan leather handbags</a> that are versatile for casual and elevated settings, plus feature unique features! Not only is this a stylish gift, but when purchasing this value set from The Vegan Warehouse, we donate part of our profits to <a href="https://casanctuary.org" class="">animal sanctuaries</a>!&nbsp;</span></p></div></div><div data-label="Heading" id="e-1580154699982" class="element-wrap" data-icon="gpicon-heading" data-ver="1" data-id="1580154699982"><div class="elm text-edit gf-elm-center gf-elm-left-md gf-elm-left-sm gf-elm-left-xs gf-elm-left-lg" data-gemlang="en" data-exc=""><h2><br></h2><h2>For the one friend who is at the beach 24/7:</h2></div></div><div data-label="Image" id="e-1578322080101" class="element-wrap" data-icon="gpicon-image" data-ver="1" data-id="1578322080101" data-resolution="3000x3000"><div class="elm gf-elm-center gf_elm-left-xs gf-elm-center-md gf-elm-center-sm gf-elm-center-xs gf-elm-center-lg" data-exc=""><a href="https://www.theveganwarehouse.com/collections/bundles/products/tropical-dreams-trio" target=""><img src="https://ucarecdn.com/cded3581-7057-403c-a18b-88cb8cd5c517/-/format/auto/-/preview/3000x3000/-/quality/lighter/" alt="" class="gf_image" data-gemlang="en" data-width="55%" data-height="auto" title="" natural-width="1080" natural-height="1080"></a></div></div><div data-label="Text Block" id="e-1578322094530" class="element-wrap" data-icon="gpicon-textblock" data-ver="1" data-id="1578322094530"><div class="elm text-edit gf-elm-left gf-elm-left-lg gf-elm-left-md gf-elm-left-sm gf-elm-left-xs" data-gemlang="en" data-exc=""><p><br></p><p>If you’re wishing you're on an island but in reality trying to stay warm inside your apartment, the<a href="https://www.theveganwarehouse.com/collections/bundles/products/tropical-dreams-trio" class=""><strong>Tropical Dreams Trio</strong></a> transports you to tropical paradise via much needed self-care! With full sized products like the Resting Beach Face SPF30 Sunscreen, Beach Waves Texturizing Spray and the Lani Tropical Hair Treatment, your skin will be hydrated and glowing even during cold months!&nbsp;</p><p><br></p><p>We hope this gifting guide helps you find the perfect gifts for that special someone this upcoming Valentines day. <strong>Feel free to shop all of these goodies and more products in our <a href="https://www.theveganwarehouse.com/collections/bags" class="">vegan&nbsp;fashion</a> and <a href="https://www.theveganwarehouse.com/collections/beauty-1" class="">beauty</a> category!</strong></p><p><br></p></div></div></div></div><!--gfsplit--><div data-label="Text Block" id="e-1569330697193" class="element-wrap" data-icon="gpicon-textblock" data-ver="1" data-id="1569330697193"><div class="elm text-edit gf-elm-left gf-elm-left-lg gf-elm-left-md gf-elm-left-sm gf-elm-left-xs" data-gemlang="en" data-exc=""></div></div><!--gfsplit--><div data-label="Separator" id="e-1569330697232" class="element-wrap" data-icon="gpicon-separator" data-ver="1" data-id="1569330697232"><div class="elm gf-elm-center" data-align="left"><hr class="gf_separator"></div></div><!--gfsplit--><script>window.__gemStoreData = {};window.__gemStoreData.gemKeyValid = {};window.__gemStoreData.gemKeyValid.bestWayAddToCart = 1;window.__gemStoreData.gemKeyValid.clickAddToCart = 1;</script>
+</div><div id="divContentBk"></div><!--End_Gem_Page_Main_Editor-->      </div>      {% if section.settings.social_sharing_blog %}
+        {% include 'social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image %}
+      {% endif %}      {% if blog.comments_enabled? %}        {% if number_of_comments > 0 %}
+          <hr class="hr--large">
+          <h3>{{ 'blogs.comments.with_count' | t: count: number_of_comments }}</h3>
+          <hr class="hr--small hr--clear">
+        {% endif %}        {% paginate article.comments by 5 %}
+          
+          <div id="comments">            {% if comment and comment.created_at %}
+              <p class="note note--success">
+                {% if blog.moderated? %}
+                  {{ 'blogs.comments.success_moderated' | t }}
+                {% else %}
+                  {{ 'blogs.comments.success' | t }}
+                {% endif %}
+              </p>
+            {% endif %}            {% if number_of_comments > 0 %}
+              <ul class="no-bullets">
+                
+                {% if comment and comment.created_at %}
+                  <li id="{{ comment.id }}" class="comment first{% if article.comments_count == 0 %} last{% endif %}">
+                    {% include 'comment' %}
+                  </li>
+                {% endif %}                {% for comment in article.comments %}
+                  <li id="{{ comment.id }}" class="comment{% unless number_of_comments > article.comments_count %}{% if forloop.first %} first{% endif %}{% endunless %}{% if forloop.last %} last {% endif %}">
+                    {% include 'comment' %}
+                  </li>                  {% unless forloop.last %}
+                    <li><hr class="hr--clear"></li>
+                  {% endunless %}
+                {% endfor %}
+              </ul>              {% if paginate.pages > 1 %}
+                {% include 'pagination' %}
+              {% endif %}            {% endif %}            <hr class="hr--large">            <header class="section-header{% unless settings.type_headers_align_text %} section-header--with-link{% endunless %}">
+              <h3 class="section-header__title">{{ 'blogs.comments.title' | t }}</h3>
+            </header>            <div class="form-vertical">
+              {% form 'new_comment', article %}                {{ form.errors | default_errors }}                <div class="grid grid--small">
+                  <div class="grid__item medium-up--one-half">
+                    <label for="CommentAuthor">{{ 'blogs.comments.name' | t }}</label>
+                    <input class="input-full{% if form.errors contains 'author' %} error{% endif %}" type="text" name="comment[author]" id="CommentAuthor" value="{{ form.author }}" autocapitalize="words">
+                  </div>
+                  <div class="grid__item medium-up--one-half">
+                    <label for="CommentEmail">{{ 'blogs.comments.email' | t }}</label>
+                    <input class="input-full{% if form.errors contains 'email' %} error{% endif %}" type="email" name="comment[email]" id="CommentEmail" value="{{ form.email }}" autocorrect="off" autocapitalize="off">
+                  </div>
+                </div>                <label for="CommentBody">{{ 'blogs.comments.message' | t }}</label>
+                <textarea class="input-full{% if form.errors contains 'body' %} error{% endif %}" name="comment[body]" id="CommentBody">{{ form.body }}</textarea>                {% if blog.moderated? %}
+                  <p><small>{{ 'blogs.comments.moderated' | t }}</small></p>
+                {% endif %}                <button type="submit" class="btn btn--secondary">
+                  {{ 'blogs.comments.post' | t }}
+                </button>              {% endform %}
+            </div>          </div>
+        {% endpaginate %}
+      {% endif %}      <hr class="hr--large">    </article>  </div>  <div class="text-center">
+    <a href="{{ blog.url }}" class="btn btn--small return-link">{% include 'icon-arrow-left' %} {{ 'blogs.article.back_to_blog' | t: title: blog.title }}</a>
+  </div>
+</div>
+<!--GEM_FOOTER-->
+{% capture GEM_FOOTER_SCRIPT %}
+<script data-instant-track type="text/javascript">
+	var pageLibs = [		'{{ 'gem-article-394960208029.js' | asset_url }}',	];
+</script>
+<script data-instant-track type="text/javascript">
+	var GEMVENDOR = GEMVENDOR || (function(){		var _js = {};		return {			init: function(Args) {				_js = Args;			},			getLibs: function() {				return _js;			}		};	}());	GEMVENDOR.init(pageLibs);</script>
+<script data-instant-track type="text/javascript" src="https://d1um8515vdn9kb.cloudfront.net/files/gempagev2.js?v=1.0" class="gf-script" defer></script>
+{% endcapture %}
+<!--GEM_FOOTER_END-->

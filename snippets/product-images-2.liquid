@@ -1,0 +1,10 @@
+{%- unless product.empty? -%}
+  <div>
+    <div class="product__photos">
+      {%- for media in product.media -%}
+
+      {%- endfor -%}
+    </div>
+  </div>
+
+{%- endunless -%}

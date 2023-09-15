@@ -1,0 +1,237 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{{ 'faq-content.css' | asset_url }}">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" defer></script>
+
+{% liquid
+  assign generalCount = 0
+  assign orderCount = 0
+  assign shippingCount = 0
+  for block in section.blocks
+    case block.type
+      when 'general'
+        assign generalCount = generalCount | plus: 1
+      when 'order'
+        assign orderCount = orderCount | plus: 1
+      when 'shipping'
+        assign shippingCount = shippingCount | plus: 1
+    endcase
+  endfor
+%}
+<section class="faqs-content-sec">
+  <div class="page-width">
+    <div class="faqs-content-inner">
+      <div class="d-md-flex  align-items-start">
+        <div
+          class="nav flex-column nav-pills me-3"
+          id="v-pills-tab"
+          role="tablist"
+          aria-orientation="vertical">
+          {% if generalCount > 0 %}
+            <button
+              class="nav-link active"
+              id="v-pills-Lens-Overview-tab"
+              data-bs-toggle="pill"
+              data-bs-target="#v-pills-Shipping"
+              type="button"
+              role="tab"
+              aria-controls="v-pills-Lens-Overview"
+              aria-selected="true">
+              General
+            </button>
+          {% endif %}
+          {% if orderCount > 0 %}
+            <button
+              class="nav-link"
+              id="v-pills-Sizing-tab"
+              data-bs-toggle="pill"
+              data-bs-target="#v-pills-Sizing"
+              type="button"
+              role="tab"
+              aria-controls="v-pills-Sizing"
+              aria-selected="false">
+              Order
+            </button>
+          {% endif %}
+          {% if shippingCount > 0 %}
+            <button
+              class="nav-link"
+              id="v-pills-return-tab"
+              data-bs-toggle="pill"
+              data-bs-target="#v-pills-return"
+              type="button"
+              role="tab"
+              aria-controls="v-pills-return"
+              aria-selected="false">
+              Shipping
+            </button>
+          {% endif %}
+        </div>
+        <div class="tab-content" id="v-pills-tabContent">
+          {% if generalCount > 0 %}
+            <div
+              class="tab-pane fade show active"
+              id="v-pills-Shipping"
+              role="tabpanel"
+              aria-labelledby="v-pills-Shipping-tab">
+              <div class="faqs-wrap">
+                <div class="faqs-custom-accordion product-detail-accordion accordion_container">
+                  {% for block in section.blocks %}
+                    {% case block.type %}
+                      {% when 'general' %}
+                      {% if block.settings.quiz != blank %}
+                        <div class="accordian-tabs faqs-accordian-tabs" count="{{ generalCount }}">
+                          <div class="accordion_head">
+                            <h6>
+                              {{ block.settings.quiz }}
+                              <span class="plusminus">+</span>
+                            </h6>
+                          </div>
+                          <div class="accordion_body" style="display: none;">
+                            {{ block.settings.answer }}
+                          </div>
+                        </div>
+                      {% endif %}
+                    {% endcase %}
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+          {% if orderCount > 0 %}
+            <div
+              class="tab-pane fade"
+              id="v-pills-Sizing"
+              role="tabpane2"
+              aria-labelledby="v-pills-Sizing-tab">
+              <div class="faqs-wrap">
+                <div class="faqs-custom-accordion product-detail-accordion accordion_container">
+                  {% for block in section.blocks %}
+                    {% case block.type %}
+                      {% when 'order' %}
+                      {% if block.settings.quiz != blank %}
+                        <div class="accordian-tabs faqs-accordian-tabs" count="{{ orderCount }}">
+                          <div class="accordion_head">
+                            <h6>
+                              {{ block.settings.quiz }}
+                              <span class="plusminus">+</span>
+                            </h6>
+                          </div>
+                          <div class="accordion_body" style="display: none;">
+                            {{ block.settings.answer }}
+                          </div>
+                        </div>
+                      {% endif %}
+                    {% endcase %}
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+          {% if shippingCount > 0 %}
+            <div
+              class="tab-pane fade"
+              id="v-pills-return"
+              role="tabpane3"
+              aria-labelledby="v-pills-return-tab">
+              <div class="faqs-wrap">
+                <div class="faqs-custom-accordion product-detail-accordion accordion_container">
+                  {% for block in section.blocks %}
+                    {% case block.type %}
+                      {% when 'shipping' %}
+                      {% if block.settings.quiz != blank %}
+                        <div class="accordian-tabs faqs-accordian-tabs" count="{{ shippingCount }}">
+                          <div class="accordion_head">
+                            <h6>
+                              {{ block.settings.quiz }}
+                              <span class="plusminus">+</span>
+                            </h6>
+                          </div>
+                          <div class="accordion_body" style="display: none;">
+                            {{ block.settings.answer }}
+                          </div>
+                        </div>
+                      {% endif %}
+                    {% endcase %}
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Accordian Tabs
+  $(".accordion_head").click(function() {
+    if ($('.accordion_body').is(':visible')) {
+      $(".accordion_body").slideUp(300);
+      $(".plusminus").text('+');
+    }
+    if ($(this).next(".accordion_body").is(':visible')) {
+      $(this).next(".accordion_body").slideUp(300);
+      $(this).find(".plusminus").text('+');
+    } else {
+      $(this).next(".accordion_body").slideDown(300);
+      $(this).find(".plusminus").text('-');
+    }
+  });
+  $('.accordion_head').click(function(e) {
+    $(this).parent('.accordian-tabs').toggleClass('active');
+    $(this).parent('.accordian-tabs').siblings('.accordian-tabs').removeClass('active');
+  });
+</script>
+
+{% schema %}
+  {
+    "name": "FAQs Content",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "general",
+        "name": "General",
+        "settings": [
+          {
+            "type": "text",
+            "id": "quiz",
+            "label": "Question"
+          }, {
+            "type": "richtext",
+            "id": "answer",
+            "label": "Answer"
+          }
+        ]
+      }, {
+        "type": "order",
+        "name": "Order",
+        "settings": [
+          {
+            "type": "text",
+            "id": "quiz",
+            "label": "Question"
+          }, {
+            "type": "richtext",
+            "id": "answer",
+            "label": "Answer"
+          }
+        ]
+      }, {
+        "type": "shipping",
+        "name": "Shipping",
+        "settings": [
+          {
+            "type": "text",
+            "id": "quiz",
+            "label": "Question"
+          }, {
+            "type": "richtext",
+            "id": "answer",
+            "label": "Answer"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

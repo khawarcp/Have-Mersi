@@ -1,0 +1,64 @@
+{%- assign schema_page_description = page_description | default: shop.description | default: shop.name -%}
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "CollectionPage",
+    "url": "https://www.theveganwarehouse.com/{{ collection.url }}",
+    "description": "{{ schema_page_description }}",
+    "@graph": [ 
+      {
+        "@type":"ItemList",
+          "name": "{{ collection.title | escape }}",
+          "description": "{{ schema_page_description }}",
+          "url": "https://www.theveganwarehouse.com{{ collection.url }}",
+          "itemListElement":[
+            {% for product in collection.products %}
+            {
+              "@type":"ListItem",
+              "position":{{ forloop.index }},
+              "name" : "{{ product.title | escape }}",
+              "image": "https:{{ product.featured_image | product_img_url: "medium" }}",
+              "url":"https://www.theveganwarehouse.com{{product.url}}"
+            }{%- if forloop.last != true -%},{%-endif-%}
+            {% endfor %}
+          ]
+      }
+    ]
+  }
+</script>
+
+{%- if collection.handle != 'mersi' -%}
+	{% section 'collection-header' %}
+{%- endif -%}
+
+<div id="CollectionAjaxResult" class="collection-content">
+  <div id="CollectionAjaxContent">
+    <div class="page-width">
+      <div class="grid">
+        <div class="grid__item medium-up--one-fifth grid__item--sidebar">
+          {% section 'collection-sidebar' %}
+        </div>
+        <div class="grid__item medium-up--four-fifths grid__item--content">
+          {% section 'collection-promotions' %}
+          <div class="collection-grid__wrapper">
+            {%- if collection.handle == 'mersi' -%}
+            	{% section 'collection-template-mersi' %}
+            {%- else -%}
+            	{% section 'collection-template' %}
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div>
+</div>
+
+<script type="text/javascript">
+  (function($){
+    $(document).ready(function(){
+    	$('html, body').animate({
+          scrollTop: $(".collection-filter").offset().top+40
+        }, 200);
+    });
+  })(jQuery);
+</script>

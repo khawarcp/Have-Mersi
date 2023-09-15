@@ -1,0 +1,195 @@
+{% comment %}
+	GEMPAGE BUILDER (https://apps.shopify.com/gempage)
+
+	You SHOULD NOT modify source code in this page because
+	It is automatically generated from GEMPAGE BUILDER
+	Try to edit page with the live editor.
+{% endcomment %}
+{%- assign number_of_comments = article.comments_count -%}
+
+{% if comment and comment.created_at %}
+  {%- assign number_of_comments = article.comments_count | plus: 1 -%}
+{% endif %}
+
+<div class="page-width page-content">
+
+  <div class="grid">
+    <article class="grid__item widescreen--six-tenths widescreen--push-two-tenths medium-up--two-thirds medium-up--push-one-sixth article" itemscope itemtype="http://schema.org/Article">
+
+      {% include 'breadcrumbs' %}
+
+      <header class="section-header">
+        {% if section.settings.blog_show_date or article.tags.size > 0 or articles.comments_count > 0 %}
+          <div class="article__date">
+            {% if section.settings.blog_show_tags and article.tags.size > 0 %}
+              {% for tag in article.tags %}
+                {% include 'filter-out-custom-tags' %}
+                <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a> &middot;
+              {% endfor %}
+            {% endif %}
+            {% if section.settings.blog_show_comments and article.comments_count > 0 %}
+              <a href="#comments">{{ article.comments_count }} {{ article.comments_count | pluralize: 'comment', 'comments' }}</a> &middot;
+            {% endif %}
+            {% if section.settings.blog_show_date %}
+              {{ article.published_at | time_tag: format: 'month_day_year' }}
+            {% endif %}
+          </div>
+        {% endif %}
+        <h1 class="section-header__title">{{ article.title }}</h1>
+        {% if section.settings.blog_show_author %}
+          <div class="article__author">by <span itemprop="author">{{ article.author }}</span></div>
+        {% endif %}
+      </header>
+
+      <div class="article__body rte" itemprop="articleBody">
+        <!--Gem_Page_Main_Editor--><div class="clearfix"></div><div class="gryffeditor">
+<div class="gryffeditor">
+<div data-label="Text Block"> <div class="elm text-edit"><meta charset="utf-8">
+<h2>What's your reason for being vegan? </h2>
+<p><img src="//cdn.shopify.com/s/files/1/2434/0721/files/Screen_Shot_2019-04-02_at_15.18.27_large.png?v=1554232737" alt=""></p>
+<p>Is it because you want to be healthier? You love animals and choose to stand up for their rights? Maybe you just watched "What the Health"? </p>
+<p>Being a vegan is all kinds of awesome no matter why you do it. But living this lifestyle fully goes beyond just your food choices.</p>
+<p>Ultimately, veganism is about making a difference - for our health, for the animals, and the planet. I<em>t means caring for the welfare of every living creature, treating every earthling with the respect that they deserve. </em></p>
+<h2></h2>
+<h2>The whole story.</h2>
+<p>While most of us are aware of the consequences of our food choices, we often overlook the products that we shop for. <em>The fact is that the majority of household and personal care items available in the market either contain animal by-products or are tested on animals. </em></p>
+<h2></h2>
+<h2>What to look out for. </h2>
+<p><img src="//cdn.shopify.com/s/files/1/2434/0721/files/IMG_4922_large.jpg?v=1553118867" alt=""></p>
+<p>Just take a look at the ingredient list of your everyday hygiene products like soap or shampoo and you'll most likely find glycerin, which is derived from animal fat.</p>
+<p>Other animal by-products commonly used in skincare include collagen (extracted from animal tissue and cartilage), and casein (derived from cow's milk). </p>
+<meta charset="utf-8">
+<p>Even if the product you are using doesn’t directly contain animal ingredients, it has likely gone through the process of animal testing. </p>
+<p> </p>
+<h2>Be the change.  </h2>
+<p>The key to making any change is education. Most of our population (even us vegans!) is largely unaware of what is inside the goods we consume.<em> By staying comfortable in our ignorance, we are unknowingly becoming part of the problem.</em></p>
+<p>Change begins in the simple choices that you make everyday – choices that go well beyond your diet. </p>
+<h3></h3>
+<h2>The alternatives. </h2>
+<p><img src="//cdn.shopify.com/s/files/1/2434/0721/files/DSC09638-edited_1000x_2a9bbe38-562e-4906-bbc5-4c68f023762c_large.jpg?v=1550604184" alt=""></p>
+<p>Nowadays, there are lots of vegan alternatives out there for literally every product imaginable. And there is no need to compromise! <em>The vegan options are just as effective and affordable as the big brand names. </em></p>
+<meta charset="utf-8">
+<p>The challenge is that we are often too busy to look into every product prior to purchasing and quickly fall into old habits. Reading ingredient labels and doing extensive research can be difficult and time-consuming. We hear you!</p>
+<p>That is why we made it our mission to simplify vegan living. We’ve done the research for you and hand-picked the very best products out there for our <a href="https://www.theveganwarehouse.com" target="_blank" rel="noopener noreferrer">vegan marketplace</a>. You can now shop them all at once, all in the same place, at affordable prices. </p>
+<p> </p>
+<h2>Your vegan essentials. </h2>
+<p>We’ve taken care of the guesswork, so you don’t need to! Need an effective and natural cleaner? The <a href="https://www.theveganwarehouse.com/products/natural-multi-surface-cleaner">Puracy Multi-Surface Cleaner</a> will remove dirt in no time, without releasing toxic chemicals in the air. We even have your makeup staples with the gluten-free, paraben-free and mercury-free <a href="https://www.theveganwarehouse.com/products/black-mascara">Pure Anada Mascara</a>, and the Spela Paint and Play <a href="https://www.theveganwarehouse.com/products/liquid-lipstick-spa-day">Matte Liquid Lipstick</a>.</p>
+<p>With more products in beauty, makeup, fashion, and home, we have your back for whatever vegan alternative you are looking for. And the best thing? When you purchase from our <a href="https://www.theveganwarehouse.com">vegan shop</a>, you’re doing more than just supporting cruelty-free brands. <em>You are becoming advocating for animal rights and spreading the vegan movement in your community. </em></p>
+<p> </p>
+<h2>Your part.</h2>
+<p>Now that you have the knowledge and the tools to adopt a fully vegan lifestyle, nothing can stop you!  With our <a href="https://www.theveganwarehouse.com">vegan online store</a> as a resource, cruelty-free alternatives are at your fingertips. </p>
+<meta charset="utf-8">
+<p><strong><em>Remember, in this day and age your dollar is your vote. What you choose to purchase is what you choose to support in this world! </em></strong></p></div></div>
+</div><div id="divContentBk"></div>
+</div><div id="divContentBk"></div><!--End_Gem_Page_Main_Editor-->
+      </div>
+
+      {% if section.settings.social_sharing_blog %}
+        {% include 'social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image %}
+      {% endif %}
+
+      {% if blog.comments_enabled? %}
+
+        {% if number_of_comments > 0 %}
+          <hr class="hr--large">
+          <h3>{{ 'blogs.comments.with_count' | t: count: number_of_comments }}</h3>
+          <hr class="hr--small hr--clear">
+        {% endif %}
+
+        {% paginate article.comments by 5 %}
+          {% comment %}
+            #comments is required, it is used as an anchor link by Shopify.
+          {% endcomment %}
+          <div id="comments">
+
+            {% if comment and comment.created_at %}
+              <p class="note note--success">
+                {% if blog.moderated? %}
+                  {{ 'blogs.comments.success_moderated' | t }}
+                {% else %}
+                  {{ 'blogs.comments.success' | t }}
+                {% endif %}
+              </p>
+            {% endif %}
+
+            {% if number_of_comments > 0 %}
+              <ul class="no-bullets">
+                {% comment %}
+                  If a comment was just submitted with no blank field, show it.
+                {% endcomment %}
+                {% if comment and comment.created_at %}
+                  <li id="{{ comment.id }}" class="comment first{% if article.comments_count == 0 %} last{% endif %}">
+                    {% include 'comment' %}
+                  </li>
+                {% endif %}
+
+                {% for comment in article.comments %}
+                  <li id="{{ comment.id }}" class="comment{% unless number_of_comments > article.comments_count %}{% if forloop.first %} first{% endif %}{% endunless %}{% if forloop.last %} last {% endif %}">
+                    {% include 'comment' %}
+                  </li>
+
+                  {% unless forloop.last %}
+                    <li><hr class="hr--clear"></li>
+                  {% endunless %}
+                {% endfor %}
+              </ul>
+
+              {% if paginate.pages > 1 %}
+                {% include 'pagination' %}
+              {% endif %}
+
+            {% endif %}
+
+            <hr class="hr--large">
+
+            <header class="section-header{% unless settings.type_headers_align_text %} section-header--with-link{% endunless %}">
+              <h3 class="section-header__title">{{ 'blogs.comments.title' | t }}</h3>
+            </header>
+
+            <div class="form-vertical">
+              {% form 'new_comment', article %}
+
+                {{ form.errors | default_errors }}
+
+                <div class="grid grid--small">
+                  <div class="grid__item medium-up--one-half">
+                    <label for="CommentAuthor">{{ 'blogs.comments.name' | t }}</label>
+                    <input class="input-full{% if form.errors contains 'author' %} error{% endif %}" type="text" name="comment[author]" id="CommentAuthor" value="{{ form.author }}" autocapitalize="words">
+                  </div>
+                  <div class="grid__item medium-up--one-half">
+                    <label for="CommentEmail">{{ 'blogs.comments.email' | t }}</label>
+                    <input class="input-full{% if form.errors contains 'email' %} error{% endif %}" type="email" name="comment[email]" id="CommentEmail" value="{{ form.email }}" autocorrect="off" autocapitalize="off">
+                  </div>
+                </div>
+
+                <label for="CommentBody">{{ 'blogs.comments.message' | t }}</label>
+                <textarea class="input-full{% if form.errors contains 'body' %} error{% endif %}" name="comment[body]" id="CommentBody">{{ form.body }}</textarea>
+
+                {% if blog.moderated? %}
+                  <p><small>{{ 'blogs.comments.moderated' | t }}</small></p>
+                {% endif %}
+
+                <button type="submit" class="btn btn--secondary">
+                  {{ 'blogs.comments.post' | t }}
+                </button>
+
+              {% endform %}
+            </div>
+
+          </div>
+        {% endpaginate %}
+      {% endif %}
+
+      <hr class="hr--large">
+
+    </article>
+
+  </div>
+
+  <div class="text-center">
+    <a href="{{ blog.url }}" class="btn btn--small return-link">{% include 'icon-arrow-left' %} {{ 'blogs.article.back_to_blog' | t: title: blog.title }}</a>
+  </div>
+</div>
+
+
+

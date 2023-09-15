@@ -1,0 +1,348 @@
+/**********  faqs page ***********/
+.faqs-content-inner{
+  max-width: 80%;
+}
+
+.faqs-sec div#v-pills-tabContent {
+  width: 75%;
+}
+
+.faqs-sec div#v-pills-tab {
+  width: 25%;
+}
+.faqs-sec .nav-pills .nav-link.active {
+  background: #000000;
+  box-shadow: inset 0px -1px 0px rgba(0, 0, 0, 0.12);
+  border-radius: 0px;
+  color: #fff;
+}
+.faqs-sec .nav-pills .nav-link::before {
+  content: "";
+  position: absolute;
+  border: 1px solid #000;
+  border-width: 0 1px 1px 0;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  right: 17px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 7px;
+  height: 7px;
+}
+.faqs-sec .nav-pills .nav-link.active::before {
+  border: 1px solid #fff;
+  border-width: 0 1px 1px 0;
+}
+.faqs-sec .nav-pills .nav-link {
+  text-align: left;
+  position: relative;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
+  padding: 16px 24px;
+}
+.accordion-item {
+  border: none;
+}
+.faqs-wrap {
+  border-bottom: 1px solid #dde1e4;
+  border-top: 1px solid #dde1e4;
+}
+.faqs-wrap .accordion-item.active {
+  border-bottom: 1px solid #dde1e4;
+  border-radius: 0;
+  box-shadow: inset 2px 0px 0px #d90000;
+  background-color: #ffffff;
+}
+.faqs-wrap .accordion-button:focus {
+  box-shadow: none;
+}
+.faqs-wrap .accordion-item .accordion-button {
+  background-color: trans;
+}
+.faqs-wrap .accordion-button {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+}
+.faqs-wrap .accordion-body {
+  font-size: 14px;
+  line-height: 24px;
+  padding-top: 0px;
+}
+.faqs-wrap .accordion-item {
+  border-bottom: 1px solid #dde1e4;
+  background-color: transparent;
+}
+.faqs-wrap .accordion-button::after {
+  width: 30px;
+  height: 30px;
+  background-size: 12px;
+  background-color: #f5f5f8;
+  border-radius: 50%;
+  background-position: center;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+  transform: rotate(0deg);
+}
+.faqs-wrap .accordion-item:last-child {
+  border-bottom: none;
+}
+section.faqs-sec {
+  padding: 120px 0;
+}
+
+.faq-title h2 {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 27px;
+  text-align: center;
+  padding-bottom: 18px;
+}
+
+.faq-title p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  text-align: center;
+  text-transform: capitalize;
+  max-width: 530px;
+  margin: auto;
+  padding-bottom: 100px;
+}
+
+.faqs-sec .container {
+  max-width: 1010px;
+  margin: auto;
+}
+
+.faqs-content-sec {
+  padding: 60px 0px;
+}
+
+div#v-pills-tab {
+  width: 28%;
+  border: 1px solid #E4E4E4;
+  border-radius: 5px;
+  background-color: #fff;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+div#v-pills-tabContent {
+  width: 72%;
+  margin-left: 15px;
+}
+
+.faqs-content-sec div#v-pills-tab button {
+  /* border-bottom: 1px solid #000; */
+  border-radius: 0px;
+  background: #ffffff;
+  box-shadow: inset 0px -1px 0px rgba(0, 0, 0, 0.12);
+  border-radius: 0px;
+  text-align: left;
+  padding: 14px 19px;  
+  font-size: 18px;
+  position: relative;
+  font-family: Miller,sans-serif ;
+  color:#301210;
+  line-height: 21.2px;
+}
+
+.faqs-content-sec div#v-pills-tab button.active {
+  background-color: #EB4E24;
+  color: #fff;
+}
+
+.faqs-content-sec div#v-pills-tab button::before {
+  border: solid #0a233c;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  content: "";
+  position: absolute;
+  right: 10px;
+  top: 45%;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  border-radius: 2px;
+}
+
+.faqs-content-sec div#v-pills-tab button.active::before {
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+}
+
+.faqs-content-sec div#v-pills-tab button:last-child {
+  box-shadow: none;
+}
+
+.faqs-wrap .accordion-item .accordion-button {
+  background-color: transparent;
+  font-size: 14px;
+}
+
+.faqs-custom-accordion.product-detail-accordion.accordion_container .accordian-tabs.faqs-accordian-tabs h6 {
+    color: #0A233C;
+    align-items: center;
+}
+
+.faqs-custom-accordion.product-detail-accordion.accordion_container .accordian-tabs.faqs-accordian-tabs {
+    padding: 18px 0px 18px 30px;
+}
+
+.faqs-custom-accordion.product-detail-accordion.accordion_container .accordian-tabs.faqs-accordian-tabs h6 span::before {
+    border: solid #031e4d;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    content: '';
+    border-radius: 2px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    top: 0px;
+    bottom: 0px;
+    transition: 0.2s all;
+}
+
+.faqs-custom-accordion.product-detail-accordion.accordion_container .accordian-tabs.faqs-accordian-tabs h6 span {
+    position: relative;
+    font-size: 0px;
+    width: 30px;
+    height: 30px;
+    background-color: #F5F5F8;
+}
+
+.faqs-custom-accordion.product-detail-accordion.accordion_container .accordian-tabs.faqs-accordian-tabs.active h6 span::before {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+    margin-top: 2px;
+}
+
+.faqs-custom-accordion.product-detail-accordion.accordion_container .accordian-tabs.faqs-accordian-tabs.active {
+    background-color: #FFFFFF;
+    box-shadow: inset 2px 0px 0px #EB4E24;
+    padding: 25px 0px 22px 32px;
+}
+
+.faqs-custom-accordion.product-detail-accordion.accordion_container .accordion_body p {
+    color: #4E5057; 
+}
+
+.faqs-custom-accordion.product-detail-accordion.accordion_container .accordion_body {
+    padding-top: 15px;
+    max-width: 565px;
+}
+
+.product-detail-accordion.accordion_container .accordian-tabs.faqs-accordian-tabs h6 {
+    margin-bottom: 0px;
+    color: #000000;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.product-detail-accordion.accordion_container .accordian-tabs.faqs-accordian-tabs h6 span {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #E5E5E5;
+    border-radius: 50%;
+    font-size: 16px;
+}
+
+.faqs-custom-accordion.product-detail-accordion.accordion_container .accordian-tabs.faqs-accordian-tabs {
+  border-bottom: 1px solid #DDE1E4;
+}
+
+.faqs-custom-accordion.product-detail-accordion.accordion_container .accordian-tabs.faqs-accordian-tabs h6 {
+  font-size: 22px;
+  line-height: 32px;
+  letter-spacing: normal;
+  text-transform: inherit;
+}   
+.faqs-custom-accordion.product-detail-accordion.accordion_container .accordian-tabs.faqs-accordian-tabs.active .accordion_head h6 {
+  color: #EB4E24;
+  font-size: 20px;
+  line-height: 32.4px;
+}
+
+.faqs-custom-accordion.product-detail-accordion.accordion_container .accordian-tabs.faqs-accordian-tabs.active .accordion_body p {
+  font-size: 18px;
+  line-height: 32px;
+}
+
+.faqs-custom-accordion.product-detail-accordion.accordion_container .accordian-tabs.faqs-accordian-tabs h6 {
+    width: calc(100% - 30px);
+  padding: 5px 0;
+}
+
+.faqs-custom-accordion.product-detail-accordion.accordion_container .accordian-tabs.faqs-accordian-tabs h6 span {
+    position: absolute;
+    right: 0;
+}
+
+.accordion_head {
+    position: relative;
+
+}
+
+@media only screen and (max-width: 1280px) {
+  .faqs-content-inner {
+      max-width: 90%;
+  }
+}
+@media only screen and (max-width: 1100px) {
+  .faqs-content-inner {
+      max-width: 100%;
+  }
+}
+@media only screen and (max-width: 992px) {
+  .faqs-custom-accordion.product-detail-accordion.accordion_container .accordian-tabs.faqs-accordian-tabs h6 {
+      font-size: 20px;
+    line-height: 30px;
+  }
+  .faqs-custom-accordion.product-detail-accordion.accordion_container .accordian-tabs.faqs-accordian-tabs.active .accordion_head h6 {
+      font-size: 20px;
+    line-height: 30px;
+  }
+  .faqs-custom-accordion.product-detail-accordion.accordion_container .accordion_body p {
+      font-size: 14px;
+      line-height: 22px;
+  }
+  .faqs-custom-accordion.product-detail-accordion.accordion_container .accordian-tabs.faqs-accordian-tabs.active .accordion_body p {
+      font-size: 15px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  div#v-pills-tab {
+      width: 100%;
+      margin: 0 0 50px;
+  }
+  
+  div#v-pills-tabContent {
+      width: 100%;
+      margin: 0px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .faqs-custom-accordion.product-detail-accordion.accordion_container .accordian-tabs.faqs-accordian-tabs.active .accordion_head h6, .faqs-custom-accordion.product-detail-accordion.accordion_container .accordian-tabs.faqs-accordian-tabs h6 {
+      font-size: 15px;
+      line-height: 20px;
+  }
+  .faqs-custom-accordion.product-detail-accordion.accordion_container .accordion_body p, .faqs-custom-accordion.product-detail-accordion.accordion_container .accordian-tabs.faqs-accordian-tabs.active .accordion_body p {
+      font-size: 13px;
+  }
+  .faqs-custom-accordion.product-detail-accordion.accordion_container .accordian-tabs.faqs-accordian-tabs {
+      padding: 12px 0 12px 10px;
+  }
+  .faqs-custom-accordion.product-detail-accordion.accordion_container .accordian-tabs.faqs-accordian-tabs.active {
+      padding: 20px 0px 20px 16px;
+  }
+}

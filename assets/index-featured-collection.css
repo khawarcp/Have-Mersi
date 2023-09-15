@@ -1,0 +1,119 @@
+.custom-featured-collection .section-header {
+    text-align: left;
+}
+
+.custom-featured-collection .grid__item {
+    padding-left: 0;
+}
+
+/* New Css */
+
+.featured-collection-slider {
+    margin: 0px;
+}
+
+.slider-counter {
+    right: 45px;
+    top: -70px;
+}
+
+.custom-featured-collection .owl-nav {
+    top: -68px;
+}
+
+.strap-counter {
+  right: 45px;
+  top: -70px;
+}
+.strap-collection-slider {
+    margin: 0px;
+}
+.custom-featured-collection .grid__item {
+    margin-bottom: 0px;
+}
+@media only screen and (max-width: 992px) {
+  
+  
+  .custom-featured-collection .owl-nav {
+      top: -67px;
+      right: 0px;
+      z-index: 1;
+  }
+  
+  .grid-overflow-wrapper {
+      overflow: visible;
+      overflow-x: visible;
+  }
+  .grid-overflow-wrapper .grid__item {
+      width: 100%;
+  }
+  .strap-collection-slider .owl-nav {
+      right: 10px;
+  }
+  .strap-counter {
+      right: 55px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .strap-counter {
+    right: -25px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .slider-counter {
+      top: auto;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      width: 100%;
+      max-width: max-content;
+      line-height: 1;
+  }
+  
+  .custom-featured-collection .owl-nav {
+      top: auto;
+      width: 100%;
+      right: 0;
+      max-width: 100px;
+      margin: auto;
+      left: 0;
+      bottom: 25px;
+  }
+ .grid-overflow-wrapper .featured-collection-slider .grid__item {
+      width: 100% !important;
+  }
+  .grid-overflow-wrapper .featured-collection-slider .grid__item:first-child {
+      margin: auto;
+      max-width: 95%;
+      width: 100%;
+      display: block;
+  }
+  
+  .strap-counter {
+      top: auto;
+      left: 0;
+      right: 0;
+      justify-content: center;
+      width: 100%;
+      max-width: 100px;
+      margin: auto;
+  }
+  .featured-collection-slider + .slider-counter {
+      display: none;
+  }
+  
+  .featured-collection-slider {
+      padding: 0 0 70px;
+  }
+  
+  .custom-featured-collection {
+      margin-bottom: -20px;
+  }
+  .strap-collection-slider .owl-nav {
+      bottom: -5px !important;
+  }
+  .strap-counter {
+      display: none;
+  }
+}

@@ -1,0 +1,200 @@
+<div class="why-vegan-wrapper">
+  <div class="page-width why-vegan">
+    {% if section.settings.title != blank %}
+      <div class="section-header text-center">
+        <h2>{{ section.settings.title }}</h2>
+      </div>
+    {% endif %}
+
+
+    {% comment %}Mobile part{% endcomment %}
+    <div class="hidden-desktop">
+      {% if section.settings.sub_title_mobile != blank %}
+        <div class="sub-header text-center">
+          <p>{{ section.settings.sub_title_mobile }}</p>
+        </div>
+      {% endif %}
+      <div class="why-vegan-feature-icons-slider">
+        <div class="why-vegan-feature-icons-slider__icon">
+          <img src="{{ section.settings.feature_image_1 | img_url: 'master' }}" alt="Feature icon">
+        </div>
+        <div class="why-vegan-feature-icons-slider__icon">
+          <img src="{{ section.settings.feature_image_2 | img_url: 'master' }}" alt="Feature icon">
+        </div>
+        <div class="why-vegan-feature-icons-slider__icon">
+          <img src="{{ section.settings.feature_image_3 | img_url: 'master' }}" alt="Feature icon">
+        </div>
+        <div class="why-vegan-feature-icons-slider__icon">
+          <img src="{{ section.settings.feature_image_4 | img_url: 'master' }}" alt="Feature icon">
+        </div>
+      </div>
+      <div class="why-vegan-feature-text-slider">
+        <div class="why-vegan-feature-text-slider__text">{{ section.settings.feature_text_1 }}</div>
+        <div class="why-vegan-feature-text-slider__text">{{ section.settings.feature_text_2 }}</div>
+        <div class="why-vegan-feature-text-slider__text">{{ section.settings.feature_text_3 }}</div>
+        <div class="why-vegan-feature-text-slider__text">{{ section.settings.feature_text_4 }}</div>
+      </div>
+    </div>
+
+
+    {% comment %}Desktop part{% endcomment %}
+    <div class="hidden-mobile">
+      {% if section.settings.sub_title != blank %}
+        <div class="sub-header text-center">
+          <p>{{ section.settings.sub_title }}</p>
+        </div>
+      {% endif %}
+
+      <div class="why-vegan-features">
+
+        <div class="why-vegan-feature why-vegan-feature--1">
+          <div class="why-vegan-feature__image">
+            <img src="{{ section.settings.feature_image_1 | img_url: 'master' }}" alt="Feature icon">
+          </div>
+          <div class="why-vegan-feature__text">{{ section.settings.feature_text_1 }}</div>
+        </div>
+
+        <div class="why-vegan-main">
+          <img src="{{ section.settings.main_image | img_url: 'master' }}" alt="Feature icon">
+        </div>
+
+        <div class="why-vegan-feature why-vegan-feature--3">
+          <div class="why-vegan-feature__image">
+            <img src="{{ section.settings.feature_image_3 | img_url: 'master' }}" alt="Feature icon">
+          </div>
+          <div class="why-vegan-feature__text">{{ section.settings.feature_text_3 }}</div>
+        </div>
+
+        <div class="why-vegan-feature why-vegan-feature--2">
+          <div class="why-vegan-feature__image">
+            <img src="{{ section.settings.feature_image_2 | img_url: 'master' }}" alt="Feature icon">
+          </div>
+          <div class="why-vegan-feature__text">{{ section.settings.feature_text_2 }}</div>
+        </div>
+
+        <div class="why-vegan-feature why-vegan-feature--4">
+          <div class="why-vegan-feature__image">
+            <img src="{{ section.settings.feature_image_4 | img_url: 'master' }}" alt="Feature icon">
+          </div>
+          <div class="why-vegan-feature__text">{{ section.settings.feature_text_4 }}</div>
+        </div>
+
+      </div>
+    </div>
+
+
+    {% if section.settings.button_link_1 %}
+    <div class="why-vegan-btn">
+      <a href="{{ section.settings.button_link_1 }}" class="btn btn--primary btn--full">{{ section.settings.button_label_1 }}</a>
+    </div>
+    {% endif %}
+    {% if section.settings.button_link_2 %}
+    <div class="why-vegan-btn">
+      <a href="{{ section.settings.button_link_2 }}" class="btn btn--secondary btn--full">{{ section.settings.button_label_2 }}</a>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Custom 'Why Vegan'",
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading"
+      },
+      {
+        "type": "text",
+        "id": "sub_title",
+        "label": "Sub Heading"
+      },
+      {
+        "type": "text",
+        "id": "sub_title_mobile",
+        "label": "Sub Heading Mobile"
+      },
+      {
+        "type": "image_picker",
+        "id": "main_image",
+        "label": "Main Image"
+      },
+      {
+        "type": "header",
+        "content": "Features"
+      },
+      {
+        "type": "image_picker",
+        "id": "feature_image_1",
+        "label": "Feature Image 1"
+      },
+      {
+        "type": "richtext",
+        "id": "feature_text_1",
+        "label": "Feature Text 1"
+      },
+      {
+        "type": "image_picker",
+        "id": "feature_image_2",
+        "label": "Feature Image 2"
+      },
+      {
+        "type": "richtext",
+        "id": "feature_text_2",
+        "label": "Feature Text 2"
+      },
+      {
+        "type": "image_picker",
+        "id": "feature_image_3",
+        "label": "Feature Image 3"
+      },
+      {
+        "type": "richtext",
+        "id": "feature_text_3",
+        "label": "Feature Text 3"
+      },
+      {
+        "type": "image_picker",
+        "id": "feature_image_4",
+        "label": "Feature Image 4"
+      },
+      {
+        "type": "richtext",
+        "id": "feature_text_4",
+        "label": "Feature Text 4"
+      },
+      {
+        "type": "header",
+        "content": "Buttons"
+      },
+      {
+        "type": "text",
+        "id": "button_label_1",
+        "label": "Button label 1"
+      },
+      {
+        "type": "url",
+        "id": "button_link_1",
+        "label": "Link 1"
+      },
+      {
+        "type": "text",
+        "id": "button_label_2",
+        "label": "Button label 2"
+      },
+      {
+        "type": "url",
+        "id": "button_link_2",
+        "label": "Link 2"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Custom 'Why Vegan'",
+        "category": "Text"
+      }
+    ]
+  }
+{% endschema %}

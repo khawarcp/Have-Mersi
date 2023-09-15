@@ -1,0 +1,79 @@
+<link rel="stylesheet" href="{{ 'product-detail-tabbing.css' | asset_url }}">
+<script src="{{ 'product-detail-tabbing.js' | asset_url }}" defer></script>
+
+<div class="page-width">
+  <div class="grid tab-col-wrapper">
+    <div class="grid__item {%if product.metafields.custom.description_tab_image != blank or product.metafields.custom.product_tabbing_video != blank %}medium-up--one-half{% endif %} tab-col">
+      <div class="tab">
+        <button class="tablinks active" onclick="openCity(event, 'description')">Description</button>
+        {% if product.metafields.custom.quality != blank %}
+          <button class="tablinks" onclick="openCity(event, 'quality')">Quality</button>
+        {% endif %}
+        {% if product.metafields.custom.care != blank %}
+          <button class="tablinks" onclick="openCity(event, 'care')">Care</button>
+        {% endif %}
+        {% if product.metafields.custom.details != blank %}
+          <button class="tablinks" onclick="openCity(event, 'details')">Details</button>
+        {% endif %}
+      </div>
+
+      <div
+        id="description"
+        class="tabcontent"
+        style="display: block;">
+        <div class="tabcontent-inner">
+          {{ product.description }}
+        </div>
+      </div>
+
+      {% if product.metafields.custom.quality != blank %}
+        <div id="quality" class="tabcontent">
+          <div class="tabcontent-inner">
+            {{ product.metafields.custom.quality | metafield_text }}
+          </div>
+        </div>
+      {% endif %}
+
+      {% if product.metafields.custom.care != blank %}
+        <div id="care" class="tabcontent">
+          <div class="tabcontent-inner">
+            {{ product.metafields.custom.care | metafield_text }}
+          </div>
+        </div>
+      {% endif %}
+      {% if product.metafields.custom.details != blank %}
+        <div id="details" class="tabcontent">
+          <div class="tabcontent-inner">
+            {{ product.metafields.custom.details | metafield_text }}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+    {% if product.metafields.custom.description_tab_image != blank or product.metafields.custom.product_tabbing_video != blank %}
+      <div class="grid__item medium-up--one-half tab-image-col">
+        {% if  product.metafields.custom.product_tabbing_video != blank %}
+          <div class="tab-col-video-wrapp">
+            {{ product.metafields.custom.product_tabbing_video.value | video_tag: autoplay: true, loop: true, muted: true, controls: true }}
+          </div>
+        {% else %}
+          {% if product.metafields.custom.description_tab_image != blank %}
+          <div class="tab-col-image-wrapp">
+        <img
+          src="{{ product.metafields.custom.description_tab_image | image_url }}"
+          alt="{{ product.metafields.custom.description_tab_image.alt }}"
+          loading="lazy">
+        {% endif %}
+        {% endif %}
+          </div>
+      </div>
+    {% endif %}
+  </div>
+
+</div>
+
+{% schema %}
+  {
+    "name": "Product Tabbing",
+    "settings": []
+  }
+{% endschema %}

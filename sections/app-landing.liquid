@@ -1,0 +1,91 @@
+<div class="page-width app-landing__page">
+    <h1 class="app-landing__page-title">{{ section.settings.page_title }}</h1>
+
+    <div class="app-landing__download-buttons">
+        <a target="_blank" href="{{ section.settings.apple_url}}" title="Download on the app store">
+            <img src="{{ section.settings.apple_icon | image_url: width: 300}}" alt="Download on the app store">
+        </a>
+        <a target="_blank" href="{{ section.settings.android_url}}" title="Get it on Google Play">
+            <img src="{{ section.settings.android_icon | image_url: width: 300}}" alt="Get it on Google Play">
+        </a>
+    </div>
+
+    <div class="app-landing__app-preview">
+        <img src="{{ section.settings.main_image | image_url: width: 1500}}" alt="The Vegan Warehouse App Preview">
+    </div>
+
+    <h2 class="app-landing__promotional-text">{{ section.settings.promotial_text}}</h2>
+
+    <div class="app-landing__columns">
+        {% for block in section.blocks %}
+        <div>
+            <span class="app-landing__columns-number">0{{ forloop.index }}</span>
+            <h2>{{ block.settings.title }}</h2>
+            <p>{{ block.settings.content }}</p>
+        </div>
+        {% endfor %}
+    </div>    
+</div>
+{% schema %}
+{
+    "name": "App Landing Page",
+    "tag": "section",
+    "class": "app-landing-page-container",
+    "settings": [
+        {
+            "type": "text",
+            "id": "page_title",
+            "label": "Page Title"
+        },
+        {
+            "type": "image_picker",
+            "id": "main_image",
+            "label": "Main Image"
+        },
+        {
+            "type": "image_picker",
+            "id": "apple_icon",
+            "label": "Apple Icon"
+        },
+        {
+            "type": "text",
+            "id": "apple_url",
+            "label": "Apple Download URL"
+        },
+        {
+            "type": "image_picker",
+            "id": "android_icon",
+            "label": "Android Icon"
+        },
+        {
+            "type": "text",
+            "id": "android_url",
+            "label": "Android Download URL"
+        },
+        {
+            "type": "text",
+            "id": "promotial_text",
+            "label": "Promotional Text"
+        }
+    ],
+    "blocks": [{
+        "name": "Content",
+        "type": "content",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            },
+            {
+                "type": "textarea",
+                "id": "content",
+                "label": "Content"
+            }
+        ]
+    }],
+    "presets": [{
+        "name": "App Landing Page"
+    }]
+}
+{% endschema %}

@@ -1,0 +1,192 @@
+{% if settings.countdown_enable %}
+  <div class="popup-container" id="myModal">
+    <div class="popup-content-cb">
+      <div class="popup-header">
+        <span class="close">&times;</span>
+      </div>
+      <div class="popup-headerSection">
+        <div class="popup-main-title">{{ settings.countdown_main_title }}</div>
+        <div class="popup-second-title">{{ settings.countdown_second_title }}</div>
+        <div class="popup-third-title">{{ settings.countdown_third_title }}</div>
+      </div>
+      <div class="popup-middleSection">
+        <div class="popup-cd-content">
+          <div class="popup-cd-container-days">
+            <span id="popup-cdcontainer__days" class="font-bold"></span>Days</div>
+          <div class="popup-cd-container-hours">
+            <span id="popup-cdcontainer__hours" class="font-bold"></span>Hours</div>
+          <div class="popup-cd-container-minutes">
+            <span id="popup-cdcontainer__minutes" class="font-bold"></span>Minutes</div>
+          <div class="popup-cd-container-seconds">
+            <span id="popup-cdcontainer__seconds" class="font-bold"></span>Seconds</div>
+        </div>
+      </div>
+      <div class="popup-footerSection">
+        <div class="popup-rc-text">{{ settings.countdown_rc_text }} <span class="font-bold">{{ settings.countdown_rc_text2 }}</span></div>
+        <a class="popup-button" href="{{ settings.countdown_product_url }}" >SHOP NOW</a>
+        <a class="popup-noThanks" >No Thanks</a>
+      </div>
+    </div>
+  </div>
+
+  {% style %}
+  .popup-container {
+    display: none; 
+    position: fixed; 
+    z-index: 100; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+  }
+
+  .popup-content-cb {
+    background-color: #fefefe;
+    margin: auto; 
+    position: relative;
+    top: 25%;
+    width: 20em; 
+  }
+
+  .popup-headerSection {
+    background: black;
+    padding: 30px 30px 65px;
+    text-align: center;
+    line-height: 2em;
+  }
+
+  .popup-main-title{
+    background-color:{{settings.countdown_main_bg_color}};
+    color:{{settings.countdown_main_title_color}};
+    font-size: 24px;
+    margin-bottom:15px;
+  }
+  .popup-second-title{
+      color:{{settings.countdown_second_title_color}};
+      font-weight: bold;
+      font-size: 40px;
+  }
+  .popup-third-title{
+      color:{{settings.countdown_third_title_color}};
+      letter-spacing: 4px;
+      font-size: 26px;
+  }
+  .popup-middleSection {
+    position: relative;
+    top: -37px;
+  }
+
+  .popup-cd-content {
+    display:flex;
+    background: #33A612;
+    width: 300px;
+    margin: auto;
+    padding: 10px 30px;
+    border-radius: 10px;
+    color:white;
+  }
+
+  .popup-cd-container-days, .popup-cd-container-hours,
+  .popup-cd-container-minutes, .popup-cd-container-seconds {
+    display: grid;
+    font-size: 13px;
+    width: 60px;
+    justify-content: center;
+    text-align: center;
+  }
+
+  #popup-cdcontainer__days, #popup-cdcontainer__hours,
+  #popup-cdcontainer__minutes, #popup-cdcontainer__seconds {
+    font-size: 24px;
+    line-height: 1em;
+  }
+
+  .popup-footerSection {
+    padding: 0px 40px 15px;
+    margin-top: -15px;
+    text-align: center;
+  }
+
+  .popup-rc-text{
+      color:black
+      font-size:25px;
+      margin-bottom:10px;
+  }
+
+  .popup-button{
+    background: #60925B;
+    margin: 0 15px 15px;
+    color: white;
+    display: block;
+    height: 50px;
+    line-height: 3rem;
+    font-size: 22px;
+  }
+
+  .popup-noThanks{
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  .close {
+    color: white;
+    float: right;
+    font-size: 40px;
+    position: relative;
+    right: 10px;
+    bottom: 20px;
+    cursor: pointer;
+  }
+
+  {% endstyle %}
+
+  <script type="text/javascript">
+  window.addEventListener('load', function () {
+    var modal = document.getElementById("myModal");
+    var span = document.getElementsByClassName("close")[0];
+    var noThanks = document.getElementsByClassName("popup-noThanks")[0];
+
+    setTimeout(() => {
+      modal.style.display = "block";
+    }, "2000")
+
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+    noThanks.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  })
+
+  var countDownDate = new Date("{{settings.countdown_date}} 23:59:59").getTime();
+
+  var x = setInterval(function() {
+  var now = new Date().getTime();
+  var distance = countDownDate - now;
+
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  document.getElementById("popup-cdcontainer__days").innerHTML = days;
+  document.getElementById("popup-cdcontainer__hours").innerHTML = hours;
+  document.getElementById("popup-cdcontainer__minutes").innerHTML = minutes;
+  document.getElementById("popup-cdcontainer__seconds").innerHTML = seconds;
+
+  if (distance < 0) {
+      clearInterval(x);
+      document.getElementById("cd-banner").style.display = 'none';
+  }
+  }, 1000);
+  </script>
+{% endif %}

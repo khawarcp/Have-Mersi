@@ -1,0 +1,127 @@
+<link rel="stylesheet" href="{{ 'index-hero-banner.css' | asset_url }}">
+
+<div class="desktop-display">
+<section class="hero-banner" style="background-image: url('{{ section.settings.bg_image | image_url }}');">
+  <div class="banner-person-desktop">
+    <img src="{{ section.settings.banner_person_image_desktop | image_url }}">
+  </div> 
+  <div class="page-width">
+    <div class="page-width-wrapper">
+      <div class="banner-content">
+        <h1>
+          {{ section.settings.heading }}
+        </h1>
+        <div class="richtext">
+          {{ section.settings.info }}
+        </div>
+        {% if section.settings.button_text != blank %}
+          <a href="{{ section.settings.button_link | default: '#'  }}" class="btn">
+            {{ section.settings.button_text }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+    <div class="scroll-down">
+      <a class="scroll-down-link" href="{{ section.settings.scroll_id }}">
+        <img src="{{ 'scroll-down-arrow.svg' | asset_url }}" alt="scroll-down-arrow">
+        <span>SCROLL</span>
+      </a>
+    </div>
+  </div>
+</section>
+</div>
+<div class="mobile-display">
+  {% if section.settings.image != blank %}
+<section class="hero-banner" style="background-image: url('{{ section.settings.image | image_url }}');">
+    {% else %}
+<section class="hero-banner" style="background-image: url('{{ section.settings.bg_image | image_url }}');">
+    {% endif %}
+  <div class="banner-person">
+    <img src="{{ section.settings.banner_person_image | image_url }}">
+  </div>  
+  <div class="page-width">
+    <div class="page-width-wrapper">
+      <div class="banner-content">
+        <h1>
+          {{ section.settings.heading }}
+        </h1>
+        <div class="richtext">
+          {{ section.settings.info }}
+        </div>
+        {% if section.settings.button_text != blank %}
+          <a href="{{ section.settings.button_link | default: '#'  }}" class="btn">
+            {{ section.settings.button_text }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+    <div class="scroll-down">
+      <a class="scroll-down-link" href="{{ section.settings.scroll_id }}">
+        <img src="{{ 'scroll-down-arrow.svg' | asset_url }}" alt="scroll-down-arrow">
+        <span>SCROLL</span>
+      </a>
+    </div>
+  </div>
+</section>
+</div>
+
+{% schema %}
+  {
+    "name": "Hero Banner",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading"
+      },
+      {
+        "type": "richtext",
+        "id": "info",
+        "label": "Description"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Mobile Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "banner_person_image",
+        "label": "Mobile Person Image"
+      },
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button Text",
+        "default": "Shop Now"
+      }, {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button Link"
+      }, {
+        "type": "image_picker",
+        "id": "bg_image",
+        "label": "Desktop Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "banner_person_image_desktop",
+        "label": "Desktop Person Image"
+      },
+      {
+        "type": "header",
+        "content": "Scroll"
+      }, {
+        "type": "text",
+        "id": "scroll_id",
+        "label": "Scroll ID",
+        "default": "#collection-sec"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Hero Banner"
+      }
+    ]
+  }
+{% endschema %}

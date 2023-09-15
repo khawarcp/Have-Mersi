@@ -1,0 +1,74 @@
+{% if section.settings.if_value_adds %}
+  {% unless product.metafields.custom.hide_value_adds %}
+    <div class="value-adds-container ab-hide">
+      <div class ="value-adds-element">
+        <div class="value-adds-img">
+          <img src="{{ section.settings.add_img_first | img_url: '100x100' }}">
+        </div>
+        <span>{{ section.settings.add_text_first }}</span>
+      </div>
+
+      <div class ="value-adds-element">
+        <div class="value-adds-img">
+          <img src="{{ section.settings.add_img_second | img_url: '100x100' }}">
+        </div>
+        <span>{{ section.settings.add_text_second }}</span>
+      </div>
+
+      <div class ="value-adds-element">
+        <div class="value-adds-img">
+          <img src="{{ section.settings.add_img_third | img_url: '100x100' }}">
+        </div>
+        <span>{{ section.settings.add_text_third }}</span>
+      </div>
+    </div>
+  {% endunless %}
+{% endif %}
+
+{% style %}
+.value-adds-container.ab-hide{
+  display:none;
+}
+.value-adds-container {
+    background-color: #E7F3F2;
+    /*display: flex;*/
+    padding: 30px 20px 20px;
+    margin-bottom: 20px;
+}
+.value-adds-element{
+  width:15em;
+  display:grid;
+  text-align:center;
+  align-content: baseline;
+  font-size: 14px;
+  position:relative;
+  padding: 0 10px;
+  line-height: 1.5em;
+}
+.value-adds-element:not(:last-child):after {
+  position: absolute;
+  content: '';
+  left: calc(100%) ;
+  color:red;
+  width: 2px;
+  height: 70%;
+  top: 10%;
+  background-color: #BAC3C3;
+}
+.value-adds-img {
+  height: 64px;
+  margin-bottom: 10px;
+}
+.value-adds-img img{
+  margin:auto;
+}
+
+@media screen and (max-width: 768px){
+  .value-adds-container {
+    padding: 30px 0px 20px;
+    margin-left:-20px;
+    margin-right:-20px;
+  }
+}
+
+{% endstyle %}

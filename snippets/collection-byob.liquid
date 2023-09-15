@@ -1,0 +1,60 @@
+<div class="byob-sticky-container hideabtest"></div>
+<div class="byob-section hideabtest">
+  <div class="bag-item-default" style="display:none;">
+    <img src="{{ settings.byob_product_image | img_url: '100x' }}">
+  </div>
+  <div class="byob-title">
+    <span class="first-title">{{ settings.byob_first_title }}</span>
+    <span class="second-title">{{ settings.byob_second_title }}</span>
+  </div>
+  <div class="byob-content">
+    <div class="size-section">
+      <div class="size-section-title">{{ settings.byob_left_text }}</div>
+      <div class="bundle-size">
+        <div class="bundle-size-dot active" data-discount='{{ settings.byob_2_discount }}' data-size='2'>
+          <span>2</span>
+        </div>
+        <div class="bundle-size-dot" data-discount='{{ settings.byob_3_discount }}' data-size='3'>
+          <span>3</span>
+        </div>
+      </div>
+      <div class="size-section-subtitle">Shop 2 for ${{ settings.byob_2_discount }}</div>
+    </div>
+    <div class="bags-section">
+      <div class="bag-item">
+        <img src="{{ settings.byob_product_image | img_url: '100x' }}">
+      </div>
+      <div class="bag-item">
+        <img src="{{ settings.byob_product_image | img_url: '100x' }}">
+      </div>
+    </div>
+    <div class="atc-section">
+      <div class="byob-price">
+        <span class="total-price"></span>
+        <span class="discounted-price">$0.00</span>
+      </div>
+      <button type="button" class="bundle-btn bundle-btn-disabled">
+        <span class="bundle-btn-text">{{ settings.byob_button_text }}</span>
+      </button>
+      <div class="atc-section-subtitle">2 for ${{ settings.byob_2_discount }}</div>
+    </div>
+  </div>
+</div>
+
+{%- style -%}
+  .byob-section{
+    background-color:{{settings.byob_bg_color}};
+  }
+  .first-title, .size-section-title,
+  .size-section-subtitle, .discounted-price{
+    color:{{settings.byob_primary_color}};
+  }
+  .second-title{
+    color:{{settings.byob_secondary_color}};
+  }
+  .bundle-btn{
+    color:{{settings.byob_button_text_color}};
+    background-color:{{settings.byob_button_bg_color}};
+  }
+  
+{%- endstyle -%}

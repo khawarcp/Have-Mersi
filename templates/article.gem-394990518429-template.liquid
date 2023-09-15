@@ -1,0 +1,111 @@
+{% comment %}
+	GEMPAGE BUILDER (https://apps.shopify.com/gempage)
+
+	You SHOULD NOT modify source code in this page because
+	It is automatically generated from GEMPAGE BUILDER
+	Try to edit page with the live editor.
+{% endcomment %}
+<!--GEM_HEADER-->
+
+
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" class="gf-style">
+<link data-instant-track rel="stylesheet" type="text/css" href="https://d1um8515vdn9kb.cloudfront.net/files/vendor.css?refresh=1" class="gf-style" />
+<link data-instant-track rel="stylesheet" type="text/css" href="{{ 'gem-article-394990518429.css' | asset_url }}" class="gf_page_style">
+<!--GEM_HEADER_END-->
+{%- assign number_of_comments = article.comments_count -%}{% if comment and comment.created_at %}
+  {%- assign number_of_comments = article.comments_count | plus: 1 -%}
+{% endif %}<div class="page-width page-content">  <div class="grid">
+    <article class="grid__item widescreen--six-tenths widescreen--push-two-tenths medium-up--two-thirds medium-up--push-one-sixth article" itemscope itemtype="http://schema.org/Article">      {% include 'breadcrumbs' %}      <header class="section-header">
+        {% if section.settings.blog_show_date or article.tags.size > 0 or articles.comments_count > 0 %}
+          <div class="article__date">
+            {% if section.settings.blog_show_tags and article.tags.size > 0 %}
+              {% for tag in article.tags %}
+                {% include 'filter-out-custom-tags' %}
+                <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a> &middot;
+              {% endfor %}
+            {% endif %}
+            {% if section.settings.blog_show_comments and article.comments_count > 0 %}
+              <a href="#comments">{{ article.comments_count }} {{ article.comments_count | pluralize: 'comment', 'comments' }}</a> &middot;
+            {% endif %}
+            {% if section.settings.blog_show_date %}
+              {{ article.published_at | time_tag: format: 'month_day_year' }}
+            {% endif %}
+          </div>
+        {% endif %}
+        <h1 class="section-header__title" itemprop="headline">{{ article.title }}</h1>
+        {% if article.metafields.articledata.author != blank%}
+          <div class="article__author">written by <span itemprop="author"><span itemprop="author">{{ article.metafields.articledata.author }}</span></span></div>
+        {% else %}
+          {% if section.settings.blog_show_author %}
+            <div class="article__author">by <span itemprop="author"><span itemprop="author">{{ article.author }}</span></span></div>
+          {% endif %} 
+      {% endif %}
+      </header>      <div class="article__body rte" itemprop="articleBody">
+        <!--Gem_Page_Main_Editor--><div class="clearfix"></div><div class="gryffeditor">
+<div data-label="Heading" id="e-1580154936283" class="element-wrap" data-icon="gpicon-heading" data-ver="1" data-id="1580154936283"><div class="elm text-edit gf-elm-center gf-elm-center-md gf-elm-center-sm gf-elm-center-xs gf-elm-center-lg" data-gemlang="en" data-exc=""><h2><i>written by Mia Montalvo</i></h2></div></div><!--gfsplit--><div data-label="Image" data-key="image" id="e-1612898902203" class="element-wrap" data-icon="gpicon-image" data-ver="1.0" data-id="1612898902203" data-resolution="3000x3000"><div class="elm gf-elm-center gf_elm-left-xs gf-elm-center-md gf-elm-center-sm gf-elm-center-xs gf-elm-center-lg" data-exc=""><img src="https://ucarecdn.com/efc894ae-0aba-495e-8b39-4a29a04d6f77/-/format/auto/-/preview/3000x3000/-/quality/lighter/" alt="" class="gf_image" data-gemlang="en" data-width="450px" data-height="auto" title="" natural-width="2007" natural-height="2671"></div></div><!--gfsplit--><div data-label="Row" id="r-1569330697238" class="gf_row" data-icon="gpicon-row" data-id="1569330697238" data-extraclass=""><div class="gf_column gf_col-lg-12 gf_col-md-12 gf_col-sm-12 gf_col-xs-12" id="c-1543568570869" data-id="1543568570869" style="min-height: auto;"><div data-label="Text Block" id="e-1569330697217" class="element-wrap" data-icon="gpicon-textblock" data-ver="1" data-id="1569330697217"><div class="elm text-edit gf-elm-left gf-elm-left-lg gf-elm-left-md gf-elm-left-sm gf-elm-left-xs" data-gemlang="en" data-exc=""><p><br></p><p>“Self-care goes beyond skin care—it’s about fostering meaningful connections with one’s self and having fun while doing it,” details grace &amp; stella’s <a href="https://www.graceandstella.com/pages/about-us" class="">‘about us’</a> page.&nbsp;</p><p><br></p><p>As someone who is immersed in social media in their nine to five, I take self-care very seriously.  Decompression is a gift I give myself at the end of a long week, a jade roller massaging my temples, an essential  icy under-eye patch. Nestled in bed with a good book and a firming mud mask is pure love for me.&nbsp;</p><p><br></p><p>So, finding a <a href="https://www.graceandstella.com/" class="">vegan brand</a> that honors the dedication I take in my own self-care routine, and actively looks to make the experience of their products personal, is everything for me. When we began stocking grace + stella <a href="https://www.theveganwarehouse.com/collections/grace-stella" class="">at The Vegan Warehouse</a>, I instantly gravitated to their fun and light aura. As each week went by and I started trying product by product, first the Rose Water Face Mist, then the Energizing Under Eye Masks, self-care started to become an even more exciting and exhilarating experience.&nbsp;</p><p><br></p><p>Officially launched in 2016, grace &amp; stella began with co-founders, and husband and wife duo, Adi Gullia and Kailee Fatt, who’s first product was their now best-selling “Dr. Pedicure” foot peeling mask. Discovering a similar mask for foot care in Japan, they were amazed by it’s qualities, and decided it was time to develop a foot mask for the U.S. and Canadian markets that would enhance the rituals of an Asian beauty spa feeling, from the comfort of home.</p><p><br></p><p>With the mantra of continuing to cultivate “feel-good moments,” the brand began to develop more cruelty-free and vegan skincare products across several different fronts, which gained attention of celebrities such as Jessica Alba who proclaimed her love for their Energizing Under Eye Masks, and companies such as FabFitFun who’d feature their Rose Mist Spray in their Summer 2019 subscription box. Now in 2021, they feature a diverse selection of face, body, and hair care products that we absolutely adore.</p><p><br></p><p><br></p></div></div><div data-label="Heading" id="e-1578321658508" class="element-wrap" data-icon="gpicon-heading" data-ver="1" data-id="1578321658508"><div class="elm text-edit gf-elm-center gf-elm-left-md gf-elm-left-sm gf-elm-left-xs gf-elm-left-lg" data-gemlang="en" data-exc=""><h2>Our Personal Favorites:</h2></div></div><div data-label="Heading" id="e-1613158678950" class="element-wrap" data-icon="gpicon-heading" data-ver="1" data-id="1613158678950"><div class="elm text-edit gf-elm-center gf-elm-left-md gf-elm-left-sm gf-elm-left-xs gf-elm-left-lg" data-gemlang="en" data-exc=""><h2><br></h2><h2><a href="https://www.graceandstella.com/products/eye-masks-12pairs" class="">Anti-Wrinkle + Energizing Under Eye Masks</a>:</h2></div></div><div data-label="Image" id="e-1569330697288" class="element-wrap" data-icon="gpicon-image" data-ver="1" data-id="1569330697288" data-resolution="3000x3000"><div class="elm gf-elm-center gf_elm-left-xs gf-elm-center-lg gf-elm-center-md gf-elm-center-sm gf-elm-center-xs" data-exc=""><a href="https://www.graceandstella.com/products/eye-masks-12pairs" target=""><img src="https://ucarecdn.com/b448e7ac-2064-448f-92d6-42ed16a83fb0/-/format/auto/-/preview/3000x3000/-/quality/lighter/" alt="" class="gf_image" data-gemlang="en" data-width="55%" data-height="auto" title="" natural-width="680" natural-height="752"></a></div></div><div data-label="Text Block" id="e-1569330697271" class="element-wrap" data-icon="gpicon-textblock" data-ver="1" data-id="1569330697271"><div class="elm text-edit gf-elm-left gf-elm-left-lg gf-elm-left-md gf-elm-left-sm gf-elm-left-xs" data-gemlang="en" data-exc=""><p><br></p><p>Dark circles and under eye bags run in my family genes, so these <strong><a href="https://www.graceandstella.com/products/eye-masks-12pairs" class="">cooling under eye masks</a></strong> are everything for preventative care, and for simply rejuvenating. I typically just pop them on in the morning for 15-20 minutes while I’m enjoying my avocado toast, et voila my eyes feel refreshed and bright!&nbsp;</p><p><br></p><p>The main stars of this product is the hydrolyzed vegetable protein, which works to strengthen the skin by increasing hydration and elasticity, and sodium hyaluronate to help smoothen the appearance of any existing wrinkles, and prevent further ones!</p><p><br></p><p>P.S. they make for a great photo-op!&nbsp;</p></div></div><div data-label="Heading" id="e-1580152772200" class="element-wrap" data-icon="gpicon-heading" data-ver="1" data-id="1580152772200"><div class="elm text-edit gf-elm-center gf-elm-left-md gf-elm-left-sm gf-elm-left-xs gf-elm-left-lg" data-gemlang="en" data-exc=""><h2><br></h2><h2><a href="https://www.graceandstella.com/products/foot-exfoliating-mask-6-fragrances" class="">Dr. Pedicure Peeling Foot Mask</a></h2></div></div><div data-label="Text Block" id="e-1569330697333" class="element-wrap" data-icon="gpicon-textblock" data-ver="1" data-id="1569330697333"><div class="elm text-edit gf-elm-left gf-elm-left-lg gf-elm-left-md gf-elm-left-sm gf-elm-left-xs" data-gemlang="en" data-exc=""></div></div><div data-label="Image" id="e-1580154480045" class="element-wrap" data-icon="gpicon-image" data-ver="1" data-id="1580154480045" data-resolution="3000x3000"><div class="elm gf-elm-center gf_elm-left-xs gf-elm-center-lg gf-elm-center-md gf-elm-center-sm gf-elm-center-xs" data-exc=""><a href="https://www.graceandstella.com/products/foot-exfoliating-mask-6-fragrances" target=""><img src="https://ucarecdn.com/2b5bbf6b-ed05-4ab5-b9ed-bd9a88ea7708/-/format/auto/-/preview/3000x3000/-/quality/lighter/" alt="" class="gf_image" data-gemlang="en" data-width="55%" data-height="auto" title="" natural-width="758" natural-height="826"></a></div></div><div data-label="Text Block" id="e-1569330697294" class="element-wrap" data-icon="gpicon-textblock" data-ver="1" data-id="1569330697294"><div class="elm text-edit gf-elm-left gf-elm-left-lg gf-elm-left-md gf-elm-left-sm gf-elm-left-xs" data-gemlang="en" data-exc=""><p><br></p><p>Simply amazing during the winter, the<strong><a href="https://www.graceandstella.com/products/foot-exfoliating-mask-6-fragrances" class="">Dr. Pedicure Foot Peeling Mask</a></strong> works wonders if you’re anything like me and simply do not have the time to do bi-weekly pedicures. Slowing down and slipping these bad boys on, I’ll usually catch up on some Netflix and enjoy the time with my feet kicked up.&nbsp;</p><p>While relaxing with them on may feel like the best part, the transformation to come is probably the most life-changing. After just two uses, your feet start naturally sloughing away all the dead particles and old skin exists no more. What you’re left with is baby-smooth heels, and ultra-hydrated feet.&nbsp;</p><p><br></p><p>This is the ultimate Winter product, but I’m super excited to use this product once that Winter to Spring transition begins and I switch to sandals.</p><p><br></p></div></div><div data-label="Heading" id="e-1575480429283" class="element-wrap" data-icon="gpicon-heading" data-ver="1" data-id="1575480429283"><div class="elm text-edit gf-elm-center gf-elm-left-md gf-elm-left-sm gf-elm-left-xs gf-elm-left-lg" data-gemlang="en" data-exc=""><h2></h2><h2><a href="https://www.graceandstella.com/products/rose-facial-spray" class="">Rose Water Facial Mist</a></h2></div></div><div data-label="Text Block" id="e-1569330697334" class="element-wrap" data-icon="gpicon-textblock" data-ver="1" data-id="1569330697334"><div class="elm text-edit gf-elm-left gf-elm-left-lg gf-elm-left-md gf-elm-left-sm gf-elm-left-xs" data-gemlang="en" data-exc=""></div></div><div data-label="Image" id="e-1569330697328" class="element-wrap" data-icon="gpicon-image" data-ver="1" data-id="1569330697328" data-resolution="3000x3000"><div class="elm gf-elm-center gf_elm-left-xs gf-elm-center-lg gf-elm-center-md gf-elm-center-sm gf-elm-center-xs" data-exc=""><a href="https://www.graceandstella.com/products/rose-facial-spray" target=""><img src="https://ucarecdn.com/5680ade0-ea52-4a58-88fb-f95a9cf7a803/-/format/auto/-/preview/3000x3000/-/quality/lighter/" alt="" class="gf_image" data-gemlang="en" data-width="55%" data-height="auto" title="" natural-width="706" natural-height="770"></a></div></div><div data-label="Text Block" id="e-1578321958063" class="element-wrap" data-icon="gpicon-textblock" data-ver="1" data-id="1578321958063"><div class="elm text-edit gf-elm-left gf-elm-left-lg gf-elm-left-md gf-elm-left-sm gf-elm-left-xs" data-gemlang="en" data-exc=""><p><br></p><p>Yes. Yes. YES. <a href="https://www.graceandstella.com/products/rose-facial-spray" class=""><strong>The Rose Water Facial Mist</strong></a> is a must-have essential for your self-care collection. A spritz of fresh air, I keep it on my desk at all times and reach for it throughout the day when my skin is feeling dry, or I simply need a bit of a wake-up.&nbsp;</p><p><br></p><p>During the Winter our skin beckons for moisture and so many of us do not realize this. Even if you have a combo of dry-oily skin like me, learning to find the correct steps to add extra hydration into your daily skincare routine is a must.&nbsp;</p><p><br></p><p>What I love most about the mist, it’s versatility. I spritz it on after applying my facial sunscreen in the morning, after some makeup, throughout the day, and especially after my nightly skincare routine. It’s truly a skincare blessing.&nbsp;</p><p><br></p><p><br></p></div></div><div data-label="Text Block" id="e-1569330697351" class="element-wrap" data-icon="gpicon-textblock" data-ver="1" data-id="1569330697351"><div class="elm text-edit gf-elm-left gf-elm-left-lg gf-elm-left-md gf-elm-left-sm gf-elm-left-xs" data-gemlang="en" data-exc=""><p>Implementing more <a href="https://www.graceandstella.com" class="">grace and stella products</a> into my daily skincare has worked wonders for my skin, and my self-care. Finding an <a href="https://www.graceandstella.com" class="">ethical skincare brand</a> that honors the need for us to slow down and take care of ourselves is an important addition to all of our armoire.</p><p><br></p><p>Head over to grace and stella to<strong> read more about their brand</strong>, and <strong>shop all of their cruelty-free skincare</strong><a href="https://www.graceandstella.com" class="">here</a>!</p><p><br></p></div></div></div></div><!--gfsplit--><div data-label="Text Block" id="e-1569330697193" class="element-wrap" data-icon="gpicon-textblock" data-ver="1" data-id="1569330697193"><div class="elm text-edit gf-elm-left gf-elm-left-lg gf-elm-left-md gf-elm-left-sm gf-elm-left-xs" data-gemlang="en" data-exc=""></div></div><!--gfsplit--><div data-label="Separator" id="e-1569330697232" class="element-wrap" data-icon="gpicon-separator" data-ver="1" data-id="1569330697232"><div class="elm gf-elm-center" data-align="left"><hr class="gf_separator"></div></div><!--gfsplit--><script>window.__gemStoreData = {};window.__gemStoreData.gemKeyValid = {};window.__gemStoreData.gemKeyValid.bestWayAddToCart = 1;window.__gemStoreData.gemKeyValid.clickAddToCart = 1;</script>
+</div><div id="divContentBk"></div><!--End_Gem_Page_Main_Editor-->      </div>      {% if section.settings.social_sharing_blog %}
+        {% include 'social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image %}
+      {% endif %}      {% if blog.comments_enabled? %}        {% if number_of_comments > 0 %}
+          <hr class="hr--large">
+          <h3>{{ 'blogs.comments.with_count' | t: count: number_of_comments }}</h3>
+          <hr class="hr--small hr--clear">
+        {% endif %}        {% paginate article.comments by 5 %}
+          
+          <div id="comments">            {% if comment and comment.created_at %}
+              <p class="note note--success">
+                {% if blog.moderated? %}
+                  {{ 'blogs.comments.success_moderated' | t }}
+                {% else %}
+                  {{ 'blogs.comments.success' | t }}
+                {% endif %}
+              </p>
+            {% endif %}            {% if number_of_comments > 0 %}
+              <ul class="no-bullets">
+                
+                {% if comment and comment.created_at %}
+                  <li id="{{ comment.id }}" class="comment first{% if article.comments_count == 0 %} last{% endif %}">
+                    {% include 'comment' %}
+                  </li>
+                {% endif %}                {% for comment in article.comments %}
+                  <li id="{{ comment.id }}" class="comment{% unless number_of_comments > article.comments_count %}{% if forloop.first %} first{% endif %}{% endunless %}{% if forloop.last %} last {% endif %}">
+                    {% include 'comment' %}
+                  </li>                  {% unless forloop.last %}
+                    <li><hr class="hr--clear"></li>
+                  {% endunless %}
+                {% endfor %}
+              </ul>              {% if paginate.pages > 1 %}
+                {% include 'pagination' %}
+              {% endif %}            {% endif %}            <hr class="hr--large">            <header class="section-header{% unless settings.type_headers_align_text %} section-header--with-link{% endunless %}">
+              <h3 class="section-header__title">{{ 'blogs.comments.title' | t }}</h3>
+            </header>            <div class="form-vertical">
+              {% form 'new_comment', article %}                {{ form.errors | default_errors }}                <div class="grid grid--small">
+                  <div class="grid__item medium-up--one-half">
+                    <label for="CommentAuthor">{{ 'blogs.comments.name' | t }}</label>
+                    <input class="input-full{% if form.errors contains 'author' %} error{% endif %}" type="text" name="comment[author]" id="CommentAuthor" value="{{ form.author }}" autocapitalize="words">
+                  </div>
+                  <div class="grid__item medium-up--one-half">
+                    <label for="CommentEmail">{{ 'blogs.comments.email' | t }}</label>
+                    <input class="input-full{% if form.errors contains 'email' %} error{% endif %}" type="email" name="comment[email]" id="CommentEmail" value="{{ form.email }}" autocorrect="off" autocapitalize="off">
+                  </div>
+                </div>                <label for="CommentBody">{{ 'blogs.comments.message' | t }}</label>
+                <textarea class="input-full{% if form.errors contains 'body' %} error{% endif %}" name="comment[body]" id="CommentBody">{{ form.body }}</textarea>                {% if blog.moderated? %}
+                  <p><small>{{ 'blogs.comments.moderated' | t }}</small></p>
+                {% endif %}                <button type="submit" class="btn btn--secondary">
+                  {{ 'blogs.comments.post' | t }}
+                </button>              {% endform %}
+            </div>          </div>
+        {% endpaginate %}
+      {% endif %}      <hr class="hr--large">    </article>  </div>  <div class="text-center">
+    <a href="{{ blog.url }}" class="btn btn--small return-link">{% include 'icon-arrow-left' %} {{ 'blogs.article.back_to_blog' | t: title: blog.title }}</a>
+  </div>
+</div>
+<!--GEM_FOOTER-->
+{% capture GEM_FOOTER_SCRIPT %}
+<script data-instant-track type="text/javascript">
+	var pageLibs = [		'{{ 'gem-article-394990518429.js' | asset_url }}',	];
+</script>
+<script data-instant-track type="text/javascript">
+	var GEMVENDOR = GEMVENDOR || (function(){		var _js = {};		return {			init: function(Args) {				_js = Args;			},			getLibs: function() {				return _js;			}		};	}());	GEMVENDOR.init(pageLibs);</script>
+<script data-instant-track type="text/javascript" src="https://d1um8515vdn9kb.cloudfront.net/files/gempagev2.js?v=1.0" class="gf-script" defer></script>
+{% endcapture %}
+<!--GEM_FOOTER_END-->

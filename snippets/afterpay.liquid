@@ -1,0 +1,56 @@
+<!-- Begin Shopify-Afterpay JavaScript Snippet (v1.0.5) -->
+
+<script type="text/javascript">
+  // Editable fields:
+  var afterpay_min = 1.00       // As per your Afterpay contract.
+  var afterpay_max = 1000.00;         // As per your Afterpay contract.
+  var afterpay_logo_theme = 'colour'; // Can be 'colour', 'black' or 'white'.
+
+  // Overrides:
+  // var afterpay_product_selector = '#product-price-selector';
+  // var afterpay_cart_integration_enabled = true;
+  var afterpay_cart_static_selector = '.medium-up--five-twelfths > .grid';
+  // var afterpay_variable_price_fallback_selector = '#ProductPrice';
+  // var afterpay_variable_price_fallback = true; // Requires afterpay_product_selector
+  var afterpay_show_currency_code = false;
+  var afterpay_modal_responsive = true;
+  // var afterpay_hide_range_decimals = true;
+  // var afterpay_hide_lower_limit = false;
+  var afterpay_hide_upper_limit = true;
+  var afterpay_modal_open_icon = true;
+
+  // Non-editable fields:
+  var afterpay_shop_currency = {{ shop.currency | json }};
+  var afterpay_shop_money_format = {{ shop.money_format | json }};
+  var afterpay_shop_permanent_domain = {{ shop.permanent_domain | json }};
+  var afterpay_theme_name = {{ theme.name | json }};
+  var afterpay_product = {{ product | json }};
+  var afterpay_current_variant = {{ product.selected_or_first_available_variant | json }};
+  var afterpay_cart_total_price = {{ cart.total_price | json }};
+  var afterpay_js_snippet_version = '1.0.5';
+</script>
+
+<script type="text/javascript" src="https://static.afterpay.com/shopify-afterpay-javascript.js"></script>
+
+<!-- End Shopify-Afterpay JavaScript Snippet (v1.0.5) -->
+<style>
+  .c-afterpay-info-modal-annotation__p{ margin-top: 3px; }
+  .afterpay-link-inner{text-decoration: none;color:initial;}
+  .afterpay-link{font-size: 12px; }
+  .afterpay-paragraph{ font-size: 14px;}
+  .afterpay-logo{ width: 80px !important; height: auto !important; }
+</style>
+
+<script type="text/javascript">
+    let appendNextTo = document.querySelector('.afterpay-text2');
+  
+	let logoWrapper = document.createElement('span');
+  	let afterpayImg = document.querySelector('.afterpay-logo');
+  	let afterpaySpace = document.querySelector('.afterpay-text3');
+    let afterpayInfo = document.querySelector('.afterpay-link');
+  	logoWrapper.appendChild(afterpayImg)
+    logoWrapper.appendChild(afterpaySpace)
+    logoWrapper.appendChild(afterpayInfo)
+    logoWrapper.style.whiteSpace = 'nowrap';
+  	appendNextTo.append(logoWrapper);
+</script>

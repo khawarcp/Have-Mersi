@@ -1,0 +1,86 @@
+<div class="free-samples">
+  <div class="accordion">
+    <h4 class="accordion-toggle">CHOOSE YOUR FREE GIFT</h4>
+    <div class="accordion-content">
+      <div class="free-samples__list">
+        {% for product in collections['samples'].products %}
+        
+        {% assign is_sample_in_cart = false %}
+        {% for item in cart.items %}
+          {% if product.id == item.product.id %}
+            {% assign is_sample_in_cart = true %}
+          {% endif %}
+        {% endfor %}
+        
+          <div class="free-samples__list-item">
+            <div class="image-wrap free-samples__list-item-image"
+              style="height: 0; padding-bottom: {{ 100 | divided_by: product.featured_image.aspect_ratio }}%;"
+              >
+              <img class="grid-product__image lazyloaded"
+                role="presentation"
+                src="{{ product.featured_image | img_url: '400x' }}"
+                alt="{{ product.featured_image.alt | escape }}">
+            </div>
+            <h6 class="free-samples__list-item-title">
+              {{ product.title }}
+            </h6>
+
+            {% assign min_value = settings.cart_free_samples_min_value | plus: 0 %}
+              {% if bold_cart_total_price >= min_value %}
+              <div class="free-samples__list-item-button">
+                  {% if is_sample_in_cart %}
+                  <button class="btn free-sample-select active" data-variant-id="{{ product.variants.first.id }}">Remove</button>
+                  {% else %}
+                  <button class="btn free-sample-select" data-variant-id="{{ product.variants.first.id }}">Select</button>
+                  {% endif %}
+                
+              </div>
+            {% else %}
+              
+            {% endif %}
+          </div>
+        {% else %}
+          <p>Sorry, there are no free samples available at the moment.</p>
+        {% endfor %}
+      </div>
+
+      {% unless bold_cart_total_price >= min_value %}
+          <div id="free-sample-unlock" style="text-align:center">SPEND {{min_value | money}} TO UNLOCK</div>
+        {% endunless %}
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function(){
+    
+    // Select sample
+    $('.free-sample-select').click(function(e){
+      e.preventDefault();
+      
+      let $this = $(this);
+      if ($this.hasClass('active')) {
+        $this.removeClass('active').text('Select');
+      } else {
+        $('.free-sample-select.active').removeClass('active').text('Select');
+        $this.addClass('active').text('Remove');
+      }
+      handleSampleSelect();
+      /*setTimeout(function(){
+        location.reload();
+      }, 1000);*/
+    });
+    
+    function handleSampleSelect(){
+      let freeSamplesCartUpdateObject = {};
+      $('.free-sample-select').each(function(i, el){
+        freeSamplesCartUpdateObject[el.dataset.variantId] = el.classList.contains('active') ? 1 : 0;
+      });
+      console.log('Update', freeSamplesCartUpdateObject);
+      jQuery.post('/cart/update.js', {updates: freeSamplesCartUpdateObject}, function(){
+        location.reload();
+      });
+    }
+    
+  });
+</script>

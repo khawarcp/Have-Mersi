@@ -1,0 +1,165 @@
+<div class="scroller-container">
+  <ul class="scroller">
+    {% for link in linklists[section.settings.menu].links %}
+    <li>
+      <a href="{{ link.url }}" class="Link Link--secondary">
+        {% if link.object.metafields.custom.mobile_navigation.value != blank %}
+          <img class="scroller-img" src="{{ link.object.metafields.custom.mobile_navigation.value | img_url: '156x' }}" width="78" height="78" loading="lazy">
+        {% else %}
+          <img class="scroller-img" src="{{ link.object.featured_image | img_url: '156x' }}" width="78" height="78" loading="lazy">
+        {% endif %}
+       {{ link.title | escape }}
+      </a>
+    </li>
+    {%- endfor -%}
+  </ul>
+</div>
+
+{% comment %} <div class="scroller-container">
+  <ul class="scroller">
+    <li>
+    <a href="https://www.theveganwarehouse.com/collections/best-sellers" class="Link Link--secondary">
+      <img class="scroller-img" src="assets/best-sellers.png" width="78" height="78" loading="lazy">
+     <div class="scroller-text">Best Sellers</div>
+    </a>
+  </li>
+  <li>
+    <a href="https://www.theveganwarehouse.com/collections/just-arrived" class="Link Link--secondary">
+      <img class="scroller-img" src="assets/new-arrivals.png" width="78" height="78" loading="lazy">
+     <div class="scroller-text">New Arrivals</div>
+    </a>
+  </li>
+  <li>
+    <a href="https://www.theveganwarehouse.com/collections/2-for-99" class="Link Link--secondary">
+      <img class="scroller-img" src="assets/2-for-99.png" width="78" height="78" loading="lazy">
+     <div class="scroller-text">2 For $99</div>
+    </a>
+  </li>
+  <li>
+    <a href="https://www.theveganwarehouse.com/collections/bags" class="Link Link--secondary">
+      <img class="scroller-img" src="assets/handbags.png" width="78" height="78" loading="lazy">
+     <div class="scroller-text">Handbags</div>
+    </a>
+  </li>
+  <li>
+    <a href="https://www.theveganwarehouse.com/collections/beauty" class="Link Link--secondary">
+      <img class="scroller-img" src="assets/beauty.png" width="78" height="78" loading="lazy">
+     <div class="scroller-text">Beauty</div>
+    </a>
+  </li>
+  <li>
+    <a href="https://www.theveganwarehouse.com/collections/accessories" class="Link Link--secondary">
+      <img class="scroller-img" src="assets/lifestyle.png" width="78" height="78" loading="lazy">
+     <div class="scroller-text">Lifestyle</div>
+    </a>
+  </li>
+  <li>
+    <a href="https://www.theveganwarehouse.com/collections/sale" class="Link Link--secondary">
+      <img class="scroller-img" src="assets/sale.png" width="78" height="78" loading="lazy">
+     <div class="scroller-text">SALE</div>
+    </a>
+  </li>
+  </ul>
+</div> {% endcomment %}
+  
+{% schema %}
+{
+  "name": "Best Sellers Mobile",
+  "class": "best-sellers-mobile",
+  "settings": [{
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu"
+  }],
+  "presets": [{
+      "name": "Best Sellers Mobile"
+  }]
+}
+{% endschema %}
+
+{% style %}
+@media screen and (min-width: 769px) {
+    .best-sellers-mobile {
+      display: none;
+    }
+}
+
+.best-sellers-mobile {
+    padding: 10px 0;
+    background: #fff;
+}
+
+.best-sellers-mobile .scroller-container {
+    display: flex;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.best-sellers-mobile ul {
+    display: grid;
+    overflow: scroll;
+    margin: 0 10px 0 12px;
+    grid-auto-flow: column;
+    /* grid-gap: 0 16px; */
+    grid-template-columns: repeat(auto-fit, minmax(95px, 1fr));
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scrollbar-color: transparent transparent;
+    scrollbar-width: 0;
+    scrollbar-width: none;
+}
+
+.best-sellers-mobile ul::-webkit-scrollbar {
+    display: none;
+}
+
+.best-sellers-mobile ul>* {
+    scroll-snap-align: start;
+}
+
+.best-sellers-mobile ul li {
+    min-width: 90px;
+    line-height: 1;
+    list-style: none;
+    text-align: left;
+}
+
+.best-sellers-mobile ul li a {
+    font-family: Chivo,sans-serif;
+    font-size: 14px;
+    color: #000000;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+
+.best-sellers-mobile ul li img {
+    pointer-events: none;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 8px;
+} 
+
+.best-sellers-mobile ul li:last-child a {
+    color: #e61734;
+}
+
+{% endstyle %}
+<script>
+    document.addEventListener('load',function(){
+        const mobileBestSellerLink = document.querySelectorAll('.Link--secondary')
+        mobileBestSellerLink.forEach(function(element) {
+            element.addEventListener('click',function(e){
+                ga('send', {
+                    'hitType': 'event', 
+                    'eventCategory': 'Mobile Best Sellers', 
+                    'eventAction': 'click', 
+                    'eventLabel': e.target.innerText
+                 });  
+            })
+        })
+    })
+</script>

@@ -1,0 +1,36 @@
+{%- assign link_count = 0 -%}
+{% for link in main_menu.links %}
+  {%- assign link_count = link_count | plus: 1 -%}
+{% endfor %}
+{%- assign link_count_half = link_count | divided_by: 2 | plus: 1 -%}
+
+<div
+  class="header-item header-item--logo-split"
+  role="navigation"
+  aria-label="Primary">
+  <div class="header-item header-item--split-left">
+    {% include 'header-desktop-nav', disable_aria: true, limit: 3 %}
+  </div>
+  <div class="header-item header-item--logo">
+    {% include 'header-logo-block' %}
+  </div>
+  <div class="header-item header-item--split-right">
+    {% include 'header-desktop-nav', disable_aria: true, offset: 3 %}
+    <div class="header-icons-one">{% include 'header-icons' %}</div>
+  </div>
+  <div class="header-icons-two">{% include 'header-icons' %}</div>
+</div>
+
+<style>
+  @media screen and (max-width: 768px) {
+    .header-icons-two {
+      display: none;
+    }
+  }
+
+  @media screen and (min-width: 769px) {
+    .header-icons-one {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,83 @@
+{
+  "sections": {
+    "76bb174e-b812-4ac8-be6c-8cd186d61a25": {
+      "type": "page-banner",
+      "settings": {
+        "show_custom_title": true,
+        "title": "{{ page.metafields.custom.page_title.value }}",
+        "image": "shopify:\/\/shop_images\/Mobile_page_Image.png",
+        "background_image": "shopify:\/\/shop_images\/page-banner-backround.png"
+      }
+    },
+    "about-story": {
+      "type": "about-story",
+      "blocks": {
+        "0da5e189-30e0-4b8c-882f-3236d074c2d2": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/peta.svg",
+            "heading": "PETA Certified",
+            "info": "<p>Ethical Fashion Guaranteed.<\/p>"
+          }
+        },
+        "0f2b126f-7686-4273-ab28-3b1196516932": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/vegan.svg",
+            "heading": "Vegan Leather",
+            "info": "<p>Cruelty-Free Luxury Straps.<\/p>"
+          }
+        },
+        "2d8cafb0-7d42-40e3-8a1e-8823e4e1c9dc": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/premium.svg",
+            "heading": "Premium Materials",
+            "info": "<p>Uncompromising Quality, Unparalleled Style.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "0da5e189-30e0-4b8c-882f-3236d074c2d2",
+        "0f2b126f-7686-4273-ab28-3b1196516932",
+        "2d8cafb0-7d42-40e3-8a1e-8823e4e1c9dc"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Our_Story.jpg",
+        "heading": "Our Story",
+        "info": "<p>MERSI was founded by a husband and wife duo Ewelina & Carl Augustin.<\/p><p>Ewelina is a long-time vegan with a background in luxury fashion. She always dreamed of creating a brand that married her passion for the industry with her cruelty free values.<\/p>",
+        "button_text": "",
+        "button_link": "",
+        "padding_top": 75,
+        "padding_bottom": 75
+      }
+    },
+    "about-mission": {
+      "type": "about-mission",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Untitled_design_29be8901-ae60-467a-9e6c-a4a8505d6218.png",
+        "bg_image": "shopify:\/\/shop_images\/Testimonials_Background.jpg",
+        "padding_top": 0,
+        "padding_bottom": 90
+      }
+    },
+    "2c71968c-144e-4b71-9b84-13cea465c54f": {
+      "type": "about-story",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/why_vegan.png",
+        "heading": "Why Vegan Leather?",
+        "info": "<p>MERSI is 100% PETA Certified. We pride ourselves in using premium quality materials throughout the entire production process. From the vegan leather we select, to the custom hardware, our handbags are made to last.<\/p>",
+        "button_text": "Contact Us",
+        "button_link": "shopify:\/\/pages\/contact",
+        "padding_top": 75,
+        "padding_bottom": 90
+      }
+    }
+  },
+  "order": [
+    "76bb174e-b812-4ac8-be6c-8cd186d61a25",
+    "about-story",
+    "about-mission",
+    "2c71968c-144e-4b71-9b84-13cea465c54f"
+  ]
+}

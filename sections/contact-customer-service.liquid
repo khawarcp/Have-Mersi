@@ -1,0 +1,221 @@
+<link rel="stylesheet" href="{{ 'our-story.css' | asset_url }}">
+<link rel="stylesheet" href="{{ 'contact-customer-care.css' | asset_url }}">
+<style>
+  .section-{{ section.id }}-padding{
+    padding-top: {{ section.settings.padding_top | times : 0.75 | round }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times : 0.75 | round }}px;
+  }
+
+  @media screen and (min-width: 750px){
+    .section-{{ section.id }}-padding{
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+</style>
+<section class="section-{{ section.id }}-padding our-story">
+  <div class="page-width">
+    <div class="flex-grid flex-grid--gutters">
+      <div class="flex-grid__item flex-grid__item--50">
+        <div class="image-wrapper">
+          {% if section.settings.image != blank %}
+            <img
+              src="{{ section.settings.image | image_url }}"
+              alt="{{ section.settings.image.alt }}"
+              height=""
+              width=""
+              loading="lazy"
+            >
+          {% else %}
+            {{ 'image' | placeholder_svg_tag }}
+          {% endif %}
+        </div>
+      </div>
+      <div class="flex-grid__item flex-grid__item--50">
+        <div class="content-wrapper">
+          <h2>{{ section.settings.heading }}</h2>
+          <div class="richtext">
+            {{ section.settings.info }}
+          </div>
+          {% if section.settings.email != blank %}
+          <div class="richtext email">
+            <div class="feature-tiem">
+            <div class="feature-image">
+                <img
+                src="{{ 'email.svg' | asset_url }}"
+                alt="Email Address"
+                height=""
+                width=""
+                loading="lazy"
+                >
+            </div>
+            <div class="feature-content">                    
+                <p>{{ section.settings.email }}</p>                    
+            </div>
+        </div>
+          </div>
+        {% endif %}
+          <div class="richtext">
+            {{ section.settings.info_2 }}
+          </div>
+          {% if section.settings.phone_number != blank %}
+          <div class="richtext phone">
+            <div class="feature-tiem">
+                  <div class="feature-image">
+                      <img
+                        src="{{ 'phone.svg' | asset_url }}"
+                        alt="Phone Number"
+                        height=""
+                        width=""
+                        loading="lazy"
+                      >
+                  </div>
+                  <div class="feature-content">                    
+                      <p>{{ section.settings.phone_number }}</p>
+                   
+                  </div>
+                </div>
+          </div>
+        {% endif %}
+          <div class="features-list">
+            {% for block in section.blocks %}
+              {% if block.settings.heading != blank %}
+                <div class="feature-tiem">
+                  <div class="feature-image">
+                    {% if block.settings.image != blank %}
+                      <img
+                        src="{{ block.settings.image | image_url }}"
+                        alt="{{ block.settings.image.alt }}"
+                        height=""
+                        width=""
+                        loading="lazy"
+                      >
+                    {% else %}
+                      {{ 'image' | placeholder_svg_tag }}
+                    {% endif %}
+                  </div>
+                  <div class="feature-content">
+                    {% if block.settings.heading != blank %}
+                      <h3>{{ block.settings.heading }}</h3>
+                    {% endif %}
+                    {% if block.settings.info != blank %}
+                      <p>{{ block.settings.info }}</p>
+                    {% endif %}
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <div class="button-wrapper">
+            {% if section.settings.button_text != blank %}
+              <a href="{{ section.settings.button_link | default: '#'  }}" class="btn">
+                {{ section.settings.button_text }}
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Our Story",
+  "settings": [
+    {
+      "type" : "image_picker",
+      "id" : "image",
+      "label": "Image"
+    },
+    {
+      "type" : "text",
+      "id" : "heading",
+      "label": "Heading",
+      "default" : "Our Story"
+    },
+    {
+      "type" : "richtext",
+      "id" : "info",
+      "label": "Description"
+    },
+    {
+      "type" : "richtext",
+      "id" : "info_2",
+      "label": "Description"
+    },
+    {
+      "type" : "text",
+      "id" : "email",
+      "label": "Email Address"
+    },
+    {
+      "type" : "text",
+      "id" : "phone_number",
+      "label": "Phone Number"
+    },
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button Text",
+        "default": "Contact Us"
+      }, {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button Link"
+      },
+    {
+      "type" : "header",
+      "content" : "Section Padding"
+    },
+    {
+      "type" : "range",
+      "id" : "padding_top",
+      "label" : "Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 50,
+      "unit": "px"
+    },
+    {
+      "type" : "range",
+      "id" : "padding_bottom",
+      "label" : "Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 50,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Feature",
+      "type" : "feature",
+      "settings" : [
+         {
+            "type" : "image_picker",
+            "id" : "image",
+            "label": "Image"
+          },
+          {
+            "type" : "text",
+            "id" : "heading",
+            "label": "Title"
+          },
+          {
+            "type" : "richtext",
+            "id" : "info",
+            "label": "Sub Text"
+          }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name" : "Customer Care"
+    }
+  ]
+}
+{% endschema %}

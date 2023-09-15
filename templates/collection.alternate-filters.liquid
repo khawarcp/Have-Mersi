@@ -1,0 +1,54 @@
+{% section 'collection-header' %}
+{%- style -%}
+/*.collection-custom-banner{
+  min-height:500px;
+  background-position:center center;
+  background-size:cover;
+  background-repeat:no-repeat;
+}
+
+@media screen and (max-width:650px){
+  .collection-custom-banner{
+    min-height:200px;
+    background-size:100%;
+  }
+}*/
+.collection-custom-banner img{
+  width:100%;
+  max-height:600px;
+  object-fit: cover;
+  object-position: center;
+  display:block;
+}
+{%- endstyle -%}
+
+{% if collection.handle == 'sale' and collection.image  != blank %}
+{%- assign img_url = collection.image | img_url: '' -%}
+<!-- <div class="collection-custom-banner" style="background-image:url('{{ img_url }}')">
+
+</div> -->
+<div class="collection-custom-banner">
+  <img src="{{ img_url }}" alt="{{ collection.title }}">
+</div>
+{% endif %}
+{% section 'plp-scroller' %}
+<div id="CollectionAjaxResult" class="collection-content">
+  <div id="CollectionAjaxContent">
+    <div class="page-width">
+      <div class="grid">
+        <div class="grid__item medium-up--one-fifth grid__item--sidebar">
+          {% section 'collection-sidebar-alternate-filters' %}
+        </div>
+        <div class="grid__item medium-up--four-fifths grid__item--content">
+          {% section 'collection-promotions' %}
+          
+          {%- if collection.handle == 'sale' -%}
+            	{% section 'collection-template-variations' %}
+          {%- else -%}
+          	{% section 'collection-template' %}
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,151 @@
+.my-zoom-modal {
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 100;
+    display: none;
+}
+span.close {
+    font-size: 30px;
+}  
+.my-zoom-modal.gallery-active-modal {
+    display: flex;
+}  
+.desktop-zoom__overlay-\+Sg {
+    opacity: 1;
+}
+.overlay-7\+Z, .portal-iyF {
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 100;
+}
+.overlay-7\+Z {
+    background-color: rgba(25,25,25,.25);
+    height: 100vh;
+}
+.desktop-zoom__portal-1MW {
+    bottom: 0;
+    cursor: url(/etc.clientlibs/ui/react/resources/assets/hover-close.aeb5b2c7.cur),auto;
+    cursor: -webkit-image-set(url(/etc.clientlibs/ui/react/resources/assets/hover-close@1x.2a376f73.png) 1x,url(/etc.clientlibs/ui/react/resources/assets/hover-close@2x.bf9b97b4.png) 2x) 0 0,auto;
+    cursor: image-set(url(/etc.clientlibs/ui/react/resources/assets/hover-close@1x.2a376f73.png) 1x,url(/etc.clientlibs/ui/react/resources/assets/hover-close@2x.bf9b97b4.png) 2x) 0 0,auto;
+    left: 50%;
+    max-width: 1920px;
+    position: fixed;
+    top: 0;
+    transform: translateX(-50%);
+    width: 100%;
+    z-index: 101;
+}
+
+.desktop-zoom__cross-yEO {
+    position: absolute;
+    right: 40px;
+    top: 40px;
+    z-index: 2;
+}
+
+.desktop-zoom__control-zg2 {
+    cursor: pointer;
+    margin: 0 -20px;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.desktop-zoom__control--hidden-1xD {
+    display: none;
+}
+
+.desktop-zoom__control--next-oN5 {
+    right: 95px;
+}
+
+.desktop-zoom__control--prev-pC7 {
+    left: 95px;
+}
+
+.desktop-zoom__image-wrapper-Fkt {
+    background-color: #f6f6f8;
+    height: 100%;
+    width: 100%;
+}
+
+.desktop-zoom__image-wrapper--enter-QKC {
+    opacity: 0;
+}
+
+.desktop-zoom__image-wrapper--enter-active-XQP {
+    opacity: 1;
+    transition: opacity .3s ease;
+}
+
+.desktop-zoom__image-wrapper--exit-TC5 {
+    opacity: 1;
+}
+
+.desktop-zoom__image-wrapper--exit-active-khG {
+    opacity: 0;
+    transition: opacity .3s ease;
+}
+
+
+.close-button-ff9 {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    background: transparent;
+    border: none;
+    box-sizing: border-box;
+    color: #191919;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 0;
+    margin: -10px;
+    outline: none;
+    padding: 10px;
+    text-decoration: none;
+    vertical-align: middle;
+    z-index: 101;
+}
+.close-button-ff9 {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    background: transparent;
+    border: none;
+    box-sizing: border-box;
+    color: #191919;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 0;
+    margin: -10px;
+    outline: none;
+    padding: 10px;
+    text-decoration: none;
+    vertical-align: middle;
+    z-index: 101;
+}
+.close-button--dark-Qzq {
+    color: #191919;
+}
+.zoomed-image-GLr {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+}                                                    
+#modalImage {
+    left: 0;
+    margin: 0;
+    position: relative;
+    top: 0;
+    width: 100%;
+    background-color: rgb(246, 246, 248);
+      object-fit: scale-down;
+}
+.gallery-active-modal .desktop-zoom__image-wrapper-Fkt {
+    cursor: image-set(url(https://cdn.shopify.com/s/files/1/0561/4341/3438/files/hover-close.svg?v=1694683999) 1x,url(https://cdn.shopify.com/s/files/1/0561/4341/3438/files/hover-close.svg?v=1694683999) 2x) 0 0,auto;
+}

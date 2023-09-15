@@ -1,0 +1,51 @@
+<style>
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times : 0.75 | round }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times : 0.75 | round }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+</style>
+{% if product.metafields.custom.as_seen_slider != blank %}
+<section class="section-{{ section.id }}-padding as-seen-wrapper">
+  <div class="page-width parent-relative">
+    <div class="section-header">
+      <h2 class="section-header__title">
+        {{ section.settings.heading }} <img src="https://cdn.shopify.com/s/files/1/0561/4341/3438/files/instagram.svg?v=1694066638" height="30px" width="30px" loading="lazy">
+      </h2>
+    </div>
+    <div class="as-seen-slider owl-carousel">
+      {% for item in product.metafields.custom.as_seen_slider.value %}
+        <div class="as-seen-item">
+          <img
+            src="{{ item | image_url }}"
+            loading="lazy"
+            alt="{{ item.alt }}">
+        </div>
+      {% endfor %}
+    </div>
+    {% if product.metafields.custom.as_seen_slider.value != blank %}
+      <div class="as-seen-counter"></div>
+    {% endif %}
+  </div>
+</section>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "As Seen Slider",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "as seen on"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,320 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{'splide.min.css' | asset_url }}">
+{%- style -%}
+.collection-seo-content{
+	margin-top:-30px;
+}
+.article-grid {
+  display: grid;
+margin-bottom:50px;
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.article-gap-8 {
+  gap: 2rem;
+}
+
+.collection-seo-content h2{
+	margin-bottom: 30px;
+    margin-top: 30px;
+
+}
+
+.collection-seo-content h2:first-child{
+	margin-top:0;
+}
+
+.article-list h3{text-align:center;}
+
+.collection-seo-content h2,
+.collection-seo-content h2 b,
+.article-list h3{
+	text-align:center;
+  font-family: 'Chivo';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 38px;
+  text-align: center;
+  color: #221F20;
+}
+
+.article-list h3{
+	font-size:26px;
+	line-height:26px;
+}
+
+.collection-seo-content p{
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  color: #221F20;
+}
+
+.collection-seo-content ul{
+	text-align:left;
+}
+
+
+@media (max-width: 768px) {
+.collection-seo-content,
+.collection-seo-content p{
+	font-size:14px;
+}
+.collection-seo-content h2,
+.collection-seo-content h2 b,
+.article-list h3{
+	font-size: 20px;
+	line-height: 30px;
+	}
+
+}
+
+@media (min-width: 768px) {
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+@media (min-width: 1024px) {
+  .lg\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+  .stamped-badge-caption span{
+      display:block !important;
+  }
+
+  .grid-product__title.grid-product__title--body{
+      text-align: left;
+      font-size: 16px;
+  }
+
+  .grid-product__price{
+      font-size: 16px;
+      text-align: left;
+	 font-weight:bold;
+  }
+
+  .grid-product__meta{
+	text-align:left;
+	}
+ .stamped-product-reviews-badge{
+	line-height:1 !important;
+}
+
+.product-title__variant-color{
+	text-transform:uppercase;
+  font-size: 15px;
+}
+
+@media screen and (max-width:768px){
+  .grid-product__title.grid-product__title--body{
+      font-size: 15px;
+  }
+
+.stamped-badge-starrating{
+	display:block !important;
+	}
+  .grid-product__price{
+      font-size: 13px;
+  }
+}
+
+.splide__slide .grid__item{
+  width:100% !important;
+  float:none !important;
+  padding-left:0 !important;
+}
+.splide__arrow{
+  background:none;
+}
+.splide-arrow-icon{
+  color: #60925b;
+  font-size: 51px;
+}
+.splide__arrow--prev{
+  left: -2em !important;
+}
+.splide__arrow--next {
+  right: -2em !important;
+}
+.product-section-title{
+  font-weight:bold;
+  margin: 40px 0;
+}
+.bottom-description{
+  padding:40px 0;
+}
+.top-description p,
+.bottom-description p{
+  font-size:21px;
+}
+.top-description img{
+  height:auto;
+}
+.grid-product__meta{
+  min-height:auto !important;
+}
+.splide__pagination{
+  bottom: -1em;
+}
+.splide__pagination__page.is-active{
+  background:#60925b;
+}
+
+.custom-collection-banner{
+  width:100%;
+  height:580px;
+  object-fit:cover;
+  margin-bottom:20px;
+  display:block;
+}
+
+.banner-container{
+  position:relative;
+}
+
+.banner-container__overlay-title{
+  background: #baceb3;
+  position:absolute;
+  width:100%;
+  top:0;
+  text-align:center;
+  padding:10px;
+  font-weight:bold;
+  color:white;
+  text-shadow: 1px 1px #000;
+  letter-spacing: 3px;
+  font-family: 'Archivo Black', sans-serif;
+  font-weight:400;
+}
+.banner-container__overlay-description{
+  color:white;
+  text-shadow: 1px 1px #000;
+  position:absolute;
+  bottom:2px;
+  text-align:center;
+  line-height: 1.15;
+  padding:10px;
+}
+
+@media screen and (min-width:650px){
+  .banner-container__overlay-title,
+  .banner-container__overlay-description{
+    position:static;
+    top:unset;
+    text-align:left;
+  }
+
+  .banner-container__overlay-title{
+    background:none;
+    font-size: 42px;
+    line-height: 1.2;
+  }
+
+  .banner-container__overlay{
+    position:absolute;
+    padding:30px;
+    max-width:500px;
+    top:50%;
+    transform:translateY(-50%);
+  }
+} 
+
+@media screen and (max-width:650px){
+  .collection-logo-container{
+    padding:15px;
+  }
+  .collection-logo{
+    max-width:182px;
+  }
+  .custom-collection-banner{
+    height: 390px;
+    object-fit: cover;
+  }
+}
+{%- endstyle -%}
+
+{% if collection.metafields.custom.banner != blank %}
+<div class="banner-container">
+  <img class="custom-collection-banner" src="{{ collection.metafields.custom.banner | image_url: width: 2000}}" />
+  <div class="banner-container__overlay">
+    {% if collection.metafields.custom.banner_overlay_text_title != blank %}
+      <h2 class="banner-container__overlay-title">{{collection.metafields.custom.banner_overlay_text_title}}</h2>
+    {% endif %}
+
+    {% if collection.metafields.custom.banner_overlay_text_description != blank %}
+      <p class="banner-container__overlay-description">{{collection.metafields.custom.banner_overlay_text_description}}</p>
+    {% endif %}
+  </div>
+</div>
+{% endif %}
+
+{% render 'collection-content-blocks' %}
+
+<div class="page-width">
+  <div class="grid">
+    <div class="grid__item grid__item--content">
+      {%- assign collection_description = collection.description | split: '[split]' -%}
+
+      <div class="rte collec-desc top-description">
+        {{ collection_description.first }}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if collection.metafields.custom.sliders.value != blank %}
+<div class="page-width">
+  <div class="grid">
+    <div class="grid__item grid__item--content">
+      {% for slider in collection.metafields.custom.sliders.value  %}
+        {% include 'product-slider', title: slider.title, products: slider.variants.value %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<div class="page-width">
+  <div class="grid">
+    <div class="grid__item grid__item--content">
+      <div class="rte collec-desc bottom-description">
+        {{ collection_description.last }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{{ 'splide.min.js' | asset_url }}"></script>
+
+<script type="text/javascript">
+const sliders = document.querySelectorAll('.splide-products');
+for (var i = 0; i<sliders.length; i++){
+  console.log('Slider', sliders[i]);
+  new Splide( sliders[i], {
+    type   : 'carousel',
+    perPage: 3,
+    gap:"2rem",
+    pagination: false,
+    breakpoints: {
+      640: {
+        arrows:false,
+        pagination: false,
+        perPage: 1,
+        perMove:1,
+        gap:"1rem",
+        padding: {right: '4rem'}
+      },
+    }
+  } ).mount();
+}
+</script>

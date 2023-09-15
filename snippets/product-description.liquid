@@ -1,0 +1,177 @@
+<div class="product-single__meta">
+  {% if settings.show_breadcrumbs and isModal != true %}
+    {% include 'breadcrumbs' %}
+  {% endif %}
+
+  {% if settings.vendor_enable %}
+    {% assign vendorname = product.vendor %}
+    {% for collection in collections %}
+      {% if collection.title == vendorname %}
+        <div class="product-single__vendor">
+          <a href="{{ collection.url }}">{{ product.vendor }}</a>
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  <div class="product-info-top">
+    {% if isModal %}
+      <p class="h2 product-single__title"><span>{{ product.title }}</span></p>
+    {% else %}
+      <h1 class="h2 product-single__title"><span>{{ product.title }}</span></h1>
+    {% endif %}
+  
+    <div class="custom-review-contain">
+      <span
+        class="stamped-product-reviews-badge stamped-main-badge"
+        data-id="{{ product.id }}"
+        style="display: inline-block;"></span>
+    </div>
+    <style>
+      .stamped-main-badge[data-type="qna"]:empty:before {
+        font-family: 'stamped-font';
+        content: '\f0e6 ';
+      }
+      .stamped-main-badge[data-type="qna"]:empty:after {
+        content: ' Ask a question';
+      }
+    </style>
+  
+    {% if settings.sku_enable %}
+      <p id="Sku-{{ section_id }}" class="product-single__sku">
+        {% if current_variant.sku %}
+          {{ current_variant.sku }}
+        {% endif %}
+      </p>
+    {% endif %}
+  
+  
+      <div class="product-price-row">
+        <span id="ProductPrice-{{ section_id }}"class="product__price{% if current_variant.compare_at_price > current_variant.price %} on-sale{% endif %}"content="{{ current_variant.price | divided_by: 100.00 }}">
+          <span>{{ current_variant.price | money }}</span>
+  
+        </span>
+  
+        {% if variant_on_sale %}
+          <span class="price-on-sale">{{ current_variant.compare_at_price | money }}</span>
+  
+          <span class="price-on-sale__percent-separator">|</span>
+          {%- capture discount_percent -%}
+            {{ current_variant.compare_at_price | minus: current_variant.price | times: 100.0 | divided_by: current_variant.compare_at_price | money_without_currency | times: 100 | remove: '.0' }}
+          {%- endcapture -%}
+  
+          <span class="price-on-sale__percent">{{ discount_percent }}% OFF
+          </span>
+  
+        {% endif %}
+      </div>
+      {% comment %}
+        <div class="product-description-row">
+          {{ product.description }}
+        </div>
+      {% endcomment %}
+  </div>
+
+  <div>
+
+    {%- assign variant_on_sale = false %}
+    {%- if current_variant.compare_at_price > current_variant.price -%}
+      {%- assign variant_on_sale = true %}
+    {%- endif -%}
+
+    {% comment %}
+    <div class="product-price-row">
+      <span id="ProductPrice-{{ section_id }}"class="product__price{% if current_variant.compare_at_price > current_variant.price %} on-sale{% endif %}"content="{{ current_variant.price | divided_by: 100.00 }}">
+        <span>{{ current_variant.price | money }}</span>
+
+      </span>
+
+      {% if variant_on_sale %}
+        <span class="price-on-sale">{{ current_variant.compare_at_price | money }}</span>
+
+        <span class="price-on-sale__percent-separator">|</span>
+        {%- capture discount_percent -%}
+          {{ current_variant.compare_at_price | minus: current_variant.price | times: 100.0 | divided_by: current_variant.compare_at_price | money_without_currency | times: 100 | remove: '.0' }}
+        {%- endcapture -%}
+
+        <span class="price-on-sale__percent">{{ discount_percent }}% OFF
+        </span>
+
+      {% endif %}
+    </div>
+    {% endcomment %}
+
+    {% capture saved_amount %}
+      {{ current_variant.compare_at_price | minus: current_variant.price | money }}{% endcapture %}
+    <span id="SavePrice-{{ section_id }}" class="product__price-savings{% if hide_sale_price %} hide{% endif %}">
+      {{ 'products.general.save_html' | t: saved_amount: saved_amount }}
+    </span>
+
+    {% if settings.inventory_enable %}
+      <script>
+        // Store inventory quantities in JS because they're no longer
+// available directly in JS when a variant changes.
+// Have an object that holds all potential products so it works
+// with quick view or with multiple featured products.
+        window.inventories = window.inventories || {};
+        window.inventories['{{section_id}}'] = {};
+        var inv_qty = {};{% for variant in product.variants %}
+          window.inventories['{{section_id}}'][{{variant.id}}] = {{ variant.inventory_quantity | default: 0 }};{% endfor %}
+      </script>
+
+      {%- assign inventory_visible = false -%}
+      {% if current_variant.inventory_management == 'shopify' %}
+        {% if current_variant.inventory_quantity < 10 %}
+          {%- assign inventory_visible = true -%}
+        {% endif %}
+      {% endif %}
+      {% if current_variant.inventory_quantity == 0 %}
+        {%- assign inventory_visible = false -%}
+      {% endif %}
+    {% endif %}
+
+    {% if product.metafields.custom.short_description != blank %}
+      <div class="short-description">
+        {{ product.metafields.custom.short_description | metafield_text }}
+      </div>
+    {% endif %}
+
+    <meta>
+
+    {% unless isModal %}
+      {% comment %}
+      Shopify's product form attaches a number of tracking
+      scripts that cause slower load times and false statistics.
+      Quick view modals request these on-demand.
+      {% endcomment %}
+      {% include 'product-form', section_id: section_id %}
+    {% else %}
+      <div
+        id="ProductFormHolder-{{ section_id }}"
+        class="product-form-holder"
+        data-url="{{ product.url }}"></div>
+    {% endunless %}
+
+    {% if product.metafields.custom.strap_upsell == 0 %}
+    {% include 'upsell-pair-product' %}
+    {% endif %}
+    
+
+    {% include 'value-adds' %}
+
+    {% unless section.settings.description_style == 'full' %}
+      <div class="product-single__description {% for tag in product.tags %}{% if tag contains 'Handbags' %}handbag{% endif %}{% endfor %} rte">
+        {% include 'product-description-slider' %}
+        {% include 'donation-message' %}
+
+      </div>
+
+      {% include 'product-additional-content', section_id: section_id %}
+    {% endunless %}
+
+  </div>
+
+  {% if social %}
+    {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}
+  {% endif %}
+</div>

@@ -1,0 +1,70 @@
+/* Style the tab */
+.tab {
+  border-bottom: 1px solid #A8AAAC;
+  overflow: hidden;
+}
+
+/* Style the buttons inside the tab */
+.tab .tablinks {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  padding-bottom: 10px;
+  font-family: Miller;
+  color: #A8AAAC;
+  font-size: 18px;
+  line-height: 23.4px;
+  font-weight: 500;
+}
+
+.tab .tablinks:first-child {
+  padding-left: 0;
+}
+.tab .tablinks:not(:last-child) {
+  margin-right: 40px;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  border-bottom: 3px solid #EB4E24;
+  color: #eb4e24 ;
+}
+
+/* Style the tab content */
+.tabcontent {
+  padding: 20px 20px 12px 0px;
+  border-top: none;
+}
+
+.tabcontent-inner, .tabcontent-inner p, .tabcontent-inner ul, .tabcontent-inner li {
+  font-size: 18px;
+  line-height: 32.4px;
+  font-family: 'Cairo', sans-serif;
+}
+
+.tab-col-video-wrapp {
+    width: 100%;
+}
+
+.tab-col-video-wrapp video {
+    width: 100%;
+}
+
+@media screen and (max-width:991px) {
+  .tab .tablinks:not(:last-child) {
+      margin-right: 10px;
+  }
+}
+
+@media only screen and (max-width :600px) {
+  .tabcontent-inner, .tabcontent-inner p, .tabcontent-inner ul, .tabcontent-inner li {
+      font-size: 13px;
+      line-height: 20px;
+      font-family: Cairo,sans-serif;
+  }
+}
+
+ 

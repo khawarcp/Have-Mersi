@@ -1,0 +1,59 @@
+{% unless collection.metafields.custom.atc_btn_excluded %}
+
+  {% for t in variantProduct.tags %}
+    {% if t contains '2 For $99' %}
+      {% assign ifTagTwoFor = true %}
+    {% endif %}
+  {% endfor %}
+
+  <div class="product__btn product__btn-variant1 hideabtest">
+    <button
+      type="button"
+      name="add"
+      class="btn btn--full btn--quick-atc {% unless variant.available %} btn--quick-atc-disabled {% endunless %}"
+      data-variant_id="{% if variant.available %}{{ variant.id }}{% endif %}"
+      {% if ifTagTwoFor == true %}
+      data-tag_two_for="true"
+      {% endif %}
+      {% unless variant.available %}
+      disabled
+      {% endunless %}>
+
+      <span class="quick-atc-text">
+        {% if variant.available %}
+          {{ 'products.product.add_to_cart' | t }}
+        {% else %}
+          {{ 'products.product.sold_out' | t }}
+        {% endif %}
+      </span>
+    </button>
+  </div>
+
+  <div class="product__btn product__btn-variant2 hideabtest">
+    <button
+      type="button"
+      name="add"
+      class="btn btn--full {% if collection.handle == '2-for-99'%} btn--add-to-bundle {% else %} btn--quick-atc {% endif %} {% unless variant.available %} btn--quick-atc-disabled {% endunless %}"
+      data-variant_id="{% if variant.available %}{{ variant.id }}{% endif %}"
+      {% if ifTagTwoFor == true %}
+      data-tag_two_for="true"
+      {% endif %}
+      {% if collection.handle == '2-for-99' %}data-variant_img="{{ variant.featured_image | img_url: '100x' }}"data-variant_price="{{ variant.price }}"{% endif %}
+      {% unless variant.available %}
+      disabled
+      {% endunless %}>
+
+      <span class="quick-atc-text">
+        {% if variant.available %}
+          {% if collection.handle == '2-for-99' %}
+            ADD TO BUNDLE
+          {% else %}
+            {{ 'products.product.add_to_cart' | t }}
+          {% endif %}
+        {% else %}
+          {{ 'products.product.sold_out' | t }}
+        {% endif %}
+      </span>
+    </button>
+  </div>
+{% endunless %}

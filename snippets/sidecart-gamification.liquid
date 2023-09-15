@@ -1,0 +1,34 @@
+{% assign productGiftOne = all_products[settings.product_gift_one].selected_or_first_available_variant %}
+{% assign productGiftTwo = all_products[settings.product_gift_two].selected_or_first_available_variant %}
+
+<div
+  class="gamification"
+  style="display:none;"
+  data-first-product-title="{{settings.product_gift_title_one}}"
+  data-second-product-title="{{settings.product_gift_title_two}}"
+  data-first-gift-id="{{productGiftOne.id}}"
+  data-second-gift-id="{{productGiftTwo.id}}">
+  <div class="gamification-header"></div>
+  <div class="gamification-progress">
+    <ul>
+      <li class="step">
+        {% render 'icon-free-shipping-letters' %}
+        {% render 'icon-star-free-shipping' %}
+        <small>$100</small>
+      </li>
+      <li class="step">
+        <img src="{{productGiftOne.featured_image.src | img_url: 'small'}}" alt="">
+        {% render 'icon-star-free-shipping' %}
+        <small>$140</small>
+      </li>
+      <li class="step">
+        <img src="{{productGiftTwo.featured_image.src | img_url: 'small'}}" alt="">
+        {% render 'icon-star-free-shipping' %}
+        <small>$175</small>
+      </li>
+    </ul>
+    <span class="progress"></span>
+  </div>
+</div>
+
+<script src="{{ 'gamification.min.js' | asset_url }}"></script>

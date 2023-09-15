@@ -1,0 +1,111 @@
+.page-banner {
+  background: center no-repeat;
+  background-size: cover;
+  height: 520px;
+}
+
+.page-banner-heading h1 {
+    font-size: 72px;
+    line-height: 84.82px;
+    color: #301210;
+}
+
+.page-banner-heading {
+    max-width: 635px;
+    position: relative;
+    height: 100px;
+}
+
+.page-banner-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+      padding-left: 70px;
+}
+
+.page-banner .page-width {
+  height: 100%;
+}
+
+.page-banner-heading h1 span {
+    color: #eb4e24;
+    display: block;
+}
+
+.page-banner-heading::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  left: 60px;
+  background-image: url("https://cdn.shopify.com/s/files/1/0804/7368/6324/files/banner-top-star.svg?v=1690881866");
+  z-index: 2;
+  height: 20px;
+  width: 20px;
+}
+.page-banner-heading::after {
+  content: "";
+  position: absolute;
+  bottom: -150px;
+  left: 150px;
+  height: 30px;
+  width: 30px;
+  background-image: url("https://cdn.shopify.com/s/files/1/0804/7368/6324/files/banner-bottom-star.svg?v=1690881866");
+  z-index: 2;
+}
+.template-collection .page-banner-heading h1, .template-collection .page-banner-heading h2 {
+    display: none;
+}
+
+@media only screen and (max-width: 992px) {
+  .about .page-banner, .contact .page-banner, .faq .page-banner {
+      background-position: right;
+  }
+}
+@media only screen and (max-width: 991px) {
+ .page-banner {
+    height: 450px;
+}
+}
+
+@media only screen and (max-width: 767px) {
+  .page-banner {
+    background-size: cover;
+    background-position: top right;
+    height: 250px;
+}
+
+.page-banner-heading h1 {
+    font-size: 42px;
+    line-height: 49.48px;
+}
+
+.page-banner-wrapper {
+    align-items: flex-end;
+      padding-left: 0px;
+}
+
+  .page-banner-heading {
+    margin-bottom: 15px;
+    overflow: visible !important;
+}
+
+  .page-banner-heading:before {
+    top: -30px;
+    left: 10px;
+}
+
+.page-banner-heading:after {
+    bottom: 30px;
+  left: 180px;
+}
+  
+}
+
+
+@media only screen and (max-width: 400px) {
+  .page-banner {
+    background-size: cover;
+    height: 220px;
+}
+}

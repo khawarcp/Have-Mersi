@@ -1,0 +1,167 @@
+<link rel="stylesheet" href="{{ 'testimonials-slider.css' | asset_url }}">
+<script src="{{ 'slick.min.js' | asset_url }}" defer></script>
+<script src="{{ 'testimonials-slider-custom.js' | asset_url }}" defer></script>
+
+<style>
+  .section-{{ section.id }}-padding{
+    padding-top: {{ section.settings.padding_top | times : 0.75 | round }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times : 0.75 | round }}px;
+  }
+
+  @media screen and (min-width: 750px){
+    .section-{{ section.id }}-padding{
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+</style>
+
+<section class="section-{{ section.id }}-padding testimonial-slider-section" style="background-image: url('{{ section.settings.bg_image | image_url }}');">
+    <div class="page-width">
+        <div class="home-testimonial" data-section-type="home-testimonial" data-section-id="home-testimonial">
+        <ul class="flex-box testi-ul">
+            <li class="flex-box">
+                <div class="images home-testi-image">    
+                    <button type="button" class="testi-prev slick-arrow" aria-disabled="false">
+                        <img src='https://cdn.shopify.com/s/files/1/0804/7368/6324/files/slider-left-arrow.svg?v=1691503007'>
+                    </button>
+                    {% for block in section.blocks %}
+                       {% case block.type %}
+                            {% when 'slide' %}   
+                            <div class="img slide-{{ forloop.index }} slide-active" data-img-index="{{ forloop.index }}"  data-block="testimonial-slide">
+                                    <div class="rotater">
+                                        <img loading="lazy" class="img-contain" src="{{ block.settings.image | image_url }}" width="568" height="630" alt="{{ block.settings.image.alt }}" />	
+                                    </div>
+                                </div>
+                        {% endcase %}
+                    {% endfor %}       
+                    <button type="button" class="testi-next slick-arrow" style="" aria-disabled="false">
+                        <img src='https://cdn.shopify.com/s/files/1/0804/7368/6324/files/slider-right-arrow.svg?v=1691503011'>        
+                    </button>            
+                </div>
+                <div class="descript">
+                    <div class="content-wrapper">
+                        <h2> {{ section.settings.heading | newline_to_br }} </h2>
+                    </div>
+                    <div class="slider-description-wrap">
+                        {% for block in section.blocks %}
+                            {% case block.type %}
+                                {% when 'slide' %}   
+                                    <div class="descr test-descr {% if forloop.first %}slide-descr-active{% endif %}" data-descr-index="{{ forloop.index }}"  data-block="testimonial-slide">
+                                        <h3> {{ block.settings.review_title }} </h3>
+                                        <div class="star-rating-wrapper">
+                                        {% assign rating = block.settings.rating %}
+                                        {% for i in (1..rating) %}
+                                            <img loading="lazy" width="21" height="21" src="{{ 'star-rating.svg' | asset_url }}" alt="Star rating" />
+                                        {% endfor %}
+                                        </div>
+                                        <div class="richtext">
+                                            {{ block.settings.comments }}
+                                        </div>
+                                        <p>
+                                            <span class="reviewer-name"> {{ block.settings.name }} </span>
+                                            {% if block.settings.location != bank %}
+                                            <span class="reviewer-location"> <span class="pipe">&#124;</span> {{ block.settings.location }} </span>
+                                            {% endif %}
+                                         </p>
+                                    </div>
+                            {% endcase %}
+                        {% endfor %} 
+                    </div>
+                </div>                
+            </li>
+        </ul>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+      "name": "Testomonials Slider",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "heading",
+          "label": "Heading"
+        }, {
+          "type": "image_picker",
+          "id": "bg_image",
+          "label": "Background Image"
+        },
+        {
+        "type" : "header",
+        "content" : "Section Padding"
+        },
+        {
+        "type" : "range",
+        "id" : "padding_top",
+        "label" : "Padding Top",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "default": 50,
+        "unit": "px"
+        },
+        {
+        "type" : "range",
+        "id" : "padding_bottom",
+        "label" : "Padding Bottom",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "default": 50,
+        "unit": "px"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "slide",
+          "name": "Slide",
+          "settings": [
+            {
+              "type": "text",
+              "id": "review_title",
+              "label": "Review Title",
+              "default": "Cutest little <span>bag</span>"
+            },
+            {
+              "type": "richtext",
+              "id": "comments",
+              "label": "Comment",
+              "default": "<p>I can't believe how much stuff I can fit in it—it's like a little black hole! And it holds up really well, even after a busy day at work. The gold-tone accents really add a sophisticated touch to what would otherwise be a simple black bag. It's such a beautiful combination of classic and modern styles that it works perfectly for me.</p>"
+            },
+            {
+              "type": "text",
+              "id": "name",
+              "label": "Name",
+              "default": "Veranika W."
+            },
+            {
+              "type": "text",
+              "id": "location",
+              "label": "Location",
+              "default": "United States"
+            },
+            {
+              "type": "image_picker",
+              "id": "image",
+              "label": "Image"
+            }, {
+              "type": "range",
+              "id": "rating",
+              "min": 0,
+              "max": 5,
+              "step": 1,
+              "label": "Rating",
+              "default": 5
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "Testomonials Slider"
+        }
+      ]
+    }
+  {% endschema %}

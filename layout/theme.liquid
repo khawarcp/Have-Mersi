@@ -1,0 +1,1155 @@
+<!doctype html>
+<html class="no-js" lang="{{ shop.locale }}">
+  <head>
+    <script data-src="https://www.googleoptimize.com/optimize.js?id=OPT-KHW7M6W"></script>
+    <meta name="google-site-verification" content="iaDJ87X-kjoGmmviwBjOFRiEm9-iwmDFksxTTFebMwM">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: dark)">
+    <!-- {{ settings.color_button }} -->
+    <meta name="format-detection" content="telephone=no">
+    {% if template contains 'collection' and current_tags %}
+      <link rel="canonical" href="{{ shop.url }}{{ collection.url }}">
+    {% else %}
+      <link rel="canonical" href="{{ canonical_url }}">
+    {% endif %}
+    {%- if settings.favicon -%}
+      <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
+    {%- endif -%}
+    {% include 'seo-title' %}
+    <title>{{ seo_title }}</title>
+    {%- if page_description -%}
+      <meta name="description" content="{{ page_description | escape }}">
+    {%- endif -%}
+    {% include 'social-meta-tags' %}
+    {% include 'font-face' %}
+    {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
+    {{ 'global.min.css' | asset_url | stylesheet_tag }}
+    {{ 'side_cart_upsell.css' | asset_url | stylesheet_tag | replace: 'href', 'data-href' }}
+    <style>
+      /* Checkout */
+#countdown-timer {
+    background-color: #EB4E24;
+    font-family: Cairo,sans-serif !important;
+}
+
+.stepper-item.completed .step-counter {
+    background-color: #eb4e24;
+    border-color: #eb4e24;
+}
+
+.stepper-item.completed::after {
+    border-color: #eb4e24;
+}
+
+.step-counter {
+    font-family: Cairo,sans-serif !important;
+}
+
+      .collection-item__title {
+        font-size: {{ settings.type_collection_size }}px;
+      }
+      @media screen and (max-width: 768px) {
+        .collection-item__title {
+          font-size: {{ settings.type_collection_size | times: 0.8 }}px;
+        }
+      }
+    </style>
+    <script>
+      function getProductToCart (element){
+        let variantId = element.id
+        var data = {
+          items: [
+              {
+                  quantity: 1,
+                  id: variantId
+              }
+          ]
+        };
+        let res =  $.post(window.Shopify.routes.root + 'cart/add.js', data, function(response){
+             $('body').trigger('added.ajaxProduct');
+            }, 'json').fail(function(XMLHttpRequest, textStatus, errorThrown){
+                  alert('Unexpected error, please try again or contact us.');
+
+                  if (XMLHttpRequest.status == 422 ) {
+                      //alert(XMLHttpRequest.responseJSON.description);
+                  }
+              })
+      }
+    </script>
+    <script>
+      document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+      window.theme = window.theme || {};
+      theme.strings = {
+        addToCart: {{ 'products.product.add_to_cart' | t | json }},
+        soldOut: {{ 'products.product.sold_out' | t | json }},
+        unavailable: {{ 'products.product.unavailable' | t | json }},
+        stockLabel: {{ 'products.product.stock_label' | t: count: '[count]' | json }},
+        savePrice: {{ 'products.general.save_html' | t: saved_amount: '[saved_amount]' | json }},
+        cartSavings: {{ 'cart.general.savings_html' | t: savings: '[savings]' | json }},
+        cartEmpty: {{ 'cart.general.empty' | t | json }},
+        cartTermsConfirmation: {{ 'cart.general.terms_confirm' | t | json }}
+      };
+      theme.settings = {
+        cartType: {{ settings.cart_type | json }},
+        moneyFormat: {{ shop.money_format | json }},
+        recentlyViewedEnabled: false,
+        quickView: {{ settings.quick_shop_enable }},
+        themeVersion: "1.3.2",
+        samplesIDs: '{{ collections['samples'].products | map: 'id' | join: ', ' }}'.split(', ')
+      };
+    </script>
+    {% unless template contains 'cart' %}
+      {{ 'prefetch.js' | asset_url | script_tag }}
+    {% endunless %}
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="{{ 'owl.carousel.min.js' | asset_url }}" defer></script>
+    <script src="{{ 'custom-sliders.js' | asset_url }}" defer></script>
+
+    {% render 'header-scripts.zipifypages', renderctx: 'thm' %}
+
+    <!-- START SCRIPT -->
+    <script
+      id="wgs-scripttag-prod"
+      type="text/javascript"
+      async="async"
+      data-src="/apps/ap/static/scripts/dist/wgs.bundle.js?shop=the-vegan-warehouse.myshopify.com&line_items_disabled=true"
+    ></script>
+    <style>
+      #customerReferenceId { display: none; }
+    </style>
+    <!-- END SCRIPT -->
+    {% render 'boost-sd-fallback' %}
+    {{ content_for_header }}
+    {% comment %}
+      {%- include 'bold-common' -%}
+      {%- include 'bold-product' with product, hide_action: 'header' -%}
+      {%- include 'bold-ro-init' -%}
+      {% include 'oldIE-js' %}
+    {% endcomment %}
+    {%- if template == 'index' -%}
+      <script src="{{ 'vendor-h.js' | asset_url }}" defer="defer"></script>
+    {%- else -%}
+      {% include 'defer-script' with 'vendor-v5.13.js' %}
+      {% if template == 'product.landing-page' %}
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;900&Oswald:wght@700&display=swap"
+          rel="stylesheet"
+        >
+        <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+        {{ 'product-landing-page.css' | asset_url | stylesheet_tag }}
+      {% endif %}
+    {%- endif -%}
+    <script type="text/lazyload">
+      
+      
+      /* instafeed.js | v2.0.0-rc2 | https://github.com/stevenschobert/instafeed.js | License: MIT */
+	  !function exportInstafeed(e,t){"function"==typeof define&&define.amd?define([],t):"object"==typeof exports&&"string"!=typeof exports.nodeName?module.exports=t():e.Instafeed=t()}(this,function defineInstafeed(){function n(e,t){if(!e)throw new Error(t)}function e(e){n(!e||"object"==typeof e,"options must be an object, got "+e+" ("+typeof e+")");var t={accessToken:null,accessTokenTimeout:1e4,after:null,apiTimeout:1e4,before:null,debug:!1,error:null,filter:null,limit:null,mock:!1,render:null,sort:null,success:null,target:"instafeed",template:'<a href="{{link}}"><img title="{{caption}}" src="{{image}}" /></a>',templateBoundaries:["{{","}}"],transform:null};if(e)for(var o in t)"undefined"!=typeof e[o]&&(t[o]=e[o]);n("string"==typeof t.target||"object"==typeof t.target,"target must be a string or DOM node, got "+t.target+" ("+typeof t.target+")"),n("string"==typeof t.accessToken||"function"==typeof t.accessToken,"accessToken must be a string or function, got "+t.accessToken+" ("+typeof t.accessToken+")"),n("number"==typeof t.accessTokenTimeout,"accessTokenTimeout must be a number, got "+t.accessTokenTimeout+" ("+typeof t.accessTokenTimeout+")"),n("number"==typeof t.apiTimeout,"apiTimeout must be a number, got "+t.apiTimeout+" ("+typeof t.apiTimeout+")"),n("boolean"==typeof t.debug,"debug must be true or false, got "+t.debug+" ("+typeof t.debug+")"),n("boolean"==typeof t.mock,"mock must be true or false, got "+t.mock+" ("+typeof t.mock+")"),n("object"==typeof t.templateBoundaries&&2===t.templateBoundaries.length&&"string"==typeof t.templateBoundaries[0]&&"string"==typeof t.templateBoundaries[1],"templateBoundaries must be an array of 2 strings, got "+t.templateBoundaries+" ("+typeof t.templateBoundaries+")"),n(!t.template||"string"==typeof t.template,"template must null or string, got "+t.template+" ("+typeof t.template+")"),n(!t.error||"function"==typeof t.error,"error must be null or function, got "+t.error+" ("+typeof t.error+")"),n(!t.before||"function"==typeof t.before,"before must be null or function, got "+t.before+" ("+typeof t.before+")"),n(!t.after||"function"==typeof t.after,"after must be null or function, got "+t.after+" ("+typeof t.after+")"),n(!t.success||"function"==typeof t.success,"success must be null or function, got "+t.success+" ("+typeof t.success+")"),n(!t.filter||"function"==typeof t.filter,"filter must be null or function, got "+t.filter+" ("+typeof t.filter+")"),n(!t.transform||"function"==typeof t.transform,"transform must be null or function, got "+t.transform+" ("+typeof t.transform+")"),n(!t.sort||"function"==typeof t.sort,"sort must be null or function, got "+t.sort+" ("+typeof t.sort+")"),n(!t.render||"function"==typeof t.render,"render must be null or function, got "+t.render+" ("+typeof t.render+")"),n(!t.limit||"number"==typeof t.limit,"limit must be null or number, got "+t.limit+" ("+typeof t.limit+")"),this._state={running:!1},this._options=t}return e.prototype.run=function(){var r=this,s=null,o=null,i=null,a=null;return this._debug("run","options",this._options),this._debug("run","state",this._state),this._state.running?(this._debug("run","already running, skipping"),!1):(this._start(),this._debug("run","getting dom node"),(s="string"==typeof this._options.target?document.getElementById(this._options.target):this._options.target)?(this._debug("run","got dom node",s),this._debug("run","getting access token"),this._getAccessToken(function(e,t){if(e)return r._debug("onTokenReceived","error",e),void r._fail(new Error("error getting access token: "+e.message));o="https://graph.instagram.com/me/media?fields=caption,id,media_type,media_url,permalink,thumbnail_url,timestamp,username&access_token="+t,r._debug("onTokenReceived","request url",o),r._makeApiRequest(o,function(e,t){if(e)return r._debug("onResponseReceived","error",e),void r._fail(new Error("api request error: "+e.message));r._debug("onResponseReceived","data",t),r._success(t);try{i=r._processData(t),r._debug("onResponseReceived","processed data",i)}catch(o){return void r._fail(o)}if(r._options.mock)r._debug("onResponseReceived","mock enabled, skipping render");else{try{a=r._renderData(i),r._debug("onResponseReceived","html content",a)}catch(n){return void r._fail(n)}s.innerHTML=a}r._finish()})}),!0):(this._fail(new Error("no element found with ID "+this._options.target)),!1))},e.prototype._processData=function(e){var t="function"==typeof this._options.transform,o="function"==typeof this._options.filter,n="function"==typeof this._options.sort,r="number"==typeof this._options.limit,s=[],i=null,a=null,u=null,c=null;if(this._debug("processData","hasFilter",o,"hasTransform",t,"hasSort",n,"hasLimit",r),"object"!=typeof e||"object"!=typeof e.data||e.data.length<=0)return null;for(var l=0;l<e.data.length;l++){if(a=this._getItemData(e.data[l]),t)try{u=this._options.transform(a),this._debug("processData","transformed item",a,u)}catch(p){throw this._debug("processData","error calling transform",p),new Error("error in transform: "+p.message)}else u=a;if(o){try{c=this._options.filter(u),this._debug("processData","filter item result",u,c)}catch(p){throw this._debug("processData","error calling filter",p),new Error("error in filter: "+p.message)}c&&s.push(u)}else s.push(u)}if(n)try{s.sort(this._options.sort)}catch(p){throw this._debug("processData","error calling sort",p),new Error("error in sort: "+p.message)}return r&&(i=s.length-this._options.limit,this._debug("processData","checking limit",s.length,this._options.limit,i),0<i&&s.splice(s.length-i,i)),s},e.prototype._extractTags=function(e){var t=/#([^\s]+)/gi,o=/[~`!@#$%^&*\(\)\-\+={}\[\]:;"'<>\?,\./|\\\s]+/i,n=[];if("string"==typeof e)for(;null!==(match=t.exec(e));)!1===o.test(match[1])&&n.push(match[1]);return n},e.prototype._getItemData=function(e){var t=null,o=null;switch(e.media_type){case"IMAGE":t="image",o=e.media_url;break;case"VIDEO":t="video",o=e.thumbnail_url;break;case"CAROUSEL_ALBUM":t="album",o=e.media_url}return{caption:e.caption,tags:this._extractTags(e.caption),id:e.id,image:o,link:e.permalink,model:e,timestamp:e.timestamp,type:t,username:e.username}},e.prototype._renderData=function(e){var t="string"==typeof this._options.template,o="function"==typeof this._options.render,n=null,r=null,s="";if(this._debug("renderData","hasTemplate",t,"hasRender",o),"object"!=typeof e||e.length<=0)return null;for(var i=0;i<e.length;i++){if(n=e[i],o)try{r=this._options.render(n,this._options),this._debug("renderData","custom render result",n,r)}catch(a){throw this._debug("renderData","error calling render",a),new Error("error in render: "+a.message)}else t&&(r=this._basicRender(n));r?s+=r:this._debug("renderData","render item did not return any content",n)}return s},e.prototype._basicRender=function(e){for(var t=new RegExp(this._options.templateBoundaries[0]+"([\\s\\w.]+)"+this._options.templateBoundaries[1],"gm"),o=this._options.template,n=null,r="",s=0,i=null,a=null;null!==(n=t.exec(o));)i=n[1],r+=o.slice(s,n.index),(a=this._valueForKeyPath(i,e))&&(r+=a.toString()),s=t.lastIndex;return s<o.length&&(r+=o.slice(s,o.length)),r},e.prototype._valueForKeyPath=function(e,t){for(var o=/([\w]+)/gm,n=null,r=t;null!==(n=o.exec(e));){if("object"!=typeof r)return null;r=r[n[1]]}return r},e.prototype._fail=function(e){!this._runHook("error",e)&&console&&"function"==typeof console.error&&console.error(e),this._state.running=!1},e.prototype._start=function(){this._state.running=!0,this._runHook("before")},e.prototype._finish=function(){this._runHook("after"),this._state.running=!1},e.prototype._success=function(e){this._runHook("success",e),this._state.running=!1},e.prototype._makeApiRequest=function(e,o){var n=!1,r=this,s=null,i=function i(e,t){n||(n=!0,o(e,t))};(s=new XMLHttpRequest).ontimeout=function(e){i(new Error("api request timed out"))},s.onerror=function(e){i(new Error("api connection error"))},s.onload=function(e){var t=s.getResponseHeader("Content-Type"),o=null;if(r._debug("apiRequestOnLoad","loaded",e),r._debug("apiRequestOnLoad","response status",s.status),r._debug("apiRequestOnLoad","response content type",t),0<=t.indexOf("application/json"))try{o=JSON.parse(s.responseText)}catch(n){return r._debug("apiRequestOnLoad","json parsing error",n,s.responseText),void i(new Error("error parsing response json"))}200===s.status?i(null,o):o&&o.error?i(new Error(o.error.code+" "+o.error.message)):i(new Error("status code "+s.status))},s.open("GET",e,!0),s.timeout=this._options.apiTimeout,s.send()},e.prototype._getAccessToken=function(o){var n=!1,r=this,s=null,i=function i(e,t){n||(n=!0,clearTimeout(s),o(e,t))};if("function"==typeof this._options.accessToken){this._debug("getAccessToken","calling accessToken as function"),s=setTimeout(function(){r._debug("getAccessToken","timeout check",n),i(new Error("accessToken timed out"),null)},this._options.accessTokenTimeout);try{this._options.accessToken(function(e,t){r._debug("getAccessToken","received accessToken callback",n,e,t),i(e,t)})}catch(e){this._debug("getAccessToken","error invoking the accessToken as function",e),i(e,null)}}else this._debug("getAccessToken","treating accessToken as static",typeof this._options.accessToken),i(null,this._options.accessToken)},e.prototype._debug=function(){var e=null;this._options.debug&&console&&"function"==typeof console.log&&((e=[].slice.call(arguments))[0]="[Instafeed] ["+e[0]+"]",console.log.apply(null,e))},e.prototype._runHook=function(e,t){var o=!1;if("function"==typeof this._options[e])try{this._options[e](t),o=!0}catch(n){this._debug("runHook","error calling hook",e,n)}return o},e});
+	  //# sourceMappingURL=instafeed.min.map
+
+
+    </script>
+    {% if settings.enable_currencies %}
+      <script src="/services/javascripts/currencies.js" defer="defer"></script>
+      {% include 'defer-script' with 'jquery.currencies.min.js' %}
+    {% endif %}
+    {%- if template == 'cart' -%}
+      <script src="{{ 'magnificpopup.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+    {%- if template == 'index' -%}
+      <script src="{{ 'theme-h.js' | asset_url }}" defer="defer"></script>
+    {%- else -%}
+      {% include 'defer-script' with 'theme.js' %}
+    {%- endif -%}
+    {%- if template contains 'collection') -%}
+      <script src="{{ 'theme-collection.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+    {%- if template contains 'customers' -%}
+      {% include 'defer-shopify-script' with 'shopify_common.js' %}
+    {%- endif -%}
+    <!-- Gem_Page_Header_Script -->
+    {% include 'gem-app-header-scripts' %}
+    <!-- End_Gem_Page_Header_Script -->
+    <meta name="google-site-verification" content="xbq_apjDF3OkRa-v8WPeuaB7LtiQ1B4i-TCw-CndnMs">
+    <meta name="p:domain_verify" content="f9a44286760ffd282785ec8b059f1eeb">
+    {% if template != 'index' %}
+      {{ 'paymentfont.scss.css' | asset_url | stylesheet_tag }}
+      {% comment %}
+        <script type="text/javascript" async src="https://app.pickzen.com/admin/integration?id=1813&shop=the-vegan-warehouse.myshopify.com"></script>
+      {% endcomment %}
+    {% endif %}
+    {% if request.page_type == 'collection' or request.page_type == 'index' or request.page_type == 'product' %}
+      <script src="{{ 'quick-atc.min.js' | asset_url }}" defer="defer"></script>
+      <script src="{{ 'sticky-header.min.js' | asset_url }}" defer="defer"></script>
+      {% if collection.handle == '2-for-99' %}
+        <script src="{{ 'byob-section.min.js' | asset_url }}" defer="defer"></script>
+        {{ 'byob-section.min.css' | asset_url | stylesheet_tag }}
+      {% endif %}
+    {% endif %}
+    {%- if template contains 'product' -%}
+      <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+      <script>
+        
+   $('.announcement-slider-new').slick({
+        dots: true,
+        infinite: false,
+        speed: 300,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+          autoplay: true,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              infinite: true,
+              dots: true
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+          // You can unslick at a given breakpoint now by adding:
+          // settings: "unslick"
+          // instead of a settings object
+        ]
+      });
+      </script>
+      <script src="{{ 'theme-product.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+    {% if request.page_type == 'product' %}
+      <script src="{{ 'strap-upsell.min.js' | asset_url }}" defer="defer"></script>
+    {% endif %}
+    <!-- TikTok Pixel Code -->
+    <script type="text/lazyload">
+      function getUrlVars() {var vars = {};var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {vars[key] = value;});return vars;}
+      function setCookie(name,value,days) {
+          var expires = "";
+          if (days) {
+              var date = new Date();
+              date.setTime(date.getTime() + (days*24*60*60*1000));
+              expires = "; expires=" + date.toUTCString();
+          }
+          document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+      }
+      function getCookie(name) {
+          var nameEQ = name + "=";
+          var ca = document.cookie.split(';');
+          for(var i=0;i < ca.length;i++) {
+              var c = ca[i];
+              while (c.charAt(0)==' ') c = c.substring(1,c.length);
+              if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+          }
+          return null;
+      }
+      !function (w, d, t) {
+        w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=i,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var o=document.createElement("script");o.type="text/javascript",o.async=!0,o.src=i+"?sdkid="+e+"&lib="+t;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};
+
+        var pixel_id = '';
+        if(getCookie('tt_id')) {
+          pixel_id = getCookie('tt_id');
+        } else {
+          var urlVars = getUrlVars();
+          var pixel_id = urlVars["tt"];
+          setCookie('tt_id', pixel_id, 7);
+        }
+        ttq.load(pixel_id);
+        ttq.page();
+      }(window, document, 'ttq');
+    </script>
+    <!-- End TikTok Pixel Code -->
+    {% render 'gsf-conversion-pixels' %}
+    <!-- begin-boost-pfs-filter-css -->
+    
+    <!-- end-boost-pfs-filter-css -->
+    <style type="text/css">
+      .btn.klaviyo-bis-trigger{
+      	width:100% !important;
+      }
+      .sezzle-button-text{
+       	font-size:13px !important;
+      }
+      .sezzle-shopify-info-button .sezzle-checkout-button-wrapper .sezzle-button-text .sezzle-ap-logo{
+      	width:70px;
+      }
+
+      .sezzle-shopify-info-button .sezzle-checkout-button-wrapper .sezzle-button-text button.ap-modal-info-link{
+      	margin:0 !important;
+      }
+    </style>
+    <script type="text/lazyload">
+      var head = document.head;var script = document.createElement('script');script.type = 'text/javascript';script.src = "https://180539.tracking.hyros.com/v1/lst/universal-script?ph=8e48593f5855218c28074663f63bce0c7290da96de8425aa1c4056f0ed63b45d&tag=!tracking";head.appendChild(script);
+    </script>
+    {% comment %}
+      <script data-src="https://www.googleoptimize.com/optimize.js?id=OPT-NL5GBBR" defer></script>
+      <script src="https://www.googleoptimize.com/optimize.js?id=OPT-5RC7PNZ"></script>
+    {% endcomment %}
+    <!-- Microsoft Ads -->
+    <script type="text/lazyload">
+      (function(w,d,t,r,u){
+        var f,n,i;
+        w[u]=w[u]||[],f=function()
+        {var o={ti:"149009784"};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},
+        n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function()
+        {var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},
+        i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)
+      })(window,document,"script","//bat.bing.com/bat.js","uetq");
+    </script>
+    <!-- End Microsoft Ads -->
+
+    <script type="application/ld+json">
+      {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "url": "https://www.theveganwarehouse.com/",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://www.theveganwarehouse.com/search?type=product&q={query}",
+            "query-input": "required maxlength=100 name=query"
+          }
+      }
+    </script>
+    <!-- Kargo Pixel Code -->
+    <script type="text/lazyload">
+      !function(e,s,t,n,o,c,d){e.kds||((o=e.kds=function(){o.callMethod?o.callMethod.apply(o,arguments):o.queue.push(arguments)}).push=o,o.loaded=!0,o.version="1.0",o.queue=[],(c=s.createElement("script")).async=!0,c.src="//storage.cloud.kargo.com/kds/kds-events.min.js",(d=s.getElementsByTagName("script")[0]).parentNode.insertBefore(c,d))}(window,document);
+      kds("init","e3d8df17"),
+      kds("track","PageView")
+    </script>
+    <!-- End Kargo Pixel Code -->
+
+    <!-- GA4 dataLayer by Texonica -->
+    {% include 'texonica-head' %}
+
+    <!-- Please add your Google Ads Audience Source Tag ID -->
+    {% assign fa_google_ads_audience_tag_id = 812862326 %}
+
+    <!--
+      Please add your alpha2 code, you can find it here: https://help.shopify.com/en/api/custom-storefronts/storefront-api/reference/enum/countrycode
+    -->
+    {% assign fa_product_id_alpha2_code = 'US' %}
+
+    <!-- set your product id values are default, product_id, parent_id, sku -->
+    {% assign fa_product_id = 'default' %}
+
+    <!-- CODE SETTINGS END -->
+    <!-- CODE SETTINGS END -->
+
+    <!-- ==================================== -->
+    <!-- DO NOT EDIT ANYTHING BELOW THIS LINE -->
+    {% if fa_google_coding -%}
+      {%- assign fa_google_coding = true %}
+    {%- else -%}
+      {% assign fa_google_coding = false %}
+    {%- endif -%}
+    {% if fa_google_coding == false %}
+      <script
+        async
+        data-src="https://www.googletagmanager.com/gtag/js?id=AW-{{ fa_google_ads_audience_tag_id }}"
+      ></script>
+    {%- endif -%}
+    {%- assign fa_current_variant = product.selected_or_first_available_variant -%}
+    {%- if cart.currency.iso_code == 'GBP'
+      or cart.currency.iso_code == 'USD'
+      or cart.currency.iso_code == 'CAD'
+      or cart.currency.iso_code == 'AUD'
+      or cart.currency.iso_code == 'BWP'
+      or cart.currency.iso_code == 'BND'
+      or cart.currency.iso_code == 'DOP'
+      or cart.currency.iso_code == 'GTQ'
+      or cart.currency.iso_code == 'HKD'
+      or cart.currency.iso_code == 'INR'
+      or cart.currency.iso_code == 'ILS'
+      or cart.currency.iso_code == 'YEN'
+      or cart.currency.iso_code == 'KES'
+      or cart.currency.iso_code == 'KOR'
+      or cart.currency.iso_code == 'LBP'
+      or cart.currency.iso_code == 'MYR'
+      or cart.currency.iso_code == 'MXN'
+      or cart.currency.iso_code == 'NPR'
+      or cart.currency.iso_code == 'NZD'
+      or cart.currency.iso_code == 'NIO'
+      or cart.currency.iso_code == 'NGN'
+      or cart.currency.iso_code == 'PKR'
+      or cart.currency.iso_code == 'CNY'
+      or cart.currency.iso_code == 'PHP'
+      or cart.currency.iso_code == 'SGD'
+      or cart.currency.iso_code == 'LKR'
+      or cart.currency.iso_code == 'CHF'
+      or cart.currency.iso_code == 'TWD'
+      or cart.currency.iso_code == 'TSH'
+      or cart.currency.iso_code == 'THB'
+      or cart.currency.iso_code == 'UGX'
+      or cart.currency.iso_code == 'KWD'
+    -%}
+      {% if template contains 'product' %}
+        {%- assign fa_product_price = fa_current_variant.price | money_without_currency | remove: ',' -%}
+      {% elsif template contains 'cart' %}
+        {%- assign fa_product_price = cart.total_price | money_without_currency | remove: ',' -%}
+      {% endif %}
+    {%- else -%}
+      {% if template contains 'product' %}
+        {%- assign fa_product_price = fa_current_variant.price
+          | money_without_currency
+          | remove: '.'
+          | replace: ',', '.'
+        -%}
+      {% elsif template contains 'cart' %}
+        {%- assign fa_product_price = cart.total_price | money_without_currency | remove: '.' | replace: ',', '.' -%}
+      {% endif %}
+    {%- endif -%}
+
+    {%- if fa_product_id == 'default' -%}
+      {%- capture fa_product_id_value -%}shopify_{{ fa_product_id_alpha2_code }}_{{ product.id }}_{{ fa_current_variant.id }}{%- endcapture -%}
+    {%- elsif fa_product_id == 'product_id' -%}
+      {%- capture fa_product_id_value -%}{{ fa_current_variant.id }}{%- endcapture -%}
+    {%- elsif fa_product_id == 'parent_id' -%}
+      {%- capture fa_product_id_value -%}{{product.id }}{%- endcapture -%}
+    {%- elsif fa_product_id == 'sku' -%}
+      {%- capture fa_product_id_value -%}{{ fa_current_variant.sku }}{%- endcapture -%}
+    {%- endif -%}
+
+    <style>
+      .byob-section, .byob-sticky-container {
+        display:none;
+      }
+      .product__btn-variant2 {
+        display:none;
+      }
+      .cart-offer-reminder.hideabtestv1{
+        display: none;
+      }
+    </style>
+    <script>
+      window.twoForVariant = true;
+    </script>
+
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-{{ fa_google_ads_audience_tag_id }}');
+    </script>
+
+    {% if template contains 'collection' %}
+      {% assign fa_event = 'view_item_list' %}
+    {% elsif template contains 'product' %}
+      {% assign fa_event = 'view_item' %}
+    {% elsif template contains 'search' %}
+      {% assign fa_event = 'view_search_results' %}
+    {% elsif template contains 'cart' %}
+      {% assign fa_event = 'add_to_cart' %}
+    {% elsif template contains 'index' %}
+      {% assign fa_event = 'home' %}
+    {% else %}
+      {% assign fa_event = 'other' %}
+    {% endif %}
+
+    <script>
+       gtag('event', '{{ fa_event }}', {
+         'send_to': 'AW-{{ fa_google_ads_audience_tag_id }}',
+       	  {% if template contains 'product' or template contains 'cart' %}'value': {{ fa_product_price }},{% endif %}
+      {% if template contains 'product' %}
+         'items': [{
+      		'id': '{{fa_product_id_value}}',
+           'google_business_vertical': 'retail'
+         }]
+      {% elsif template contains 'cart' %}
+      'items': [
+      {% for item in cart.items %}
+      {
+      	{% if fa_product_id == 'default' %}
+      		'id': 'shopify_{{ fa_product_id_alpha2_code }}_{{ item.product_id }}_{{ item.variant_id }}',
+      	{% elsif fa_product_id == 'product_id' %}
+      		'id': '{{ item.variant_id }}',
+      	{% elsif fa_product_id == 'parent_id' %}
+      		'id': '{{ item.product_id }}',
+      	{% elsif fa_product_id == 'sku' %}
+      		'id': '{{ item.sku }}',
+      	{% endif %}
+           'google_business_vertical': 'retail'
+         },
+      {% endfor %}
+      ]
+      {% endif %}
+       });
+    </script>
+
+    {% capture boostersnippet %}{% include "booster-apps-common" %}{% endcapture %}
+    {% unless boostersnippet contains 'Liquid error' %}{{ boostersnippet }}{% endunless %}
+
+    {% if template == 'cart' %}{% include 'revy-bundle-script' %}{% endif %}
+
+    <script type="text/lazyload">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "f1hiq7te95");
+    </script>
+    {% if template == 'cart' %}{% include 'revy-bundle-script' %}{% endif %}
+
+    {% comment %} custom css {% endcomment %}
+    <link rel="stylesheet" href="{{ 'base.css' | asset_url }}">
+    <link rel="stylesheet" href="{{ 'owl.carousel.min.css' | asset_url }}">
+    {% if template contains 'product' %}
+    <link rel="stylesheet" href="{{ 'product-thumbnai-zoom.css' | asset_url }}">
+      {% endif %}
+  </head>
+  <body
+    class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if settings.enable_currencies %} currencies-enabled{% endif %} {% if page.handle == "shopping-spree" or page.handle == "vegan-meal-plan" or page.handle == "ingredient-guide" %} secure-block-hide{% endif %} {{ template.suffix | handleize }}"
+    data-transitions="false"
+  >
+    <div id="preloader-store">
+      <div class="one"></div>
+        <div class="two"></div>
+        <div class="three"></div>
+        <div class="four"></div>
+        <div class="five"></div>
+      </div>
+      
+    {% comment %}
+      Enable below script if page transitions enabled
+    {% endcomment %}
+    {% comment %}
+      <script type="text/javascript">window.setTimeout(function() { document.body.className += " loaded"; }, 25);</script>
+    {% endcomment %}
+    {% include 'texonica-dataLayer' %}
+    <script type="text/lazyload">
+      (function () {
+          var c = { 'name': 'cp', 'args': {'sess_timeout':'','gclid_param':'gclid','gclid_chk_ref':0,'bingkw_param':'ckm_kw','sc_param':'ckmsc','bingkw_chk_ref':0, 'attr_param':'ckmscn', 'attr_chk_ref': 0, 'sess_param': '', 'sess_chk_ref': 0, 'crtv_id': null, 'crtv_param':'ckmc', 'crtv_chk_ref': 0, 'tpcrid_param': 'ckmcrn', 'cookie_dom': 'vgntrk.reliatrk.com', 'ref_type': 1, 'ckm_sess_param': null ,'s1_param':'s1','s2_param':'s2','s3_param':'s3','s4_param':'s4','s5_param':'s5', 'sub_chk_ref':0} };
+          var params = new URLSearchParams(window.location.search);
+          var thirdPartyID = params.get('ckmscn');
+          var creativeID = params.get('ckmc');
+          var activeTracking = params.get('ckmat');
+          if (thirdPartyID || creativeID || activeTracking)
+              if (typeof CKMLib == 'object')
+                      CKMLib.run(c);
+          else {
+              (_ckm = window._ckm || []).push(c);
+              if (typeof CKMLib != 'string') {
+                  CKMLib = 'loading';
+                  var pix = document.createElement('script');
+                  pix.type = 'text/javascript'; pix.async = true;
+                  pix.src = '//cakecdn.com/jssdk/lib.js';
+                  var s = document.getElementsByTagName('script')[0];
+                  s.parentNode.insertBefore(pix, s);
+              }
+          }
+      })();
+    </script>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-PKC8DJN"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <a class="in-page-link visually-hidden skip-link" href="#MainContent">
+      {{- 'general.accessibility.skip_to_content' | t -}}
+    </a>
+    <div id="PageContainer" class="page-container">
+      <div class="transition-body">
+        {% if template == 'index' %}
+          {% include 'countdown-popup' %}
+        {% endif %}
+        {% include 'countdown-banner-v2' %}
+        {% section 'header' %}
+        {% comment %} {% include 'countdown-banner' %} {% endcomment %}
+        <main class="main-content" id="MainContent">
+          {{ content_for_layout }}
+        </main>
+        {% unless template == 'page.app-landing' %}
+          {% section 'footer-promotions' %}
+        {% endunless %}
+        {% section 'footer' %}
+        {%- if template != 'index' -%}
+        {%- endif -%}
+      </div>
+    </div>
+
+    {% section 'newsletter-popup' %}
+    {% if settings.cart_type == 'drawer' %}
+      {% include 'ajax-cart-template' %}
+    {% endif %}
+    {% if settings.enable_currencies %}
+      <span
+        id="CurrencyData"
+        class="hide"
+        data-shop-currency="{{ shop.currency }}"
+        data-default-currency="{{ settings.default_currency | default: shop.currency }}"
+        data-format="{{ settings.currency_format | default: 'money_with_currency_format' }}"
+        data-money-format="{{ shop.money_format | strip_html }}"
+        data-money-currency-format="{{ shop.money_with_currency_format | strip_html }}"
+      >
+      </span>
+    {% endif %}
+    {% include 'qty-selector-template' %}
+    {% include 'video-modal' %}
+    {% include 'photoswipe-template' %}
+    {% if template contains 'product' %}
+      {% include 'recently-viewed-product-template' %}
+    {% endif %}
+    <!-- Gem_Page_Footer_Script -->
+    {% include 'gem-app-footer-scripts' %}
+    <!-- End_Gem_Page_Footer_Script -->
+    <script>
+      $(document).on('change', '.variant-input-wrap', function(){
+        if (BOLD && BOLD.recurring_orders && BOLD.recurring_orders.app && BOLD.recurring_orders.app.ee &&
+            typeof BOLD.recurring_orders.app.ee.emit === 'function'){
+          BOLD.recurring_orders.app.ee.emit('variant_changed');
+        }
+      });
+    </script>
+
+    {% include 'hurrify-snippet' %}
+    {% comment %}{% include 'ajaxify-cart' %}{% endcomment %}
+    {% include 'smile-initializer' %}
+    <script>
+      
+      
+      console.log('JQuery', jQuery);
+      $(function(){
+        var everythingLoaded = setInterval(function() {
+          if ($('#privy-form-6488207').length) {
+            clearInterval(everythingLoaded);
+            addPrivyFormNote();
+          }
+        }, 500);
+      });
+      function addPrivyFormNote() {
+        $('#privy-form-6488207').append(`
+			<div class="prvi-custom-note">
+              <em>
+                I agree to The Vegan Warehouse's <a href="/policies/privacy-policy">Privacy Policy</a>
+              </em>
+            </div>`);}
+
+
+    </script>
+    <!-- begin-boost-pfs-js -->
+    
+    <!-- end-boost-pfs-js -->
+
+    {% render 'page-footer.zipifypages', renderctx: 'thm', ocuapp: ocuapp %}
+    <script type="text/javascript">
+      var snips_transid = (window.location.search.match(/[\?&]snips_transid\=([^&]*)/) || [, ""])[1];
+      if ( snips_transid != "" ) document.cookie = "snips_transid_340="+snips_transid+"; path=/; max-age="+(30*24*60*60);
+    </script>
+    <!-- **BEGIN** Hextom CTB Integration // Main Include - DO NOT MODIFY -->
+    {% render 'hextom_ctb_main', product: product, customer: customer %}
+    <!-- **END** Hextom CTB Integration // Main Include - DO NOT MODIFY -->
+    {% include 'personizely' %}
+    {% include 'klaviyo' %}
+    {% render 'preorder-now' %}
+    {% include 'revy-bundle-script' %}
+    <style>
+      .stamped-badge .stamped-badge-caption:before {content:attr(data-rating)' stars | ';}
+    </style>
+    {{ 'footer.js' | asset_url | script_tag | replace: 'src', 'defer src' }}
+
+    <!-- Stamped Main Script: Begin -->
+    <script>
+      function myInit(){ StampedFn.init({ apiKey: 'pubkey-K96p3QXq7tyR89SR2M7w74rT1851Xd', sId: '88388' }); }
+    </script>
+    <script async onload="myInit()" type="text/javascript" src="https://cdn1.stamped.io/files/widget.min.js"></script>
+    <!-- Stamped Main Script: End -->
+    <script
+    type="text/javascript"
+    src="{{ 'filter-drawer-active.js' | asset_url }}"
+    defer></script>
+
+    {% if request.page_type == 'product' %}
+      <script src="//the-vegan-warehouse-cpk.myshopify.com/cdn/shop/t/4/assets/slick.min.js?v=59589741514623332231691664361" defer=""></script>
+      <script defer>
+          function initializeSlider() {
+        $('.product_main-gallery').slick({
+          slidesToShow: 1,
+          slidesToScroll: 1
+        });
+      }
+      
+      function destroySlider() {
+        $('.product_main-gallery').slick('unslick');
+      }
+      
+      function checkWindowSize() {
+        if (window.innerWidth < 768) { // Adjust the breakpoint as needed
+          document.querySelectorAll('[thumbnail-alt]').forEach(item => {  item.style.display = 'block' })
+          initializeSlider();
+        } else {
+          destroySlider();
+        }
+      }
+      
+      // Initialize slider on page load
+      checkWindowSize();
+      
+      // Re-check window size on window resize
+      window.addEventListener('resize', checkWindowSize);
+      
+      </script>
+    {% endif %}
+    <script>
+      const preloaderStore = document.querySelector('#preloader-store');
+      window.addEventListener('load', function() {
+        preloaderStore.style.display = 'none';
+        document.body.classList.remove('body-overflow')
+      })
+    </script>
+    {% if template contains 'collection' %}
+      <style>
+        
+  @media (max-width:600px){
+  .product__btn.product__btn-variant1 {
+    padding: 0 10px 20px;
+}
+
+.product__btn .btn span {
+    font-size: 13px;
+    padding: 0px 10px;
+}
+
+.grid__item .grid-product__content .grid-product__meta-items-aligned {
+    gap: 5px;
+    padding: 0 5px;
+    padding-bottom: 10px;
+}
+
+.grid-product__price {
+    text-align: center;
+    width: 100%;
+    margin: 0;
+}
+
+span.stamped-badge-caption {
+    font-size: .75rem;
+}
+
+.stamped-badge-starrating {
+    padding-top: 10px;
+}
+
+.grid-product__title.grid-product__title--body .product-title__variant-color {
+    line-height: 15px;
+    padding-top: 5px;
+    display: inline-block;
+}
+
+.grid-product__title.grid-product__title--body {
+    line-height: 15px;
+    padding-top: 5px;
+}
+
+.boost-pfs-filter-total-product {
+    display: none;
+}
+    
+}
+  {% if collection.url contains 'shoulder-bags' %}
+      .product-atc-collection{
+              padding: 0;
+      }
+    {% endif %}
+      </style>
+      {% endif %}
+
+    <script>
+      document.querySelectorAll('.drawer__close').forEach(item => {
+          item.addEventListener('click', function(){
+              document.querySelectorAll('.drawer').forEach(drawer => {
+                  drawer.classList.remove('drawer--is-open-active', 'drawer--is-open');    
+              })            
+             document.documentElement.classList.remove('js-drawer-open-active', 'js-drawer-open');
+              document.body.classList.remove('js-drawer-open-active', 'js-drawer-open')
+          })
+      })
+    </script>
+  
+
+
+    <div id="myModal" class="my-zoom-modal">
+   <div class="portal-iyF" data-id="DesktopZoom" role="dialog" data-portal-adds-padding="true">
+      <div class="desktop-zoom__overlay-+Sg">
+         <div role="presentation" data-id="PortalOverlay" class="overlay-7+Z"></div>
+      </div>
+      <div class="desktop-zoom__portal-1MW">
+         <div class="desktop-zoom__cross-yEO">
+            <button type="button" aria-label="Close" data-id="DesktopZoom-Close" title="Close" class="close-button-ff9 close-button--dark-Qzq">
+               <span class="close">
+<svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M26 1L1 26" stroke="#4E5057" stroke-linecap="round"/>
+<path d="M1 1L26 26" stroke="#4E5057" stroke-linecap="round"/>
+</svg>
+</span>
+            </button>
+         </div>
+         <div class="desktop-zoom__control-zg2 desktop-zoom__control--prev-pC7">         
+               <button id="prevBtn" data-id="DesktopZoom-PrevButton" class="prev element-HKE element--icon-button-6C9">
+<svg width="21" height="39" viewBox="0 0 21 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M20 1L1 20L19.5 38.5" stroke="#4E5057" stroke-linecap="round"/>
+</svg>
+</button>
+         </div>
+         <div class="desktop-zoom__control-zg2 desktop-zoom__control--next-oN5">
+              <button id="nextBtn"  data-id="DesktopZoom-NextButton" class="next element-HKE element--icon-button-6C9">          
+<svg width="21" height="39" viewBox="0 0 21 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1 1L20 20L1.5 38.5" stroke="#4E5057" stroke-linecap="round"/>
+</svg>  
+              </button>
+         </div>
+         <div class="desktop-zoom__image-wrapper-Fkt">
+            <div>
+               <div class="zoomed-image-GLr">
+                  <div class="zoom_image">
+                     <div>
+                        <img id="modalImage">
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>  
+
+<style>
+  .my-zoom-modal {
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 100;
+    display: none;
+}
+span.close {
+    font-size: 30px;
+}  
+.my-zoom-modal.gallery-active-modal {
+    display: flex;
+}  
+.desktop-zoom__overlay-\+Sg {
+    opacity: 1;
+}
+.overlay-7\+Z, .portal-iyF {
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 100;
+}
+.overlay-7\+Z {
+    background-color: rgba(25,25,25,.25);
+    height: 100vh;
+}
+.desktop-zoom__portal-1MW {
+    bottom: 0;
+    cursor: url(/etc.clientlibs/ui/react/resources/assets/hover-close.aeb5b2c7.cur),auto;
+    cursor: -webkit-image-set(url(/etc.clientlibs/ui/react/resources/assets/hover-close@1x.2a376f73.png) 1x,url(/etc.clientlibs/ui/react/resources/assets/hover-close@2x.bf9b97b4.png) 2x) 0 0,auto;
+    cursor: image-set(url(/etc.clientlibs/ui/react/resources/assets/hover-close@1x.2a376f73.png) 1x,url(/etc.clientlibs/ui/react/resources/assets/hover-close@2x.bf9b97b4.png) 2x) 0 0,auto;
+    left: 50%;
+    max-width: 1920px;
+    position: fixed;
+    top: 0;
+    transform: translateX(-50%);
+    width: 100%;
+    z-index: 101;
+}
+
+.desktop-zoom__cross-yEO {
+    position: absolute;
+    right: 40px;
+    top: 40px;
+    z-index: 2;
+}
+
+.desktop-zoom__control-zg2 {
+    cursor: pointer;
+    margin: 0 -20px;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.desktop-zoom__control--hidden-1xD {
+    display: none;
+}
+
+.desktop-zoom__control--next-oN5 {
+    right: 95px;
+}
+
+.desktop-zoom__control--prev-pC7 {
+    left: 95px;
+}
+
+.desktop-zoom__image-wrapper-Fkt {
+    background-color: #f6f6f8;
+    height: 100%;
+    width: 100%;
+}
+
+.desktop-zoom__image-wrapper--enter-QKC {
+    opacity: 0;
+}
+
+.desktop-zoom__image-wrapper--enter-active-XQP {
+    opacity: 1;
+    transition: opacity .3s ease;
+}
+
+.desktop-zoom__image-wrapper--exit-TC5 {
+    opacity: 1;
+}
+
+.desktop-zoom__image-wrapper--exit-active-khG {
+    opacity: 0;
+    transition: opacity .3s ease;
+}
+
+
+.close-button-ff9 {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    background: transparent;
+    border: none;
+    box-sizing: border-box;
+    color: #191919;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 0;
+    margin: -10px;
+    outline: none;
+    padding: 10px;
+    text-decoration: none;
+    vertical-align: middle;
+    z-index: 101;
+}
+.close-button-ff9 {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    background: transparent;
+    border: none;
+    box-sizing: border-box;
+    color: #191919;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 0;
+    margin: -10px;
+    outline: none;
+    padding: 10px;
+    text-decoration: none;
+    vertical-align: middle;
+    z-index: 101;
+}
+.close-button--dark-Qzq {
+    color: #191919;
+}
+.zoomed-image-GLr {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+}                                                    
+#modalImage {
+    left: 0;
+    margin: 0;
+    position: relative;
+    top: 0;
+    width: 100%;
+    background-color: rgb(246, 246, 248);
+      object-fit: scale-down;
+  height: 100vh;
+}
+.gallery-active-modal .desktop-zoom__image-wrapper-Fkt {
+    cursor: image-set(url(https://cdn.shopify.com/s/files/1/0561/4341/3438/files/hover-close.svg?v=1694683999) 1x,url(https://cdn.shopify.com/s/files/1/0561/4341/3438/files/hover-close.svg?v=1694683999) 1x) 0 0,auto;
+}
+</style>
+  <script>
+    // Function to prevent the default click behavior
+function preventDefaultClick(event) {
+  event.preventDefault();
+  // You can add additional code here if needed
+}
+
+// Add a click event listener to the elements with class 'ajaxcart__product-remove'
+document.querySelectorAll('#remove-from-cart-button').forEach(function(element) {
+  element.addEventListener('click', preventDefaultClick);
+});
+  </script>
+            <script>
+        // Get the gallery images and modal elements
+const gallery = document.querySelector('.product_main-gallery');
+const modal = document.getElementById('myModal');
+const modalImage = document.getElementById('modalImage');
+const modalActiveClose = document.querySelector('.desktop-zoom__image-wrapper-Fkt')
+
+
+// Get the navigation buttons
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+
+// Get the close button
+const closeBtn = document.getElementsByClassName('close')[0];
+
+
+              
+// Initially, set the current image index to -1
+let currentImageIndex = -1;
+
+// Function to open the modal with a specific image
+function openModal(index) {
+  currentImageIndex = index;
+  modalImage.src = gallery.children[index].querySelector('.photoswipe__image').src;
+  modalImage.classList.add('active'); // Add the 'active' class
+  modal.classList.add('gallery-active-modal');
+  document.body.classList.add('body-overflow');
+  
+}
+
+// Function to close the modal
+function closeModal() {
+  modalImage.classList.remove('active'); // Remove the 'active' class
+  modal.classList.remove('gallery-active-modal');
+  document.body.classList.remove('body-overflow');
+}
+
+
+function showPrev() {
+  let prevIndex = currentImageIndex - 1;
+
+  // Loop to find the previous image with display: block
+  while (prevIndex !== currentImageIndex) {
+    if (prevIndex < 0) {
+      prevIndex = gallery.children.length - 1; // Wrap around to the last image
+    }
+
+    const imageElementParent = gallery.children[prevIndex].closest('.product-image-slide');
+    
+    if (imageElementParent && window.getComputedStyle(imageElementParent).getPropertyValue('display') === 'block') {
+      openModal(prevIndex);
+      break;
+    }
+
+    prevIndex--;
+  }
+}
+
+
+
+// Function to show the next image
+function showNext() {
+  let nextIndex = currentImageIndex + 1;
+
+  // Loop to find the next image with display: block
+  while (nextIndex !== currentImageIndex) {
+    if (nextIndex >= gallery.children.length) {
+      nextIndex = 0; // Wrap around to the first image
+    }
+
+    const imageElement = gallery.children[nextIndex].querySelector('.photoswipe__image');
+    const imageElementParent = gallery.children[nextIndex];
+        console.clear();
+    console.log('imageElementParent', imageElementParent)
+    if (window.getComputedStyle(imageElementParent).getPropertyValue('display') === 'block') {
+      openModal(nextIndex);
+      break;
+    }
+
+    nextIndex++;
+  }
+}
+
+
+
+// Attach click event listeners to gallery images
+for (let i = 0; i < gallery.children.length; i++) {
+  gallery.children[i].addEventListener('click', () => openModal(i));
+}
+
+// Attach click event listener to close button
+closeBtn.addEventListener('click', closeModal);
+modalActiveClose.addEventListener('click', closeModal)
+
+// Attach click event listeners to navigation buttons
+prevBtn.addEventListener('click', showPrev);
+nextBtn.addEventListener('click', showNext);
+
+// Attach key press event listener to navigate with arrow keys
+document.addEventListener('keydown', function(e) {
+  if (modal.style.display === 'block') {
+    if (e.key === 'ArrowLeft') {
+      showPrev();
+    } else if (e.key === 'ArrowRight') {
+      showNext();
+    } else if (e.key === 'Escape') {
+      closeModal();
+    }
+  }
+});
+
+
+      </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function () {
+  var isActiveMode = false;
+  var zoomFactor = 1.5; // Adjust the zoom factor as needed
+
+  $(".zoom_image")
+    .on("mouseenter", function () {
+      isActiveMode = true;
+      $(this).addClass("zoom_mode_active");
+    })
+    .on("mouseleave", function () {
+      isActiveMode = false;
+      $(this).removeClass("zoom_mode_active");
+    })
+    .on("mousemove", function (e) {
+      if (isActiveMode) {
+        var offsetY = (e.pageY - $(this).offset().top) / $(this).height();
+        console.clear();
+        console.log('e.pageY', e.pageY)
+        console.log('$(this).offset().top', $(this).offset().top)
+        console.log('$(this).height()', $(this).height())
+        var transformValue = "scale(" + zoomFactor + ")";
+
+        $(this).children("div").css({
+          transform: transformValue,
+          "transform-origin": "center " + offsetY * 100 + "%"
+        });
+      }
+    });
+
+
+});
+
+</script>
+    
+  </body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "layout": false,
+  "sections": {
+    "upsell": {
+      "type": "cart-upsell",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "upsell"
+  ]
+}

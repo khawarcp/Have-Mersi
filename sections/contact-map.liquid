@@ -1,0 +1,73 @@
+<link rel="stylesheet" href="{{ 'contact-map.css' | asset_url }}">
+
+<style>
+  .section-{{ section.id }}-padding{
+    padding-top: {{ section.settings.padding_top | times : 0.75 | round }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times : 0.75 | round }}px;
+  }
+
+  @media screen and (min-width: 750px){
+    .section-{{ section.id }}-padding{
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+</style>
+<section class="section-{{ section.id }}-padding contact-map">
+  <div class="page-width">
+      <div class="richtext">
+        {{ section.settings.info }}
+      </div>
+    </div>
+    <div class="map-wrapper">
+        {{ section.settings.map }}        
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+    "name" : "Contact Map",
+  "settings": [
+    {
+      "type" : "richtext",
+      "id" : "info",
+      "label": "Description"
+    },
+    {
+      "type" : "html",
+      "id" : "map",
+      "label": "Map iFrame"
+    },
+    {
+      "type" : "header",
+      "content" : "Section Padding"
+    },
+    {
+      "type" : "range",
+      "id" : "padding_top",
+      "label" : "Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 50,
+      "unit": "px"
+    },
+    {
+      "type" : "range",
+      "id" : "padding_bottom",
+      "label" : "Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 50,
+      "unit": "px"
+    }
+  ],
+  "presets": [
+    {
+      "name" : "Contact Map"
+    }
+  ]
+}
+{% endschema %}

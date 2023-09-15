@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="{{ locale }}" dir="{{ direction }}" class="{{ checkout_html_classes }}">
+  <head>
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PKC8DJN');</script>
+  <!-- End Google Tag Manager -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, user-scalable=0">
+    <meta name="referrer" content="origin">
+
+    <title>{{ page_title }}</title>
+
+    {{ content_for_header }}
+
+    {{ checkout_stylesheets }}
+    {{ checkout_scripts }}
+
+    <style type="text/css">
+      @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap');
+@font-face {
+    font-family: 'Miller';
+    src: url('Miller-Display.woff2') format('woff2'),
+        url('Miller-Display.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+    header.banner{
+      padding-top: 5px;
+      padding-bottom: 0px;
+    }
+    .stepper-wrapper {
+      margin-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .stepper-item {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+
+      @media (max-width: 768px) {
+        font-size: 12px;
+      }
+    }
+    .stepper-item::before {
+      position: absolute;
+      content: "";
+      border-bottom: 8px solid #EEE;
+      width: 100%;
+      top: 18px;
+      left: -50%;
+      z-index: 2;
+    }
+    .stepper-item::after {
+      position: absolute;
+      content: "";
+      border-bottom: 8px solid #EEE;
+      width: 100%;
+      top: 18px;
+      left: 50%;
+      z-index: 2;
+    }
+    .stepper-item .step-counter {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #EEE;
+      margin-bottom: 6px;
+      border: 1px solid #EEE;
+      font-weight:bold;
+    }
+    .stepper-item.active {
+      font-weight: bold;
+    }
+    .stepper-item.completed .step-counter {
+      background-color: #60925B;
+      border-color:#60925B;
+      color:#60925B;
+      color:white;
+      font-weight:bold;
+    }
+    .stepper-item.active .step-counter{
+      border: 2px solid #60925B;
+      background: white;
+    }
+    .stepper-item.completed::before,
+    .stepper-item.active::before{
+      display:none;
+    }
+    .stepper-item.completed::after {
+      position: absolute;
+      content: "";
+      border-bottom: 8px solid #60925B;
+      width: 100%;
+      top: 18px;
+      left: 50%;
+      z-index: 3;
+    }
+    .stepper-item:first-child::before {
+      content: none;
+    }
+    .stepper-item:last-child::after {
+      content: none;
+    }
+    #countdown-timer{
+      background: #60925B;
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 10px;
+      margin-bottom:25px;
+    }
+
+    /* Upsell */
+    #upsell-product{
+      margin: 15px 0;
+      display: block;
+    }
+    #upsell-product > div{
+      padding: 10px 15px;
+      border-radius: 10px;
+      border: 1px solid #A8AAAC66;
+    }
+    #upsell-product > div:first-child{
+      margin-bottom: 15px;
+    }
+    .upsell-container{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .upsell-container {
+      background-color: rgba(235, 78, 36, 0.1);
+      border: 1px solid rgba(235, 78, 36, 0.1) !important;
+    }
+    .upsell-container > :not([hidden]) ~ :not([hidden]) {
+      --tw-space-x-reverse: 0;
+      margin-right: calc(1rem * var(--tw-space-x-reverse));
+      margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+    }
+    .upsell-product-title-column{
+      flex-grow:1;
+    }
+    .upsell-price-column{
+      width: 85px;
+      flex-basis: 85px;
+      flex-shrink: 0;
+    }
+    .upsell-variant-title{
+      display:block;
+    }
+    .upsell-product-title{
+      font-weight:bold;
+      font-size:16px;
+    }
+    .upsell-title{
+      font-weight: bold;
+      text-align: center;
+      margin-top: 14px;
+      font-size: 16px;
+      color:#60925B !important;
+    }
+    .upsell-product-price{
+          display: block;
+    font-weight: bold;
+    color: #EB4E24;
+    margin-top: 6px;
+          margin-bottom: 10px;
+    text-align: right;
+    font-size: 18px;
+    font-weight: 400;
+    }
+    .upsell-product-image{
+      max-width:65px;
+      border-radius: 10px;
+    }
+    .upsell-btn{
+      margin-left:auto;
+    }
+    .upsell-btn{
+          background: #EB4E24;
+        color: white;
+        display: block;
+        padding: 10px 25px;
+        height: 32px;
+        border-radius: 60px;
+        line-height: 15px;
+        font-weight: 700;
+        letter-spacing: .5px;
+    }
+
+    .checkout-blurb{
+      padding:15px 0;
+    }
+
+    .checkout-blurb__title{
+      text-align: center;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+      color:#60925B !important;
+      font-weight:bold;
+    }
+
+    .checkout-blurb--content > div{
+      display: flex;
+      flex-direction: row;
+      align-items: start;
+    }
+
+    .checkout-blurb img{
+      width:75px;
+      margin-right: 10px;
+    }
+      
+
+    .checkout-blurb h4{
+      font-weight:bold;
+      text-transform:uppercase;
+      margin-bottom:10px;
+    }
+
+    .checkout-blurb p{
+      margin-bottom:20px;
+      font-weight: 300;
+    }
+
+    .blurb-mobile{
+      display:none;
+    }
+
+      .anyflexbox .main__content {
+    border: 1px solid #e6e6e6;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+      .js .sidebar .btn--disabled {
+       cursor: default;
+    background: #eb4e24;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-radius: 60px;
+    font-family: 'Cairo' !important;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+      .step__footer button {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    border-radius: 60px;
+    height: 44px;
+    line-height: 7px;
+}
+
+      .field__input-wrapper--icon-right .field__input {
+    border-radius: 20px;
+}
+
+.section__content input, .section__content select {
+    border-radius: 20px;
+}
+
+.field__input-btn-wrapper input {
+    border-radius: 20px;
+}
+
+.main__footer {
+    border-top: 0;
+}
+      
+    @media screen and (max-width:650px){
+      .blurb-desktop{
+        display:none;
+      }
+
+      .blurb-mobile{
+        display:block;
+        margin-top:20px;
+      }
+
+      .step__footer button {
+    line-height: 1px;
+}
+      
+    }
+
+
+
+      
+    @keyframes moveBackground {
+      0% { 
+        background-position: 0;
+      }
+      100% {
+        background-position: -1200px;
+      }
+    }
+
+    .carousel-slider{
+      background-image:url('https://cdn.shopify.com/s/files/1/0561/4341/3438/files/checkout-banner.png?v=1693396130');
+      background-repeat: repeat-x;
+      width: 100%;
+      height: 130px;
+      background-size: auto 100%;
+      animation: moveBackground 50s linear infinite;
+      margin: 20px 0px;
+    }
+
+    .carousel-slider > div{
+      height:150px;
+    }
+
+      .order-summary__sections{
+        height:auto !important;
+      }
+      .order-summary__scroll-indicator{
+        display:none;
+      }
+
+      
+/* Checkout */
+#countdown-timer {
+    background-color: #EB4E24;
+    font-family: Cairo,sans-serif !important;
+}
+
+.stepper-item.completed .step-counter {
+    background-color: #eb4e24;
+    border-color: #eb4e24;
+}
+.stepper-item.active .step-counter {
+    border-color: #eb4e24;
+}
+
+.stepper-item.completed::after {
+    border-color: #eb4e24;
+}
+
+.step-counter, * {
+    font-family: Cairo,sans-serif !important;
+}
+.upsell-title, .checkout-blurb__title, .checkout-blurb h4 {
+    color: #eb4e24 !important;
+}
+
+      #order-summary .upsell-title {
+    text-align: left;
+    margin-top: 30px;
+}
+
+            @media only screen and (max-width: 600px) {
+        .carousel-slider > div {
+            height: 100px;
+        }
+      }
+
+      
+    </style>
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PKC8DJN"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    {{ skip_to_content_link }}
+
+    <header class="banner" data-header role="banner">
+      <div class="wrap">
+        {{ content_for_logo }}
+      </div>
+    </header>
+
+    <div class="carousel-slider"><div>&nbsp;</div></div>
+
+    {{ order_summary_toggle }}
+    <div class="content" data-content>
+      <div class="wrap">
+        <div class="main">
+          <header class="main__header" role="banner">
+            {{ content_for_logo }}
+            {{ breadcrumb }}
+            {{ alternative_payment_methods }}
+          </header>
+          <main class="main__content" role="main">
+            {{ content_for_layout }}
+          </main>
+          <footer class="main__footer" role="contentinfo">
+            {{ content_for_footer }}
+          </footer>
+        </div>
+        <aside class="sidebar" role="complementary">
+          <div class="sidebar__header">
+            {{ content_for_logo }}
+          </div>
+          <div class="sidebar__content">
+            {{ content_for_order_summary }}
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    {{ tracking_code }}
+
+    <script>
+       window.addEventListener('load', (event) => {
+         //document.querySelector('.order-summary-toggle').click();
+    });
+    </script>
+
+    <script>
+      var upsellProduct = '{{settings.checkout_upsell_product}}';
+      var upsellVariant= '{{settings.checkout_upsell_variant}}';
+      var upsellProduct2 = '{{settings.checkout_upsell_product_2}}';
+      var upsellVariant2 = '{{settings.checkout_upsell_variant_2}}';
+      var blurbTitle = '{{settings.checkout_blurb_title}}';
+      var blurbContent = `{{settings.checkout_blurb_content}}`;
+
+      {% if settings.checkout_show_blurb %}
+        var showBlurb = true;
+      {% else %}
+        var showBlurb = false;
+      {% endif %}
+
+      let steps = `
+        <div class="stepper-wrapper">
+          <div class="stepper-item completed" id="step_information">
+            <div class="step-counter">1</div>
+          </div>
+          <div class="stepper-item" id="step_shipping">
+            <div class="step-counter">2</div>
+          </div>
+          <div class="stepper-item" id="step_payment">
+            <div class="step-counter">3</div>
+          </div>
+        </div>
+      `;
+  
+      Checkout.$(document).ready(function(){
+        Checkout.$('.breadcrumb').before('<div id="countdown-timer">We are reserving your cart for <span id="countdown-minutes"></span> minutes!</div>');
+        Checkout.$('.breadcrumb').after(steps);
+
+        if ( Shopify.Checkout.step == 'shipping_method') {
+          Checkout.$('#step_shipping').addClass('active');
+        }
+
+        if ( Shopify.Checkout.step == 'payment_method') {
+          Checkout.$('#step_shipping').addClass('completed');
+          Checkout.$('#step_payment').addClass('active');
+        }
+
+        var timerStart = 600;
+
+        var xInternal = setInterval(function() {
+          timerStart -=1;
+          
+          var minutes = Math.floor(timerStart / 60);
+          var seconds = timerStart - minutes * 60;
+
+          var timeText = minutes.toString().padStart(1, '0') + ':' + seconds.toString().padStart(1, '0');
+          Checkout.$('#countdown-minutes').text(timeText);
+
+          if ( timerStart <= 0){
+            Checkout.$('#countdown-timer').html('Order reservation ended.');
+            clearInterval(xInternal);
+          }
+        }, 1000);
+      });
+
+      window.addEventListener('load', (event) => {
+      if (Shopify.Checkout.step == 'contact_information') {
+        window.scrollTo(0, 0);
+        document.querySelector('.order-summary-toggle').click();
+      }        
+    });
+    </script>
+    <script src="{{'checkout.js' | asset_url}}"></script>
+  </body>
+</html>

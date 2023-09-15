@@ -1,0 +1,24 @@
+{
+  "sections": {
+    "page-banner": {
+      "type": "page-banner",
+      "settings": {
+        "show_custom_title": true,
+        "title": "{{ page.metafields.custom.page_title.value }}",
+        "image": "shopify:\/\/shop_images\/Mobile_page_Image.png",
+        "background_image": "shopify:\/\/shop_images\/page-banner-backround.png"
+      }
+    },
+    "policy-content": {
+      "type": "policy-content",
+      "settings": {
+        "padding_top": 50,
+        "padding_bottom": 50
+      }
+    }
+  },
+  "order": [
+    "page-banner",
+    "policy-content"
+  ]
+}

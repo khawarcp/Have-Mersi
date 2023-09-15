@@ -1,0 +1,97 @@
+<link rel="stylesheet" href="{{ 'about-mission.css' | asset_url }}">
+<style>
+  .section-{{ section.id }}-padding{
+    padding-top: {{ section.settings.padding_top | times : 0.75 | round }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times : 0.75 | round }}px;
+  }
+
+  @media screen and (min-width: 750px){
+    .section-{{ section.id }}-padding{
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+</style>
+<section
+  class="section-{{ section.id }}-padding section-background our-mission"
+  style="background-image:url('{{ section.settings.bg_image | image_url }}')"
+>
+  <div class="page-width">
+    <div class="flex-grid flex-grid--gutters">
+      <div class="flex-grid__item flex-grid__item--50">
+        <div class="content-wrapper">
+          <div class="richtext">
+            {{ page.content }}
+          </div>
+        </div>
+      </div>
+      <div class="flex-grid__item flex-grid__item--50">
+        <div class="image-wrapper">
+          {% if section.settings.image != blank %}
+            <img
+              src="{{ section.settings.image | image_url }}"
+              alt="{{ section.settings.image.alt }}"
+              height=""
+              width=""
+              loading="lazy"
+            >
+          {% else %}
+            {{ 'image' | placeholder_svg_tag }}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Our Mission",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "This section Text using the content of the page"
+    },
+  {
+    "type" : "image_picker",
+    "id" : "image",
+    "label": "Image"
+  },
+  {
+    "type" : "image_picker",
+    "id" : "bg_image",
+    "label": "Background Image"
+  },
+  {
+    "type" : "header",
+    "content" : "Section Padding"
+  },
+  {
+    "type" : "range",
+    "id" : "padding_top",
+    "label" : "Padding Top",
+    "min": 0,
+    "max": 100,
+    "step": 5,
+    "default": 50,
+    "unit": "px"
+  },
+  {
+    "type" : "range",
+    "id" : "padding_bottom",
+    "label" : "Padding Bottom",
+    "min": 0,
+    "max": 100,
+    "step": 5,
+    "default": 50,
+    "unit": "px"
+  }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

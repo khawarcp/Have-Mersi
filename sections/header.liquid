@@ -1,0 +1,404 @@
+<link rel="stylesheet" href="{{ 'new-header-navigation.css' | asset_url }}">
+<script src="{{ 'new-header.js' | asset_url }}" defer></script>
+
+<script async src="https://sdk.postscript.io/sdk.bundle.js?shopId=300023"></script>
+
+{%- assign main_menu = linklists[section.settings.main_menu_link_list] -%}
+{%- assign toolbar_menu = linklists[section.settings.toolbar_menu] -%}
+
+{%- assign logo_alignment = 'left' -%}
+{% if section.settings.main_menu_alignment == 'center-left' or section.settings.main_menu_alignment == 'center-split' or section.settings.main_menu_alignment == 'center' or section.settings.main_menu_alignment == 'center-drawer' %}
+  {%- assign logo_alignment = 'center' -%}
+{% endif %}
+
+{%- assign dropdown_alignment = 'left' -%}
+{% if section.settings.main_menu_alignment == 'left-center' or section.settings.main_menu_alignment == 'center-split' or section.settings.main_menu_alignment == 'center' %}
+  {%- assign dropdown_alignment = 'center' -%}
+{% endif %}
+
+{% include 'drawer-menu' %}
+{% include 'cart-drawer' %}
+
+{%- assign template_name = template | replace: '.', ' ' | truncatewords: 2, '' | handle -%}
+
+{%- assign sticky_header = false -%}
+{% if section.settings.header_style == 'sticky' %}
+  {%- assign sticky_header = true -%}
+{% endif %}
+{%- assign overlay_header = false -%}
+{%- assign has_logo = false -%}
+{% if template_name == 'index' and section.settings.sticky_index %}
+  {%- assign overlay_header = true -%}
+{% endif %}
+{% if template_name == 'collection' and collection.image and section.settings.sticky_collection %}
+  {%- assign overlay_header = true -%}
+{% endif %}
+
+<style>
+  .site-nav__link,
+  .site-nav__dropdown-link:not(.site-nav__dropdown-link--top-level) {
+    font-size: {{ settings.type_navigation_size }}
+    px;
+  }
+
+  {% if settings.type_navigation_size < 18 %}
+    .site-nav__link {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  {% endif %}
+
+  {% if section.settings.toolbar_currencies or section.settings.toolbar_social or section.settings.toolbar_menu != blank %}
+    .header-navigation {
+      top: 82px;
+    }
+    .custom-navigation .header-item--logo {
+      top: 89px;
+    }
+  {% endif %}
+</style>
+
+{% include 'nav-desktop-drawer' %}
+
+<div class="site-header__search-container">
+  <div
+    class="site-header__search">
+    <div class="page-width">
+      <form
+        action="/search"
+        method="get"
+        class="site-header__search-form"
+        role="search">
+        {% if settings.search_results == 'products' %}
+          <input
+            type="hidden"
+            name="type"
+            value="product">
+        {% endif %}
+        <button type="submit" class="text-link site-header__search-btn">
+          {% include 'icon-search' %}
+          <span class="icon__fallback-text">{{ 'general.search.submit' | t }}</span>
+        </button>
+        <input
+          type="search"
+          name="q"
+          value="{{ search.terms | escape }}"
+          placeholder="{{ 'general.search.placeholder' | t }}"
+          class="site-header__search-input"
+          aria-label="{{ 'general.search.placeholder' | t }}">
+      </form>
+      <button type="button" class="js-search-header-close text-link site-header__search-btn">
+        {% include 'icon-close' %}
+        <span class="icon__fallback-text">{{ 'general.accessibility.close_modal' | t | json }}</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div data-section-id="{{ section.id }}" data-section-type="header-section">
+
+  {% unless overlay_header %}
+    {% if section.settings.toolbar_currencies or section.settings.toolbar_social or section.settings.toolbar_menu != blank %}
+      {% include 'toolbar', overlay_header: overlay_header %}
+    {% endif %}
+  {% endunless %}
+
+  <div class="promo-offer-wrapper">
+    <div class="announcement-promo">
+      {% include 'announcement-bar' %}
+    </div>
+    {% if settings.enable_promo %}
+      {% include 'promo-progress' %}
+    {% endif %}
+  </div>
+
+
+  <header id="header" class="custom-navigation">
+    <div class="header-item header-item--logo">
+      {% include 'header-logo-block' %}
+    </div>
+    <div class="site-header--heading-style header-navigation">
+      <div class="burger-menu-wrapper">
+        <button class="btn-nav js-btn-burger-menu" aria-controls="NavDrawer">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <div class="header-icons-vertical">
+        <ul class="icon-lists">
+          {% if section.settings.header_search_enable %}
+            <li>
+              <div class="site-nav small--hide1">
+                <a href="/search" class="site-nav__link site-nav__link--icon js-search-header js-no-transition">
+                  {% include 'icon-search-header' %}
+                  <span class="icon__fallback-text">{{ 'general.search.title' | t }}</span>
+                </a>
+              </div>
+            </li>
+          {% endif %}
+          {%- if shop.customer_accounts_enabled -%}
+            <li>
+              <a class="site-nav__link site-nav__link--icon" href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}">
+                {% render 'icon-account' %}
+                <span class="visually-hidden">
+                  {%- liquid
+                if customer
+                  echo 'layout.customer.account' | t
+                else
+                  echo 'layout.customer.log_in' | t
+                endif
+              -%}
+                </span>
+              </a>
+            </li>
+          {%- endif -%}
+          <li>
+            <span
+              id="cartDrawerIcon"
+              class="site-nav__link site-nav__link--icon js-drawer-open-cart js-no-transition"
+              aria-controls="CartDrawer">
+              <span class="cart-link">
+                {% include 'icon-bag' %}
+                <span class="icon__fallback-text">{{ 'layout.cart.title' | t }}</span>
+                <span class="cart-link__bubble{% if cart.item_count > 0 %} cart-link__bubble--visible{% endif %}">
+                  {{ cart.item_count }}
+                </span>
+              </span>
+            </span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </header>
+</div>
+
+
+<div
+  data-section-id="{{ section.id }}"
+  data-section-type="header-section"
+  class="mobile-navigation-bar">
+  <div class="header-sticky-wrapper">
+    <div class="header-wrapper{% if overlay_header %} header-wrapper--sticky is-light{% endif %}">
+
+      <header class="site-header{% if settings.type_navigation_style == 'heading' %} site-header--heading-style{% endif %}" data-sticky="{{ sticky_header }}">
+        <div class="page-width">
+          <div class="header-layout header-layout--{{ section.settings.main_menu_alignment }}" data-logo-align="{{ logo_alignment }}">
+
+
+            <div class="header-item header-item--left header-item--navigation">
+
+
+              <div class="site-nav{% unless section.settings.main_menu_alignment == 'center-drawer' %} medium-up--hide{% endunless %}">
+                <button
+                  type="button"
+                  class="site-nav__link site-nav__link--icon js-drawer-open-nav"
+                  aria-controls="NavDrawer">
+                  {% include 'icon-hamburger' %}
+                  <span class="icon__fallback-text">{{ 'general.drawers.navigation' | t }}</span>
+                </button>
+              </div>
+            </div>
+
+            {% if section.settings.main_menu_alignment == 'center-split' %}
+              {% include 'header-split-nav' %}
+            {% endif %}
+
+
+            <div class="icons-header">
+
+              {% if section.settings.header_search_enable %}
+                <div class="site-nav small--hide1">
+                  <a href="/search" class="site-nav__link site-nav__link--icon js-search-header js-no-transition">
+                    {% include 'icon-search-header' %}
+                    <span class="icon__fallback-text">{{ 'general.search.title' | t }}</span>
+                  </a>
+                </div>
+              {% endif %}
+
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+  </div>
+
+</div>
+{% comment %} <div style="position: fixed; top:3px ; right:5px ; background: #fff; border:1px solid #ddd;z-index:999;">{% include 'header-icons' %}</div> {% endcomment %}
+{% schema %}
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "mobile_navigation",
+        "label": "Mobile Navigation",
+        "default": "main-menu"
+      },
+      {
+        "type": "select",
+        "id": "main_menu_alignment",
+        "label": "Header layout",
+        "default": "left",
+        "options": [
+          {
+            "value": "left",
+            "label": "Logo left, menu left"
+          },
+          {
+            "value": "left-center",
+            "label": "Logo left, menu center"
+          },
+          {
+            "value": "left-drawer",
+            "label": "Logo left, menu drawer"
+          },
+          {
+            "value": "center-left",
+            "label": "Logo center, menu left"
+          }, {
+            "value": "center-split",
+            "label": "Logo center, menu split"
+          }, {
+            "value": "center",
+            "label": "Logo center, menu below"
+          }, {
+            "value": "center-drawer",
+            "label": "Logo center, menu drawer"
+          }
+        ]
+      },
+      {
+        "type":"text",
+        "id":"announce_text",
+        "label":"Moblie Marquee Slide"
+      },
+      {
+        "type": "checkbox",
+        "id": "sticky_index",
+        "label": "Overlay header over home page",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "sticky_collection",
+        "label": "Overlay header over collection",
+        "info": "(if collection image is enabled)",
+        "default": false
+      }, {
+        "type": "checkbox",
+        "id": "header_search_enable",
+        "label": "Show search icon"
+      }, {
+        "type": "header",
+        "content": "Toolbar"
+      }, {
+        "type": "link_list",
+        "id": "toolbar_menu",
+        "label": "Navigation",
+        "info": "This menu won't show dropdown items"
+      }, {
+        "type": "checkbox",
+        "id": "toolbar_social",
+        "label": "Show social icons"
+      }, {
+        "type": "checkbox",
+        "id": "toolbar_currencies",
+        "label": "Show currency converter",
+        "info": "Must be enabled in 'Cart and currencies'"
+      }, {
+        "type": "header",
+        "content": "Announcement bar"
+      }, {
+        "type": "image_picker",
+        "id": "desktop_navigation_bg",
+        "label": "Desktop Navigation BG"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "logo",
+        "name": "Logo",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "logo",
+            "label": "Logo"
+          }, {
+            "type": "image_picker",
+            "id": "logo-inverted",
+            "label": "White logo",
+            "info": "Used when on top of an image"
+          }, {
+            "type": "range",
+            "id": "desktop_logo_width",
+            "label": "Desktop logo width",
+            "default": 200,
+            "min": 100,
+            "max": 400,
+            "step": 10,
+            "unit": "px"
+          }, {
+            "type": "range",
+            "id": "mobile_logo_width",
+            "label": "Mobile logo width",
+            "default": 140,
+            "min": 60,
+            "max": 200,
+            "step": 10,
+            "unit": "px",
+            "info": "Set as a max-width, may appear smaller"
+          }
+        ]
+      }, {
+        "type": "announcement",
+        "name": "Announcement",
+        "limit": 3,
+        "settings": [
+          {
+            "type": "text",
+            "id": "link_text",
+            "label": "Text",
+            "default": "30-day postage paid returns"
+          }, {
+            "type": "url",
+            "id": "link",
+            "label": "Link"
+          }
+        ]
+      }, {
+        "type": "navigation_menu",
+        "name": "Menu",
+        "limit": 2,
+        "settings": [
+          {
+            "type": "text",
+            "id": "menu_title",
+            "label": "Menu Title",
+            "default": "Shop By Category"
+          }, {
+            "type": "link_list",
+            "id": "nav_menu",
+            "label": "Menu"
+          }
+        ]
+      }, {
+        "type": "featured_product",
+        "name": "Featured Product",
+        "limit": 2,
+        "settings": [
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Product"
+          }
+        ]
+      }
+    ],
+    "default": {
+      "settings": {}
+    }
+  }
+{% endschema %}

@@ -1,0 +1,34 @@
+<div class="free-collection-wrapper">
+  <div class="collection-header">
+    <div class="grid-free__gifts">
+      <p class="grid-free__giftsTitle">{{ 'gift_popup.general.title_html' | t: value: 0 }}</p>
+      <p class="cancel">{{ 'gift_popup.general.cancel_btn' | t }}</p>
+    </div>
+  </div>
+  <div class="product-wrapper">
+    {%- for product in collection.products -%}
+      <div class="grid__item small--one-half medium--one-half large--one-quarter item">
+        <a class="free-product-card">
+          <span class="grid-product__title">{{ product.title | remove: "(Classic)"| remove: "(LED)"| remove: "(free)" }}</span>
+          <div class="reveal">
+            <div class="reveal_inner">
+              <div class="reveal_inner_f">
+                <img class="grid-product__image" src="{{ product.featured_image.src | img_url: '1024x' }}" alt="">
+              </div>
+            </div>
+            {% if product.tags contains 'limited' or product.tags contains 'Limited' %}
+              <div class="grid-product__discount limited">{{ 'products.general.limited' | t }}</div>
+            {% elsif product.tags contains 'new' or product.tags contains 'New' %}
+              <div class="grid-product__discount new">{{ 'products.general.new' | t }}</div>
+            {% endif %}
+          </div>
+          <input class="quantity" type="hidden" name="quantity" value="0">
+          <input type="hidden" name="id" value="{{ product.first_available_variant.id }}">
+        </a>
+      </div>
+    {%- endfor -%}
+  </div>
+  <div class="collection-footer">
+    <button class="save btn">{{ 'gift_popup.general.save_btn' | t }}</button>
+  </div>
+</div>

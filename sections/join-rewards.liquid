@@ -1,0 +1,100 @@
+<div class="join-rewards">
+  
+  <div class="desktop_img">
+    <div class="feature-row__item">
+      <div style="margin: 0 auto; max-width: 100%;">
+        {% if section.settings.banner_image != blank %}
+          <div class="image-wrap">
+            {%- assign img_url = section.settings.banner_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+            <img class="feature-row__image lazyload"
+                data-src="{{ img_url }}"
+                data-widths="[180, 320, 360, 414, 540, 720, 900, 1080, 1200, 1440, 1600, 1920, 2560]"
+                data-aspectratio="{{ section.settings.banner_image.aspect_ratio }}"
+                data-sizes="auto"
+                alt="{{ section.settings.banner_image.alt }}">
+          </div>
+        {% else %}
+          <div class="image-wrap">
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  
+  <div class="mobile_img">
+    <div class="feature-row__item">
+      <div style="margin: 0 auto; max-width: 100%;">
+        {% if section.settings.banner_mobile != blank %}
+          <div class="image-wrap">
+            {%- assign img_url = section.settings.banner_mobile | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+            <img class="feature-row__image lazyload"
+                data-src="{{ img_url }}"
+                data-widths="[180, 320, 360, 414, 540, 720, 900, 1080, 1200, 1440, 1600, 1920, 2560]"
+                data-aspectratio="{{ section.settings.banner_mobile.aspect_ratio }}"
+                data-sizes="auto"
+                alt="{{ section.settings.banner_mobile.alt }}">
+          </div>
+        {% else %}
+          <div class="image-wrap">
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  
+  {% if section.settings.button_label != blank %}
+    <div class="join_btn_wrapper">
+      <div class="join_btn">
+      {% if section.settings.button_link != blank %}
+        <a href="{{ section.settings.button_link }}" class="btn_link">
+      {% endif %}
+      <p>{{ section.settings.button_label }}</p>
+      {% if section.settings.button_link != blank %}
+        </a>
+      {% endif %}  
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+
+{% schema %}
+  {
+    "name": "Index 'Join Rewards'",
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "banner_image",
+        "label": "Banner Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "banner_mobile",
+        "label": "Mobile Banner Image"
+      },
+      {
+        "type": "header",
+        "content": "Buttons"
+      },
+      {
+        "type": "text",
+        "id": "button_label",
+        "label": "Button label"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Link"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Index 'Join Rewards'",
+        "category": "Text"
+      }
+    ]
+  }
+{% endschema %}
